@@ -258,6 +258,7 @@
     --c-youth:        #7C3AED; --c-youth-light:     #F5F3FF; --c-youth-mid:     #DDD6FE;
     --c-economy:      #059669; --c-economy-light:   #ECFDF5; --c-economy-mid:   #A7F3D0;
     --c-storytelling: #D97706; --c-storytelling-light:#FFFBEB;--c-storytelling-mid:#FDE68A;
+    --c-violence:     #DC2626; --c-violence-light:  #FEF2F2; --c-violence-mid:  #FECACA;
   }
 
   /* ── PROJECTS ── */
@@ -295,6 +296,9 @@
   .proj-filter[data-filter="storytelling"]:hover    { border-color: var(--c-storytelling); color: var(--c-storytelling); background: var(--c-storytelling-light); }
   .proj-filter[data-filter="storytelling"].active   { background: var(--c-storytelling); border-color: var(--c-storytelling); color: white; }
 
+  .proj-filter[data-filter="violence"]:hover    { border-color: var(--c-violence); color: var(--c-violence); background: var(--c-violence-light); }
+  .proj-filter[data-filter="violence"].active   { background: var(--c-violence); border-color: var(--c-violence); color: white; }
+
   .proj-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
@@ -321,6 +325,7 @@
   .proj-card[data-theme="youth"]        .proj-card-bar { background: var(--c-youth); }
   .proj-card[data-theme="economy"]      .proj-card-bar { background: var(--c-economy); }
   .proj-card[data-theme="storytelling"] .proj-card-bar { background: var(--c-storytelling); }
+  .proj-card[data-theme="violence"]     .proj-card-bar { background: var(--c-violence); }
 
   .proj-card-body { padding: 1.6rem 1.6rem 1.4rem; display: flex; flex-direction: column; gap: .55rem; flex: 1; }
 
@@ -334,6 +339,7 @@
   .proj-card[data-theme="youth"]        .proj-theme-badge { color: var(--c-youth);        background: var(--c-youth-light);        border: 1px solid var(--c-youth-mid); }
   .proj-card[data-theme="economy"]      .proj-theme-badge { color: var(--c-economy);      background: var(--c-economy-light);      border: 1px solid var(--c-economy-mid); }
   .proj-card[data-theme="storytelling"] .proj-theme-badge { color: var(--c-storytelling); background: var(--c-storytelling-light); border: 1px solid var(--c-storytelling-mid); }
+  .proj-card[data-theme="violence"]     .proj-theme-badge { color: var(--c-violence);     background: var(--c-violence-light);     border: 1px solid var(--c-violence-mid); }
 
   .proj-card h3 { font-family: var(--serif); font-size: 1.08rem; letter-spacing: -.01em; line-height: 1.3; }
   .proj-card p  { font-size: .85rem; color: var(--mid); font-weight: 300; line-height: 1.65; flex: 1; }
@@ -619,6 +625,7 @@
   </div>
 </nav>
 
+
 <!-- PROJECTS -->
 <section class="projects-bg" id="projects">
   <div class="container">
@@ -632,229 +639,365 @@
       <button class="proj-filter" data-filter="migration"><span class="filter-dot"></span>Forced Migration</button>
       <button class="proj-filter" data-filter="youth"><span class="filter-dot"></span>Youth Beyond Binaries</button>
       <button class="proj-filter" data-filter="economy"><span class="filter-dot"></span>Economic Insecurities</button>
-      <button class="proj-filter" data-filter="storytelling"><span class="filter-dot"></span>Storytelling & Identity</button>
+      <button class="proj-filter" data-filter="storytelling"><span class="filter-dot"></span>Storytelling &amp; Identity</button>
+      <button class="proj-filter" data-filter="violence"><span class="filter-dot"></span>Resisting Violence</button>
     </div>
     <div class="proj-grid fade-in" id="projGrid" style="transition-delay:.15s">
 
-      <!-- Migration -->
+      <!-- 1. Engaged Scholarship -->
       <div class="proj-card" data-theme="migration"
-        data-title="Narrating Displacement"
-        data-desc="Working with Syrian and Afghan communities in Amsterdam to document their own stories of arrival, using oral history and photography as co-research tools. Participants shape every aspect of the research — from the questions asked to how findings are shared publicly."
-        data-partners="Refugee Council NL, Stichting Vluchtelingenwerk"
-        data-researchers="Dr. Sara Ibrahim, Yusra Bashir, Kofi Vandermeer"
-        data-methods="Oral history, photovoice, participatory narrative inquiry"
-        data-status="Ongoing" data-year="2022–present">
+        data-title="Engaged Scholarship: Narratives of Change"
+        data-desc="A comparative research project investigating co-operation between academy and society — labelled 'engaged scholarship' — across South Africa, the US, and the Netherlands. The project collects narratives from both refugees and engaged academics on academic engagement's contribution and challenges in the lives of refugees."
+        data-partners="Comparative institutions in South Africa, US, and the Netherlands"
+        data-researchers="Halleh Ghorashi, Elena Ponzoni, Phoebe Kisubi Mbasalaki, Maria Rast, Miriam Ocadiz, Fabian Holle, Alexandra Greene, Sajad Salmanpour"
+        data-methods="Qualitative research methodology, comparative analysis, participatory sites, narrative inquiry"
+        data-status="Ongoing" data-year="Ongoing">
         <div class="proj-card-bar"></div>
         <div class="proj-card-body">
           <div class="proj-theme-badge">Forced Migration</div>
-          <h3>Narrating Displacement</h3>
-          <p>Working with Syrian and Afghan communities in Amsterdam to document their own stories of arrival, using oral history and photography as co-research tools.</p>
+          <h3>Engaged Scholarship: Narratives of Change</h3>
+          <p>A comparative project investigating how engaged scholarship can contribute to the societal inclusion of refugees across South Africa, the US, and the Netherlands.</p>
           <div class="proj-meta">
             <span class="proj-status ongoing">Ongoing</span>
-            <span class="proj-year">2022–present</span>
+            <span class="proj-year">Comparative / 3 continents</span>
             <span class="proj-arrow">↗</span>
           </div>
         </div>
       </div>
 
+      <!-- 2. Het Verhalenhuis -->
       <div class="proj-card" data-theme="migration"
-        data-title="Legal Literacy Circles"
-        data-desc="Co-developing accessible legal knowledge resources with undocumented migrants and asylum seekers, in partnership with three community legal aid organisations. Knowledge is produced collaboratively in small circles, then translated into multilingual formats."
-        data-partners="Stichting LOS, Dokters van de Wereld, UAF"
-        data-researchers="Dr. Sara Ibrahim, Fatou Ndiaye"
-        data-methods="Participatory action research, co-design workshops, legal literacy facilitation"
-        data-status="Ongoing" data-year="2023–present">
+        data-title="The House of Stories (Het Verhalenhuis)"
+        data-desc="A creative collaboration between Story Academy and Refugee Academy, providing a platform for people with refugee backgrounds to receive professional guidance and share their unheard stories on stage. The project unfolds in twelve phases of six storytelling workshops each, enabling self-reflection and challenging existing narratives about migrants. Stories are transformed into podcasts and performances."
+        data-partners="Story Academy, Refugee Academy, Theatre Spui (The Hague)"
+        data-researchers="Elena Ponzoni, Halleh Ghorashi, Fabian Holle, Miriam Ocadiz"
+        data-methods="Storytelling workshops, podcast production, performance, reflective research, dialogue"
+        data-link="https://rosestories.nl/podcast-verhalenhuis/"
+        data-status="Ongoing" data-year="Ongoing">
         <div class="proj-card-bar"></div>
         <div class="proj-card-body">
           <div class="proj-theme-badge">Forced Migration</div>
-          <h3>Legal Literacy Circles</h3>
-          <p>Co-developing accessible legal knowledge resources with undocumented migrants and asylum seekers, in partnership with three community legal aid organisations.</p>
+          <h3>The House of Stories <em style="font-style:italic;font-size:.9em;font-family:inherit;">(Het Verhalenhuis)</em></h3>
+          <p>A creative collaboration giving people with refugee backgrounds professional guidance to share their unheard stories on stage — transformed into podcasts and live performances.</p>
           <div class="proj-meta">
             <span class="proj-status ongoing">Ongoing</span>
-            <span class="proj-year">2023–present</span>
+            <span class="proj-year">Story Academy × Refugee Academy</span>
             <span class="proj-arrow">↗</span>
           </div>
         </div>
       </div>
 
+      <!-- 3. 2incING -->
       <div class="proj-card" data-theme="migration"
-        data-title="Borders of Belonging"
-        data-desc="An ethnographic and participatory study examining how refugees negotiate identity across administrative categories in the Dutch asylum system. The project resulted in a co-authored report and a community-produced exhibition shown in Amsterdam and Utrecht."
-        data-partners="IND, Vluchtelingenwerk Nederland"
-        data-researchers="Dr. Sara Ibrahim, Amara Boateng"
-        data-methods="Ethnography, participatory observation, co-authored writing"
-        data-status="Completed" data-year="2020–2023">
+        data-title="2incING — Promoting Inclusive Policy through Collaboration"
+        data-desc="An EU AMIF-funded project fostering exchange and cooperation between policymakers and refugee/migrant-led organisations across Croatia, Malta, Belgium, Greece, and the Netherlands. The project delivers national workshops, G100 conferences, masterclasses for policymakers, steering committees, shadow reports, and policy meetings — all to ground policy in the daily realities and needs of migrant communities."
+        data-partners="Centre for Peace Studies (Croatia), Aditus Foundation (Malta), ECRE (Belgium), Greek Forum of Refugees, Syrian Volunteers in the Netherlands (SYVNL), Refugee Academy (VU Amsterdam)"
+        data-researchers="Elena Ponzoni"
+        data-methods="Masterclasses, participatory workshops, advocacy academy, shadow reports, policy dialogues"
+        data-status="Ongoing" data-year="Ongoing · EU AMIF funded">
         <div class="proj-card-bar"></div>
         <div class="proj-card-body">
           <div class="proj-theme-badge">Forced Migration</div>
-          <h3>Borders of Belonging</h3>
-          <p>An ethnographic and participatory study examining how refugees negotiate identity across administrative categories in the Dutch asylum system.</p>
+          <h3>2incING Project</h3>
+          <p>Bridging policymakers and refugee/migrant-led organisations across four EU countries to create policies that are genuinely grounded in community realities.</p>
           <div class="proj-meta">
-            <span class="proj-status completed">Completed</span>
-            <span class="proj-year">2020–2023</span>
+            <span class="proj-status ongoing">Ongoing</span>
+            <span class="proj-year">EU AMIF funded · 5 countries</span>
             <span class="proj-arrow">↗</span>
           </div>
         </div>
       </div>
 
-      <!-- Youth -->
+      <!-- 4. Common Ground Dialogues -->
+      <div class="proj-card" data-theme="storytelling"
+        data-title="Common Ground Dialogues"
+        data-desc="A Creative Europe-funded project addressing deeply dividing issues through storytelling as artistic practice. During ten Storytelling Circles across 2023–2024, the CGD methodology is researched and refined. Participants from different socio-economic and political backgrounds share personal stories and co-create fiction to explore real-world polarising issues through empathy and play."
+        data-partners="Space Explorers, European Commission Creative Europe programme"
+        data-researchers="Timo Korstenbroek, Lise Woensdregt"
+        data-methods="Storytelling circles, arts-based research, participatory narrative, co-created fiction"
+        data-link="https://cgd.spaceexplorers.nl/"
+        data-status="Ongoing" data-year="2023–2025 · Creative Europe">
+        <div class="proj-card-bar"></div>
+        <div class="proj-card-body">
+          <div class="proj-theme-badge">Storytelling &amp; Identity</div>
+          <h3>Common Ground Dialogues</h3>
+          <p>Bringing together people across political and social divides through Storytelling Circles — using fiction and play to address polarising issues with empathy.</p>
+          <div class="proj-meta">
+            <span class="proj-status ongoing">Ongoing</span>
+            <span class="proj-year">2023–2025 · Creative Europe</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. LIMBO -->
+      <div class="proj-card" data-theme="violence"
+        data-title="LIMBO — Queer Refugee Stories through Creative Practices"
+        data-desc="A creative research collaboration between queer refugee community organisers/artists and Refugee Academy. LIMBO is a workshop series centring queer refugee stories through creative practices, co-creating knowledge on the challenges and resilience of queer refugees and the role of engaged scholarship. Funded by ILGA Europe (September 2024–June 2025). Workshops are hosted by Makers Unite."
+        data-partners="Makers Unite, ILGA Europe (funder), Framer Framed (previous)"
+        data-researchers="Fabian Holle (PhD researcher & initiator)"
+        data-methods="Creative workshops, community art, narrative inquiry, engaged scholarship, safer spaces facilitation"
+        data-status="Ongoing" data-year="Sep 2024–Jun 2025 · ILGA Europe">
+        <div class="proj-card-bar"></div>
+        <div class="proj-card-body">
+          <div class="proj-theme-badge">Resisting Violence</div>
+          <h3>LIMBO</h3>
+          <p>A workshop series centring queer refugee stories through creative practices, co-creating knowledge about resilience and the role of engaged scholarship in queer refugee lives.</p>
+          <div class="proj-meta">
+            <span class="proj-status ongoing">Ongoing</span>
+            <span class="proj-year">Sep 2024–Jun 2025 · ILGA Europe</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Leadership & Resilience - Undocumented Youth -->
       <div class="proj-card" data-theme="youth"
-        data-title="Queering the Curriculum"
-        data-desc="Partnering with LGBTQ+ youth organisations to redesign how secondary schools approach gender and sexuality education through participatory workshops. Youth participants co-design lesson materials and evaluate outcomes alongside teachers."
-        data-partners="COC Nederland, Humanistisch Verbond"
-        data-researchers="Dr. Lena Reyes, Theo Vandenberghe"
-        data-methods="Participatory workshop design, co-curriculum development, youth research"
-        data-status="Ongoing" data-year="2023–present">
+        data-title="Leadership and Resilience: Co-Creation with Undocumented Youth"
+        data-desc="A co-creative research group of undocumented youth, VU researchers, activists, and social workers exploring how to create inclusive educational environments. Topics include mental well-being at university, transitions from higher education to work, and institutional inclusiveness. Partners include ASKV and Stichting Leergeld Amsterdam. Funded by NWA small projects grant (Route Resilience)."
+        data-partners="ASKV, Stichting Leergeld Amsterdam, De Haagse Hogeschool, Framer Framed"
+        data-researchers="dr. K Maeve Powlick, Evelyn Vlasman, Gabriel Briar (VU Amsterdam); Ruben Boers (De Haagse Hogeschool)"
+        data-methods="Arts-based research, co-creative research group, participatory workshops for educators"
+        data-status="Ongoing" data-year="Ongoing · NWA funded">
         <div class="proj-card-bar"></div>
         <div class="proj-card-body">
           <div class="proj-theme-badge">Youth Beyond Binaries</div>
-          <h3>Queering the Curriculum</h3>
-          <p>Partnering with LGBTQ+ youth organisations to redesign how secondary schools approach gender and sexuality education through participatory workshops.</p>
+          <h3>Leadership &amp; Resilience: Co-Creation with Undocumented Youth</h3>
+          <p>Undocumented youth and VU researchers working together to create more inclusive educational environments — from mental wellbeing to transitions into higher education.</p>
           <div class="proj-meta">
             <span class="proj-status ongoing">Ongoing</span>
-            <span class="proj-year">2023–present</span>
+            <span class="proj-year">NWA Route Resilience</span>
             <span class="proj-arrow">↗</span>
           </div>
         </div>
       </div>
 
+      <!-- 7. Boundaries in art-based research -->
+      <div class="proj-card" data-theme="violence"
+        data-title="Boundaries in Art-Based Research about Refugee Experiences"
+        data-desc="A small, refugee-led project making a first step in collectively articulating the complexity of participating in art-based projects for people with refugee backgrounds. Two workshops bring together people with refugee experience of art-based projects to create collective knowledge and articulate conditions for reciprocally meaningful co-creation. Outcomes will be shared as a video-lecture and short text."
+        data-partners="Refugee community networks"
+        data-researchers="Idris Alhassan, Husniya Kedr"
+        data-methods="Participatory workshops, collective knowledge-making, video-lecture production"
+        data-status="Ongoing" data-year="Ongoing · Refugee-led">
+        <div class="proj-card-bar"></div>
+        <div class="proj-card-body">
+          <div class="proj-theme-badge">Resisting Violence</div>
+          <h3>Boundaries in Art-Based Research</h3>
+          <p>A refugee-led project creating space to collectively articulate the discomforts and conditions for meaningful co-creation in art and research about refugee experiences.</p>
+          <div class="proj-meta">
+            <span class="proj-status ongoing">Ongoing</span>
+            <span class="proj-year">Refugee-led</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Economic Pathways - Queer Men Nairobi -->
+      <div class="proj-card" data-theme="economy"
+        data-title="Economic Pathways for Financially Vulnerable Queer Men in Nairobi"
+        data-desc="Using Community-Led Research and Action (CLRA), this project explores how queer men in Nairobi can create pathways to financial independence within 'hustle economies' — and how queer entrepreneurship might offer alternatives. Research outcomes go beyond academic publications to include comics, podcasts, videos, and written chapters shaped by community interests."
+        data-partners="Queer community organisations in Nairobi, Kenya"
+        data-researchers="dr. Lise Woensdregt"
+        data-methods="Community-led research and action (CLRA), collaborative anthropology, community-shaped dissemination"
+        data-status="Ongoing" data-year="Jun 2024–Aug 2025 · Wenner-Gren">
+        <div class="proj-card-bar"></div>
+        <div class="proj-card-body">
+          <div class="proj-theme-badge">Economic Insecurities</div>
+          <h3>Economic Pathways for Queer Men in Nairobi</h3>
+          <p>Community-led research exploring financial resilience and queer entrepreneurship among financially vulnerable queer men in Nairobi's hustle economies.</p>
+          <div class="proj-meta">
+            <span class="proj-status ongoing">Ongoing</span>
+            <span class="proj-year">Jun 2024–Aug 2025 · Wenner-Gren</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Trans Healthcare Den Haag -->
       <div class="proj-card" data-theme="youth"
-        data-title="Young & Non-Binary in the Netherlands"
-        data-desc="A co-produced survey and storytelling project mapping the experiences of non-binary youth across Dutch cities, led by youth researchers aged 16–24. The project centres youth expertise at every stage, from survey design to data interpretation and dissemination."
-        data-partners="Transgender Netwerk Nederland, Kifkif"
-        data-researchers="Dr. Lena Reyes, Theo Vandenberghe, Priya Hussain"
-        data-methods="Co-produced survey, story circles, youth-led research"
-        data-status="New" data-year="2024–present">
+        data-title="Community-Led Research & Action: Trans Healthcare in Den Haag"
+        data-desc="Using Community-Led Research and Action (CLRA), this project maps the barriers and opportunities transgender youth experience in accessing adequate care and support in The Hague. The research integrates both youth perspectives and those of caregivers and professionals, aiming for concrete recommendations at individual and systemic levels. Endorsed by the Municipality of The Hague."
+        data-partners="Municipality of The Hague, healthcare professionals and networks in Den Haag"
+        data-researchers="VU Amsterdam researchers (CIK Lab)"
+        data-methods="Community-led research and action (CLRA), qualitative interviews, professional evaluation"
+        data-status="Ongoing" data-year="Ongoing · Municipality of The Hague">
         <div class="proj-card-bar"></div>
         <div class="proj-card-body">
           <div class="proj-theme-badge">Youth Beyond Binaries</div>
-          <h3>Young & Non-Binary in the Netherlands</h3>
-          <p>A co-produced survey and storytelling project mapping the experiences of non-binary youth across Dutch cities, led by youth researchers aged 16–24.</p>
-          <div class="proj-meta">
-            <span class="proj-status new">New</span>
-            <span class="proj-year">2024–present</span>
-            <span class="proj-arrow">↗</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Economy -->
-      <div class="proj-card" data-theme="economy"
-        data-title="Precarious Platforms"
-        data-desc="Investigating gig economy labour conditions with platform workers in the Netherlands, combining survey research with participatory action research. Workers co-design research tools and lead focus groups in their own languages and communities."
-        data-partners="FNV, Fairwork Foundation"
-        data-researchers="Dr. Roos Prins, Nils Westerberg"
-        data-methods="PAR, survey co-design, worker focus groups, platform ethnography"
-        data-status="Ongoing" data-year="2022–present">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Economic Insecurities</div>
-          <h3>Precarious Platforms</h3>
-          <p>Investigating gig economy labour conditions with platform workers in the Netherlands, combining survey research with participatory action research.</p>
+          <h3>Trans Healthcare in Den Haag</h3>
+          <p>Mapping the barriers transgender youth face in accessing care in The Hague, integrating youth and professional perspectives towards systemic improvement.</p>
           <div class="proj-meta">
             <span class="proj-status ongoing">Ongoing</span>
-            <span class="proj-year">2022–present</span>
+            <span class="proj-year">Municipality of The Hague</span>
             <span class="proj-arrow">↗</span>
           </div>
         </div>
       </div>
 
-      <div class="proj-card" data-theme="economy"
-        data-title="Collective Debt, Collective Care"
-        data-desc="Exploring informal mutual aid and solidarity economies in low-income urban neighbourhoods — how communities create safety nets outside formal systems. The project produced an open-access toolkit for community organisations to map and strengthen their own networks."
-        data-partners="Buurtteam Amsterdam, Schuldhulpmaatje"
-        data-researchers="Dr. Roos Prins, Fatou Ndiaye"
-        data-methods="Community mapping, narrative interviews, participatory analysis"
-        data-status="Completed" data-year="2021–2023">
+      <!-- 10. Magazine for Global Reparations -->
+      <div class="proj-card" data-theme="violence"
+        data-title="Magazine for Global Reparations by Aralez"
+        data-desc="A magazine fostering community initiatives and conversation on reparations and decolonization, produced by Aralez — a pan-decolonial network & grassroots organisation in Amsterdam. It presents a manifesto for reparations from two yearly conferences, connects to ongoing academic work, and showcases 5 years of Aralez's community-driven decolonisation projects."
+        data-partners="Aralez (pan-decolonial network, Amsterdam)"
+        data-researchers="Aralez community; CIK Lab"
+        data-methods="Community publishing, manifesto co-creation, academic-community bridge, conference series"
+        data-status="Ongoing" data-year="Target: March 2025">
         <div class="proj-card-bar"></div>
         <div class="proj-card-body">
-          <div class="proj-theme-badge">Economic Insecurities</div>
-          <h3>Collective Debt, Collective Care</h3>
-          <p>Exploring informal mutual aid and solidarity economies in low-income urban neighbourhoods — how communities create safety nets outside formal systems.</p>
-          <div class="proj-meta">
-            <span class="proj-status completed">Completed</span>
-            <span class="proj-year">2021–2023</span>
-            <span class="proj-arrow">↗</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-card" data-theme="economy"
-        data-title="Food Insecurity Mapping"
-        data-desc="Community-led mapping of food access and insecurity across Amsterdam Zuidoost, co-designed with local residents and food bank volunteers. Residents lead data collection using mobile tools they helped design, and interpret findings in community workshops."
-        data-partners="Voedselbank Amsterdam, Gemeente Amsterdam Zuidoost"
-        data-researchers="Dr. Roos Prins, Gladys Sarpong, Mia Kovalev"
-        data-methods="Community-led mapping, participatory GIS, resident workshops"
-        data-status="New" data-year="2024–present">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Economic Insecurities</div>
-          <h3>Food Insecurity Mapping</h3>
-          <p>Community-led mapping of food access and insecurity across Amsterdam Zuidoost, co-designed with local residents and food bank volunteers.</p>
-          <div class="proj-meta">
-            <span class="proj-status new">New</span>
-            <span class="proj-year">2024–present</span>
-            <span class="proj-arrow">↗</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Storytelling -->
-      <div class="proj-card" data-theme="storytelling"
-        data-title="Archive of Unheard Voices"
-        data-desc="Building a community-curated digital archive of oral histories from marginalised communities in the Amsterdam metropolitan area — open and freely accessible. Community members act as archivists and decide how their stories are described, categorised, and shared."
-        data-partners="IISG Amsterdam, OBA Bibliotheek"
-        data-researchers="Kofi Vandermeer, Dr. Osei Acheampong, Chioma Adeyemi"
-        data-methods="Oral history, community archiving, participatory digital humanities"
-        data-status="Ongoing" data-year="2021–present">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Storytelling & Identity</div>
-          <h3>Archive of Unheard Voices</h3>
-          <p>Building a community-curated digital archive of oral histories from marginalised communities in the Amsterdam metropolitan area — open and freely accessible.</p>
+          <div class="proj-theme-badge">Resisting Violence</div>
+          <h3>Magazine for Global Reparations</h3>
+          <p>A community magazine by Aralez presenting a manifesto for reparations, connecting decolonisation activism with academic reflection on the coloniality of Dutch universities.</p>
           <div class="proj-meta">
             <span class="proj-status ongoing">Ongoing</span>
-            <span class="proj-year">2021–present</span>
+            <span class="proj-year">Aralez × CIK Lab</span>
             <span class="proj-arrow">↗</span>
           </div>
         </div>
       </div>
 
-      <div class="proj-card" data-theme="storytelling"
-        data-title="Visual Research Toolkit"
-        data-desc="Developing and testing a suite of arts-based research methods — photovoice, body mapping, zine-making — for use by community researchers without academic training. The toolkit is freely downloadable and has been used by 23 organisations across Europe."
-        data-partners="Mediamatic, Framer Framed"
-        data-researchers="Dr. Lena Reyes, Mia Kovalev"
-        data-methods="Photovoice, body mapping, zine-making, toolkit co-design"
-        data-status="Completed" data-year="2022–2024">
+      <!-- 11. Photo-Voice Exhibition - Wounded Storytellers -->
+      <div class="proj-card" data-theme="violence"
+        data-title="Exhibition of a Photo-Voice Study by Wounded Storytellers"
+        data-desc="A Participatory Action Research project with 32 gang members who acquired spinal cord injuries through gang-related violence in Cape Town, South Africa. Co-researchers created photo-stories depicting the causes and consequences of violence. The 2025 exhibition in Cape Town will be co-curated by the co-researchers themselves — centering their agency in disseminating knowledge about violence, identity transformation, and community healing."
+        data-partners="Community organisations and stakeholders in Cape Town, South Africa"
+        data-researchers="Helenard Louw (PhD researcher)"
+        data-methods="Participatory action research, photovoice, co-curated exhibition, community dissemination"
+        data-status="new" data-year="Exhibition 2025 · Cape Town">
         <div class="proj-card-bar"></div>
         <div class="proj-card-body">
-          <div class="proj-theme-badge">Storytelling & Identity</div>
-          <h3>Visual Research Toolkit</h3>
-          <p>Developing and testing a suite of arts-based research methods — photovoice, body mapping, zine-making — for use by community researchers without academic training.</p>
-          <div class="proj-meta">
-            <span class="proj-status completed">Completed</span>
-            <span class="proj-year">2022–2024</span>
-            <span class="proj-arrow">↗</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-card" data-theme="storytelling"
-        data-title="Intergenerational Memory Project"
-        data-desc="Co-creating cross-generational dialogues between elders and young people from post-colonial communities, surfacing shared and divergent understandings of home and heritage. Dialogue sessions are facilitated by community members and result in a jointly produced publication."
-        data-partners="Black Heritage Amsterdam, Surinaams Museum"
-        data-researchers="Dr. Osei Acheampong, Chioma Adeyemi, Priya Hussain"
-        data-methods="Intergenerational dialogue, narrative co-creation, co-authorship"
-        data-status="New" data-year="2024–present">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Storytelling & Identity</div>
-          <h3>Intergenerational Memory Project</h3>
-          <p>Co-creating cross-generational dialogues between elders and young people from post-colonial communities, surfacing shared and divergent understandings of home.</p>
+          <div class="proj-theme-badge">Resisting Violence</div>
+          <h3>Exhibition: Wounded Storytellers</h3>
+          <p>A photo-voice study with 32 gang-violence survivors in Cape Town, co-curating an exhibition that centres their stories of injury, identity transformation, and community healing.</p>
           <div class="proj-meta">
             <span class="proj-status new">New</span>
-            <span class="proj-year">2024–present</span>
+            <span class="proj-year">Exhibition 2025 · Cape Town</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Memory Workshops Colombia -->
+      <div class="proj-card" data-theme="violence"
+        data-title="Crafting the Past through Memory Workshops in Colombia"
+        data-desc="A project proposing memory workshops as an alternative for the co-production of data and local knowledge in rural Colombian communities affected by armed conflict. Using creative tools — memory web creation, collective timeline drawing, and emotional biography exploration — communities reflect on both lived and spoken dimensions of wartime and peace-building."
+        data-partners="Rural communities in Colombia"
+        data-researchers="Dr. Daniel Gómez Uribe"
+        data-methods="Memory workshops, creative participatory methods, collective timeline drawing, emotional biography"
+        data-status="Ongoing" data-year="Ongoing · Colombia">
+        <div class="proj-card-bar"></div>
+        <div class="proj-card-body">
+          <div class="proj-theme-badge">Resisting Violence</div>
+          <h3>Memory Workshops in Colombia</h3>
+          <p>Co-producing local knowledge about armed conflict with rural Colombian communities using creative memory tools — timelines, memory webs, and emotional biographies.</p>
+          <div class="proj-meta">
+            <span class="proj-status ongoing">Ongoing</span>
+            <span class="proj-year">Colombia</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Climate Mobility -->
+      <div class="proj-card" data-theme="violence"
+        data-title="Between North and South: Perspectives on Climate Mobility"
+        data-desc="An exploratory partnership building a network between critical scholars from the Global South and North to address power dynamics at the intersection of climate change, community resilience, and climate (im)mobility. The project connects with communities directly affected by climate displacement and prepares a research grant application on co-creation in climate mobility research."
+        data-partners="Critical scholars in development studies, disaster studies, environmental governance (Europe and Latin America)"
+        data-researchers="Dr. Robert Larruina"
+        data-methods="Engaged scholarship, network building, comparative North-South dialogue, grant preparation"
+        data-status="Ongoing" data-year="Ongoing · North–South partnership">
+        <div class="proj-card-bar"></div>
+        <div class="proj-card-body">
+          <div class="proj-theme-badge">Resisting Violence</div>
+          <h3>Climate Mobility: North–South Perspectives</h3>
+          <p>Building a scholar-activist network across Europe and Latin America to address the power dynamics shaping who can and cannot move in the face of climate change.</p>
+          <div class="proj-meta">
+            <span class="proj-status ongoing">Ongoing</span>
+            <span class="proj-year">North–South partnership</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. Library of In-Between Stories -->
+      <div class="proj-card" data-theme="youth"
+        data-title="Library of In-Between Stories (Bibliotheek van Tussenverhalen)"
+        data-desc="A collaboration between VU, Hogeschool van Amsterdam, Hogeschool InHolland, Stichting Sitara, Criminal Minded, and Sociaal Cement. Young people growing up between different life worlds — ethnic cultures, street and school, LGBTQIA+ identity and non-accepting contexts — co-create a digital library of in-between narratives and a masterclass taught by young people to youth professionals."
+        data-partners="Hogeschool van Amsterdam, Hogeschool InHolland, Stichting Sitara, Criminal Minded, Sociaal Cement"
+        data-researchers="Elena Ponzoni"
+        data-methods="Participatory qualitative study, digital library co-creation, youth-taught masterclass"
+        data-status="Ongoing" data-year="Ongoing · Multi-institution">
+        <div class="proj-card-bar"></div>
+        <div class="proj-card-body">
+          <div class="proj-theme-badge">Youth Beyond Binaries</div>
+          <h3>Library of In-Between Stories</h3>
+          <p>Young people growing up between worlds co-create a digital library of 'in-between' narratives and a masterclass for youth professionals.</p>
+          <div class="proj-meta">
+            <span class="proj-status ongoing">Ongoing</span>
+            <span class="proj-year">Multi-institution collaboration</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. Participatory Panel Social Assistance -->
+      <div class="proj-card" data-theme="economy"
+        data-title="Participatory Consultative Panel on Social Assistance"
+        data-desc="A stakeholder 'think tank' collaboratively creating knowledge for research related to the Dutch social assistance system. The group includes researchers, policymakers, representatives of people receiving social assistance, and welfare recipients themselves. The plenary sessions (twice yearly) aim to enrich research by refining how questions are framed, studies are designed, and findings are applied to inform policy."
+        data-partners="Policymakers, social welfare representatives, welfare recipients (Netherlands)"
+        data-researchers="Boudewijn Goos, Arjen de Wit"
+        data-methods="Participatory think tank, collaborative knowledge-making, policy dialogue"
+        data-status="Ongoing" data-year="Ongoing · Netherlands">
+        <div class="proj-card-bar"></div>
+        <div class="proj-card-body">
+          <div class="proj-theme-badge">Economic Insecurities</div>
+          <h3>Consultative Panel on Social Assistance</h3>
+          <p>A participatory think tank bringing together welfare researchers, policymakers, and recipients to make social assistance research more relevant to people's daily lives.</p>
+          <div class="proj-meta">
+            <span class="proj-status ongoing">Ongoing</span>
+            <span class="proj-year">Netherlands</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. Our Cloud - Data Centre Activism -->
+      <div class="proj-card" data-theme="economy"
+        data-title="Our Cloud: Bringing Together Data Centre Activists and NGOs"
+        data-desc="In response to the massive boom in data centre construction and strong local resistance movements in the Netherlands and beyond, this project bridges local data centre activists (motivated by environmental and democratic concerns) with NGOs working on digital rights and public infrastructure. The goal is to move from articulating resistance to developing alternative visions of democratic digital infrastructure."
+        data-partners="Local activist groups, digital rights NGOs (Netherlands, Chile, Ireland, Luxembourg, Spain)"
+        data-researchers="Dr. Julia Rone"
+        data-methods="Participatory network building, engaged scholarship, community-NGO bridging"
+        data-status="Ongoing" data-year="Ongoing">
+        <div class="proj-card-bar"></div>
+        <div class="proj-card-body">
+          <div class="proj-theme-badge">Economic Insecurities</div>
+          <h3>Our Cloud: Data Centre Activists &amp; NGOs</h3>
+          <p>Connecting grassroots data centre resistance movements with digital rights NGOs to co-develop democratic alternatives to corporate digital infrastructure.</p>
+          <div class="proj-meta">
+            <span class="proj-status ongoing">Ongoing</span>
+            <span class="proj-year">Netherlands + international</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17. In Search of an In-Between Space -->
+      <div class="proj-card" data-theme="economy"
+        data-title="In Search of an In-Between Space — Kenniscentrum Ongelijkheid"
+        data-desc="A project investigating whether and how co-creation based on epistemic plurality can strengthen democratic relationships and generate creative solutions to inequality in Amsterdam. Through action research in co-creative sessions, the project builds 'chains of trust' between active residents, frontline professionals, civil servants, and researchers — developing a city-wide learning trajectory on pluralistic democratic collaboration."
+        data-partners="E-Co/Samen Vooruit, Vrijwilligersacademie Amsterdam, Onderzoeksbureau Amsterdam Meetellen, UvA, Hogeschool van Amsterdam, Municipality of Amsterdam"
+        data-researchers="Halleh Ghorashi, Elena Ponzoni, dr. Lise Woensdregt"
+        data-methods="Action research, co-creative sessions, epistemic plurality, democratic collaboration learning trajectory"
+        data-status="new" data-year="Started Sep 2024 · Amsterdam">
+        <div class="proj-card-bar"></div>
+        <div class="proj-card-body">
+          <div class="proj-theme-badge">Economic Insecurities</div>
+          <h3>In Search of an In-Between Space</h3>
+          <p>Co-creative action research building new 'chains of trust' between Amsterdam residents, frontline workers, and policymakers to tackle persistent inequalities.</p>
+          <div class="proj-meta">
+            <span class="proj-status new">New</span>
+            <span class="proj-year">Sep 2024 · Amsterdam</span>
             <span class="proj-arrow">↗</span>
           </div>
         </div>
@@ -1164,7 +1307,7 @@
     </div>
     <div class="footer-col">
       <h5>Contact</h5>
-      <a href="mailto:cocreationlab@vu.nl">cocreationlab@vu.nl</a>
+      <a href="/cdn-cgi/l/email-protection#1d7e727e6f787c69747273717c7f5d6b68337371"><span class="__cf_email__" data-cfemail="ef8c808c9d8a8e9b868081838e8daf999ac18183">[email&#160;protected]</span></a>
       <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a>
       <a href="#">De Boelelaan 1105</a>
       <a href="#">1081 HV Amsterdam</a>
@@ -1177,7 +1320,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Nav scroll effect
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
@@ -1201,6 +1344,11 @@
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   document.querySelectorAll('.why-visual, .learning-visual').forEach(el => observer.observe(el));
 
+  // Fallback: ensure nothing stays invisible if observer doesn't fire
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible'));
+  }, 800);
+
   // Hamburger
   document.getElementById('hamburger').addEventListener('click', function() {
     const links = document.querySelector('.nav-links');
@@ -1216,6 +1364,7 @@
     youth:        { color: '#7C3AED', light: '#F5F3FF', label: 'Youth Beyond Binaries' },
     economy:      { color: '#059669', light: '#ECFDF5', label: 'Economic Insecurities' },
     storytelling: { color: '#D97706', light: '#FFFBEB', label: 'Storytelling & Identity' },
+    violence:     { color: '#DC2626', light: '#FEF2F2', label: 'Silenced Memories & Resisting Violence' },
   };
 
   // ── PROJECT FILTER ──
@@ -1282,9 +1431,11 @@
           <span class="proj-modal-detail-value">${card.dataset.methods}</span>
         </div>`;
 
-      modalActs.innerHTML = `
-        <a href="#" class="proj-modal-btn primary" style="background:${tc.color};border-color:${tc.color};">Read full project →</a>
-        <a href="#contact" class="proj-modal-btn ghost" onclick="closeModal()">Get in touch</a>`;
+      const link = card.dataset.link;
+      modalActs.innerHTML =
+        (link ? `<a href="${link}" target="_blank" rel="noopener" class="proj-modal-btn primary" style="background:${tc.color};border-color:${tc.color};">Visit project site ↗</a>` :
+                `<a href="#contact" class="proj-modal-btn primary" style="background:${tc.color};border-color:${tc.color};" onclick="closeModal()">Get in touch →</a>`) +
+        `<a href="#contact" class="proj-modal-btn ghost" onclick="closeModal()">Contact the lab</a>`;
 
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
