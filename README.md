@@ -20,7 +20,7 @@ We are transitioning this project step by step into a full frontend stack:
 * Basic layout and structure
 * Initial content and experimentation
 
-### 2. Add JavaScript ⚙️
+### 2. Add NEXT.js ⚙️
 
 * Introduce interactivity
 * Handle user input and dynamic updates
