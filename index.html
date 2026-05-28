@@ -1232,9 +1232,396 @@
     transition: background .3s, top .05s linear;
   }
 
+
+
+  /* ══ ZIPPER SPLASH SCREEN ══════════════════════════════════════════
+     Two woven fabric panels split open like a zipper, revealing the
+     site underneath. 5 second duration.
+  ══════════════════════════════════════════════════════════════════════ */
+
+  body.splash-active { overflow: hidden; }
+
+  #splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: all;
+  }
+  #splash.done { pointer-events: none; }
+
+  /* ── Two fabric panels ── */
+  .zipper-panel {
+    position: absolute;
+    left: 0; right: 0;
+    height: 50%;
+    overflow: hidden;
+    transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .zipper-panel-top    { top: 0;   transform-origin: top; }
+  .zipper-panel-bottom { bottom: 0; transform-origin: bottom; }
+
+  #splash.open .zipper-panel-top    { transform: translateY(-100%); }
+  #splash.open .zipper-panel-bottom { transform: translateY(100%); }
+
+  /* Woven fabric texture on each panel */
+  .zipper-fabric {
+    position: absolute;
+    inset: 0;
+    background-color: #1B216B;
+    background-image:
+      /* Horizontal warp threads */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 9px,
+        rgba(255,255,255,0.06) 9px,
+        rgba(255,255,255,0.06) 11px
+      ),
+      /* Vertical weft threads */
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 9px,
+        rgba(255,255,255,0.04) 9px,
+        rgba(255,255,255,0.04) 11px
+      ),
+      /* Over-under colour blocks */
+      repeating-linear-gradient(
+        0deg,
+        rgba(1,170,147,0.08)  0px,
+        rgba(1,170,147,0.08)  10px,
+        rgba(0,118,190,0.06) 10px,
+        rgba(0,118,190,0.06) 20px,
+        rgba(238,74,62,0.05) 20px,
+        rgba(238,74,62,0.05) 30px,
+        rgba(252,176,64,0.06) 30px,
+        rgba(252,176,64,0.06) 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(46,49,146,0.08)  0px,
+        rgba(46,49,146,0.08)  10px,
+        rgba(1,170,147,0.06) 10px,
+        rgba(1,170,147,0.06) 20px,
+        rgba(252,176,64,0.05) 20px,
+        rgba(252,176,64,0.05) 30px,
+        rgba(0,118,190,0.06) 30px,
+        rgba(0,118,190,0.06) 40px
+      );
+  }
+
+  /* Thread highlight — diagonal sheen */
+  .zipper-fabric::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255,255,255,0.04) 0%,
+      transparent 50%,
+      rgba(0,0,0,0.1) 100%
+    );
+  }
+
+  /* Colour accent stripe at the split edge */
+  .zipper-panel-top .zipper-fabric::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+      var(--teal), var(--blue), var(--navy), var(--red), var(--gold));
+  }
+  .zipper-panel-bottom .zipper-fabric::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+      var(--teal), var(--blue), var(--navy), var(--red), var(--gold));
+  }
+
+  /* ── Zipper track in the centre ── */
+  .zipper-track {
+    position: absolute;
+    left: 50%;
+    top: 0; bottom: 0;
+    transform: translateX(-50%);
+    width: 24px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Teeth container */
+  .zipper-teeth {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .zipper-tooth {
+    width: 14px;
+    height: 8px;
+    background: #e8e8e8;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin: 1px 0;
+    opacity: 0.9;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    animation: toothClose .05s ease forwards;
+    transform: scaleX(1);
+  }
+
+  /* Zipper pull / slider */
+  .zipper-pull {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 28px;
+    background: linear-gradient(180deg, #f0f0f0, #c0c0c0);
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    z-index: 10;
+    animation: zipperRun 3s .5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  .zipper-pull::after {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 14px;
+    background: linear-gradient(180deg, #c0c0c0, #888);
+    border-radius: 0 0 4px 4px;
+  }
+
+  @keyframes zipperRun {
+    0%   { top: 0; }
+    100% { top: calc(100vh - 30px); }
+  }
+
+  /* Teeth split open as the pull passes — achieved with CSS only */
+  .zipper-teeth-left,
+  .zipper-teeth-right {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 2px;
+    animation: teethSplit 3s .5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  .zipper-teeth-left  { right: calc(50% + 1px); }
+  .zipper-teeth-right { left:  calc(50% + 1px); }
+
+  .zipper-teeth-left .zt,
+  .zipper-teeth-right .zt {
+    width: 10px;
+    height: 6px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    opacity: 0.85;
+    background: #ddd;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  }
+  /* Colour the teeth alternately */
+  .zipper-teeth-left  .zt:nth-child(odd)  { background: #e2e2e2; }
+  .zipper-teeth-left  .zt:nth-child(even) { background: #ccc; }
+  .zipper-teeth-right .zt:nth-child(odd)  { background: #e2e2e2; }
+  .zipper-teeth-right .zt:nth-child(even) { background: #ccc; }
+
+  @keyframes teethSplit {
+    0%   { clip-path: inset(0 0 100% 0); }
+    100% { clip-path: inset(0 0 0% 0); }
+  }
+
+  /* ── Splash text ── */
+  .splash-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    pointer-events: none;
+  }
+  .splash-quote {
+    font-family: 'Alegreya', serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    color: white;
+    letter-spacing: -.03em;
+    line-height: 1.1;
+    opacity: 0;
+    animation: splashTextIn .7s .3s ease forwards;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .splash-quote em { color: var(--gold); font-style: italic; }
+  .splash-sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: .75rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    opacity: 0;
+    animation: splashTextIn .7s .7s ease forwards;
+  }
+
+  @keyframes splashTextIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Text fades out before zipper opens */
+  #splash.open .splash-content {
+    opacity: 0;
+    transition: opacity .4s ease;
+  }
+
 </style>
 </head>
-<body>
+<body class="splash-active">
+
+<!-- ZIPPER SPLASH SCREEN -->
+<div id="splash">
+
+  <!-- Top fabric panel -->
+  <div class="zipper-panel zipper-panel-top">
+    <div class="zipper-fabric"></div>
+  </div>
+
+  <!-- Bottom fabric panel -->
+  <div class="zipper-panel zipper-panel-bottom">
+    <div class="zipper-fabric"></div>
+  </div>
+
+  <!-- Zipper mechanism -->
+  <div class="zipper-track">
+    <div class="zipper-teeth-left">    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span></div>
+    <div class="zipper-teeth-right">    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span>
+    <span class="zt"></span></div>
+    <div class="zipper-pull"></div>
+  </div>
+
+  <!-- Quote text -->
+  <div class="splash-content">
+    <p class="splash-quote">Woven <em>together.</em></p>
+    <p class="splash-sub">Co-Creation for Inclusive Knowledges Lab &nbsp;·&nbsp; VU Amsterdam</p>
+  </div>
+
+</div>
 
 <!-- FABRIC STITCH BAR -->
 <div class="stitch-bar" id="stitchBar" aria-hidden="true"></div>
@@ -2327,6 +2714,28 @@
 
   function toggleGroup(header) { header.closest('.team-group').classList.toggle('open'); }
   function togglePerson(person) { person.classList.toggle('expanded'); }
+  // ── ZIPPER SPLASH ────────────────────────────────────────────────
+  (function() {
+    var splash = document.getElementById('splash');
+
+    function openZipper() {
+      splash.classList.add('open');
+      setTimeout(function() {
+        splash.classList.add('done');
+        document.body.classList.remove('splash-active');
+        splash.style.display = 'none';
+      }, 1200);
+    }
+
+    // Zipper runs for 3s (.5s delay + 3s animation), then panels slide at 4.2s
+    setTimeout(openZipper, 4200);
+
+    // Click to skip
+    splash.addEventListener('click', function() {
+      openZipper();
+    });
+  })();
+
   // ── FABRIC STITCH BAR ──────────────────────────────────────────────
   (function() {
     const bar   = document.getElementById('stitchBar');
