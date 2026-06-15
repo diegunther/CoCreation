@@ -10,7 +10,7 @@
 <style>
   :root {
     --orange: #EE4A3E;
-    --orange-light: #FDECEA;
+    --orange-light: rgba(252,105,101,0.15);
     --dark: #1A1A1A;
     --mid: #555555;
     --light: #F8F7F5;
@@ -85,7 +85,7 @@
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: .6rem;
     font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--orange); margin-bottom: 1.5rem;
+    color: var(--red); margin-bottom: 1.5rem;
   }
   .hero-eyebrow::before { display: none; }
   .hero h1 {
@@ -104,12 +104,12 @@
     font-family: 'Inter', sans-serif; font-weight: 300;
     font-size: .9rem; color: var(--mid); max-width: 460px;
     margin-bottom: 2.4rem; line-height: 1.8;
-    border-left: 2px solid var(--orange-light);
+    border-left: 2px solid rgba(252,105,101,0.4);
     padding-left: 1.1rem;
   }
   .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
   .btn-primary {
-    background: var(--orange); color: white;
+    background: var(--red); color: white;
     padding: .85rem 2rem; border-radius: 100px;
     font-size: .92rem; font-weight: 500;
     text-decoration: none; border: none; cursor: pointer;
@@ -121,7 +121,7 @@
     text-decoration: none; display: inline-flex; align-items: center; gap: .5rem;
     transition: gap .2s, color .2s;
   }
-  .btn-ghost:hover { gap: .8rem; color: var(--orange); }
+  .btn-ghost:hover { gap: .8rem; color: var(--red); }
   .btn-ghost::after { content: '→'; }
   .hero-illustration { animation: fadeUp .8s .2s ease both; display: flex; justify-content: center; align-items: center; }
   .hero-illustration img { width: 100%; max-width: 560px; height: 420px; object-fit: cover; border-radius: 20px; }
@@ -438,7 +438,7 @@
   <div class="hero">
     <div class="hero-text">
       <div class="hero-eyebrow">Research &amp; Innovation Lab</div>
-      <h1>The Co-creation Lab for <em>Inclusive Knowledge Production & Innovation Lab</em></h1>
+      <h1>The Co-creation Lab for <em>Inclusive Knowledge Production</em></h1>
       <p class="hero-sub">Bringing academia and society into more meaningful collaboration for social justice</p>
       <p class="hero-about">The Co-Creation Lab for Inclusive Knowledge Production, based within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, is a space for critical, reciprocal, and ethical collaboration between academia and social actors. Together, we cultivate knowledges and practices for a more just society, while unsettling more traditional forms of academia.</p>
       <div class="hero-actions">
@@ -783,65 +783,92 @@
     <div class="fade-in">
       <div class="section-label">The Team</div>
       <h2 class="section-title">The people behind the work</h2>
-      <p class="section-intro">A growing collective of researchers, community scholars, and practitioners at Vrije Universiteit Amsterdam. Click a group to meet the people in it, and any name to read more.</p>
+      <p class="section-intro">A growing collective of researchers, lecturers, PhD candidates, and collaborators at Vrije Universiteit Amsterdam. Click a group to expand, and any name to read more.</p>
     </div>
     <div class="team-groups fade-in" style="transition-delay:.1s">
+
+      <!-- CORE CO-CREATORS -->
       <div class="team-group open">
         <div class="team-group-header" onclick="toggleGroup(this)">
-          <span class="team-group-title">Core Researchers</span>
-          <div style="display:flex;align-items:center;gap:.8rem;"><span class="team-group-count">4 members</span><div class="team-group-toggle">+</div></div>
+          <span class="team-group-title">Core Co-creators</span>
+          <div style="display:flex;align-items:center;gap:.8rem;"><span class="team-group-count">23 members</span><div class="team-group-toggle">+</div></div>
         </div>
         <div class="team-group-body">
           <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/sara-ibrahim.jpg" alt="SI" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='SI';"/></div><div class="team-person-main"><strong>Dr. Sara Ibrahim</strong><span>Principal Investigator</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Researcher in participatory methodologies and community-based research, with 15 years working across the Netherlands and North Africa.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/lena-reyes.jpg" alt="LR" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='LR';"/></div><div class="team-person-main"><strong>Dr. Lena Reyes</strong><span>Methodology Lead</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Specialises in arts-based and creative research methods, visual sociology, and feminist epistemology.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/roos-prins.jpg" alt="RP" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='RP';"/></div><div class="team-person-main"><strong>Dr. Roos Prins</strong><span>Senior Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Works on economic precarity and community resilience, combining ethnographic and participatory methods.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/osei-acheampong.jpg" alt="OA" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='OA';"/></div><div class="team-person-main"><strong>Dr. Osei Acheampong</strong><span>Senior Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Focuses on postcolonial epistemologies and decolonial research methodologies.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">EP</div><div class="team-person-main"><strong>dr. Elena Ponzoni</strong><span>Assistant Professor, Director</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Director of the Co-Creation for Inclusive Knowledges Lab. <a href="mailto:e.ponzoni@vu.nl" style="color:var(--teal-light);">e.ponzoni@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">LW</div><div class="team-person-main"><strong>dr. Lise Woensdregt</strong><span>Assistant Professor, Co-Director</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Co-Director of the Co-Creation for Inclusive Knowledges Lab. <a href="mailto:l.woensdregt@vu.nl" style="color:var(--teal-light);">l.woensdregt@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">HG</div><div class="team-person-main"><strong>Halleh Ghorashi</strong><span>Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Pioneer of engaged scholarship at VU Amsterdam.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">EK</div><div class="team-person-main"><strong>dr. Elif Keskiner</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:e.keskiner@vu.nl" style="color:var(--teal-light);">e.keskiner@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">PS</div><div class="team-person-main"><strong>dr. Peer Smets</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:p.g.s.m.smets@vu.nl" style="color:var(--teal-light);">p.g.s.m.smets@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">SK</div><div class="team-person-main"><strong>prof. dr. Saskia Keuzenkamp</strong><span>Endowed Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:s.keuzenkamp@vu.nl" style="color:var(--teal-light);">s.keuzenkamp@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">RL</div><div class="team-person-main"><strong>dr. Robert Larruina</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:r.l.larruina@vu.nl" style="color:var(--teal-light);">r.l.larruina@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">AW</div><div class="team-person-main"><strong>dr. Arjen de Wit</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:a.de.wit@vu.nl" style="color:var(--teal-light);">a.de.wit@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">SB</div><div class="team-person-main"><strong>dr. Stef Bouwhuis</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:s.bouwhuis@vu.nl" style="color:var(--teal-light);">s.bouwhuis@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">FS</div><div class="team-person-main"><strong>Fiona Shan</strong><span>Research Associate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:h.y.shan@vu.nl" style="color:var(--teal-light);">h.y.shan@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">TK</div><div class="team-person-main"><strong>Timo Korstenbroek</strong><span>PhD Candidate, Coordinator Co-Creation Lab</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:t.m.korstenbroek@vu.nl" style="color:var(--teal-light);">t.m.korstenbroek@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">MP</div><div class="team-person-main"><strong>dr. Maeve Powlick</strong><span>Lecturer</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:k.m.powlick@vu.nl" style="color:var(--teal-light);">k.m.powlick@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">JR</div><div class="team-person-main"><strong>dr. Julia Rone</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:j.e.rone@vu.nl" style="color:var(--teal-light);">j.e.rone@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">SH</div><div class="team-person-main"><strong>Saba Hamzah</strong><span>Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:s.a.hamzah@vu.nl" style="color:var(--teal-light);">s.a.hamzah@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">LW</div><div class="team-person-main"><strong>Louise Wolff</strong><span>Lecturer</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:l.s.m.wolff@vu.nl" style="color:var(--teal-light);">l.s.m.wolff@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">DG</div><div class="team-person-main"><strong>Daniel Gómez Uribe</strong><span>Collaborator</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">MS</div><div class="team-person-main"><strong>Melisa Soto Lafontaine</strong><span>Lecturer</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:m.a.sotolafontaine@vu.nl" style="color:var(--teal-light);">m.a.sotolafontaine@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">LK</div><div class="team-person-main"><strong>dr. Laura Keesman</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:l.d.keesman@vu.nl" style="color:var(--teal-light);">l.d.keesman@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">MH</div><div class="team-person-main"><strong>dr. Mariska van der Horst</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:m.f.j.vanderhorst@vu.nl" style="color:var(--teal-light);">m.f.j.vanderhorst@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">ST</div><div class="team-person-main"><strong>dr. Saartje Tack</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:s.e.j.saartje.tack@vu.nl" style="color:var(--teal-light);">s.e.j.saartje.tack@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">ÖT</div><div class="team-person-main"><strong>dr. Özlem Terzi</strong><span>Coordinator Political Science, Honours &amp; Internships</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:o.terzi@vu.nl" style="color:var(--teal-light);">o.terzi@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">SK</div><div class="team-person-main"><strong>dr. Silvia Klokgieters</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:s.s.klokgieters2@vu.nl" style="color:var(--teal-light);">s.s.klokgieters2@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">MM</div><div class="team-person-main"><strong>dr. Maaike Matelski</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:m.matelski@vu.nl" style="color:var(--teal-light);">m.matelski@vu.nl</a></div></div>
           </div>
         </div>
       </div>
+
+      <!-- PHD CANDIDATES -->
       <div class="team-group">
         <div class="team-group-header" onclick="toggleGroup(this)">
-          <span class="team-group-title">Community Research Fellows</span>
-          <div style="display:flex;align-items:center;gap:.8rem;"><span class="team-group-count">5 members</span><div class="team-group-toggle">+</div></div>
+          <span class="team-group-title">PhD Candidates</span>
+          <div style="display:flex;align-items:center;gap:.8rem;"><span class="team-group-count">7 members</span><div class="team-group-toggle">+</div></div>
         </div>
         <div class="team-group-body">
           <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/kofi-vandermeer.jpg" alt="KV" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='KV';"/></div><div class="team-person-main"><strong>Kofi Vandermeer</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Brings expertise in youth participatory action research and oral history practice across West African and European contexts.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/fatou-ndiaye.jpg" alt="FN" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='FN';"/></div><div class="team-person-main"><strong>Fatou Ndiaye</strong><span>Community Liaison &amp; Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Builds and sustains relationships with community partners; extensive experience in grassroots organising and advocacy.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/yusra-bashir.jpg" alt="YB" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='YB';"/></div><div class="team-person-main"><strong>Yusra Bashir</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Co-researcher with lived experience of asylum seeking. Trains other community co-researchers.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/theo-vandenberghe.jpg" alt="TV" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='TV';"/></div><div class="team-person-main"><strong>Theo Vandenberghe</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Non-binary youth researcher and activist. Specialises in participatory design with young people.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/gladys-sarpong.jpg" alt="GS" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='GS';"/></div><div class="team-person-main"><strong>Gladys Sarpong</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Food justice activist and community organiser in Amsterdam Zuidoost.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">YY</div><div class="team-person-main"><strong>Younes Younes</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:y.younes@vu.nl" style="color:var(--teal-light);">y.younes@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">TK</div><div class="team-person-main"><strong>Timo Korstenbroek</strong><span>PhD Candidate, Coordinator Co-Creation Lab</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:t.m.korstenbroek@vu.nl" style="color:var(--teal-light);">t.m.korstenbroek@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">FH</div><div class="team-person-main"><strong>Fabian Holle</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:f.y.holle@vu.nl" style="color:var(--teal-light);">f.y.holle@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">HL</div><div class="team-person-main"><strong>Helenard Louw</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:h.k.m.louw@vu.nl" style="color:var(--teal-light);">h.k.m.louw@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">LB</div><div class="team-person-main"><strong>Laurine Blonk</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:j.l.blonk@vu.nl" style="color:var(--teal-light);">j.l.blonk@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">MO</div><div class="team-person-main"><strong>Mimi Ocadiz Arriaga</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:m.a.ocadizarriaga@vu.nl" style="color:var(--teal-light);">m.a.ocadizarriaga@vu.nl</a></div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">AG</div><div class="team-person-main"><strong>Alexandra Greene</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:a.m.a.greene@vu.nl" style="color:var(--teal-light);">a.m.a.greene@vu.nl</a></div></div>
           </div>
         </div>
       </div>
+
+      <!-- COLLABORATORS -->
       <div class="team-group">
         <div class="team-group-header" onclick="toggleGroup(this)">
-          <span class="team-group-title">PhD Researchers</span>
-          <div style="display:flex;align-items:center;gap:.8rem;"><span class="team-group-count">4 members</span><div class="team-group-toggle">+</div></div>
+          <span class="team-group-title">Our Collaborators</span>
+          <div style="display:flex;align-items:center;gap:.8rem;"><span class="team-group-count">2 organisations</span><div class="team-group-toggle">+</div></div>
         </div>
         <div class="team-group-body">
           <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/amara-boateng.jpg" alt="AB" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='AB';"/></div><div class="team-person-main"><strong>Amara Boateng</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Exploring how forced migrants navigate knowledge systems and reclaim narrative authority.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/priya-hussain.jpg" alt="PH" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='PH';"/></div><div class="team-person-main"><strong>Priya Hussain</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Researching intergenerational transmission of identity among South Asian diaspora youth using photo-voice and narrative inquiry.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/nils-westerberg.jpg" alt="NW" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='NW';"/></div><div class="team-person-main"><strong>Nils Westerberg</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Examining platform labour and algorithmic precarity among migrant gig workers.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/chioma-adeyemi.jpg" alt="CA" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='CA';"/></div><div class="team-person-main"><strong>Chioma Adeyemi</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Investigating how Black feminist epistemologies can transform social science research design.</div></div>
+            <div class="team-person" onclick="togglePerson(this)">
+              <div class="team-person-row">
+                <div class="team-initials" style="font-size:.65rem;font-weight:700;letter-spacing:-.02em;">MA</div>
+                <div class="team-person-main"><strong>Meetellen Amsterdam</strong><span>Research agency, participatory research</span></div>
+                <span class="team-person-expand">&#9662;</span>
+              </div>
+              <div class="team-person-bio">Meetellen Amsterdam is a research agency specialising in utilising experiential knowledge to amplify the voices of people in vulnerable positions. With 10 staff members, they conduct research across the social domain — unemployment, mental and physical health, homelessness, debt, loneliness — always focusing on the client's voice. They involve the people affected in the design and content of research, and collaborate with other researchers to adopt the same participatory approach.</div>
+            </div>
+            <div class="team-person" onclick="togglePerson(this)">
+              <div class="team-person-row">
+                <div class="team-initials" style="font-size:.65rem;font-weight:700;letter-spacing:-.02em;">DS</div>
+                <div class="team-person-main"><strong>De Spiegelonderzoek</strong><span>Social enterprise, community-based research</span></div>
+                <span class="team-person-expand">&#9662;</span>
+              </div>
+              <div class="team-person-bio">Founded by Younes Younes (VU Amsterdam, CIK Lab), De Spiegelonderzoek is a Netherlands-based platform and social enterprise focused on empowering refugees and marginalised communities through innovative research and capacity building. Their work spans community-based research, training refugees as skilled interviewers and data collectors, culturally sensitive fieldwork, and turning data into actionable insights for NGOs, government bodies, and academic institutions.</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="team-group">
-        <div class="team-group-header" onclick="toggleGroup(this)">
-          <span class="team-group-title">Education &amp; Operations</span>
-          <div style="display:flex;align-items:center;gap:.8rem;"><span class="team-group-count">3 members</span><div class="team-group-toggle">+</div></div>
-        </div>
-        <div class="team-group-body">
-          <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/jonas-timmer.jpg" alt="JT" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='JT';"/></div><div class="team-person-main"><strong>Jonas Timmer</strong><span>Education Coordinator</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Designs participatory learning experiences and coordinates community partnership programs at VU Amsterdam.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/mia-kovalev.jpg" alt="MK" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='MK';"/></div><div class="team-person-main"><strong>Mia Kovalev</strong><span>Lab Manager &amp; Research Assistant</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Keeps the lab running — from project coordination and ethics applications to community workshop facilitation.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/emilia-lopes.jpg" alt="EL" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='EL';"/></div><div class="team-person-main"><strong>Emilia Lopes</strong><span>Communications &amp; Dissemination</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Translates research into accessible formats and manages the lab's public presence and open-access publishing.</div></div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
