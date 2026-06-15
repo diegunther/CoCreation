@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spring School, Co-creation for Inclusive Knowledges Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,800;1,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #EE4A3E;
+    --orange-light: #FDECEA;
+    --dark: #1A1A1A;
+    --mid: #555555;
+    --light: #F8F7F5;
+    --line: #E0DDD8;
+    --white: #FFFFFF;
+    --red-light: #FC6965;  --red: #EE4A3E;    --red-dark: #C12925;
+    --teal-light:#2AD1B5;  --teal: #01AA93;   --teal-dark: #02846E;
+    --navy-light:#5A61B7;  --navy: #2E3192;   --navy-dark: #1B216B;
+    --blue-light:#2AA1DD;  --blue: #0076BE;   --blue-dark: #025F8E;
+    --amber-light:#FCC47A; --amber: #FCB040;  --amber-dark: #D38824;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    background: var(--white);
+    color: var(--dark);
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 2.5rem;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+  .nav-logo {
+    display: flex; align-items: center; gap: .65rem;
+    text-decoration: none; color: var(--dark);
+  }
+  .nav-logo img { height: 44px; width: 44px; object-fit: contain; flex-shrink: 0; }
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+  .nav-logo-name { font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: .88rem; }
+  .nav-logo-sub { font-size: .72rem; color: var(--mid); font-weight: 300; letter-spacing: .04em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: .88rem; color: var(--mid); text-decoration: none; font-weight: 400; transition: color .2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--red); }
+  .nav-cta {
+    font-size: .85rem; font-weight: 500;
+    background: var(--red); color: white;
+    border: none; padding: .55rem 1.3rem;
+    border-radius: 100px; cursor: pointer;
+    text-decoration: none; transition: transform .2s, box-shadow .2s;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(238,74,62,.35); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 22px; height: 1.5px; background: var(--dark); transition: .3s; }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: var(--blue);
+    padding: 9rem 2.5rem 5rem;
+    position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(42,161,221,0.3) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .page-hero-text { position: relative; z-index: 1; }
+  .page-eyebrow {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--blue-light); margin-bottom: 1.5rem;
+  }
+  .page-eyebrow::before { display: none; }
+  .page-hero h1 {
+    font-family: 'Alegreya', Georgia, serif; font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.18; color: white; margin-bottom: 1.2rem;
+  }
+  .page-hero h1 em { font-style: italic; color: var(--blue-light); }
+  .page-hero-desc {
+    font-size: 1rem; color: rgba(255,255,255,0.78); font-weight: 300;
+    line-height: 1.8; max-width: 500px;
+  }
+  .page-hero-image img {
+    width: 100%; max-width: 520px; height: 380px; object-fit: cover;
+    border-radius: 16px; display: block;
+  }
+  .page-hero-placeholder {
+    width: 100%; max-width: 520px; height: 380px; border-radius: 16px;
+    background: rgba(255,255,255,0.1); border: 2px dashed rgba(255,255,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .page-hero-placeholder span { font-size: .85rem; color: rgba(255,255,255,0.4); }
+
+  /* WAVE */
+  .wave { line-height: 0; display: block; overflow: hidden; }
+
+  /* SECTIONS */
+  .section { padding: 5rem 2.5rem; }
+  .container { max-width: 1180px; margin: 0 auto; }
+  .section-label {
+    font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 500; margin-bottom: .9rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .section-label::before { display: none; }
+  h2.section-title {
+    font-family: 'Alegreya', Georgia, serif; font-weight: 800;
+    font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+    line-height: 1.22; letter-spacing: -.01em; margin-bottom: 1.2rem;
+  }
+  .section-intro { font-size: 1.05rem; font-weight: 300; max-width: 680px; line-height: 1.8; }
+
+  /* ABOUT SECTION — white */
+  .about-section { background: var(--white); }
+  .about-section .section-label { color: var(--blue); }
+  .about-section .section-label::before { background: var(--blue); }
+  .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: start; margin-top: 2.5rem; }
+  .about-body p { font-size: .97rem; color: var(--mid); font-weight: 300; line-height: 1.82; margin-bottom: 1.3rem; }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  /* OBJECTIVES */
+  .objectives-box {
+    background: var(--blue); border-radius: 16px; padding: 2rem 1.8rem;
+    position: sticky; top: 6rem;
+  }
+  .objectives-box h3 {
+    font-family: 'Alegreya', Georgia, serif; font-weight: 800;
+    font-size: 1.2rem; color: white; margin-bottom: 1.2rem;
+  }
+  .obj-list { list-style: none; display: flex; flex-direction: column; gap: .85rem; }
+  .obj-list li {
+    display: flex; gap: .75rem; align-items: flex-start;
+    font-size: .88rem; color: rgba(255,255,255,0.8); font-weight: 300; line-height: 1.6;
+  }
+  .obj-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue-light); flex-shrink: 0; margin-top: .45rem; }
+
+  /* CURATORS */
+  .curators-note {
+    margin-top: 2rem; padding: 1.2rem 1.5rem;
+    background: var(--light); border-radius: 12px;
+    border-left: 3px solid var(--blue);
+    font-size: .88rem; color: var(--mid); font-weight: 300; line-height: 1.65;
+  }
+  .curators-note strong { font-weight: 500; color: var(--dark); display: block; margin-bottom: .25rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; }
+
+  /* EDITION SECTIONS */
+  .edition-section { padding: 5rem 2.5rem; }
+  .edition-2025 { background: var(--teal); }
+  .edition-2026 { background: var(--navy); }
+  .edition-section .section-label { }
+  .edition-2025 .section-label { color: var(--teal-light); }
+  .edition-2025 .section-label::before { background: var(--teal-light); }
+  .edition-2026 .section-label { color: var(--navy-light); }
+  .edition-2026 .section-label::before { background: var(--navy-light); }
+  .edition-section h2.section-title { color: white; }
+  .edition-section .section-intro { color: rgba(255,255,255,0.82); }
+  .edition-section .edition-body { font-size: .97rem; color: rgba(255,255,255,0.78); font-weight: 300; line-height: 1.82; max-width: 800px; margin-bottom: 3rem; }
+  .edition-section .edition-body p { margin-bottom: 1.1rem; }
+
+  /* PHOTO GRID */
+  .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 3rem; }
+  .photo-placeholder {
+    aspect-ratio: 4/3; border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    border: 2px dashed rgba(255,255,255,0.2);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem;
+    cursor: pointer; transition: background .2s;
+  }
+  .photo-placeholder:hover { background: rgba(255,255,255,0.14); }
+  .photo-placeholder svg { width: 28px; height: 28px; stroke: rgba(255,255,255,0.3); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .photo-placeholder span { font-size: .75rem; color: rgba(255,255,255,0.3); font-weight: 400; }
+  .photo-placeholder img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+
+  /* WORKSHOP CARDS */
+  .workshops-title {
+    font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: 1.4rem;
+    color: white; margin-bottom: 1.5rem;
+  }
+  .workshop-list { display: flex; flex-direction: column; gap: 1px; }
+  .workshop-item {
+    background: rgba(255,255,255,0.06);
+    border-radius: 0; overflow: hidden;
+    transition: background .2s;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .workshop-item:first-child { border-radius: 14px 14px 0 0; }
+  .workshop-item:last-child { border-radius: 0 0 14px 14px; border-bottom: none; }
+  .workshop-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    padding: 1.4rem 1.6rem; cursor: pointer; gap: 1rem;
+  }
+  .workshop-header:hover { background: rgba(255,255,255,0.05); }
+  .workshop-title-wrap { flex: 1; }
+  .workshop-facilitator {
+    font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    margin-bottom: .35rem;
+  }
+  .edition-2025 .workshop-facilitator { color: var(--teal-light); }
+  .edition-2026 .workshop-facilitator { color: var(--navy-light); }
+  .workshop-title { font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: 1.05rem; color: white; line-height: 1.3; }
+  .workshop-toggle {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.07);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .85rem; color: rgba(255,255,255,0.5);
+    transition: all .2s; margin-top: .1rem;
+  }
+  .workshop-item.open .workshop-toggle { transform: rotate(45deg); background: rgba(255,255,255,0.18); color: white; }
+  .workshop-body { display: none; padding: 0 1.6rem 1.4rem; }
+  .workshop-item.open .workshop-body { display: block; }
+  .workshop-body p { font-size: .9rem; color: rgba(255,255,255,0.72); font-weight: 300; line-height: 1.75; }
+
+  /* FOOTER */
+  footer { background: var(--navy-dark); color: rgba(255,255,255,0.5); padding: 4rem 2.5rem 2rem; }
+  .footer-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand .footer-name { font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: 1.15rem; color: white; display: block; margin-bottom: .4rem; }
+  .footer-brand p { font-size: .85rem; line-height: 1.65; max-width: 280px; }
+  .footer-col h5 { color: white; font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1.1rem; font-weight: 500; }
+  .footer-col a { display: block; color: rgba(255,255,255,0.45); text-decoration: none; font-size: .86rem; margin-bottom: .55rem; transition: color .2s; }
+  .footer-col a:hover { color: var(--teal-light); }
+  .footer-bottom { max-width: 1180px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: .8rem; flex-wrap: wrap; gap: .5rem; }
+  .footer-bottom a { color: var(--teal-light); text-decoration: none; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .page-hero-text { animation: fadeUp .8s ease both; }
+  .page-hero-image { animation: fadeUp .8s .2s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .objectives-box { position: static; }
+    .page-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.4rem; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .page-hero { padding: 7rem 1.4rem 4rem; }
+    .section, .edition-section { padding: 4rem 1.4rem; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  @media (max-width: 480px) {
+    .photo-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html">
+    <img src="images/logo.png" alt="CIK Lab Logo" style="height:44px;width:44px;object-fit:contain;flex-shrink:0;" />
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Co-creation for Inclusive<br>Knowledges Lab</span>
+      <span class="nav-logo-sub">Amsterdam</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#what">What We Do</a></li>
+    <li><a href="index.html#why">Purpose</a></li>
+    <li><a href="index.html#learning">Learning</a></li>
+    <li><a href="index.html#projects">Praxis &amp; Resources</a></li>
+    <li><a href="spring-school.html" class="active">Spring School</a></li>
+    <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Get in Touch</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-text">
+      <div class="page-eyebrow">Annual Programme</div>
+      <h1>Spring School on <em>Co-Creative Methodologies</em></h1>
+      <p class="page-hero-desc">A space where academia meets activism, art, and community-led initiatives. Through hands-on workshops, open dialogues, and delicious meals, we explore how knowledge can be cultivated, shared, and transformed through more ethical, creative, and reciprocal forms of collaboration.</p>
+    </div>
+    <div class="page-hero-image">
+      <div class="page-hero-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Add hero image</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wave" style="background:#FFFFFF;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#0076BE" stroke="none"/></svg></div>
+
+<!-- ABOUT THE SPRING SCHOOL -->
+<section class="section about-section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">About the Programme</div>
+      <h2 class="section-title">What is the Spring School?</h2>
+    </div>
+    <div class="about-grid fade-in" style="transition-delay:.1s">
+      <div class="about-body">
+        <p>At a time when questions of inequality, exclusion, and social justice demand new ways of working together, the Spring School invites participants from diverse contexts and backgrounds to facilitate critical reflections on the relationship between knowledge and power. We challenge conventional divides between theory and practice by engaging with methodologies that value lived experience, creativity, and collective action as essential sources of knowledge.</p>
+        <p>Each year, the Spring School brings together critical scholars, artists, activists, practitioners, and community leaders from different parts of the world. Through workshops, dialogues, creative exercises, and collaborative learning, participants gain resourceful experience with approaches such as arts-based research, storytelling, participatory action research, community-led inquiry, photo fabulation, food practices, and other co-creative methodologies.</p>
+        <p>More than a training programme, the Spring School is an opportunity to become part of a growing international community committed to cultivating more inclusive, relational, and transformative ways of knowing and doing.</p>
+        <p>The Spring School welcomes anyone interested in building meaningful collaborations across different knowledge systems, including researchers, students, artists, activists, policymakers, and community practitioners.</p>
+        <p>We offer affordable fees, tailored to different financial circumstances, and pursue a safe(r) and sensible environment for diverse needs, concerns and languages to make the program more accessible and enjoyable, especially for people historically excluded from academic spaces.</p>
+        <p>The programme unfolds over four immersive days of dialogue, creativity, reflection, and collective learning.</p>
+        <div class="curators-note">
+          <strong>Co-curated by</strong>
+          Elena Ponzoni, Miriam Ocadiz, Sharmila Angoelal, and Timo Korstenbroek
+        </div>
+      </div>
+      <div>
+        <div class="objectives-box">
+          <h3>Objectives</h3>
+          <ul class="obj-list">
+            <li><span class="obj-dot"></span><span>Critically explore the possibilities and limitations of co-creation</span></li>
+            <li><span class="obj-dot"></span><span>Engage with innovative and creative methodologies</span></li>
+            <li><span class="obj-dot"></span><span>Learn from practitioners, artists, activists, and scholars from diverse contexts</span></li>
+            <li><span class="obj-dot"></span><span>Reflect on questions of power, ethics, and collaboration</span></li>
+            <li><span class="obj-dot"></span><span>Build meaningful connections with participants across disciplines and sectors</span></li>
+            <li><span class="obj-dot"></span><span>Join a growing network committed to social and environmental justice</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wave" style="background:#01AA93;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,35 C200,75 400,5 600,45 C800,80 1000,10 1200,50 C1320,70 1400,30 1440,38 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
+
+<!-- 2025 EDITION -->
+<section class="edition-section edition-2025" id="edition-2025">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">First Edition</div>
+      <h2 class="section-title">2025 Spring School</h2>
+    </div>
+    <div class="edition-body fade-in" style="transition-delay:.1s">
+      <p>From the 3 to the 6 June 2025 we hosted our first Spring School at the Vrije Universiteit Amsterdam. In this edition, we set the foundation on what is (not) co-creation, exploring the ethics, politics, and practical dimensions of building meaningful collaborations. Guided by 10 facilitators with diverse backgrounds and expertise, we welcomed over 30 participants to reflect on questions of power, inclusion, storytelling, collective knowledge-making, and social transformation through interactive workshops, critical conversations, and creative activities.</p>
+      <p>A central feature of the programme was the emphasis on learning from lived experience and community-based initiatives. Through poetry, visual storytelling, archival practices, zine-making, and collaborative reflection, participants were invited to critically examine conventional approaches to research and imagine alternative ways of generating knowledge together.</p>
+    </div>
+
+    <!-- Photo grid 2025 -->
+    <div class="photo-grid fade-in" style="transition-delay:.15s">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Photo 1</span>
+      </div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Photo 2</span>
+      </div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Photo 3</span>
+      </div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Photo 4</span>
+      </div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Photo 5</span>
+      </div>
+    </div>
+
+    <div class="fade-in" style="transition-delay:.2s">
+      <h3 class="workshops-title">Our Programme Included</h3>
+      <div class="workshop-list">
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Paulina Trejo Méndez</div>
+              <div class="workshop-title">Opening Lecture</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Paulina shared insights from their experiences co-creating with Indigenous communities in Mexico and Latin American migrant communities in Europe. Their contribution opened up a critical discussion on what co-creation is — and is not — as a pathway to challenge systems of oppression and violence.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Alexandra Greene</div>
+              <div class="workshop-title">Zine Workshop</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Alexandra guided participants in translating the day's conversations — and their own lived experiences and ideas around co-creation — into a zine. Zines (independently published magazines) have long served as creative and radical mediums through which marginalised and alternative communities share stories, communicate ideas, and build collective knowledge. In this workshop, participants learned about the history and power of zine-making, explored how zines can be used to translate academic and community-based research, and began crafting their own zines inspired by the preceding critical discussion on co-creation.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Saba Hamzah</div>
+              <div class="workshop-title">Living Room: Coming Towards Home, Poetry Workshop</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Saba facilitated a creative intervention that wove together written and visual poetry to cultivate stories of resistance. This session intersected art and activism, linking participants' personal narratives with ongoing struggles against colonialism, gender inequality, racism, and forced displacement. Saba also explored the importance of co-curating and co-preserving stories that have historically been silenced.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Rochita Ruiz</div>
+              <div class="workshop-title">Worldmaking Workshop</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Rochita guided us through a thought-provoking exercise in worldmaking as an act of co-creation. Drawing on her expertise as a science fiction writer, participants worked collaboratively to design, imagine, and experiment with alternative worlds where justice, creativity, and care were the norm. Through drawing, dialogue, and collective imagination, the workshop brought diverse visions of possible futures into conversation with one another.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Salma Fayad &amp; Marie-José van Schaik</div>
+              <div class="workshop-title">Community Co-Creation through Community-Based Practices</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Salma and Marie-José guided a reflective, hands-on session that invited participants to step beyond academic boundaries and root co-creation in lived experience. Together, we explored how co-creation is initiated, sustained, and nurtured through ethics, curiosity, and care. The workshop reflected on group dynamics and demonstrated how community-based practices can strengthen advocacy efforts for social justice.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">The Black Archives</div>
+              <div class="workshop-title">Art &amp; Archive Workshop</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>The Black Archives shared insights into their experience of co-creating archives for social causes at the intersection of art, activism, and scholarship. The workshop explored the methodologies behind initiatives such as No Healing Without Reparations and Listening Session: Sudanese Resistance Music. Together, participants reflected on how archives can function as living spaces for dialogue, memory-making, and co-creation, while becoming powerful tools for justice and social transformation.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Halleh Ghorashi &amp; Busisiwe Ntsele</div>
+              <div class="workshop-title">Conversation and Reflection</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Busisiwe (Busi) Ntsele shared her personal journey as a co-creative PhD scholar. This session opened a conversation about conducting engaged research within academia, navigating institutional constraints, and sustaining co-creative practices from the margins.</p>
+            <p style="margin-top:.8rem;">Halleh Ghorashi led an open dialogue on engaged scholarship and the politics of co-creation in increasingly pressured academic environments. Together with Halleh and Busi, participants explored how to cultivate spaces of resistance, solidarity, and meaningful knowledge exchange within the university.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Arjen de Wit</div>
+              <div class="workshop-title">Workshop on Co-Creation in Quantitative Research</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Arjen facilitated a discussion aimed at unpacking and expanding our understanding of quantitative research, challenging conventional assumptions about what constitutes valid knowledge. By connecting storytelling, lived experiences, and academic inquiry, this session explored both the tensions and possibilities of transforming quantitative research into a space for critical co-creation.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Thomars Shamuyarira &amp; Miriam Ocadiz</div>
+              <div class="workshop-title">Pedagogies of Craving</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>This closing workshop invited participants to explore and embody desire, imagination, and longing as tools within co-creative practices. Thomars and Mimi shared their experiences of co-creation in South Africa and introduced the notion of pedagogies of craving — a call to acknowledge and honour our appetites for nourishment, connectivity, and justice. Together, participants reflected on what it means to learn from individual and collective cravings for connection and change, both within and beyond the academy, through the visceral acts of communal cooking and eating.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wave" style="background:#2E3192;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,50 C180,10 360,70 540,40 C720,10 900,70 1080,40 C1260,10 1380,60 1440,45 L1440,0 Z" fill="#01AA93" stroke="none"/></svg></div>
+
+<!-- 2026 EDITION -->
+<section class="edition-section edition-2026" id="edition-2026">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Second Edition</div>
+      <h2 class="section-title">Spring School 2026</h2>
+    </div>
+    <div class="edition-body fade-in" style="transition-delay:.1s">
+      <p>This second edition took place from the 19 to the 22 of May 2026. This time we explored further pathways of co-creation, collaborating with Dutch-based communities, as well as bridging dialogues with queer collectives, visual storytelling, and international artivists.</p>
+      <p>Across four days, participants engaged with community-led initiatives, queer and decolonial approaches, arts-based methodologies, storytelling practices, and creative forms of inquiry. Together, we explored how co-creation can challenge dominant hierarchies of knowledge, blur the boundaries between theory and practice, and create new possibilities for addressing social and environmental injustices.</p>
+      <p>The programme intentionally moved between university spaces and community-led organisations, creating opportunities to learn from grassroots initiatives that are already cultivating alternative ways of organising, imagining, and acting. Memory and fabulation took a central role through photo-performance, storytelling, and zine-making, highlighting the power of queer communities to expand co-creative artivism. Participants were encouraged not only to discuss co-creation, but to actively experience and practice it.</p>
+    </div>
+
+    <!-- Photo grid 2026 -->
+    <div class="photo-grid fade-in" style="transition-delay:.15s">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Photo 1</span>
+      </div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Photo 2</span>
+      </div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Photo 3</span>
+      </div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Photo 4</span>
+      </div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21,15 L16,10 L5,21"/></svg>
+        <span>Photo 5</span>
+      </div>
+    </div>
+
+    <div class="fade-in" style="transition-delay:.2s">
+      <h3 class="workshops-title">Our Programme Included</h3>
+      <div class="workshop-list">
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Halleh Ghorashi</div>
+              <div class="workshop-title">Welcome Lecture: Engaged Scholarship and Co-Creation</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Halleh Ghorashi reflected on her journey as a pioneer of engaged scholarship, drawing from her experiences as a forced migrant, scholar, and public intellectual. Through stories of research, policymaking, and community engagement, she explored the possibilities and challenges of co-creating knowledge within institutions that often reproduce inequalities.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">GROND &amp; Afrikaanderwijk Cooperative</div>
+              <div class="workshop-title">Community Learning Day</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Participants spent a day outside the university engaging with community-led initiatives committed to collectivity, sustainability, and social justice. Through a guided exploration of GROND and a dialogue with representatives from Afrikaanderwijk Cooperative, participants reflected on power, representation, solidarity, and the possibilities of supporting community-led agendas through co-creative practices.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Afrontosas</div>
+              <div class="workshop-title">Fabulation and Photo-Performance</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Drawing inspiration from their project Where Are They?, the Afro-diasporic queer collective Afrontosas guided participants through an artistic exploration of memory, visibility, and resistance. Using photo-performance, costume, embodiment, and instant photography, participants collectively created alternative archives and acts of defiant memory from queer and dissident perspectives.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">LIMBO</div>
+              <div class="workshop-title">Queering Co-Creation</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Members of LIMBO, a queer refugee and migrant collective in the Netherlands, facilitated a creative workshop exploring storytelling, performativity, and speculative imagination. Building on the concept of fabulation, participants reflected on how personal and collective histories can be reimagined through artistic and community-led practices.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Famo Musa</div>
+              <div class="workshop-title">Visual Storytelling Workshop</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Artist, poet, and community organizer Famo Musa invited participants to engage with storytelling through photography, creative writing, and oral narratives. Drawing on her extensive work with migrant and refugee communities, she explored how stories can be embodied, shared, and preserved across languages and generations.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Alexandra Greene</div>
+              <div class="workshop-title">Zine-Making Workshop</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Alexandra Greene guided participants in transforming their experiences, reflections, and emotions from the Spring School into collaborative zines. Through cutting, writing, drawing, and assembling, participants experimented with zines as accessible tools for storytelling, research dissemination, activism, and collective knowledge-making. This workshop was a continuation of the 2025 initiative to develop a zine for the Spring School across the years.</p>
+          </div>
+        </div>
+
+        <div class="workshop-item">
+          <div class="workshop-header" onclick="toggleWorkshop(this)">
+            <div class="workshop-title-wrap">
+              <div class="workshop-facilitator">Zineb Gormat</div>
+              <div class="workshop-title">A Sense of Home: Migration and Storytelling</div>
+            </div>
+            <div class="workshop-toggle">+</div>
+          </div>
+          <div class="workshop-body">
+            <p>Drawing on her research with sub-Saharan African migrant children in Morocco, Zineb Gormat facilitated a workshop on belonging, resilience, and agency. Through storytelling, dialogue, and performative exercises, participants reflected on their own experiences of belonging and un-belonging while engaging with migration as a deeply relational and human experience.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wave" style="background:#1B216B;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C200,10 400,70 600,40 C800,10 1000,70 1200,40 C1360,18 1420,55 1440,48 L1440,0 Z" fill="#2E3192" stroke="none"/></svg></div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-name">Co-creation for Inclusive Knowledges Lab</span>
+      <p>A research lab within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, committed to building knowledge that includes, centres, and serves all communities.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <a href="index.html#what">What We Do</a>
+      <a href="index.html#why">Purpose</a>
+      <a href="index.html#learning">Learning</a>
+      <a href="index.html#projects">Praxis &amp; Resources</a>
+      <a href="spring-school.html">Spring School</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#team">Team</a>
+    </div>
+    <div class="footer-col">
+      <h5>Spring School</h5>
+      <a href="#edition-2025">2025 Edition</a>
+      <a href="#edition-2026">2026 Edition</a>
+      <a href="index.html#contact">Apply</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="#">lab@vu.nl</a>
+      <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a>
+      <a href="#">De Boelelaan 1105</a>
+      <a href="#">1081 HV Amsterdam</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2026 Co-creation for Inclusive Knowledges Lab, <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a></span>
+    <span>Designed with care for accessibility and inclusion</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  setTimeout(() => document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')), 800);
+
+  document.getElementById('hamburger').addEventListener('click', function() {
+    const links = document.querySelector('.nav-links');
+    if (links) {
+      if (links.style.display === 'flex') { links.style.display = 'none'; }
+      else { links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:white;padding:1rem 2rem;border-bottom:1px solid #E0DDD8;gap:1rem;z-index:99;'; }
+    }
+  });
+
+  function toggleWorkshop(header) {
+    const item = header.closest('.workshop-item');
+    const isOpen = item.classList.contains('open');
+    item.classList.toggle('open', !isOpen);
+  }
+</script>
+</body>
+</html>
