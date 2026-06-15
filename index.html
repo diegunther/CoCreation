@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Co-Creation for Inclusive Knowledges Lab — VU Amsterdam</title>
+<title>Co-creation for Inclusive Knowledges Lab, VU Amsterdam</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,800;1,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -70,6 +70,8 @@
   .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(238,74,62,.35); }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
   .hamburger span { width: 22px; height: 1.5px; background: var(--dark); transition: .3s; }
+
+  /* HERO */
   .hero-wrap { background: var(--white); }
   .hero {
     min-height: 100vh;
@@ -85,18 +87,25 @@
     font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
     color: var(--orange); margin-bottom: 1.5rem;
   }
-  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1.5px; background: var(--orange); }
+  .hero-eyebrow::before { display: none; }
   .hero h1 {
     font-family: 'Alegreya', Georgia, serif;
     font-weight: 800;
-    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
     line-height: 1.18; letter-spacing: -.01em; color: var(--dark); margin-bottom: 1.4rem;
   }
   .hero h1 em { font-style: italic; color: var(--red); }
   .hero-sub {
     font-family: 'Inter', sans-serif; font-weight: 300;
-    font-size: 1.05rem; color: var(--mid); max-width: 420px;
-    margin-bottom: 2.4rem; line-height: 1.75;
+    font-size: 1.05rem; color: var(--mid); max-width: 460px;
+    margin-bottom: 1.6rem; line-height: 1.75;
+  }
+  .hero-about {
+    font-family: 'Inter', sans-serif; font-weight: 300;
+    font-size: .9rem; color: var(--mid); max-width: 460px;
+    margin-bottom: 2.4rem; line-height: 1.8;
+    border-left: 2px solid var(--orange-light);
+    padding-left: 1.1rem;
   }
   .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
   .btn-primary {
@@ -115,7 +124,9 @@
   .btn-ghost:hover { gap: .8rem; color: var(--orange); }
   .btn-ghost::after { content: '→'; }
   .hero-illustration { animation: fadeUp .8s .2s ease both; display: flex; justify-content: center; align-items: center; }
-  .hero-illustration svg { width: 100%; max-width: 560px; height: auto; }
+  .hero-illustration img { width: 100%; max-width: 560px; height: 420px; object-fit: cover; border-radius: 20px; }
+
+  /* SECTIONS */
   section { padding: 5rem 2.5rem; }
   .container { max-width: 1180px; margin: 0 auto; }
   .section-label {
@@ -123,7 +134,7 @@
     font-weight: 500; margin-bottom: .9rem;
     display: flex; align-items: center; gap: .6rem;
   }
-  .section-label::before { content: ''; display: block; width: 20px; height: 1.5px; }
+  .section-label::before { display: none; }
   h2.section-title {
     font-family: 'Alegreya', Georgia, serif;
     font-weight: 800;
@@ -131,16 +142,19 @@
     line-height: 1.22; letter-spacing: -.01em; margin-bottom: 1.2rem;
   }
   .section-intro { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 300; max-width: 560px; line-height: 1.75; }
+
+  /* WHAT WE DO — TEAL */
   .what-bg { background: var(--teal); color: white; }
   .what-bg .section-label { color: var(--teal-light); }
   .what-bg .section-label::before { background: var(--teal-light); }
   .what-bg h2.section-title { color: white; }
   .what-bg .section-intro { color: rgba(255,255,255,0.82); }
   .what-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
+    display: grid; grid-template-columns: repeat(2, 1fr);
     gap: 2px; margin-top: 3.5rem;
     border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; overflow: hidden;
   }
+  /* 4 cards: first 2 on row 1, last 2 on row 2 — last 2 span equally */
   .what-card {
     background: rgba(255,255,255,0.08);
     padding: 2.4rem 2rem;
@@ -164,62 +178,49 @@
     margin-bottom: .7rem; letter-spacing: -.01em; color: white;
   }
   .what-card p { font-size: .92rem; color: rgba(255,255,255,0.78); line-height: 1.7; font-weight: 300; }
+
+  /* WHY — NAVY */
   #why { background: var(--navy); color: white; }
   #why .section-label { color: var(--navy-light); }
   #why .section-label::before { background: var(--navy-light); }
   #why h2.section-title { color: white; }
   #why .section-intro { color: rgba(255,255,255,0.80); }
   .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .stat-row { display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap; }
-  .stat-box { border-left: 2px solid var(--navy-light); padding-left: 1rem; }
-  .stat-num { font-family: 'Alegreya', Georgia, serif; font-size: 2.2rem; color: var(--amber-light); display: block; }
-  .stat-label { font-size: .82rem; color: rgba(255,255,255,.7); font-weight: 300; }
+  .why-weave {
+    margin-top: 2.5rem;
+  }
+  .why-weave p {
+    font-size: .95rem; color: rgba(255,255,255,.75); font-weight: 300; line-height: 1.75; margin-bottom: 1.5rem;
+  }
+  .why-actors {
+    display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem;
+  }
+  .why-actor-tag {
+    font-size: .78rem; font-weight: 500; letter-spacing: .04em;
+    padding: .35rem .9rem; border-radius: 100px;
+    border: 1.5px solid rgba(90,97,183,0.6);
+    background: rgba(90,97,183,0.15); color: rgba(255,255,255,0.85);
+    transition: all .2s;
+  }
+  .why-actor-tag:hover { background: rgba(90,97,183,0.35); border-color: var(--navy-light); color: white; }
   .why-visual { display: flex; justify-content: center; }
-  .why-visual svg { width: 100%; max-width: 440px; }
-  #why .why-visual .il { stroke: rgba(255,255,255,0.7); }
-  #why .why-visual .il-o { stroke: var(--amber-light); }
-  #why .why-visual text { fill: white !important; }
-  #why .why-visual ellipse { fill: rgba(255,255,255,0.1); }
-  .themes-bg { background: var(--blue); color: white; }
-  .themes-bg .section-label { color: var(--blue-light); }
-  .themes-bg .section-label::before { background: var(--blue-light); }
-  .themes-bg h2.section-title { color: white; }
-  .themes-bg .section-intro { color: rgba(255,255,255,0.82); }
-  .themes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 3rem; }
-  .theme-card {
-    background: rgba(255,255,255,0.10);
-    border-radius: 14px; padding: 2rem 1.6rem;
-    border: 1px solid rgba(255,255,255,0.18);
-    transition: transform .25s, box-shadow .25s, background .25s;
-    position: relative; overflow: hidden;
-  }
-  .theme-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.25); background: rgba(255,255,255,0.18); }
-  .theme-tag { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-light); font-weight: 500; margin-bottom: 1.2rem; display: block; }
-  .theme-icon {
-    width: 48px; height: 48px; margin-bottom: 1.2rem;
-    stroke: rgba(255,255,255,0.85); fill: none; stroke-width: 1.3;
-    stroke-linecap: round; stroke-linejoin: round; transition: stroke .2s;
-  }
-  .theme-card:hover .theme-icon { stroke: white; }
-  .theme-card h3 { font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: 1.15rem; margin-bottom: .6rem; letter-spacing: -.01em; color: white; }
-  .theme-card p { font-size: .87rem; color: rgba(255,255,255,0.75); line-height: 1.65; font-weight: 300; }
+  .why-visual img { width: 100%; max-width: 440px; height: 380px; object-fit: cover; border-radius: 16px; }
+
+  /* LEARNING — AMBER */
   #learning { background: var(--amber); color: var(--dark); }
   #learning .section-label { color: var(--amber-dark); }
   #learning .section-label::before { background: var(--amber-dark); }
   #learning h2.section-title { color: var(--dark); }
   #learning .section-intro { color: rgba(0,0,0,0.65); }
   .learning-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .learning-visual svg { width: 100%; max-width: 500px; }
+  .learning-visual img { width: 100%; max-width: 500px; height: 420px; object-fit: cover; border-radius: 16px; }
   .learning-items { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
   .learning-item { display: flex; gap: 1rem; align-items: flex-start; }
   .learning-num { font-family: 'Alegreya', Georgia, serif; font-size: 1.6rem; color: var(--amber-dark); line-height: 1; min-width: 32px; margin-top: .1rem; }
   .learning-item h4 { font-size: .97rem; font-weight: 500; margin-bottom: .3rem; color: var(--dark); }
   .learning-item p { font-size: .87rem; color: rgba(0,0,0,0.60); font-weight: 300; line-height: 1.65; }
-  #learning .learning-visual rect { fill: rgba(255,255,255,0.9) !important; stroke: rgba(0,0,0,0.4) !important; }
-  #learning .learning-visual circle { stroke: var(--amber-dark) !important; fill: rgba(255,255,255,0.7) !important; }
-  #learning .learning-visual line { stroke: var(--amber-dark) !important; }
-  #learning .learning-visual path { stroke: rgba(0,0,0,0.5); }
-  #learning .learning-visual ellipse { fill: rgba(0,0,0,0.1); }
+
+  /* PRAXIS & RESOURCES — RED */
   .projects-bg { background: var(--red-dark); color: white; }
   .projects-bg .section-label { color: var(--red-light); }
   .projects-bg .section-label::before { background: var(--red-light); }
@@ -286,6 +287,8 @@
   .proj-status.new       { background: #FEF9C3; color: #A16207; }
   .proj-year { font-size: .77rem; color: #aaa; }
   .proj-arrow { font-size: .85rem; color: var(--mid); opacity: 0; transform: translate(-4px, 4px); transition: opacity .2s, transform .2s; flex-shrink: 0; }
+
+  /* MODAL */
   .proj-modal-overlay {
     position: fixed; inset: 0; z-index: 200;
     background: rgba(20,20,20,0.65); backdrop-filter: blur(4px);
@@ -326,6 +329,8 @@
   .proj-modal-btn.ghost { background: transparent; color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); }
   .proj-modal-btn.ghost:hover { color: white; border-color: white; }
   .proj-year-modal { font-size: .84rem; color: rgba(255,255,255,0.45); }
+
+  /* TEAM */
   .team-bg { background: var(--teal-dark); color: white; }
   .team-bg .section-label { color: var(--teal-light); }
   .team-bg .section-label::before { background: var(--teal-light); }
@@ -336,7 +341,7 @@
   .team-group:last-child { border-bottom: 1px solid rgba(255,255,255,0.15); }
   .team-group-header { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 0; cursor: pointer; user-select: none; }
   .team-group-title { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-light); font-weight: 500; display: flex; align-items: center; gap: .7rem; }
-  .team-group-title::before { content: ''; display: block; width: 16px; height: 1.5px; background: var(--teal-light); }
+  .team-group-title::before { display: none; }
   .team-group-count { font-family: 'Alegreya', Georgia, serif; font-size: .88rem; color: rgba(255,255,255,0.5); font-weight: 400; font-style: italic; }
   .team-group-toggle { width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; font-size: .85rem; color: rgba(255,255,255,0.6); transition: all .2s; flex-shrink: 0; }
   .team-group.open .team-group-toggle { background: var(--teal-light); color: var(--teal-dark); border-color: var(--teal-light); transform: rotate(45deg); }
@@ -355,6 +360,11 @@
   .team-person.expanded .team-person-expand { color: var(--teal-light); transform: rotate(180deg); }
   .team-person:hover .team-person-expand { color: var(--teal-light); }
   .team-person-row { display: flex; align-items: center; gap: 1.2rem; width: 100%; }
+
+  /* BLOG */
+  .blog-bg { background: var(--white); }
+
+  /* FOOTER */
   footer { background: var(--navy-dark); color: rgba(255,255,255,0.5); padding: 4rem 2.5rem 2rem; }
   .footer-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
   .footer-brand .footer-name { font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: 1.15rem; color: white; display: block; margin-bottom: .4rem; }
@@ -364,22 +374,18 @@
   .footer-col a:hover { color: var(--teal-light); }
   .footer-bottom { max-width: 1180px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: .8rem; flex-wrap: wrap; gap: .5rem; }
   .footer-bottom a { color: var(--teal-light); text-decoration: none; }
-  .divider { display: flex; align-items: center; justify-content: center; padding: 0; gap: 1rem; height: 0; overflow: visible; position: relative; z-index: 1; }
-  .divider::before, .divider::after { content: ''; flex: 1; max-width: 200px; height: 1px; background: var(--line); }
-  .divider-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); opacity: .5; }
+
+  /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes drawLine { to { stroke-dashoffset: 0; } }
   .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
-  .hero-illustration .draw { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 2.5s ease forwards; animation-delay: .4s; }
-  .why-visual .draw { stroke-dasharray: 800; stroke-dashoffset: 800; }
-  .why-visual.visible .draw { animation: drawLine 2s ease forwards; }
-  .learning-visual .draw { stroke-dasharray: 800; stroke-dashoffset: 800; }
-  .learning-visual.visible .draw { animation: drawLine 2s ease forwards; }
+
+  /* RESPONSIVE */
   @media (max-width: 1024px) {
-    .themes-grid { grid-template-columns: repeat(2, 1fr); }
     .proj-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .spring-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   }
   @media (max-width: 768px) {
     nav { padding: 1rem 1.4rem; }
@@ -390,7 +396,6 @@
     .what-grid { grid-template-columns: 1fr; }
     .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .why-visual { order: -1; }
-    .themes-grid { grid-template-columns: 1fr 1fr; }
     .proj-grid { grid-template-columns: 1fr; }
     .learning-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -398,7 +403,6 @@
     .nav-logo-name { font-size: .78rem; }
   }
   @media (max-width: 480px) {
-    .themes-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 2.1rem; }
     .nav-logo img { height: 36px; width: 36px; }
   }
@@ -409,7 +413,7 @@
 <!-- NAV -->
 <nav id="mainNav">
   <a class="nav-logo" href="#">
-    <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAF3AXcDASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAcIBQYDBAkCAf/EAGEQAAEDAwEDBQkJCAwKCQUAAAEAAgMEBREGBxIhCBMxQVEUMmFxcoGRscEiM1JzobKzwtEVNkKSk6Kj0hYXIyUmNTdTVmJ1lBg0VFVjZILT4eMnQ0Vlg4Slw/BEZnSV4v/EABwBAQACAwEBAQAAAAAAAAAAAAAFBgMEBwIBCP/EAEQRAAEDAgIFCAUJBwUBAQAAAAEAAgMEEQUGEiExQVETYXGBkaGx0RQVMnLBBxYiIzM0QlLhJDVigpLC8ENTstLxc4P/2gAMAwEAAhEDEQA/ALloiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiItQ2j3OqpIqajppXRCYOdI5pwSBjAz2dK1PT11q7bcYXQyv5svAfHn3LgTx4dvhVdrcxw0tX6O5pNrXPC/NvUvTYPJPBywd0BS2iIrEohERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERVp2qa/1JVawuFFRXSrt9HQ1D6eKOmldHvFji0ucWkEkkE+Dgt+5PmsbrfoK+0Xipkq5aRrZYZ5Dl5YTgtcevBxgnjxK0nats51FBqyuuVrt1RcaKuqHTtdTs33Mc85c1zRxGCTx6MY4rfNgeirnpylrbpeYTT1VYGxxwEjeYwZJLsdBJxw6seFb0hj5HUuc4WzFBjZ5XS0bm972trtzcLWUpIiLRXRlHu05+bxTR/BpwfS4/YtctTOculJH8Kdg9Lgs5tHdvaix8GBo+Un2rFaabv6gt4/1hh9BBXK8S+sxVw/iA8ArzR/QoWn+FS8iIuqKjLC66u09j0fdLtTNa6emp3OjDhkb3QCe0AnKqnNqfUctwNwffLiare3ucFQ4EHwYPAeAcFaHalHzmzq/N7KKR3oGfYqjrfpAC0rm+d55WVMTWuIFr9d9qtlsn1BU6l0PRXGtINWN6GZwGN9zTje84wfGStrUZcmyXnNn0zc+93CRv5jD7VJq1JRZ5AV2weZ09BFI83JaLoiIsakkRERERERERERERERERERERERERERERERERERERERERERERERERFoG2jaNFoC00zoaVlZcq1zhTxPcQxoaBvPdjjgEgY4Zz08FlggfPII4xclYaiojp4zLIbALf0UBbN9vdZdNRU1p1RbqKCKrkEUVTSBzRG9xw3ea5zuBJxkEYU+rNV0U1I/RlFrrDRV8FawvhN7IiItRbiIiIiIiIi1bVW0DS2mq5tDc7gRVHBdFFGZHRg9bsdHi6fAs1YLzbL9bWXG0VkdVTPJAe3IwR0gg8QfAVUvXcj5dbXx8ji5xuM/En/SOUo8lyol7ovtLvkw7kMgZ1B2XDI83qC25KcNj0gdapGG5onqsT9FewBpJA4i19vHZwU5IiLUV3Wi7QbNWS14uNNC+aNzA14YMlpHg7F09EWOuku8NbPTyQwQHe3ntLd444AZ6VvdyudDbYw+tqWQh3eg5JPiA4r9t1xorjGZKKpZM1vTjpHjB4hVp+C0b8Q5blPpX0tG427emymm4lUNpOT0NWy/8AmpdpERWVQqwmvo+d0Nfo+t1tqMePm3YVPVc3UjOd07c4+nfpJW+lhVMlv0ewrm2em/XQu5j4hWD5MUudJXOH4NfvemNo9ilpQ1yXX5td8j+DPE70td9imVa1R9oVbMtO0sLhPMfEoiIsKnURERERFGe3zapDs0stIaejjrrtXucKaGRxDGtbjee/HHAyBgYznp4FZYYXzPEbBclfCQBcqTEVYtmPKXu1z1ZSWrV1qtsVHWytgZUULXsMD3HALg97t5uSM4wR08ehWdWWqo5aVwbINq+NcHbEREWqvSIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiKtHK9m3tV2Wnz3lC5/40hH1VZdVY5WUvObSqSPqitcTfOZJT7VN5fbetB4Aqv5mdagI4kKMtLRGo1PaoB0yVsLPS8BX0VG9mMPP7R9NxEZButMT4hK0lXkW7md31kY5itDKLfqpDzhERFV1b0RERERERFTrW/36Xz+0aj6Rykzkun9972P9BF85yjXXY3dcX4dlyqB+lcpF5MErRqO7wlw3n0jXAdZAeAfnBSk32JXH8DNsbZ7zvAqfkRFFrsCi7Xkj36oqmucSGBjWg9Q3QfWSvvZ9NJHqWGNjiGyse147QGk+sBcOuPvprfGz5jVyaB++im8l/zSuXNcfXV7/wCp/cru4D1bb+D4KUERF1FUhcNeznaGoj+HE5vpCpQruqmF9tlVZ7xVWytidFPTyFjmuHYeBHaCOIPWCt2jO0Ln2e4zaB9tX0h4fqph5LL/AL4Yyf8AJnD9Ln2KblCvJft1XHBebpJG5lLMY4onEd+5u8XY8WR6VNSw1P2hVgysHDCog4cf+RRERYFYUREREVVuXO3F80u/tpqgehzPtVqVVvl1NxX6Tf2xVY9Bi+1SuC/fGdfgVjl9lVytb9y50r/gzMP5wXpivMiJ25I1/wAEgr03UlmPbH1/BeId6IiKsLOiIiIiIiIiIiIiIiIiIiIiIiIiItP1ntG03pWt7hrpKioqw0OdDTMDnMB6N4kgDPTjOfkXiSRsY0nGwWempZqp/JwtLjwC3BFFE23KwD3qz3N/lbjfrFdObbtSD3rTk7/Kqg36pWsa+nH4vFSzcs4o7ZCe0eamNVK5UEvObV6hmfeqSFv5ufapGl271B960zEzyqwu+oFEm0GtOsdVVN/qo+5pJ2sbzUZyGhrQ3pPiypPB8doaSoMkrtVjuPMo3G8jY3W0wjijF7g63N5+ddPYrFz21bTrOysa78UE+xXWVLNJvdprUFJfKA79VSOLoxMMsyWlvEDHb2qRots+sG1DJHttz2A5dHzBAcOzOcpjeYqOsma6ImwFtnOveX/k9xiigc2YNBJv7XN0KxqLC6J1DTao03TXimjMXO5bJETkxvBwRnr8B7CFFO1faffaDU9RZtPzso4qM7ksvNNe+R+OPfAgAdHR1FR81VHFGJDsK2KHBaqsqXUzBZzb3vsFtXOpwRVe/bT15/n5391h/UX6NqmvR/28f7pB+otP1vDwPd5qc+Y9f+dnaf8AqrQIqxN2sa8HTemu8dJD+quRu1zXIcCbnA4dhpY/YF99bQcD/nWvJyTiA/EztP8A1Ws7QxjX2oBjH751B/SOW5cmmRrNfVLSeMlukaPx4z7FHd7r6i6XequNVumepldLIWjALicngsloPUdRpXUUV3poI53sY5hjeSAQ4Y6lZHytNLym61+66/OtDRyxZlbSfjEpZ16Wj4q36KE4Nu7g0CbTALussrcD0FntWWpduOnnAd02m6RHr5sRvHyuCg24hTn8Xiu8SZYxRm2I9RB8CvrXH301vjZ8xq5NAffRTeS/5pWpag15YLne6ishfUxxyFuBJFx4NA6s9i72i9Y6bpdQU9RU3NkMTQ4Oc+N4xlpA6lzxsT/WwksdHlL33W0tqsklDUtoNAxm+jbYeCm9FrkGu9HTd5qS2jy5gz14WSor9Yq6QR0V6ttS9xwGw1THk+YFdMErHbCFRX0lRHrewjpBWRWKvtm09cHMqr3bbdUmLg2SqiY7d8GXdXgWVVQNeX+v1Hqesr66Z7hzrmwxl2WxRg4a0Dq4ek5PWtqCIyHUbKr5gxiLDYW6cemXHUDs1b9h5lbumhhp4GQU0UcMLBhjI2hrWjsAHALkUHcmzUlW6ev0/W1Tn0kUAqKfnH8IsODXNBPUd4HHRwPaVM0l0tkfvlxo2eVM0e1Y5W8m7RJUjhFaMSpWzxtIvu4WXbRdEXmzlu8LrQFvb3QzHrXXl1PpuL33UNpj8qsjHtWIvaN6lRTynY09hWWRa9LrjR8XfaltZ8moa71LqybRtER99qGlPkhzvUF4M8Q2uHaszcOq3bInH+U+S2tVl5dceYtHy9jqxp8/MfYpnk2paDZ035p8mmmPqYoP5VF6tWu7fYotNVJq5KKaZ029G6MBrgzHfAZ71b2F11NFVsc+QAa944FenYPiDm6oH/0nyVaV6ZW+TnbfTy/Dia70gLzrGkbyf+qhHjkCuVaNsGk6Wz0VPOLg6aKnjZJuwAjeDQD19qkcexOjmDOTlabX2HoX2HAcS1/UO7CpRRRsNtOj8+93Qf8Al2/rLI2bapo251sdIyvlppZXBrO6IixpJ6t7iB5yFXRVwE2Dwsr8ExCNpc6F1hzLeERFsKLRERERERERERERERERERERVS2q0FdQa/vAro3tM9VJPC52cPjc4lpB6xjh4MY6la1dS52u2XSNsdyt1JWsYctbUQtkDT2gOBWnWUvpLAAbEKdwHGfVU7pC3SDhY8VTVFcKLTun4ferFa4/JpIx7F24qGih96o6ePyYgPYo4YO7e/uVqdnuP8MJ/q/RU2ihmlOIopJPJaSuOoIp5XRVB5mRvS1/uSPMVdVU35Qxztiv3lQ/QRqVwrLDa6UxuktYX2c451BY18psmHwiRlMDc21u5j/DzLrWuGW6V0dBbY3VlVJnchgG+92Bk4A48ACVslLs91pUSNYzTta0uOAZGhgHjLiMLG8msZ2wWnwR1H0L1b9e8UyzDQzCMPJ1X3c6wYV8pVZiEBl5FrddtpO4dHFa1s002/Sukqa1zStkqN50s7m97vu6QPABgZ68ZUdbWNl14ueo573p5kVS2qw+andIGOa/GCQXYBBxnp6cqakWOSkjkjEZ2BaVJjVVS1bqthBc6977DfWqy/tSa63c/cuLPZ3VH+suN2yjXg6LI13iq4f11Z5FqeqYOJ7vJTYzviH5Wdh/7Krc2zHXUTcu0/KR/Umid6nFdGbQusYu/wBN3I+RAXerKtki8nCItzisjc81g9qNvf5lUsutDWW6tfS19JPSVDQC6KaMscMjIyDx6F148l4AUjcoyDmdozpMe/0cUnzm/VWr7N5DFtAsDh13GBvpeB7VZGwg0nJX/DbusvzrV4g6PNRrS3WJ9O38+ksOiuhUUtNUY7op4ZsDA32B3rWNqdL6aqc90aftUpPW6jjJ9OFVDg7tz+5fpxme4z7cJHQb/AKoKKada6W0/DqOrghtUEUTSzdZHloGWA9RXU0zofTlyv1PSVFJIIpN7eDJnA8Gkjr7Qq36Yz0r0ax0tLR5r3srC3MFOYOWLSBa+7hfiohX60lrg5pIIOQR1Kxc+xbR8mdyS6Q+RUNPraVwQbEdLx1LJH191liacmN0jBveAkNBx4sKc9V1HN2rRGcsNIuS7sW07KrlWXbZ/aa+4PdJUvic173dL9x7mBxPWSGgk9eVVC4O3q+odgtzK44PVxKujR00FHSRUlLE2GCFgZHG0YDWgYACpneuF5rR/rEnzirfh7S1tib2AX5t+UWVkr45GNsC55A4A21Lrw9JXItj2YaSOsr7PbBXih5qldPzhi5zOHNbjGR8L5FJA2D9uqv/AE//AJir+L0U8tU5zG3GrhwXWvkuzBh9JlyKGaSzgX6rOO1xO4c6hRFN0ewiEH901PI4djaID65Xci2GWce+3yvf5MbG/ao0YbUn8PeFf3ZtwobJL/ynyUCorCRbENLN98uF4efBLGB8xdqPYxo1vfG5P8qoHsaF7GFT83asDs5YaNhcepVxRWXj2Q6Ib31DUv8AKqn+wqLuVDpWzaK2fUN10zSuo6uS6RwSSGV0mYzFK4jDyQOLW8cZWxT4HUTyCNpAJ6fJYX53w9ovovPUP+yjlFGJ1LfD017vMxv2K62y7RWk7rs405dK2yU09XVWynlnlcXZfIY2lzjxxxOSt2tyrVUbQ6R7TfhfyWAZ8oXbI393mq7r9AJIABJPAAK1n7Xuiv6O0X4p+1dm26L0rbaxlZRWKihqIzlkgZktPaM9B8KjxhEl9bgjs80tjoxuv1ea7ekY6uHStphrw4VbKKFswd3weGDOfDlZREU+0WAC5rI/lHl/E3RERfV4RERERERERERERERERERERERERU45Q4xtjvw/rQfQRq46r9ygtld+vGppNU6dpu7xUsY2qp2uAkY5rQwOaD3wIDeA4gj0TmX6iOGqJkNgRbvCr2ZaaWekAjbcgg6uFiPitA5Nrt3bDaB8JlQP0Lz7FcBQDyfdlV+smpWao1HTihNPG9tLTl4dI5zm7pc7GQBulwweOT1Y4z8vmPzxzVQMZuAAO8r7lunlgoyJW2JJOvhYeSIiKEVgREREREREVd+U20/s5oHdRtjB+ll+1aNs+3f2eaf3s4+6dP0fGtUh8qBuNRWh3bSOHof/AMVHOhTjW9iPZcqf6VqlIvsguO4wNHG3+8PgriIiKLXYlFmu/vqrP9j5jV+aHONU0Xjf8xy+9ej+FNX4Qz5jVxaKONUUXlO+aVyt2rGf/wBP7leRrw7+T+1SsiIuqKjIqY6ijMWoLjE7G8yqlacdHB5VzlTTVRzqe6n/AF2b55W7R7SqDnsfVQnnPwUhcmQfw6rj/wB2P+liViVXnkxj+GlwP/dzvpI1YZYqr7RSuTv3Y3pKIiLXVpRERERQryzIuc2QRux73dIHfmyD2qalrW03SFFrrRddputldA2oAdHO0ZMUjSC12OviOI6wSOC2aOURTse7YCvLhcELzrXoFsGk53Y5pV3Zbo2+jh7FW+k5Meu33xtJU1tpit/OYfWMmLvcdoZgEnHUccevrVtdL2aj07py32KgDu5qCnZBGXd84NGMnwnpPhKnMcrIZo2tjdc3usUTSDrWSREVaWdERERERERERERERERERERERERERERERERFgNc6wsWjLW24XyqMTZHbsUTG70krusNb4Os9A84WfVZ+V6Jv2W2YueTCaAhjeoO5w7x9G76FIYZSNq6lsTzYKNxatfRUrpWC51d6l3QW1fSOsrgbdb5qqkrjkx09ZGGOlAGSWlpcDw6s58C3tUR0PWPt+s7LXMeWGCvhfkHqDxn5Fe5bONYdHRSN5PYVqYDiclfE7lQLtO7nRERQynURERERERFAnKhI+7dmHX3NJ84KNdEjOs7GB/nGn+kapF5T7wdT2qPPFtEXel5+xR7oJu9rmwNAzm50/wBK1SkX2IXHsb+ljb/eb8FcJERRa7Cov1+P4UVHhaz5oXBo441NQ+WfUV2doP3zzeQz5oXU0h98tD8Z7CuVzasYP/0/uV5j14ePc+CllERdUVGRUy1Kd7Udzd21cp/PKuaqXXp2/ea13bUSH84rdo9pVBz2fq4Rzu+Ck3kxD+F9yd2W8j9IxWEUAcmBudS3Z3ZRgfnj7FP6xVX2hUvlAWwtvSfFERFrqzoiIiIsfqO823T1jq71eKplLQ0kfOTSu6h0AADiSSQABxJICyChjlkVBh2OmMOIFRcoIyO3Ae76qz0sImmbGd5XxxsLrEUHKj0nPfRS1NjulLbnSBraxzmucB8J0Y4geIuKnmjqaeso4aykmZPTzxtkikYctexwyHA9YIIK8y16BbBWyN2N6VEri533OjIJ7DxA9GFMYxh0NKxr4tV9SxRvLjYrd0RFALMiIiIiIiIiIiIiIiIiIiIiIiIiISACSQAOkla9V650TRymKr1hp6nkBwWy3KFpB8RcvTWOd7Iul1sKLWP2xNn/APTrTH/7aD9Zc1JrrRFXMIaTWOnaiU9DIrnC5x8wcvfIyD8J7F8uFsKr3yw6b3emqsDpFTG4/kyPap5pLpbKx27SXGjqD2RTtcfkKh7leU+9o2z1ePe7hzefKjcfqKQwUlldHfn8CojHmaeHyDo7iFWeJ7o5GyMOHNIcD4Qr/wBJOyppIamIgslY17SDnIIyF5/K8uzSYVGzrTcodvb1qpsnwiJoPy5U3mhl2Ru5z8PJV/KL7PlZxAPZfzWwoiKnq8IiIiIiIiKuHKTm53aBDHn3q3xt9L3u9q1nZRDz+0exMxnFW1/4vuvYpV25bPLvf7rDfrFC2pl5kRVFPvhrjukkObkgHgcEeAYysfsU2b3u26mjv9+pe4mUjXcxC5wL5HuaW5IBOAAT09eFINlaIdu5cvqsJrJcd0uTOiXg3tqte+3ZsU4IiKPXUFGW0L75pfi2epdLSX3yUPxoXd2h/fLJ8Wz1LpaT++Og+OC5XUfvc/8A0/uV5h/d4934KWkRF1RUZFSiudv1s7/hSOPyq6sjgyNzz0NBKpKSSST0lbtHvXPc+HVAPe/tUxcl5ub1en9lNGPS4/Yp6UGclpmarUEnwWU7fSZPsU5rDU/aFT2UxbCo/wCb/kUREWBWRERERFAnLdn3dm9ops8ZLu1/4sMo+sp7VbeXRVBtp0tR73GSeolx5LYx9dSOEt0qxg/zYvEnslVYXolsmg7m2W6Uhxgts1Jnx8y3PyrztXpTpmm7i03bKPGOYo4oseSwD2KazG76DBzlYodpWQREVUWwiIiIiIiIiIiIiIiIiiXlKbUK7ZzYrfDZqeKS6XR0ghlmbvMhYwN3nY63e7bgHh0k5xgy0or5Rmy6o2kWCidbKqKC7Wx0jqdsxIjla8N32EjoPuGkHj0Y68jboeR9Iby3s7/86V5fe2pVbuW2vajXtLZ9YVrAf8njjh+VjQVL/JZ2u6kvmqf2H6nrX3Ns8D5KOplA51jmDJY4ge6BaCcniCPDwj6j5OO0+eUMloLdSjPfy1zCPzcn5FOmwLYizZ5Xy328XCG4XmSEwxiBpEMDTjewXAFzjjGcDhnhxVixCbDxTuazRvutbb1LCwPuujyzr3d7Xs+t9FbppYKa41hirJIyQXNDCRGT2O4kjr3ezKp0vSHWOmrNq2wT2O/UbaqimwS0nDmOHQ5pHEOHb7CVE0fJf2eNeXOuOo3gnvXVUWB6IsrVwvFKemg5N4sb9q+yRlxuFTdFc3/Bl2cfz99/vbP1Fw1PJe2fSA81ctRQnq3amIj5YlJDHqTn7F45JypwsnYaibutsBmkMRBO5vHdzjpwrLXTkpWqQg2vWNbTDjkVNG2bPZxa5mFo+suT9qDRVrqdSOvlsrqGiwZGta+OVwc4MGG4I6XA992ragxWkleGtdrPMVpYjC40kt/ynwWgra9ObeNeaPp2WWjNsraClbuQRVdMTuN6cbzHNJ6eslaoupU6R1Tdecudq05d6+izumelo5JWBwAyCWggEcFIVkUMjLSgEc6qOWHltU4De34hTJaeVZeox++ukbfVH/Vqp8Hzg9Zuj5V1ue8Cs0XVwtzxMVe2QjzFjVV+so6yjkMdXSz07x0tljLSPMVwKLOD0Tteh3nzV65R3FW5HKo0hjjp2+58UX66/f8ACn0f/R6++iL9dVFRY/UdHwPavvKuVtJeVTpge9aYvDvKkjb7SpQ2U7TNObRrbNUWZ80NVTY7po6gASR56DwJDmnBwR58Lz7VjuRPpq8s1Hc9VyU8sNpNC6jjkeMCeQyMd7ntDQw5PaQO1aWI4VSwU7nt1Ec/cvTJHE2Vq0RFVVsIiIiLSte2Gtqq1twoonTgsDZGN74EdBA6109F6drxdYq6sp308MJ3gHjDnO6hjpUgooJ+X6Z9Z6USb3vbddSjcWmbT8gANlr77LGapvtt01Yqm9XabmqSmblxAy5xJwGtHWSSAFDdRykbY2Zwp9LVkkWfcufVNY4+MBpx6VuHKMsFz1Ds2lhtUMlRUUtSyqMEYJfK1oc0gAdJG9nHgVQXtcx7mPaWuacOaRgg9i6LgmGUtVCXy6zfZfZ2LnmP4tWUc4ji1Nttte/arD1PKOopqaWIaVqWF7C0O7sacEjyVB33XZ/Mu9KxCKdZg1Gz2W95VPxCsmxEtNQb6N7btvQpa2O7UrToptzFfbK2pNYYt0wlvudzf6ckfCUjw8orR7iBLab6zwiKJ2P0iq8ixvwGjebkHtW7RY1VUULYIiNEbNXE3V6tFarsmsLR907HVGaJrtyRjm7r43dOHDq9S7OptQWbTVrdcr5XxUVK07oc/JLj2NaOLj4ACoS5IdsucUd7u0jJI7bUCOKMuBAlkaXEkdu6DjP9bxrocr+K4fdmxTuDzbu55GRn8ES72Xect3PR4FWfVkTsRNKHfR79l7dKuXraZuFirLPpd221+hSI7bls5A4XWpPio5PsXE/bvs9b0Vle7xUjvaqkop8ZbpOLu0eSrhzVW8G9h81a2o5QGg4gCyO8T+BlM0Y/GeFXrlOa9tmvNS2qptENbDTUlGWFtUxrXF7nkkgNc7hgNWrrXtRHNeB2RgfKVngwempXCSO9+lb+F43VVtRyclrWOwLoU7BJURxnoc8A+lW5k5SVI3hFpGZw6t6vDfqFVLto3q+Af1wVta2JqCCrtyzb22az8F6xvFKmjka2B1rjXqB8VYN3KU+Doz03P/lLrTcpKuPvWk6ZnlVrnfUCgVc8VFWze9UlRJ5MZKw+pKBv4O8+ag/X+JO/1O4eSmiXlHahPvWn7WzynyO9oXXfyi9XHvLPYx445T/7iiuLTuoJverHc5PJpHn2Lss0fq1/eaWvjvFb5T9VPVuHN/CO39U9a4o78buz9FIx5ROtuq16fH/l5v8Aer8/wiNbZ/i6wf3eX/erQG6F1s7o0ff/AD26UfVXPBs513M9rGaSvAJOBv0rmD0kABDRYYNob2r6K/Fjsc7s/RWr2Ra6p9e6adcRTilrKeTmaqAO3g12AQ5p+CR29hHVk7ko25P2ha7RWl6j7r7rLjcJRLLE1wcImtGGtJHAniSccOOOpSSqPXNhbUPEPs31LoOHumdTMM4+nbWiIi1FuIiIiIiIiIiIiIiIiItR2zUwq9lmo4j+DQvl/E939Vbcte2ls5zZzqVnWbTVY8fNOWemOjMw848Vr1bdKB45j4KjStRyTSTs0q8nOLrLjwfucSqurR8kh2dnVxb2XeT6GFXbMP3I9IVAywf28dBUxkAjBGQV0nWi0uaWutlEQTkgwN6fQu6ioYJGxdHWKk03p2RpbJYLU9p6Q6jjIPyLji0ppeL3rTdmZ5NDGPqrMovXKP4r5YLoxWa0Re9Wqhj8mnYPYu6xrWMDGNDWgYAAwAF+ovJJO1fUX49zWNL3uDWtGSScABY3U98oNO2We7XKQtgiHBo757j0NaOslVq13r6+arqXtnmdS0GfcUcTyGY6i74R8J8wC0qqtZTix1ngp3BsAqMUJLfosG0nwHEqwFy2haLtzyyp1DRlw6RDvTY/EBXzbtouiq+QMg1DSNcf58OhHpeAqqIov1vLf2RZXL5jUejblHX6rdlvirpxSRyxtlie2SN4y1zTkEdoK+lVHRGt75pSqa6iqHTUmf3SklcTG4deB+CfCPlVltHait+qLHFdbe4hjvcyRuPuonjpaf8A5xBBUnSVrKjVsPBU/GsvT4WdInSYd/mNyzC4X0dJI8vfSwOcekmMElcyLeBIVfIB2rWNotJRRaCv0gpKcOFvnAPNDIJYR2Ko/Ns+A30K4+t7dUXfSF2ttJg1FRSSMiBOAXEcBnwngqgVdNUUlXJSVUEkNRE4sfG9pDmu7CFIUbzY61zbPLHCeJwGqx7bqdOTnYrPXaLrp6+00NU43BzAZqdjyAI4+0eEqRnaM0e5wc7Slic4HIJt8WQfxVgthdlrbJoCCKvhdBPUzPqTE8YcwOwBkdRw0HHhW9LWlnfpmzj2q4YLSNZh8LZG67DaOtfEEUUELIYY2RRsGGsY0BrR2ADoXWvNqtt5oXUN2oKaupnEExTxh7cjoOD1+FdxFgDiDcHWpgtBGiRqWmjZZs+Bz+xWg9DvtX23ZloBvRpS2eeLK29Fn9MqPzntK1/Qqb/bb2Bae7Zfs/dJzh0pbs9gYQPRnCqFym7bbbPtfuVttNFDR0sMMAbFE3DQTE1xPyq9qpLyvqeKHbTVyRgh09HTySZPS7d3fU0KZwOolkqSHuJ1HaehfHU0MY0mMAPMAFpex6lhrdqml6WohZNDJdIBJG9oc17d8ZBB4EEdSvxDpjTUJzDp60x+RRRj1BUV2AMEm2bSzT1V7XegE+xegC9Zgkc2ZoB3fFeo42O1kXXDTUtLTDFNTQwjsjYG+pcyIq6TfatgADYiIi+L6iIiIiIiIiIiIi4K2spaKLnKuojhYeAL3Yz4u1c6jPaFJO7UkjJS7m2MbzQPRggZx58qKxjETh9PyrW3N7f+rew6jFXNoE2FrrfYb1aJu8uVKT2GUA/Ku3FPDL71NG/yXAqFUVYZnGQe3ED0G3wKm3ZeYfZeez/xTcihZlTUM7yeVvieQuVtzuLe9uFWPFM77VstzjHviPb+iwnLzt0nd+qmRFD33Xu2MfdStx8e77V8m6XM9NxrD/47vtXr54Q/7R7QvPzek/OOxTGsLr0A6Gv4PQbZUg/knKM319c/v6yod45XH2rhfJI/v5Hu8Zyvgzmxjg4Q3t/F+iOy257S0ybeb9VWyGirJ/eaSeTyIyfUrK8l6aOzaGuMN2d3DI+5OexlQNxzm81GMgHiRkHj4FxopPE/lMnrYjE2nDR7xPwChcL+T6KgmExnLj0AfEqVpNUWGPvrgw+SxzvUFwHWFi3w0VMhBPfc07AUYIqy7N1adjWjqPmrQMAphtJ7vJTXBLFPCyaF7ZI3jLXNOQQvtYLQcU8OmoBOHN3nOcwHqaTw+3zrOq+0kxngZK4WJANulVaojEUrmA3ANkREWwsKrtygtRTXLVpssch7jtoA3QeDpXDLneYEN8GD2qM1mtePdJre+ueSSbjUdPxjlhVT6mQySuceK7rhVMymo4o2bgO3ee1ERFhUgikDYVqKWza0hoHyHuO5kQSNJ4b/AOA7x54f7Sj9d2xyvgvdDNHnfjqY3Nx2hwIWWCQxyBw3LTxCmZVUskL9hB/TsKuQiIriuDIuGaGl3+6Zood6MZ5xzRloHXnqXMujqCCWpslZBACZHwuDQOs46POscryyNzmi5AOpemMD3Brtl1hazW9qhkcyGKoqMfhNADT4snPyLHza9d0Q2wDwvmz8gC0p7XMcWuaWuBwQRggr6iillOIo3vPY1pK5rJmTEZDZrrdAHxurmzBqNguRfpK2eXXV0d73TUjB4WuJ9az+kNTOu8rqSqiZHUNbvBzO9eOvh1FaLFZrtL3ltqyO0xED0lbboTT1ZRVjrhXR8yQwtjjJ91x6Sexb+D1mKy1bNMuLTtuNVlq4hT0McDtGwO6x13WV1lepLPb2Gna01Ezi1hcMhoHSfV6VpJ1Xf/8AOB/JM+xb1q2y/dqgbHHI2OeJ29GXdB7Qf/nUtM/YZe/gQflVtY8zFTVXg0tCwto367233WDC3UIg+ttpb7/quD9ld/8A84H8kz7FpWsdLWHV95N41FQ921xjbGZedfH7lvQMMIHX2LfP2GXv+bg/KhaJtC1NatCXmG06iklhqZqcVDBFGZGlhc5o4jryw8FF08WYdP6nldLmLr9ykS/DLa9DsC6entC6W0/fKS9Wi2GmrqSTnIZO6JHhrsY6HOIPT1qRW6wvo6aiM+OJqi207TNJXO50ttpa2c1FXMyCIOp3AF7nBoyccOJHFSe7SN/HRRtd4pmfavVS3MbSDPyt+fSPijfVZ2aHcudutL0Ok07vHH/xXI3XF3HTDRu8bHfrLHv0xfm9Nuf5ntPqK4n2C9N6bZU+ZmfUtX0rGWbS/sPkvXIYc7YG9oWbZruvHf0VM7xFw9q5ma+kHf2xjvFNj2LV32q6M7+21jfHC77FwPpqlnf08rfGwhPXWKx7XnrA+IT1bQv2NHb+q3ZmvYD39tkb4pQfYudmu7ae/pKtviDT7VHp4dKL03M2Ija8HqC+HBaQ/h7ypJZrazO6RVM8cY9hWbttwo7lT8/RzNlZnBwMEHsIPQobW67Lo5xJWy4cIC1rc9Rdx9nrUzg2YaqqqmwygEG+waxqUdiOEQQQGRhIIW8oiK7KtIuheLPb7qxrayDec3vXtOHDzrvoscsTJmlkguDuK9skdG7SYbFanPoW2u4w1VVGf6xa4eoLpyaBd/1d0B8Dof8A+lvCKKfl/Dn7YuwkeBW83Fqxux/gtAdoOt/Brqc+NpC+DoS5dVXSHxl32KQkWA5Yw8/hPaVlGN1fEdijsaFuueNTRY8t36q+26EuH4VZSjxbx9ikFF8GV8PH4T2lfTjdXxHYtDZoKpPfXGIeKMn2rH6s0x9wNLXO9urhOaGlfOIua3d8tBIGcnGfEpMWlbc5+59k2oZM4zTBn4z2t9q2qXK+GvmYwx3uQNp49K1KvHa2OB7w+1gTsHDoVb5tqVxPvNrpGeW9zvVhTJsMgj1ppGa83mMMmbWvgY2AlrNxrGEdJJzlx61VpW25L8HNbKKaTHv1XM/87d+qrjjGVMGo6XSipwDccT4kql4FmXFqys0ZpyRYncOHABbpFpKws6aIvPa6V32rt09is8Dw+O3U4cOIJZvY9KyKKtMw+lj9mJo6grg6rnd7TyesoiItta6IiIiqzthtUlp2h3RjmkR1MpqoyfwhJ7o4/wBreHmWoKzO2PRJ1XZW1FC1outECYernWnpjJ+UeHxlVqqIZaed8E8T4pY3Fr2PbhzSOkEHoKq1dTmGU8DsXZcuYoyuo2i/02gAjo39a40RFpKwItj2a2p951zaaJrS5ndDZZeHQxnunfIMeda9Gx8kjY42Oe9xDWtaMkk9AAVjdimhn6Ztr7nc4w26VjACw9MEfTu+M8CfEB1LboqczSjgNqg8wYozD6NxJ+k4ENHPx6tqkZERWtcWQ8BkrD0mqdN1deKClv1snqnHdbFHUsc5x7AAeJ8CwO3KqqKTZldH00r4nv5uNzmnB3XSNDh5xkeIqrTHOY9r2OLXNOWuBwQe1bMNPyjb3VSx7MrsLqGwtZpXFzc85GrsV1H0dJJLzr6WB0nwjGCfSuZrQ0YaAAOoBYjQ9dNctHWevqXb889FE+V3wnFoyfOcrMLV0GtJsFa45uWja8bCAUREX1ekREREVTuXHTbmrdO1mPfaCSLPkSZ+urYqsvLrhJh0hOG8GurGE47eZI9RUrgrrVjOvwKxy+yq26fqhQ3631pO6Keqjlz2brgfYvSxeYy9J9KV33T0vablnPddFDP+OwO9qk8xt+zd0/BeId6ySIiq6zoiIiL5exjxh7Gu8YyuF9DQv7+jp3eOJp9i7CLw5jXe0Lr0HObsK6LrNaHdNrovyDfsXbghigiEUETIo29DWNAA8wX2i+MhjYbtaAehfXSPcLOJKIiLIvCIixer7nLZdJ3i8wwieWgoJ6pkZ/DdHG5wb58YX1rS4gBFlEXm1qTUN71HdZbpernU1tVI8vL5ZCd0nqaOhoHUBgBWw5Hesb3qTSl1td6qpq02maIU9RM4ueY5A73BceJ3Sw4zxw7HQApmtwZ9LDyule21Ymyhxsp1RVg5X+0XUVt1DT6Os1dPbqPuRtRVSQPLJJ3OLgG7w4hoDegdJJz0BV+g1bqqn941NeovIr5W+py9UuByTxCTSAujpQDZekCLzvg2j7QYMc3rfUYA6A65SuHoLlkKfa/tMg7zWd1PlyB/zgVlOXZtzx3r5yw4L0AUZ8pqsbS7JK+E5zVzwQtx2iQP9TCqqRbbdqccnON1hWE/1oonD0FuFwai2u6+1JbRa9QXwXCh5xshidSQMO8Og7zWBw6T1rNSYHNDOyRzhYEHf5LVryZqaSNm0gjuXXVxuTvFzWx2xAjBcJ3Hw5nkPqwqTvvNKIt5oe52O9xhdyHaXr2nt8Nuo9VXOipIG7kUNLMYWsb2DdwpvF6R1bEI2EDXfuPmqxlyimpp3SytsLW19I8l6GIvOyTaHr6QYfrfUrh2G6z4+cujUaq1RUZ7o1JeJs/DrpHetygBl2Te8diuHLDgvSFF5oOudyc4udcKtxPWZnfavz7o3D/Lqr8s77V7+bh/3O79U5bmXpgi80orrdIpWyxXKsjkYQ5rmzuBaR0EHPBXW5LOsLxrHZo6ovs7qmsoK19H3Q/i6ZgYxzS49bvd4J68AniStGvwd1JHymlcdi9Mk0jZSutV1toHT+qxztbA6CsAw2qgw2TxO6nDx+bC2pFCPjbINFwuFuU9TLTSCSFxa4bwoHuewy7sk/e290M7M/8A1DHxED/ZDl827YZenyYuN6t8DM9MDXyn0ENU9ItL1ZT3vbvU/wDO7FNHR0x02F/LuWoaI2d6e0q4VFPE6rrsf41UYLm+SOhvm4+FbeiLdjjbGNFosFAVNVNVSGSZxcedF+F7QcFwB8a0jbrfLlp/Zlc7haZnQVZMcTZm99GHvDS4dhwSAeonKpnNJJNK6WaR8kjyXOe45LiesnrU9hmDGujMmnoi9tl/iFWcWx5uHyiIM0iRfbb4FXJ29brtlt0wQcOgPT/pmKrq1ZFNQ5e5NtuU7v1VAxup9a1Amto2Frbd5PNxV39lLt/ZzYj/AKmwejgtnXn9FVVMQxFUTMA+C8hdmO8XaMgx3SuYR0btQ4e1az8sOJJEnd+qs1NmlsMLIzFfRAG3gOhX4RQVyXdbXq9T3HT15rZ68U8IqKeaZ5e9rd4NcwuPEji0jPRx82U5Sev7vpSioLRYpTS1Ve175akAF0cbSBhuegkk8erHDpyIV2FzCr9FFr8d1tt1Y24vCaL0wg6PDfe9rKYUVIKbaFrqnOY9XXp3xlY9/wA4lZOn2vbR4O81RUH4yCJ/zmlSbss1G547/JRTc2Ux9pju7zVzFAnLcpGSbN7TW7uZILs2MHsa+KQn5WtUcN22bSg7J1Ax3gNDB+osbrbaXqrWOmp7Bfp6SppZXNeHCma17HNOQ5pGMHq8RIWWkwGqp52yEiwPE+S9/OmieLWcOoeahpeg2w6t7v2P6UnwRu2yGHj/AKNu59VUPjskvOfukzNz+rnJU6WHbtqayWSis9vstgjpKKBkELeamJDWgAZPOcTw4nrUhi+HzVcbWxjWCsvr+hiOt1+gK16Krv8AhFaz/wA02D8jN/vF+O5RWtCPc2qwA9vMTH/3FA/N6t4DtXr5zUHE9itGiqlNygNeSd7HZ4vIpne15XQqduO0aXPN3anp/i6OI/OaV7blysO0gdf6LG7NNENgcer9VbxFSyv2qbQq5pbNqqvYD/MbsJ/MAWu1l9vlbKJay83GpkByHS1T3nPjJWwzLEp9t4HRc+S1pM2wj2Iyekgeavqihzkvavu+orHc7ZeKmSrfbHxGKolcXSOZJv8AuXE8TgsOCePHHUpjUBV0zqWZ0TtoVjoqtlXA2Zmw/wDiIiLXW0i+ZWMljdHIxr2PBa5rhkOB6QQvpERV51FyWbFW3iSqs+pqq2Uckhf3K+lE+4D+C1++3A7MgnxqXdmOhbJs+002y2USPDnmWoqJiDJNIQBvHAwBgAADoHhyTtKLbmrqidgZI64XkMANwov257HrbtLZS1jK42y70jObZU81zjZI853HtyDwJJBB4ZPA54QvUclfVjc9z6ksknZviVvqaVbhFmp8UqadgYx2oL4Y2k3KpvPyX9oUfeXHTk3k1Uo9cQWKq+TptRgeWxWuhqQPwoq6MA/jEK7qLZGPVQ22PUvPItVFn7ANrTTw0s13iuNN7ZFgdWbMNbaTjp5dR2hlvjqXFsRdWQyFxAycBj3Hhw446x2r0HVZ+V5VOfq6zURcd2KgMoHYXyOB+YPQpPDMVnq6gROAtr4+ajMXnNFSulZt1W61Xqi0vcrhcKa320R1NVUytiijMjY95zjgDLiBxPDiVu9Pyfdq8jgH6bihHa+4U5H5rysRaY5JrpSRQkiR87GsI6QS4YV/Vt41XyUJZyYGu+3m61oZfrZa5j+W2ttr6bqm9t5MO0CpG9V11ioh8F9Q97vzWEfKs3TclO9OA7p1fb4+3m6V7/WQrWoq87HKs7CB1Kx8k1VhZyTnFvu9egHsFoyPpl+/4Jv/AN/f+j/85WdRePXNb+fuHknJN4Ks1PyT4WzNNRruSSIH3TY7UGOI8BMpx6Cp80FpOz6K0xTafskT2UsGSXyHL5XnvnuPWT9gGAAs6i1qivqKkaMrrjq+C9BgbsRFUXVGtNQ368y3Ce51cQLyYYYpnNZC3qDQD2dfSVNnJ71Pcb9YK2iulRJVTW+RgZNIcvcx4OAT1kFp4ntC8SU7mN0iVWcNzTT19X6MxhF72PG3Nu1KTkRFrq0L5lkjijdJK9rGNGXOccAeddekuNBVvMdLWQTPHEtZICVrO0+aVlFRwtcRFI9xeB1kAY9ZWj0NRJSVkVTE4tfE8OBHgVWxLMZoqzkNC4Frnp16lOUWDipp+V0rE3spav1pt99s9TaLpTtqKOqZuSxk4yOkEEdBBAIPUQFC9Zyb7W+d7qTVFZDET7lklK2RwHjDm59CnYcRlFdKavqKUEROtf8AzeqtV4dTVZBmZcj/ADcqza52ERab0tW3tmpn1JpWtPNGiDd7L2t6d846c9Cif7j/AOsfmf8AFXB20DOzC9j/AETD+kaqpKYpsXrHtJc/uHkua5qgjoKpjKcaILb8ddzxut70dsJqdSaYor3FqWGnFU1x5p1ITu4cW9O/x6OxZF/Jvu47zU9C7x07x7VLmw452WWU/wBWYfpnrdVrvx2ua4jT7h5K30GA0M9JFI9mtzWk6ztIHOtC2P7NqPZ/QVJ7r7uuNXjn6jc3AGjoY0ZOBxOT1+YJtk2c0+v7TTtZVCjuNGXGmmc3LCHY3mOHTg4HHq9K31FHemz8v6RpfT4qc9Ap/R/RtH6HBVPqNgWvopSyNtrnaDweyqwD+M0FdCo2IbSIs7lkhn+LrYfa4K36KVbmSrG0A9R81DuyrRHYXDrHkqWVWyzaFTEiTSte7H82GyfNJWNq9DazpIZJqnSt6jiiaXyPNFJutaBkknGAAOtXlWD2gU7qzQeoaRmd6e11MYx2uicPatiPMsxcA5g71ruynT7nnuXn5NewJSIod5gPSTglbDY7ddL3RGstdqr6uFrtx7oad8ga4cd0loIzgg+cLRFaXkLVLn2zVdGXHdimpZQOwubKD8wKwVta+lhMoF7W8bL1JlyllAaz6J47bqJGaW1O926zTl4c7sFFIT6l2W6I1o7vdIagPits36qvMigDmeTdGO1YhlGLfIexUhh2d67l73SN5HlUjm+sLI0myLaNVH9z0vUN+Nlij+c4K5qLG7M1RuYO/wA1lblOm/E93d5KpdDsF2gVBAmp7dR565qsHH4gctjtvJvu78fdHU1DT9vc8D5fnFqsii135hrXbCB0DzutqPLNAzaCek+Vlq+zbRFp0LY3W62GSaSV/OVFRL38rsYHR0AdQ6vCSStoRFDSyvleXvNyVORRMhYGRiwCIiLwsiIiIiIiIiIiIiIiIiKqfKsqHTbT44y3Agt0UYPblz3Z/OVrFUPlLzc7teuTM+8wwM/RNd9ZT+XG3rCeAPwVbzS61EBxcPitX2Y0/dW0bTkGA4OudOXA9bRI0n5AVeRUx2DQd0bXNPx4zid7/wAWN7vYrnLNmZ317G83xWDKTbU73c/wHmiIirStaIiIiIiIirLqnZNqq33uWntdufcKJ7yaeaN7e96g7JGCPDw7FL2xbRlTpCwT/dEs+6Fa9r5mMdkRtaCGtz1niSSOHHwZXPqXahpGw3N9uqqyaepiduytp4t8RnrBPAZHWBnC2exXe23y2RXK1VTKqlk717eGD1gg8QfAVsySyOZZw1Kq4VhGFU9a6Snk0ni+q4Ojx5+bmXeREWsrUtR2ntzbKR/ZMR6Wn7FH6lTWdrmutmMVPgzRvEjGk43sAgj0FR/Q2C7VdWKcUU0XHDnyMLWt8ZK53mSinfX6TGE6QFrDqVvwapibS2c4C11KtE7fo4X/AAo2n5Fyr4p4hDBHC0ktjaGjPgGF9roTAQ0A7VUnWJNljNVWiK/adr7PK8xtqoTGHgZ3T1HzHBVbZNlGuGXQUItAcC7AqGzN5rHws5yB4CM+BWkc5rWlziGtAySTwAWhS7XtEx3XuDu6dzQ7dNS2EmEHx9JHhAwtqGSRtw0XVYx/DcOqnMfWSaB2DWBfm1/4LrZtFWNmm9K2+yMk53uWPD39TnklziPBvErML5hljmhZNDI2SORocx7TkOB4gg9YX0sBJJuVYYY2RRtYzYAAOgIiIviyIiIiIvmVjZYnRvGWvaWuHaCvpEReZldAaWtnpnHJhkdGfMcKxXIYn3b1qimz75TU8n4rnj6ygXWkfM6xvcPwLhO30SOCmvkPyY15fIfhWve9ErB7Ve8U+lQvPMPELUj9oK3CIioi20REREREREREREREREREREREREREREREREVOOUO7e2x34/1oB6IIwrjqmnKAOdsF/wDjIvoWKxZZ+9O934hVfNn3RnvDwK7fJsj5zbDaHfzcdQ79C8e1XAVRuTGM7WqI9lNOfzCrcrzmQ/tY90eJXvKotRH3j4BERFX1ZURERER3QUQ9CIqSSPfJI6SRznveS5znHJJPSSp05Lc8jqC/UxcTGyWF7W9QLg8E/mj0KCVN/JZPDUY//G/91SlT9mVx3Kjj62i59L/iVNyIii12JfMsjIo3SyvaxjRlznHAAWLpNSWWqqhTQ1recJ3W7zS0OPgJGFj9pMj2aeY1riBJUNa7wjDj6wFG44HIVUxnMEtBUiGNoItc3+H+FTuHYSyqhMj3EHcpuRde2SPlttLLIcvfCxzj2ktGV2FaWOD2hw3qDc3RJC1ba1NJBs3vj4nlju5S3IPU4gEeglVLVsNsXDZnfPiB89qqepKj9grl+eT+2Rj+H4lWp2HzSzbLbM+V5e4NlYCfgtmeAPMAB5lui0jYT/JVZv8Ax/p5Fu60pfbPSr/hJvQQE/kb4BERF4UgiIiIiIiIvOTaOA3aHqRo6BdqofpnKW+RET+2Zdm9Rszz+mhUP68lE+uL9MDkSXKocPPK4qZORBGTtDvU2ODbSW+maM+xXuv1UDuhajPbVvERFRFtoiIiIiIiIiIiIiIiIiIiIiIiIiLUdUbRdK6duBt9dWvfVN98jgjLzH5R6AfB0rw+RsYu42WenpZql+hC0uPMLrbkUft2waJPTVVbfHTO9i5WbW9DO6bnM3x0snsCxelwfnHatw4LiI/0Hf0lb2qa8oEY2wX/AOMi+hYrKN2raDd03wt8dJN+oq07ZpY77tLu92tLu6qKodEYpQC3exExp4OwekEdCsGXa6mjqXF8jQNHeQN4VYzRgeJyUrQyneTpbmOO48yyXJldja3QD4VPOP0ZPsVulT3YNPHY9p1uuF1kbSUjGTNfNIcNbmJwGfPgK0lJrPSdXK2KDUVsdI7g1pqGgk9gyUzBVQS1QMbwdQ2EHeV4y3hddBRuEsLm/SO1pG4cQs8iLgra2joYhLW1cFNGTgPmkDBnsyVDk2UwGlxsFzosa2/2F3e3u2nxVTPtXI282d3e3WgPiqGfavOm3ishglG1p7F3kXUbc7a7vbhSHxTN+1fJu9pDyw3SiDh0g1Dcj5U0hxXzkpPylUwcAHEA5GVNfJaP7tqFva2nPyyKFHcHEeFTFyYaiKG5XxksrGB8MRG84DOHO+1S1T9kVxfK372i6/8AiVPSLjjqKeR27HPE93Y14JXIotdlII2rVNpx/eWnHbUg/muUeLf9qDv3tpG9sxPyf8VoC5jmc3xB3QPBXTBB+yDpKma1jFspR2QsH5oXYXFSDdpIW9jGj5FyrpcQswDmVMebuJWobZSBsyvZJx+4tH57VVFWo25fyWXnxQ/TMVV1KUnsHpXLM8H9uYP4R4lWj2CyB+y21NxjcdO3x/uzz7VvS0LYEP8Aovt3xk30rlvq0pfbPSr/AIMb4fB7jfAIiIsakkRERERfjiGjLiAPCsdfbrSUForKt1VC10MD5ADIAchpKb7L6Gk7AvOG6zd03SrqM552d78+NxKsLyGYd7UGpqjHeUkDPxnuP1VXpluuD+8oap3iicfYrFcj2vtulqfU9RqKrZbXVTqVsLagFrnhnOlxA6fwgrpjFVA2je3TF9W8cQvEFFUvcNGNx6irTItMn2paEhODfWvPYynld8obhfFv2p6Jra1lIy6uidIQ1rpoHsYSe1xGB4zgKiekw3tpjtUl6or9HS5F1vdPkt2REWdR6IiIiIiIiIiIiIiIiIiIiKoet6SsotX3aCvY9tR3XI5xd+EHOJDvEQc+dW8XRulmtF0cx1ztVDXOYMMNRTskLR4N4HC0q2k9JaADaysGX8bGFSuc5mkHDr1KnCK2r9E6Qf06atQ8VKweoLgfs/0W/p05QjxMI9RUZ6ok/MFbRnml3xu7vNVRRWofs10O/p09TjxSSD1OVbtu9HDpnaLU2yzRilohBFIyIHewS3jxdk9OetbVFluprJOTjc29r67+RWtXfKPhtDFyssb7XtqDT4uCxCJswLb3r6z2m6Ey0dVUc3K1vuSQQccR0ccKzNNsj0RDUNlNvnlDTnckqXlp8eCErstVdE8MkLdevUT5L1h/yj4VXxmSJrxbVrA/7FdjYpVV9Xs5tsleXuc3fjie/pdG1xDfQOA8ACg/bHcrhX7QLnFXSP3KWYw08ZPuWRjowPD0+HKtDTwxU8DIIImRRRtDWMY3DWgdAAHQFq2sNn2m9U1ra64wTR1QaGumgk3HPA6A7gQcduMrLVUj5IGxtOsd6gsHxumpcRkqpWWa+9rbrm/6KqyKxTtimkT0VN2HinZ+ouM7ENJnor70PFNH/u1F+q6jm7VcRnLDeLuxV5RT/VbDdPujxS3e6RPz0yc28Y8QaPWum7YTRfg6jqB46UH6y8nDKgbu9ZW5uwsjW8jqPkoFPSvuHpK/auLmKqaHOebe5ue3Bwtq2WaQbrO9VNudcDRczTmbfEXOZw5rcYyPhK44lE6Wjcxo12HiF+VchVsNHmmnnlNmBzteve1wHPvWsIp2ZsKtoYA/UFWXY4kQNAPmyh2FW3qv9X+Qb9qp3qyo4d4X6r+duFf7h/pPkoJRStq7ZTR2Q0wjvE83Pb2d6EDGMeHwrBw6EgkmZH90ZBvOA97HX51EVNTHTTGGQ2cPipCHGqOaMSMdqPMVoq56Gsq6CpZU0VTNTTMOWyRPLXDzhTX+0TRf0jqP7qP1ly0mwu2MqGuqr9VywjvmRwtY4+ck49ClxhtTfZ3hRzs14SWkF9+bRPkuXU94q79ycprrXYNTNFG2RwGN4sqWs3seHdz51XtWe2w0NJbNjdyoKGFsFNTxwRxMb1ATR+nxnpVYVdaAFsIDjc/oF+VPlBeyTFdOMWaW3A4DSdYLnic4RgBxHnXKyaZneSyN8TiFImhNk9RqfS9Le2XqKlbUF4ETqcuI3Xub07w7FmJNhVyB/c7/AEjvKgcPaVUa2iqHVEjg3USeHFfpLKmYcMiwOjifKAREwHUduiOZRYLtdRwFzrfy7vtQ3a6npudb+Xd9qlWm2E1zi7unUVNGOrm6Zz8+lwXP+0O/+lLf7h/zFrihqj+HvHmps5jwYG3KD+k+SiB1xuDu+r6o+OZ32r4dV1Tu+qZneOQlTF+0O/8ApS3+4f8AMT9od39KR/cP+Ynq+q/L3jzX0ZmwcbJB/S7yULuJcckknwr8U2x7B4wf3TVD3eTQ4+uVrm1vZvQaG2eXPU0d1nrJ6TmhHE+INa8vlazjxzw3ifMvceE1UrwxrdZ1bQvjs24U0faX/ld5KNUWhO1rcvwaakHjDj7VZLYNoCzax2c0Opb82pNTVSTAMhk3I91kjmDhgn8E9a36nLFfTM05AANm1a3z1wvYC49SipfUbHySNjjY573ENa1oyST0ABWdpdlWhYMH7imVw65KmU/JvYWbtGktM2mobUW6x0NPOzvZREC9viceIWq3CJT7TgtaXPFIAeTjcTz2HxK59IwVdNpW001fvd1xUcTJg45IeGAEHwrKIin2jRAC5nI8yPLzvN0REX1eEREREREREREREREREREREREREVUuVXHubUGO/nLdC78549itaqvcriPG0G2y/CtTG+iWX7VO5dNqwdBVezOL0J6QtC2Syc1tO007tuUDfS8D2q7yops/k5nXmn5vgXSmd6JWlXrW1mcfWsPN8Vp5SP1Mg5x4IiIqwraiIiIiIiIqYX9u5fbgz4NVIPzipJ5MY/hncTn/ALOdw/8AEjUf6zj5nWF6hBzuXCdufFI4LfuTI7+HNe3ttjz+liUrL9kVxnBRo4xGP4j8VYhERRS7MtG2pH91t4/qyfVWo24b1wpm9srR8oW27Uvf6DyX+sLVLSM3WkH+nZ84Ll+Oa8Wf0t8Arthmqgb0HxKmVERdQVJWk7dATsrvOBnhD9PGqsK1W2/hstvXkRfSsVVVI0nsHpXLc8ff2e4PFytLsIGNldo8Jn+nkW8LTdiTQzZdZQ0YG5IfTK8rcloy+2eldCwkWoIB/A3wCIiLwpBERERFC/LJrO5tjvM5x3XcoIfHgPf9RTQq8cuOr3NIaeoc+/XB8uPIjI+ut/C26VXGOfwXiT2Sqmq/nJ5o+4di2l4cY3qPnvyj3P8ArKga9HNndJ3BoDTtDjBp7XTREeFsTR7FPZidaJjef4fqsUO0rOoiKpLYRERERERERERERERERERERERERERERERERVq5X0WNTWObHfUT2+h+frKyq0XbDs7pdf2ini7q7juFG5zqact3m4djeY4dhwOPUR4wZLCallNVNkk2a1F4zSSVVG6OP2tVuoqoWm5DFqK2yjpZVxO9Dwr7qBNnewKptWo6a66ludHUw0kolip6UOIkc05bvlwGBkAkAHPRlT2t7H62GpkYIje1+9R2W6CekjeZha5GroRERV9WVERERERERU+2gcNeag/tSp+lct35Mv3+Vv8AZcn0sS0raIMa+1B/aVR9I5bpyZvv9rP7Mk+liUpJ9iehcbwrVjbPfPiVYtERRa7ItE2pf4xQeQ/1hatZ/wCNqP49nzgtp2pf4xQeQ/1hataP42o/j2fOC5hjX72d0t8Arthv3BvQfEqZERF09UlaXtx/ksvXkxfTMVVlanbj/JZevJi+mYqrKRpPYPSuW54+/s9weLla3Yt/JhZPin/SOW4LT9i/8mFk+Kf9I5bgtGT2z0roeF/cYfdb4BERF4W+iIiIiq5y6Z3mu0nTYIYyOqkz1EkxD5N35VaNaTtf2b2baTYYrfcpZaSppXl9JVxNDnROIAcCD3zTgZHDoHEYW9h1QynqWyP2DysvDwS2wVAKSB9TVw00Yy+WRrG+MnAXplBEyGCOGMYZG0NaPABgKDNmvJusul9SU18u99lvclJIJaeAUogiDx3rnDecXYPEDI4gZz0Kdlu41XRVTmiI3Av3rzEwt2oiIoRZURERERERERERERERERERERERERERERERERERERERERERERERERERFUHaNx1/qD+0p/pCtz5M/wB/tZ/Zkn0kS0raCc691Af+86kfpXLduTN9/tb/AGZJ9LEpST7HqXHML14233z4lWKREUWuxrRdqX+MUHkv9YWq2n+NaT49nzgtq2pe/wBB5L/W1apav40pPj2fOC5fjf72f0t8Arthv3BvQfEqZURF1BUlaXtw/ktvXkxfTMVVlavbYM7Lr15Ef0rFVRSNJ7B6Vy3PH35nuDxcrW7FuOzCyfFP+kctwWm7EjnZdZfIk+letyWjJ7Z6V0PCvuMPut8AiIi8LfREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREUD7Utk9+q9T1V307BHWQVshmkhMrWPje7i7viAQTk9OeOMcMratiOz2u0oam7Xkxtr6mLmWQsdvc0zIJ3iOBJIb0ZAx08eEnIsxneW6JUDBlyigrDWNB0rk2vqBO8f+oiIsKnlou1L36g8l/ratUtf8Z0vxzPnBSBryy1N0poJqNofNAXZjzjeBx0eEYWu6a0xcpLpDNWU76eCJ4e4v4F2DnAC55i+HVMuKksYSHEWNtWwb1bsPq4WUIDnC4v071I6Ii6GqisZqqzw3/TtdZp3ljKqEs3wM7p6Wu8OCAVXhmxzW7rn3K6jpWwb+O6zUs5vHbjO/wDmqzSLLHM6MWChcUwGlxN7XzXu3gdo4HUVjNKWaDT+naGzU7y+OliDN8jBc7pc7wZJJ86yaIsZNzcqXjjbGwMYLAagiIi+L2iIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIv/2Q==" alt="CIK Lab Logo" style="height:44px;width:44px;object-fit:contain;flex-shrink:0;" />
+    <img src="images/logo.png" alt="CIK Lab Logo" style="height:44px;width:44px;object-fit:contain;flex-shrink:0;" />
     <div class="nav-logo-text">
       <span class="nav-logo-name">Co-creation for Inclusive<br>Knowledges Lab</span>
       <span class="nav-logo-sub">Amsterdam</span>
@@ -418,10 +422,10 @@
   <ul class="nav-links">
     <li><a href="#what">What We Do</a></li>
     <li><a href="#why">Purpose</a></li>
-    <li><a href="#themes">Research Themes</a></li>
     <li><a href="#learning">Learning</a></li>
-    <li><a href="#projects">Methodology</a></li>
-    <li><a href="#blog">Blog</a></li>
+    <li><a href="#projects">Praxis &amp; Resources</a></li>
+    <li><a href="spring-school.html">Spring School</a></li>
+    <li><a href="blog.html">Blog</a></li>
   </ul>
   <a class="nav-cta" href="#contact">Get in Touch</a>
   <div class="hamburger" id="hamburger">
@@ -433,32 +437,30 @@
 <div class="hero-wrap">
   <div class="hero">
     <div class="hero-text">
-      <div class="hero-eyebrow">VU Amsterdam Research Lab</div>
-      <h1>Co-creating knowledge for a more <em>just</em> society</h1>
-      <p class="hero-sub">Bringing together communities, researchers, and lived experiences to build knowledge that truly includes everyone.</p>
+      <div class="hero-eyebrow">Research &amp; Innovation Lab</div>
+      <h1>The Co-creation Lab for <em>Inclusive Knowledge Production</em></h1>
+      <p class="hero-sub">Bringing academia and society into more meaningful collaboration for social justice</p>
+      <p class="hero-about">The Co-Creation Lab for Inclusive Knowledge Production, based within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, is a space for critical, reciprocal, and ethical collaboration between academia and social actors. Together, we cultivate knowledges and practices for a more just society, while unsettling more traditional forms of academia.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="#themes">Explore our work</a>
-        <a class="btn-ghost" href="#what">How we do it</a>
+        <a class="btn-primary" href="#what">Explore our work</a>
+        <a class="btn-ghost" href="#why">Our purpose</a>
       </div>
     </div>
     <div class="hero-illustration">
-      <img 
-          src="images/hero.jpg" 
-          alt="Co-creation research in action" 
-          style="width:100%;max-width:560px;height:420px;object-fit:cover;border-radius:20px;"
-        />
+      <img src="images/hero.jpg" alt="Co-creation research in action" />
     </div>
   </div>
 </div>
 
 <div style="line-height:0;display:block;background:#01AA93;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
+
 <!-- WHAT WE DO — TEAL -->
 <section class="what-bg" id="what">
   <div class="container">
     <div class="fade-in">
       <div class="section-label">Our Approach</div>
       <h2 class="section-title">What we do</h2>
-      <p class="section-intro">We believe knowledge is richer when it comes from many places. Our lab bridges academia and lived experience through three core commitments.</p>
+      <p class="section-intro">We depart from the belief that it is not possible to challenge imbalanced power structures, redesign policy, or deliver impactful research without a strong and ethical connection to the lives and contexts of those experiencing injustice.</p>
     </div>
     <div class="what-grid fade-in" style="transition-delay:.15s">
       <div class="what-card">
@@ -468,8 +470,8 @@
           <path d="M28,20 L28,14 Q28,10 32,10 L36,10 Q40,10 40,14 L40,20"/>
           <circle cx="22" cy="12" r="4"/>
         </svg>
-        <h3>Co-create research</h3>
-        <p>We design and conduct research together with communities, not about them. Participants shape questions, methods, and findings from the very beginning.</p>
+        <h3>Co-create knowledges across boundaries</h3>
+        <p>We bring together communities, researchers, and practitioners — activists, artists, and advocates — to develop knowledges collaboratively, valuing lived experience alongside academic and professional perspectives and leading to transformative actions.</p>
       </div>
       <div class="what-card">
         <svg class="what-icon" viewBox="0 0 56 56">
@@ -478,8 +480,8 @@
           <path d="M22,22 L20,36 L34,30 L36,16 Z"/>
           <circle cx="28" cy="28" r="2.5" fill="#2AD1B5" stroke="none"/>
         </svg>
-        <h3>Develop inclusive methodologies</h3>
-        <p>We rethink research methods to make them accessible, participatory, and culturally responsive — from storytelling circles to visual research tools.</p>
+        <h3>Rethink what knowledge is and how it is produced</h3>
+        <p>We explore participatory and creative approaches that challenge traditional academic models and open up more inclusive ways of knowing and learning, always aware of the power dynamics at play.</p>
       </div>
       <div class="what-card">
         <svg class="what-icon" viewBox="0 0 56 56">
@@ -490,93 +492,71 @@
           <circle cx="8" cy="36" r="2.5"/>
           <circle cx="48" cy="36" r="2.5"/>
         </svg>
-        <h3>Connect academic &amp; experiential knowledge</h3>
-        <p>We create spaces where scholarly research and the knowledge people carry from their own lives enrich and challenge each other equally.</p>
+        <h3>Build connections for collective action</h3>
+        <p>We create spaces for dialogue and exchange that support long-term collaboration between communities, institutions, and social actors working towards justice across local, regional, and global contexts.</p>
+      </div>
+      <div class="what-card">
+        <svg class="what-icon" viewBox="0 0 56 56">
+          <circle cx="12" cy="28" r="5"/>
+          <circle cx="44" cy="28" r="5"/>
+          <circle cx="28" cy="10" r="5"/>
+          <circle cx="28" cy="46" r="5"/>
+          <path d="M17,28 L39,28 M28,15 L28,41 M15,22 L41,34 M15,34 L41,22"/>
+        </svg>
+        <h3>Weaving local, regional, and global movements for justice</h3>
+        <p>Based in Amsterdam, the Co-creation Lab works with both local and international communities, actively seeking to form alliances and build solidarity across diverse movements for social and environmental justice.</p>
       </div>
     </div>
   </div>
 </section>
 
 <div style="line-height:0;display:block;background:#2E3192;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,50 C180,10 360,70 540,40 C720,10 900,70 1080,40 C1260,10 1380,60 1440,45 L1440,0 Z" fill="#01AA93" stroke="none"/></svg></div>
-<!-- WHY IT MATTERS — NAVY -->
+
+<!-- PURPOSE — NAVY -->
 <section id="why">
   <div class="container">
     <div class="why-inner">
       <div class="why-text fade-in">
         <div class="section-label">Purpose</div>
-        <h2 class="section-title">Knowledge should belong to everyone</h2>
-        <p class="section-intro">Structural inequalities shape who gets to produce knowledge, whose stories are told, and whose expertise is recognised. We work to change that — one research partnership at a time.</p>
-        <div class="stat-row">
-          <div class="stat-box"><span class="stat-num">12+</span><span class="stat-label">Community partnerships</span></div>
-          <div class="stat-box"><span class="stat-num">5</span><span class="stat-label">Active research themes</span></div>
-          <div class="stat-box"><span class="stat-num">40+</span><span class="stat-label">Co-researchers worldwide</span></div>
+        <h2 class="section-title">Weaving worldviews, bridging efforts, nurturing collaborations</h2>
+        <div class="why-weave">
+          <p>We challenge structural inequalities by recognising the expertise, initiatives, and lived experiences of diverse actors. Co-creation means bringing together those who are committed to collectively imagining and building more just societies and environments.</p>
+          <p>We believe that a more just society cannot be achieved without a strong and ethical connection to the lives of those experiencing injustice. For this reason, we centre historically marginalised voices and lived experiences as a starting point for collective reflection and action.</p>
+          <p>We do this by facilitating events within and beyond academia, supporting non-traditional research practices, building meaningful alliances, and mobilising resources and expertise in support of social and environmental justice.</p>
+          <div class="why-actors">
+            <span class="why-actor-tag">Artists</span>
+            <span class="why-actor-tag">Activists</span>
+            <span class="why-actor-tag">Academics</span>
+            <span class="why-actor-tag">Community members</span>
+            <span class="why-actor-tag">Policymakers</span>
+            <span class="why-actor-tag">Advocates</span>
+            <span class="why-actor-tag">Practitioners</span>
+            <span class="why-actor-tag">Social workers</span>
+            <span class="why-actor-tag">Educators</span>
+            <span class="why-actor-tag">Researchers</span>
+          </div>
         </div>
       </div>
       <div class="why-visual fade-in" style="transition-delay:.2s">
-        <img 
-          src="images/why.jpg" 
-          alt="Community knowledge sharing" 
-          style="width:100%;max-width:440px;height:380px;object-fit:cover;border-radius:16px;"
-        />
+        <img src="images/why.jpg" alt="Community knowledge sharing" />
       </div>
     </div>
   </div>
 </section>
 
-<div style="line-height:0;display:block;background:#0076BE;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,35 C200,75 400,5 600,45 C800,80 1000,10 1200,50 C1320,70 1400,30 1440,38 L1440,0 Z" fill="#2E3192" stroke="none"/></svg></div>
-<!-- THEMES — BLUE -->
-<section class="themes-bg" id="themes">
-  <div class="container">
-    <div class="fade-in">
-      <div class="section-label">Research Themes</div>
-      <h2 class="section-title">What we explore together</h2>
-      <p class="section-intro">Our research is organised around themes that matter to communities facing exclusion, uncertainty, and the need to be heard.</p>
-    </div>
-    <div class="themes-grid">
-      <div class="theme-card fade-in" style="transition-delay:.05s">
-        <span class="theme-tag">Theme 01</span>
-        <svg class="theme-icon" viewBox="0 0 48 48"><circle cx="16" cy="10" r="5"/><path d="M12,15 Q8,24 10,32 L14,32 L16,26 L18,32 L22,32 Q24,24 20,15"/><path d="M22,20 L30,20 M30,20 L36,14 M30,20 L36,26"/><circle cx="40" cy="10" r="4"/><path d="M37,14 Q34,22 36,30 L39,30 L40,24 L41,30 L44,30 Q46,22 43,14"/></svg>
-        <h3>Forced Migration</h3>
-        <p>Centering the voices and agency of people who have been displaced, and challenging narratives that strip them of complexity.</p>
-      </div>
-      <div class="theme-card fade-in" style="transition-delay:.1s">
-        <span class="theme-tag">Theme 02</span>
-        <svg class="theme-icon" viewBox="0 0 48 48"><path d="M8,34 Q8,16 24,16 Q40,16 40,34"/><path d="M13,34 Q13,20 24,20 Q35,20 35,34"/><path d="M18,34 Q18,24 24,24 Q30,24 30,34"/><path d="M6,34 L42,34"/><circle cx="24" cy="34" r="2.5" fill="#2AA1DD" stroke="none"/></svg>
-        <h3>Youth Beyond Binaries</h3>
-        <p>Exploring how young people navigate identity, gender, and belonging beyond imposed categories — with and for youth communities.</p>
-      </div>
-      <div class="theme-card fade-in" style="transition-delay:.15s">
-        <span class="theme-tag">Theme 03</span>
-        <svg class="theme-icon" viewBox="0 0 48 48"><path d="M24,10 L24,38"/><path d="M18,38 L30,38"/><path d="M24,14 L10,22 M24,14 L38,22"/><path d="M6,22 Q8,28 14,28 Q20,28 22,22 Z"/><path d="M26,22 Q28,30 34,30 Q40,30 42,22 Z"/></svg>
-        <h3>Economic Insecurities</h3>
-        <p>Examining how financial precarity shapes lives, and how communities develop strategies of resilience and collective care.</p>
-      </div>
-      <div class="theme-card fade-in" style="transition-delay:.2s">
-        <span class="theme-tag">Theme 04</span>
-        <svg class="theme-icon" viewBox="0 0 48 48"><path d="M8,12 Q8,8 12,8 L22,8 Q26,8 26,12 L26,28 Q26,32 22,32 L16,32 L10,38 L12,32 Q8,32 8,28 Z"/><path d="M26,16 L36,16 Q40,16 40,20 L40,32 Q40,36 36,36 L32,36 L34,42 L28,36 Q26,36 26,32 L26,28"/></svg>
-        <h3>Storytelling &amp; Identity</h3>
-        <p>Using narrative, art, and creative methods to surface how people understand themselves and their place in the world.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<div style="line-height:0;display:block;background:#FCB040;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,35 C200,75 400,5 600,45 C800,80 1000,10 1200,50 C1320,70 1400,30 1440,38 L1440,0 Z" fill="#2E3192" stroke="none"/></svg></div>
 
-<div style="line-height:0;display:block;background:#FCB040;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,55 C160,15 320,75 480,45 C640,15 800,65 960,40 C1120,15 1300,65 1440,42 L1440,0 Z" fill="#0076BE" stroke="none"/></svg></div>
 <!-- LEARNING — AMBER -->
 <section id="learning">
   <div class="container">
     <div class="learning-inner">
       <div class="learning-visual fade-in">
-        <img 
-          src="images/learning.jpg" 
-          alt="Participatory learning workshop" 
-          style="width:100%;max-width:500px;height:420px;object-fit:cover;border-radius:16px;"
-        />
+        <img src="images/learning.jpg" alt="Participatory learning workshop" />
       </div>
       <div class="learning-text fade-in" style="transition-delay:.2s">
         <div class="section-label">Learning &amp; Teaching</div>
         <h2 class="section-title">Participatory learning in practice</h2>
-        <p class="section-intro">We design learning experiences where everyone is both teacher and student — because knowledge flows in all directions.</p>
+        <p class="section-intro" style="color:rgba(0,0,0,0.65);">We design learning experiences where everyone is both teacher and student — because knowledge flows in all directions.</p>
         <div class="learning-items">
           <div class="learning-item"><span class="learning-num">01</span><div><h4>Collaborative workshops</h4><p>Hands-on sessions where academic researchers and community members co-develop tools, frameworks, and findings together.</p></div></div>
           <div class="learning-item"><span class="learning-num">02</span><div><h4>Participatory course design</h4><p>University courses co-created with the communities they study — students learn directly from lived experience, not just textbooks.</p></div></div>
@@ -588,11 +568,12 @@
 </section>
 
 <div style="line-height:0;display:block;background:#C12925;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,30 C240,70 480,10 720,50 C960,80 1200,20 1440,55 L1440,0 Z" fill="#FCB040" stroke="none"/></svg></div>
-<!-- PROJECTS — RED -->
+
+<!-- PRAXIS & RESOURCES — RED -->
 <section class="projects-bg" id="projects">
   <div class="container">
     <div class="fade-in">
-      <div class="section-label">Methodology</div>
+      <div class="section-label">Praxis &amp; Resources</div>
       <h2 class="section-title">Research in action</h2>
       <p class="section-intro">Concrete partnerships and inquiries where co-creation happens. Filter by theme to find what resonates with you.</p>
     </div>
@@ -623,7 +604,7 @@
           <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Story Academy &times; Refugee Academy</span><span class="proj-arrow">&#8599;</span></div>
         </div>
       </div>
-      <div class="proj-card" data-theme="migration" data-title="2incING — Promoting Inclusive Policy through Collaboration" data-desc="An EU AMIF-funded project fostering exchange and cooperation between policymakers and refugee/migrant-led organisations across Croatia, Malta, Belgium, Greece, and the Netherlands." data-partners="Centre for Peace Studies (Croatia), Aditus Foundation (Malta), ECRE (Belgium), Greek Forum of Refugees, SYVNL, Refugee Academy (VU Amsterdam)" data-researchers="Elena Ponzoni" data-methods="Masterclasses, participatory workshops, advocacy academy, shadow reports, policy dialogues" data-status="Ongoing" data-year="Ongoing · EU AMIF funded">
+      <div class="proj-card" data-theme="migration" data-title="2incING: Promoting Inclusive Policy through Collaboration" data-desc="An EU AMIF-funded project fostering exchange and cooperation between policymakers and refugee/migrant-led organisations across Croatia, Malta, Belgium, Greece, and the Netherlands." data-partners="Centre for Peace Studies (Croatia), Aditus Foundation (Malta), ECRE (Belgium), Greek Forum of Refugees, SYVNL, Refugee Academy (VU Amsterdam)" data-researchers="Elena Ponzoni" data-methods="Masterclasses, participatory workshops, advocacy academy, shadow reports, policy dialogues" data-status="Ongoing" data-year="Ongoing · EU AMIF funded">
         <div class="proj-card-bar"></div>
         <div class="proj-card-body">
           <div class="proj-theme-badge">Forced Migration</div>
@@ -641,7 +622,7 @@
           <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">2023–2025 &middot; Creative Europe</span><span class="proj-arrow">&#8599;</span></div>
         </div>
       </div>
-      <div class="proj-card" data-theme="violence" data-title="LIMBO — Queer Refugee Stories through Creative Practices" data-desc="A creative research collaboration between queer refugee community organisers/artists and Refugee Academy. LIMBO is a workshop series centring queer refugee stories through creative practices." data-partners="Makers Unite, ILGA Europe (funder), Framer Framed (previous)" data-researchers="Fabian Holle (PhD researcher & initiator)" data-methods="Creative workshops, community art, narrative inquiry, engaged scholarship, safer spaces facilitation" data-status="Ongoing" data-year="Sep 2024–Jun 2025 · ILGA Europe">
+      <div class="proj-card" data-theme="violence" data-title="LIMBO: Queer Refugee Stories through Creative Practices" data-desc="A creative research collaboration between queer refugee community organisers/artists and Refugee Academy. LIMBO is a workshop series centring queer refugee stories through creative practices." data-partners="Makers Unite, ILGA Europe (funder), Framer Framed (previous)" data-researchers="Fabian Holle (PhD researcher & initiator)" data-methods="Creative workshops, community art, narrative inquiry, engaged scholarship, safer spaces facilitation" data-status="Ongoing" data-year="Sep 2024–Jun 2025 · ILGA Europe">
         <div class="proj-card-bar"></div>
         <div class="proj-card-body">
           <div class="proj-theme-badge">Resisting Violence</div>
@@ -704,7 +685,7 @@
           <div class="proj-meta"><span class="proj-status new">New</span><span class="proj-year">Exhibition 2025 &middot; Cape Town</span><span class="proj-arrow">&#8599;</span></div>
         </div>
       </div>
-      <div class="proj-card" data-theme="economy" data-title="In Search of an In-Between Space — Kenniscentrum Ongelijkheid" data-desc="A project investigating whether and how co-creation based on epistemic plurality can strengthen democratic relationships and generate creative solutions to inequality in Amsterdam." data-partners="E-Co/Samen Vooruit, Vrijwilligersacademie Amsterdam, UvA, Hogeschool van Amsterdam, Municipality of Amsterdam" data-researchers="Halleh Ghorashi, Elena Ponzoni, dr. Lise Woensdregt" data-methods="Action research, co-creative sessions, epistemic plurality, democratic collaboration learning trajectory" data-status="new" data-year="Started Sep 2024 · Amsterdam">
+      <div class="proj-card" data-theme="economy" data-title="In Search of an In-Between Space: Kenniscentrum Ongelijkheid" data-desc="A project investigating whether and how co-creation based on epistemic plurality can strengthen democratic relationships and generate creative solutions to inequality in Amsterdam." data-partners="E-Co/Samen Vooruit, Vrijwilligersacademie Amsterdam, UvA, Hogeschool van Amsterdam, Municipality of Amsterdam" data-researchers="Halleh Ghorashi, Elena Ponzoni, dr. Lise Woensdregt" data-methods="Action research, co-creative sessions, epistemic plurality, democratic collaboration learning trajectory" data-status="new" data-year="Started Sep 2024 · Amsterdam">
         <div class="proj-card-bar"></div>
         <div class="proj-card-body">
           <div class="proj-theme-badge">Economic Insecurities</div>
@@ -735,73 +716,74 @@
 
 <div style="line-height:0;display:block;background:#FFFFFF;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,45 C180,75 360,15 540,55 C720,80 900,20 1080,55 C1260,80 1380,30 1440,48 L1440,0 Z" fill="#C12925" stroke="none"/></svg></div>
 
-<!-- BLOG -->
-<section style="background:#FFFFFF;padding:5rem 2.5rem;" id="blog">
+<!-- SPRING SCHOOL & BLOG — TEASER PAIR -->
+<section style="background:#FFFFFF;padding:5rem 2.5rem;" id="spring">
   <div style="max-width:1180px;margin:0 auto;">
-    <div class="fade-in">
-      <div style="display:inline-flex;align-items:center;gap:.6rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--red);margin-bottom:.9rem;"><span style="display:block;width:20px;height:1.5px;background:var(--red);flex-shrink:0;"></span>From the Lab</div>
-      <h2 class="section-title" style="color:var(--dark);">Thoughts &amp; reflections</h2>
-      <p class="section-intro" style="color:var(--mid);">Writing from our researchers and community partners — on methods, findings, and what it means to do knowledge differently.</p>
+    <div class="fade-in" style="margin-bottom:3rem;">
+      <div style="display:inline-flex;align-items:center;gap:.6rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--mid);margin-bottom:.9rem;">Also from the Lab</div>
+      <h2 class="section-title" style="color:var(--dark);">More to explore</h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem;" class="fade-in">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="fade-in" style="transition-delay:.1s">
 
-      <!-- Blog Card 1 -->
-      <article style="border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 40px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="height:6px;background:var(--teal);width:100%;flex-shrink:0;"></div>
-        <div style="padding:2rem;display:flex;flex-direction:column;gap:1rem;flex:1;">
-          <div style="display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;">
-            <span style="font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:rgba(42,209,181,0.12);border:1px solid rgba(42,209,181,0.3);padding:.22rem .7rem;border-radius:100px;">Methodology</span>
-            <span style="font-size:.78rem;color:#aaa;">May 2025</span>
-          </div>
-          <h3 style="font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.35rem;line-height:1.25;letter-spacing:-.01em;color:var(--dark);">What does it actually mean to co-create research? Lessons from three years of practice</h3>
-          <p style="font-size:.9rem;color:var(--mid);font-weight:300;line-height:1.72;flex:1;">The phrase "co-creation" has become almost ubiquitous in social research — but what does genuine co-creation look like when you're in the room? We reflect on moments of friction, surprise, and real collaboration from our ongoing partnerships.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--line);margin-top:.5rem;">
-            <div style="display:flex;align-items:center;gap:.7rem;">
-              <div style="width:32px;height:32px;border-radius:50%;background:rgba(1,170,147,0.15);border:1px solid rgba(1,170,147,0.3);display:flex;align-items:center;justify-content:center;font-family:'Alegreya',serif;font-size:.82rem;color:var(--teal);font-weight:800;">EP</div>
-              <span style="font-size:.82rem;color:var(--mid);font-weight:400;">Elena Ponzoni</span>
-            </div>
-            <span style="font-size:.85rem;color:var(--red);font-weight:500;">Read more &rarr;</span>
+      <!-- Spring School teaser -->
+      <a href="spring-school.html" style="text-decoration:none;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .25s,box-shadow .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(0,118,190,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="background:var(--blue);padding:3rem 2.5rem 2.5rem;flex:1;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
+          <div style="position:absolute;bottom:-20px;left:60px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.04);"></div>
+          <div style="font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:1.2rem;">Annual Programme</div>
+          <h3 style="font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.8rem;line-height:1.2;color:white;margin-bottom:1rem;">Spring School on Co-Creative Methodologies</h3>
+          <p style="font-size:.92rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.72;margin-bottom:1.8rem;">A space where academia meets activism, art, and community-led initiatives. Four immersive days each year — workshops, dialogues, and delicious meals.</p>
+          <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem;">
+            <span style="font-size:.75rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-weight:400;">2025 Edition</span>
+            <span style="font-size:.75rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-weight:400;">2026 Edition</span>
+            <span style="font-size:.75rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-weight:400;">Open to all</span>
           </div>
         </div>
-      </article>
+        <div style="padding:1.4rem 2.5rem;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:.88rem;font-weight:500;color:var(--blue);">View all editions</span>
+          <span style="font-size:1.1rem;color:var(--blue);">&#8599;</span>
+        </div>
+      </a>
 
-      <!-- Blog Card 2 -->
-      <article style="border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 14px 40px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="height:6px;background:var(--amber);width:100%;flex-shrink:0;"></div>
-        <div style="padding:2rem;display:flex;flex-direction:column;gap:1rem;flex:1;">
-          <div style="display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;">
-            <span style="font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-dark);background:rgba(252,176,64,0.12);border:1px solid rgba(252,176,64,0.3);padding:.22rem .7rem;border-radius:100px;">Reflection</span>
-            <span style="font-size:.78rem;color:#aaa;">April 2025</span>
-          </div>
-          <h3 style="font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.35rem;line-height:1.25;letter-spacing:-.01em;color:var(--dark);">Whose story is it to tell? Navigating authorship in community-led research</h3>
-          <p style="font-size:.9rem;color:var(--mid);font-weight:300;line-height:1.72;flex:1;">When a community member writes a chapter of the final report, or a refugee co-researcher presents findings at a conference, something shifts in the power dynamics of knowledge production. We explore what that shift feels like — and what it demands of academic researchers.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--line);margin-top:.5rem;">
-            <div style="display:flex;align-items:center;gap:.7rem;">
-              <div style="width:32px;height:32px;border-radius:50%;background:rgba(252,176,64,0.15);border:1px solid rgba(252,176,64,0.3);display:flex;align-items:center;justify-content:center;font-family:'Alegreya',serif;font-size:.82rem;color:var(--amber-dark);font-weight:800;">HG</div>
-              <span style="font-size:.82rem;color:var(--mid);font-weight:400;">Halleh Ghorashi</span>
+      <!-- Blog teaser -->
+      <a href="blog.html" style="text-decoration:none;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .25s,box-shadow .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(193,41,37,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="background:var(--red-dark);padding:3rem 2.5rem 2.5rem;flex:1;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
+          <div style="position:absolute;bottom:-20px;left:60px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.03);"></div>
+          <div style="font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red-light);margin-bottom:1.2rem;">From the Lab</div>
+          <h3 style="font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.8rem;line-height:1.2;color:white;margin-bottom:1rem;">Thoughts &amp; Reflections</h3>
+          <p style="font-size:.92rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.72;margin-bottom:1.8rem;">Writing from our researchers and community partners — on methods, findings, and what it means to do knowledge differently.</p>
+          <!-- Mini post previews -->
+          <div style="display:flex;flex-direction:column;gap:.7rem;">
+            <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:.9rem 1.1rem;">
+              <div style="font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-light);margin-bottom:.3rem;">Methodology · May 2025</div>
+              <div style="font-size:.88rem;color:white;font-family:'Alegreya',serif;font-weight:800;line-height:1.25;">What does it actually mean to co-create research?</div>
             </div>
-            <span style="font-size:.85rem;color:var(--red);font-weight:500;">Read more &rarr;</span>
+            <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:.9rem 1.1rem;">
+              <div style="font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--amber-light);margin-bottom:.3rem;">Reflection · April 2025</div>
+              <div style="font-size:.88rem;color:white;font-family:'Alegreya',serif;font-weight:800;line-height:1.25;">Whose story is it to tell?</div>
+            </div>
           </div>
         </div>
-      </article>
+        <div style="padding:1.4rem 2.5rem;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:.88rem;font-weight:500;color:var(--red);">Read all posts</span>
+          <span style="font-size:1.1rem;color:var(--red);">&#8599;</span>
+        </div>
+      </a>
 
-    </div>
-
-    <!-- View all link -->
-    <div style="margin-top:2.5rem;text-align:center;" class="fade-in">
-      <a href="#" style="display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;font-weight:500;color:var(--dark);text-decoration:none;border:1.5px solid var(--line);padding:.7rem 1.8rem;border-radius:100px;transition:all .2s;" onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)'" onmouseout="this.style.borderColor='var(--line)';this.style.color='var(--dark)'">View all posts &rarr;</a>
     </div>
   </div>
 </section>
 
 <div style="line-height:0;display:block;background:#02846E;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,38 C200,78 400,8 600,48 C800,80 1000,15 1200,50 C1340,72 1410,28 1440,42 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
+
 <!-- TEAM -->
 <section class="team-bg" id="team">
   <div class="container">
     <div class="fade-in">
       <div class="section-label">The Team</div>
       <h2 class="section-title">The people behind the work</h2>
-      <p class="section-intro">A growing collective of researchers, community scholars, and practitioners. Click a group to meet the people in it, and any name to read more.</p>
+      <p class="section-intro">A growing collective of researchers, community scholars, and practitioners at Vrije Universiteit Amsterdam. Click a group to meet the people in it, and any name to read more.</p>
     </div>
     <div class="team-groups fade-in" style="transition-delay:.1s">
       <div class="team-group open">
@@ -811,30 +793,10 @@
         </div>
         <div class="team-group-body">
           <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/sara-ibrahim.jpg" alt="SI" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='SI';"
-              />
-            </div><div class="team-person-main"><strong>Dr. Sara Ibrahim</strong><span>Principal Investigator</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Researcher in participatory methodologies and community-based research, with 15 years working across the Netherlands and North Africa.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/lena-reyes.jpg" alt="LR" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='LR';"
-              />
-            </div><div class="team-person-main"><strong>Dr. Lena Reyes</strong><span>Methodology Lead</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Specialises in arts-based and creative research methods, visual sociology, and feminist epistemology.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/roos-prins.jpg" alt="RP" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='RP';"
-              />
-            </div><div class="team-person-main"><strong>Dr. Roos Prins</strong><span>Senior Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Works on economic precarity and community resilience, combining ethnographic and participatory methods.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/osei-acheampong.jpg" alt="OA" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='OA';"
-              />
-            </div><div class="team-person-main"><strong>Dr. Osei Acheampong</strong><span>Senior Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Focuses on postcolonial epistemologies and decolonial research methodologies.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/sara-ibrahim.jpg" alt="SI" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='SI';"/></div><div class="team-person-main"><strong>Dr. Sara Ibrahim</strong><span>Principal Investigator</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Researcher in participatory methodologies and community-based research, with 15 years working across the Netherlands and North Africa.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/lena-reyes.jpg" alt="LR" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='LR';"/></div><div class="team-person-main"><strong>Dr. Lena Reyes</strong><span>Methodology Lead</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Specialises in arts-based and creative research methods, visual sociology, and feminist epistemology.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/roos-prins.jpg" alt="RP" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='RP';"/></div><div class="team-person-main"><strong>Dr. Roos Prins</strong><span>Senior Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Works on economic precarity and community resilience, combining ethnographic and participatory methods.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/osei-acheampong.jpg" alt="OA" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='OA';"/></div><div class="team-person-main"><strong>Dr. Osei Acheampong</strong><span>Senior Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Focuses on postcolonial epistemologies and decolonial research methodologies.</div></div>
           </div>
         </div>
       </div>
@@ -845,36 +807,11 @@
         </div>
         <div class="team-group-body">
           <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/kofi-vandermeer.jpg" alt="KV" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='KV';"
-              />
-            </div><div class="team-person-main"><strong>Kofi Vandermeer</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Brings expertise in youth participatory action research and oral history practice across West African and European contexts.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/fatou-ndiaye.jpg" alt="FN" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='FN';"
-              />
-            </div><div class="team-person-main"><strong>Fatou Ndiaye</strong><span>Community Liaison &amp; Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Builds and sustains relationships with community partners; extensive experience in grassroots organising and advocacy.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/yusra-bashir.jpg" alt="YB" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='YB';"
-              />
-            </div><div class="team-person-main"><strong>Yusra Bashir</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Co-researcher with lived experience of asylum seeking. Trains other community co-researchers.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/theo-vandenberghe.jpg" alt="TV" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='TV';"
-              />
-            </div><div class="team-person-main"><strong>Theo Vandenberghe</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Non-binary youth researcher and activist. Specialises in participatory design with young people.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/gladys-sarpong.jpg" alt="GS" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='GS';"
-              />
-            </div><div class="team-person-main"><strong>Gladys Sarpong</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Food justice activist and community organiser in Amsterdam Zuidoost.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/kofi-vandermeer.jpg" alt="KV" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='KV';"/></div><div class="team-person-main"><strong>Kofi Vandermeer</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Brings expertise in youth participatory action research and oral history practice across West African and European contexts.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/fatou-ndiaye.jpg" alt="FN" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='FN';"/></div><div class="team-person-main"><strong>Fatou Ndiaye</strong><span>Community Liaison &amp; Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Builds and sustains relationships with community partners; extensive experience in grassroots organising and advocacy.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/yusra-bashir.jpg" alt="YB" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='YB';"/></div><div class="team-person-main"><strong>Yusra Bashir</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Co-researcher with lived experience of asylum seeking. Trains other community co-researchers.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/theo-vandenberghe.jpg" alt="TV" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='TV';"/></div><div class="team-person-main"><strong>Theo Vandenberghe</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Non-binary youth researcher and activist. Specialises in participatory design with young people.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/gladys-sarpong.jpg" alt="GS" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='GS';"/></div><div class="team-person-main"><strong>Gladys Sarpong</strong><span>Community Research Fellow</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Food justice activist and community organiser in Amsterdam Zuidoost.</div></div>
           </div>
         </div>
       </div>
@@ -885,30 +822,10 @@
         </div>
         <div class="team-group-body">
           <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/amara-boateng.jpg" alt="AB" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='AB';"
-              />
-            </div><div class="team-person-main"><strong>Amara Boateng</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Exploring how forced migrants navigate knowledge systems and reclaim narrative authority.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/priya-hussain.jpg" alt="PH" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='PH';"
-              />
-            </div><div class="team-person-main"><strong>Priya Hussain</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Researching intergenerational transmission of identity among South Asian diaspora youth using photo-voice and narrative inquiry.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/nils-westerberg.jpg" alt="NW" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='NW';"
-              />
-            </div><div class="team-person-main"><strong>Nils Westerberg</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Examining platform labour and algorithmic precarity among migrant gig workers.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/chioma-adeyemi.jpg" alt="CA" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='CA';"
-              />
-            </div><div class="team-person-main"><strong>Chioma Adeyemi</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Investigating how Black feminist epistemologies can transform social science research design.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/amara-boateng.jpg" alt="AB" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='AB';"/></div><div class="team-person-main"><strong>Amara Boateng</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Exploring how forced migrants navigate knowledge systems and reclaim narrative authority.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/priya-hussain.jpg" alt="PH" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='PH';"/></div><div class="team-person-main"><strong>Priya Hussain</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Researching intergenerational transmission of identity among South Asian diaspora youth using photo-voice and narrative inquiry.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/nils-westerberg.jpg" alt="NW" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='NW';"/></div><div class="team-person-main"><strong>Nils Westerberg</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Examining platform labour and algorithmic precarity among migrant gig workers.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/chioma-adeyemi.jpg" alt="CA" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='CA';"/></div><div class="team-person-main"><strong>Chioma Adeyemi</strong><span>PhD Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Investigating how Black feminist epistemologies can transform social science research design.</div></div>
           </div>
         </div>
       </div>
@@ -919,24 +836,9 @@
         </div>
         <div class="team-group-body">
           <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/jonas-timmer.jpg" alt="JT" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='JT';"
-              />
-            </div><div class="team-person-main"><strong>Jonas Timmer</strong><span>Education Coordinator</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Designs participatory learning experiences and coordinates community partnership programs at VU Amsterdam.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/mia-kovalev.jpg" alt="MK" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='MK';"
-              />
-            </div><div class="team-person-main"><strong>Mia Kovalev</strong><span>Lab Manager &amp; Research Assistant</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Keeps the lab running — from project coordination and ethics applications to community workshop facilitation.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;">
-              <img src="images/team/emilia-lopes.jpg" alt="EL" 
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
-                onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='EL';"
-              />
-            </div><div class="team-person-main"><strong>Emilia Lopes</strong><span>Communications &amp; Dissemination</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Translates research into accessible formats and manages the lab's public presence and open-access publishing.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/jonas-timmer.jpg" alt="JT" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='JT';"/></div><div class="team-person-main"><strong>Jonas Timmer</strong><span>Education Coordinator</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Designs participatory learning experiences and coordinates community partnership programs at VU Amsterdam.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/mia-kovalev.jpg" alt="MK" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='MK';"/></div><div class="team-person-main"><strong>Mia Kovalev</strong><span>Lab Manager &amp; Research Assistant</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Keeps the lab running — from project coordination and ethics applications to community workshop facilitation.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="overflow:hidden;padding:0;"><img src="images/team/emilia-lopes.jpg" alt="EL" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.innerHTML='EL';"/></div><div class="team-person-main"><strong>Emilia Lopes</strong><span>Communications &amp; Dissemination</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Translates research into accessible formats and manages the lab's public presence and open-access publishing.</div></div>
           </div>
         </div>
       </div>
@@ -945,12 +847,13 @@
 </section>
 
 <div style="line-height:0;display:block;background:#1B216B;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C200,10 400,70 600,40 C800,10 1000,70 1200,40 C1360,18 1420,55 1440,48 L1440,0 Z" fill="#02846E" stroke="none"/></svg></div>
+
 <!-- FOOTER -->
 <footer id="contact">
   <div class="footer-inner">
     <div class="footer-brand">
-      <span class="footer-name">Co-Creation for Inclusive Knowledges Lab</span>
-      <p>A research lab at Vrije Universiteit Amsterdam, committed to building knowledge that includes, centres, and serves all communities.</p>
+      <span class="footer-name">Co-creation for Inclusive Knowledges Lab</span>
+      <p>A research lab within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, committed to building knowledge that includes, centres, and serves all communities.</p>
       <div style="margin-top:1.5rem; display:flex; gap:.8rem;">
         <a href="#" style="color:rgba(255,255,255,0.45); font-size:.82rem; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#2AD1B5'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Twitter</a>
         <span style="color:#333">&middot;</span>
@@ -963,10 +866,10 @@
       <h5>Navigate</h5>
       <a href="#what">What We Do</a>
       <a href="#why">Purpose</a>
-      <a href="#themes">Research Themes</a>
       <a href="#learning">Learning</a>
-      <a href="#projects">Methodology</a>
-      <a href="#blog">Blog</a>
+      <a href="#projects">Praxis &amp; Resources</a>
+      <a href="spring-school.html">Spring School</a>
+      <a href="blog.html">Blog</a>
       <a href="#team">Team</a>
     </div>
     <div class="footer-col">
@@ -987,7 +890,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&#169; 2026 Co-Creation for Inclusive Knowledges Lab, <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a></span>
+    <span>&#169; 2026 Co-creation for Inclusive Knowledges Lab, <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a></span>
     <span>Designed with care for accessibility and inclusion</span>
   </div>
 </footer>
@@ -995,22 +898,15 @@
 <script>
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+
+  // Fade-in observer
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        if (entry.target.classList.contains('why-visual') || entry.target.classList.contains('learning-visual')) {
-          entry.target.querySelectorAll('.draw').forEach((el, i) => {
-            el.style.animation = 'drawLine 1.8s ease forwards';
-            el.style.animationDelay = (0.1 + i * 0.03) + 's';
-          });
-        }
-      }
-    });
-  }, { threshold: 0.15 });
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  document.querySelectorAll('.why-visual, .learning-visual').forEach(el => observer.observe(el));
   setTimeout(() => document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')), 800);
+
+  // Hamburger
   document.getElementById('hamburger').addEventListener('click', function() {
     const links = document.querySelector('.nav-links');
     if (links) {
@@ -1018,6 +914,8 @@
       else { links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:white;padding:1rem 2rem;border-bottom:1px solid #E0DDD8;gap:1rem;z-index:99;'; }
     }
   });
+
+  // Project filter
   const themeColors = {
     migration:    { color: '#2AA1DD', light: 'rgba(42,161,221,0.15)', label: 'Forced Migration' },
     youth:        { color: '#2AD1B5', light: 'rgba(42,209,181,0.15)', label: 'Youth Beyond Binaries' },
@@ -1038,20 +936,20 @@
             card.style.transition = 'opacity .3s ease, transform .3s ease';
             card.style.opacity = '1'; card.style.transform = 'translateY(0)';
           });
-        } else {
-          card.classList.add('hidden');
-        }
+        } else { card.classList.add('hidden'); }
       });
     });
   });
-  const overlay   = document.getElementById('projModal');
-  const modalBar  = document.getElementById('projModalBar');
-  const modalBadge= document.getElementById('projModalBadge');
-  const modalTitle= document.getElementById('projModalTitle');
-  const modalMeta = document.getElementById('projModalMeta');
-  const modalDesc = document.getElementById('projModalDesc');
-  const modalDets = document.getElementById('projModalDetails');
-  const modalActs = document.getElementById('projModalActions');
+
+  // Project modal
+  const overlay    = document.getElementById('projModal');
+  const modalBar   = document.getElementById('projModalBar');
+  const modalBadge = document.getElementById('projModalBadge');
+  const modalTitle = document.getElementById('projModalTitle');
+  const modalMeta  = document.getElementById('projModalMeta');
+  const modalDesc  = document.getElementById('projModalDesc');
+  const modalDets  = document.getElementById('projModalDetails');
+  const modalActs  = document.getElementById('projModalActions');
   function statusHTML(s) {
     const cls = s === 'Ongoing' ? 'ongoing' : s === 'Completed' ? 'completed' : 'new';
     return '<span class="proj-status ' + cls + '">' + s + '</span>';
@@ -1084,6 +982,8 @@
   document.getElementById('projModalClose').addEventListener('click', closeModal);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Team accordions
   function toggleGroup(header) { header.closest('.team-group').classList.toggle('open'); }
   function togglePerson(person) { person.classList.toggle('expanded'); }
 </script>
