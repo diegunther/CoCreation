@@ -15,7 +15,6 @@
     --navy-light:#5A61B7; --navy:#2E3192;   --navy-dark:#1B216B;
     --blue-light:#2AA1DD; --blue:#0076BE;   --blue-dark:#025F8E;
     --amber-light:#FCC47A;--amber:#FCB040;  --amber-dark:#D38824;
-    /* Brand threads */
     --t1:#EE4A3E; --t2:#01AA93; --t3:#2E3192; --t4:#0076BE; --t5:#FCB040;
     --serif:'Alegreya',Georgia,serif;
     --sans:'Inter',sans-serif;
@@ -24,57 +23,39 @@
   html{scroll-behavior:smooth;}
   body{font-family:'Inter',sans-serif;font-weight:400;background:var(--white);color:var(--dark);font-size:16px;line-height:1.65;overflow-x:hidden;}
 
-  /* ═══════════════════════════════════════════════════════════
-     WEAVE IDENTITY SYSTEM
-  ═══════════════════════════════════════════════════════════ */
-
-  /* 1. THREAD ACCENT — 5 bars, varying widths, before section labels */
   .thread-accent { display:flex; align-items:center; gap:3px; margin-bottom:.55rem; }
   .thread-accent span { display:block; height:3px; border-radius:2px; }
-
-  /* White/hero section */
   .ta-white span:nth-child(1){background:#EE4A3E;width:18px}
   .ta-white span:nth-child(2){background:#01AA93;width:8px}
   .ta-white span:nth-child(3){background:#2E3192;width:14px}
   .ta-white span:nth-child(4){background:#0076BE;width:22px}
   .ta-white span:nth-child(5){background:#FCB040;width:10px}
-
-  /* Teal section */
   .ta-teal  span:nth-child(1){background:#2AD1B5;width:20px}
   .ta-teal  span:nth-child(2){background:#FCB040;width:7px}
   .ta-teal  span:nth-child(3){background:#EE4A3E;width:15px}
   .ta-teal  span:nth-child(4){background:#2AA1DD;width:9px}
   .ta-teal  span:nth-child(5){background:#FCC47A;width:18px}
-
-  /* Navy section */
   .ta-navy  span:nth-child(1){background:#5A61B7;width:16px}
   .ta-navy  span:nth-child(2){background:#FC6965;width:22px}
   .ta-navy  span:nth-child(3){background:#2AD1B5;width:9px}
   .ta-navy  span:nth-child(4){background:#FCB040;width:14px}
   .ta-navy  span:nth-child(5){background:#2AA1DD;width:7px}
-
-  /* Amber section */
   .ta-amber span:nth-child(1){background:#D38824;width:12px}
   .ta-amber span:nth-child(2){background:#EE4A3E;width:20px}
   .ta-amber span:nth-child(3){background:#01AA93;width:7px}
   .ta-amber span:nth-child(4){background:#2E3192;width:16px}
   .ta-amber span:nth-child(5){background:#FCB040;width:10px}
-
-  /* Red/dark-red section */
   .ta-red   span:nth-child(1){background:#FC6965;width:14px}
   .ta-red   span:nth-child(2){background:#FCB040;width:9px}
   .ta-red   span:nth-child(3){background:#2AD1B5;width:20px}
   .ta-red   span:nth-child(4){background:#FCC47A;width:7px}
   .ta-red   span:nth-child(5){background:#5A61B7;width:16px}
-
-  /* Teal-dark section */
   .ta-teal-dark span:nth-child(1){background:#2AD1B5;width:10px}
   .ta-teal-dark span:nth-child(2){background:#FCB040;width:18px}
   .ta-teal-dark span:nth-child(3){background:#FC6965;width:6px}
   .ta-teal-dark span:nth-child(4){background:#2AA1DD;width:14px}
   .ta-teal-dark span:nth-child(5){background:#FCC47A;width:20px}
 
-  /* 2. NAV WEAVE */
   .nav-weave { display:flex; gap:2px; margin-top:3px; }
   .nav-weave span { height:2px; border-radius:1px; }
   .nav-weave span:nth-child(1){background:#EE4A3E;width:12px}
@@ -83,15 +64,12 @@
   .nav-weave span:nth-child(4){background:#0076BE;width:6px}
   .nav-weave span:nth-child(5){background:#FCB040;width:10px}
 
-  /* 3. WOVEN DIVIDERS */
-  .woven-divider { display:block; width:100%; overflow:hidden; line-height:0; }
-
-  /* 4. ACTOR TAGS — matches reference: curved left-bracket ( + coloured dot + label */
+  /* ACTOR TAGS — colored + marker replaces bracket */
   .actor-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.2rem; }
   .actor-tag {
-    display: inline-flex; align-items: center; gap: .4rem;
+    display: inline-flex; align-items: center; gap: .45rem;
     font-size: .78rem; font-weight: 500; letter-spacing: .02em;
-    padding: .32rem .85rem .32rem .5rem;
+    padding: .32rem .85rem .32rem .65rem;
     border-radius: 100px;
     border: 1.5px solid rgba(90,97,183,0.45);
     background: rgba(90,97,183,0.12);
@@ -99,23 +77,14 @@
     transition: background .2s, border-color .2s;
     cursor: default;
   }
-  .actor-tag::before {
-    /* The curved ( bracket — SVG data URI, white-ish stroke */
-    content: '';
-    display: block; flex-shrink: 0; width: 12px; height: 14px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Cpath d='M9 1 Q3 7 9 13' stroke='rgba(255,255,255,0.45)' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-size: contain; background-repeat: no-repeat;
-  }
   .actor-tag:hover { background: rgba(90,97,183,0.28); border-color: rgba(90,97,183,0.8); }
   .tag-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  /* Cycle through 5 brand thread colours */
   .actor-tag:nth-child(5n+1) .tag-dot { background: var(--t1); }
   .actor-tag:nth-child(5n+2) .tag-dot { background: var(--t2); }
   .actor-tag:nth-child(5n+3) .tag-dot { background: var(--t3); }
   .actor-tag:nth-child(5n+4) .tag-dot { background: var(--t4); }
   .actor-tag:nth-child(5n+5) .tag-dot { background: var(--t5); }
 
-  /* 5. FOOTER WEAVE */
   .footer-weave { display:flex; gap:3px; margin-bottom:1.2rem; }
   .footer-weave span { height:2px; border-radius:1px; opacity:.6; }
   .footer-weave span:nth-child(1){background:#EE4A3E;width:28px}
@@ -126,17 +95,6 @@
   .footer-weave span:nth-child(6){background:#2AD1B5;width:8px}
   .footer-weave span:nth-child(7){background:#FC6965;width:18px}
 
-  /* 6. ANIMATED HERO WEAVE */
-  @keyframes warp-drift{0%,100%{transform:translateX(0)}50%{transform:translateX(9px)}}
-  @keyframes weft-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-  .hero-weave-wrap{position:absolute;top:0;right:0;pointer-events:none;overflow:hidden;width:320px;height:380px;opacity:.04;}
-  .warp{animation:warp-drift 22s ease-in-out infinite;}
-  .weft{animation:weft-drift 15s ease-in-out infinite;}
-  @media(prefers-reduced-motion:reduce){.warp,.weft{animation:none;}}
-
-  /* ═══════════════════════════════════════════════════════════
-     NAV
-  ═══════════════════════════════════════════════════════════ */
   nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);transition:box-shadow .3s;}
   nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.07);}
   .nav-logo{display:flex;flex-direction:row;align-items:center;gap:.65rem;text-decoration:none;color:var(--dark);}
@@ -147,12 +105,21 @@
   .nav-links{display:flex;gap:2rem;list-style:none;}
   .nav-links a{font-size:.88rem;color:var(--mid);text-decoration:none;font-weight:400;letter-spacing:.02em;transition:color .2s;}
   .nav-links a:hover{color:var(--red);}
+
+  /* Dropdown */
+  .nav-dropdown{position:relative;}
+  .nav-dropdown-trigger{display:flex;align-items:center;gap:.3rem;cursor:pointer;}
+  .nav-arrow{font-size:.6rem;transition:transform .2s;display:inline-block;}
+  .nav-dropdown:hover .nav-arrow{transform:rotate(180deg);}
+  .nav-dropdown-menu{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);background:white;border:1px solid var(--line);border-radius:12px;padding:.5rem;min-width:170px;box-shadow:0 8px 30px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
+  .nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown-menu a{display:block;font-size:.84rem;color:var(--mid);padding:.5rem .9rem;border-radius:8px;transition:background .15s,color .15s;font-weight:400;}
+  .nav-dropdown-menu a:hover{background:var(--light);color:var(--red);}
   .nav-cta{font-size:.85rem;font-weight:500;background:var(--red);color:white;border:none;padding:.55rem 1.3rem;border-radius:100px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;}
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(238,74,62,.35);}
   .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
   .hamburger span{width:22px;height:1.5px;background:var(--dark);transition:.3s;}
 
-  /* ═══ HERO ═══════════════════════════════════════════════ */
   .hero-wrap{background:var(--white);position:relative;overflow:hidden;}
   .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 2.5rem 4rem;gap:3rem;max-width:1280px;margin:0 auto;}
   .hero-text{animation:fadeUp .8s ease both;position:relative;z-index:1;}
@@ -170,28 +137,35 @@
   .hero-illustration{animation:fadeUp .8s .2s ease both;display:flex;justify-content:center;align-items:center;}
   .hero-illustration img{width:100%;max-width:560px;height:420px;object-fit:cover;border-radius:20px;}
 
-  /* ═══ SECTIONS ════════════════════════════════════════════ */
   section{padding:5rem 2.5rem;}
   .container{max-width:1180px;margin:0 auto;}
   .section-label{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;margin-bottom:.9rem;}
   h2.section-title{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(1.9rem,3.5vw,2.9rem);line-height:1.22;letter-spacing:-.01em;margin-bottom:1.2rem;}
   .section-intro{font-size:1.05rem;font-weight:300;max-width:560px;line-height:1.75;}
 
-  /* WHAT — teal */
   .what-bg{background:var(--teal);color:white;}
   .what-bg .section-label{color:var(--teal-light);}
   .what-bg h2.section-title{color:white;}
   .what-bg .section-intro{color:rgba(255,255,255,0.82);}
-  .what-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:3.5rem;border:1px solid rgba(255,255,255,0.15);border-radius:16px;overflow:hidden;}
-  .what-card{background:rgba(255,255,255,0.08);padding:2.4rem 2rem;transition:background .25s;position:relative;overflow:hidden;}
-  .what-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--teal-light);transition:width .35s ease;}
-  .what-card:hover::after{width:100%;}
-  .what-card:hover{background:rgba(255,255,255,0.15);}
-  .what-icon{width:56px;height:56px;margin-bottom:1.5rem;stroke:var(--teal-light);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
-  .what-card h3{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.25rem;margin-bottom:.7rem;letter-spacing:-.01em;color:white;}
-  .what-card p{font-size:.92rem;color:rgba(255,255,255,0.78);line-height:1.7;font-weight:300;}
 
-  /* WHY — navy */
+  /* What We Do — accordion mirroring team style */
+  .what-accordion{margin-top:2.8rem;display:flex;flex-direction:column;gap:.6rem;}
+  .what-item{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);}
+  .what-item-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.6rem;cursor:pointer;user-select:none;background:rgba(255,255,255,0.07);transition:background .25s;position:relative;overflow:hidden;}
+  .what-item-header::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--teal-light);transition:width .35s ease;}
+  .what-item-header:hover::after,.what-item.open .what-item-header::after{width:100%;}
+  .what-item-header:hover{background:rgba(255,255,255,0.13);}
+  .what-item.open .what-item-header{background:rgba(255,255,255,0.11);border-bottom:1px solid rgba(255,255,255,0.1);}
+  .what-item-left{display:flex;align-items:center;gap:1rem;}
+  .what-item-icon{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .what-item-icon svg{width:20px;height:20px;stroke:var(--teal-light);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+  .what-item-title{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.12rem;color:white;letter-spacing:-.01em;line-height:1.2;}
+  .what-item-toggle{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,0.22);background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,0.55);transition:all .25s;flex-shrink:0;}
+  .what-item.open .what-item-toggle{background:var(--teal-light);color:var(--teal-dark);border-color:var(--teal-light);transform:rotate(45deg);}
+  .what-item-body{display:none;padding:1.4rem 1.6rem 1.6rem;}
+  .what-item.open .what-item-body{display:block;}
+  .what-item-body p{font-size:.95rem;color:rgba(255,255,255,0.78);font-weight:300;line-height:1.78;}
+
   #why{background:var(--navy);color:white;}
   #why .section-label{color:var(--navy-light);}
   #why h2.section-title{color:white;}
@@ -202,7 +176,6 @@
   .why-visual{display:flex;justify-content:center;}
   .why-visual img{width:100%;max-width:440px;height:380px;object-fit:cover;border-radius:16px;}
 
-  /* LEARNING — amber */
   #learning{background:var(--amber);color:var(--dark);}
   #learning .section-label{color:var(--amber-dark);}
   #learning h2.section-title{color:var(--dark);}
@@ -215,7 +188,6 @@
   .learning-item h4{font-size:.97rem;font-weight:500;margin-bottom:.3rem;color:var(--dark);}
   .learning-item p{font-size:.87rem;color:rgba(0,0,0,0.60);font-weight:300;line-height:1.65;}
 
-  /* PRAXIS — red */
   .projects-bg{background:var(--red-dark);color:white;}
   .projects-bg .section-label{color:var(--red-light);}
   .projects-bg h2.section-title{color:white;}
@@ -265,7 +237,6 @@
   .proj-year{font-size:.77rem;color:#aaa;}
   .proj-arrow{font-size:.85rem;color:var(--mid);opacity:0;transform:translate(-4px,4px);transition:opacity .2s,transform .2s;flex-shrink:0;}
 
-  /* MODAL */
   .proj-modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(20,20,20,0.65);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
   .proj-modal-overlay.open{opacity:1;pointer-events:all;}
   .proj-modal{background:#0E0E1A;border-radius:20px;max-width:580px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.97);transition:transform .28s ease;box-shadow:0 30px 80px rgba(0,0,0,0.5);position:relative;border:1px solid rgba(255,255,255,0.08);}
@@ -290,36 +261,67 @@
   .proj-modal-btn.ghost:hover{color:white;border-color:white;}
   .proj-year-modal{font-size:.84rem;color:rgba(255,255,255,0.45);}
 
-  /* TEAM */
   .team-bg{background:var(--teal-dark);color:white;}
   .team-bg .section-label{color:var(--teal-light);}
   .team-bg h2.section-title{color:white;}
   .team-bg .section-intro{color:rgba(255,255,255,0.78);}
-  .team-groups{margin-top:3rem;display:flex;flex-direction:column;gap:0;}
-  .team-group{border-top:1px solid rgba(255,255,255,0.15);}
-  .team-group:last-child{border-bottom:1px solid rgba(255,255,255,0.15);}
-  .team-group-header{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;cursor:pointer;user-select:none;}
-  .team-group-title{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-light);font-weight:500;}
-  .team-group-count{font-family:'Alegreya',Georgia,serif;font-size:.88rem;color:rgba(255,255,255,0.5);font-weight:400;font-style:italic;}
-  .team-group-toggle{width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:rgba(255,255,255,0.6);transition:all .2s;flex-shrink:0;}
-  .team-group.open .team-group-toggle{background:var(--teal-light);color:var(--teal-dark);border-color:var(--teal-light);transform:rotate(45deg);}
-  .team-group-body{display:none;padding-bottom:1.2rem;}
-  .team-group.open .team-group-body{display:block;}
-  .team-list{display:flex;flex-direction:column;gap:0;}
-  .team-person{display:flex;align-items:center;gap:1.2rem;padding:.75rem 0;border-top:1px solid rgba(255,255,255,0.08);cursor:pointer;transition:background .15s;flex-wrap:wrap;}
-  .team-person:first-child{border-top:none;}
-  .team-initials{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);overflow:hidden;flex-shrink:0;font-family:'Alegreya',Georgia,serif;font-size:.85rem;color:var(--teal-light);display:flex;align-items:center;justify-content:center;}
-  .team-person-main{flex:1;min-width:0;}
-  .team-person-main strong{font-size:.93rem;font-weight:500;display:block;color:white;}
-  .team-person-main span{font-size:.78rem;color:rgba(255,255,255,0.55);font-weight:300;}
-  .team-person-bio{font-size:.8rem;color:rgba(255,255,255,0.6);font-weight:300;max-width:340px;line-height:1.55;display:none;flex-basis:100%;padding:.4rem 0 .2rem 48px;}
-  .team-person.expanded .team-person-bio{display:block;}
-  .team-person-expand{font-size:.7rem;color:rgba(255,255,255,0.3);flex-shrink:0;transition:color .2s,transform .2s;}
-  .team-person.expanded .team-person-expand{color:var(--teal-light);transform:rotate(180deg);}
-  .team-person:hover .team-person-expand{color:var(--teal-light);}
-  .team-person-row{display:flex;align-items:center;gap:1.2rem;width:100%;}
 
-  /* FOOTER */
+  /* ── TEAM ACCORDION ── */
+  .team-accordion{margin-top:2.8rem;display:flex;flex-direction:column;gap:.6rem;}
+
+  .team-group{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);}
+
+  .team-group-header{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;cursor:pointer;user-select:none;background:rgba(255,255,255,0.07);transition:background .25s;position:relative;overflow:hidden;}
+  .team-group-header::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--teal-light);transition:width .35s ease;}
+  .team-group-header:hover::after{width:100%;}
+  .team-group-header:hover{background:rgba(255,255,255,0.13);}
+  .team-group.open .team-group-header{background:rgba(255,255,255,0.11);border-bottom:1px solid rgba(255,255,255,0.1);}
+  .team-group.open .team-group-header::after{width:100%;}
+
+  .team-group-left{display:flex;align-items:center;gap:.9rem;}
+  .team-group-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .team-group-title{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.05rem;color:white;letter-spacing:-.01em;}
+  .team-group-count{font-size:.72rem;font-weight:500;letter-spacing:.06em;color:rgba(255,255,255,0.45);text-transform:uppercase;}
+  .team-group-toggle{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,0.22);background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,0.55);transition:all .25s;flex-shrink:0;}
+  .team-group.open .team-group-toggle{background:var(--teal-light);color:var(--teal-dark);border-color:var(--teal-light);transform:rotate(45deg);}
+
+  .team-group-body{display:none;padding:1rem;}
+  .team-group.open .team-group-body{display:block;}
+
+  /* 2-column card grid inside each group */
+  .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+
+  /* Cards match what-card animation exactly */
+  .team-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.1rem 1.2rem;display:flex;align-items:flex-start;gap:.85rem;transition:background .25s;position:relative;overflow:hidden;}
+  .team-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--teal-light);transition:width .35s ease;}
+  .team-card:hover::after{width:100%;}
+  .team-card:hover{background:rgba(255,255,255,0.15);}
+  .team-card.director{background:rgba(42,209,181,0.1);border-color:rgba(42,209,181,0.28);}
+  .team-card.director::after{background:var(--teal-light);}
+  .team-card.director:hover{background:rgba(42,209,181,0.2);}
+
+  /* Initials circle */
+  .team-avatar{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);flex-shrink:0;font-family:'Alegreya',Georgia,serif;font-size:.82rem;font-weight:800;color:var(--teal-light);display:flex;align-items:center;justify-content:center;letter-spacing:0;}
+  .team-card.director .team-avatar{background:rgba(42,209,181,0.18);border-color:rgba(42,209,181,0.45);}
+
+  .team-card-info{flex:1;min-width:0;}
+  .team-card-name{font-size:.88rem;font-weight:500;color:white;line-height:1.3;margin-bottom:.15rem;}
+  .team-card-role{font-size:.73rem;color:rgba(255,255,255,0.48);font-weight:300;line-height:1.4;margin-bottom:.4rem;}
+  .team-card-email{font-size:.7rem;color:var(--teal-light);text-decoration:none;font-weight:400;opacity:.7;transition:opacity .2s;}
+  .team-card-email:hover{opacity:1;}
+  .team-card-badge{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:.15rem .55rem;border-radius:100px;background:rgba(42,209,181,0.18);border:1px solid rgba(42,209,181,0.4);color:var(--teal-light);margin-bottom:.4rem;}
+
+  /* Collaborator cards */
+  .collab-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+  .collab-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.3rem 1.4rem;transition:background .25s;position:relative;overflow:hidden;}
+  .collab-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--teal-light);transition:width .35s ease;}
+  .collab-card:hover::after{width:100%;}
+  .collab-card:hover{background:rgba(255,255,255,0.15);}
+  .collab-card-name{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1rem;color:white;margin-bottom:.3rem;line-height:1.2;}
+  .collab-card-desc{font-size:.8rem;color:rgba(255,255,255,0.58);font-weight:300;line-height:1.65;}
+
+  @media(max-width:768px){.team-grid,.collab-grid{grid-template-columns:1fr;}}
+
   footer{background:var(--navy-dark);color:rgba(255,255,255,0.5);padding:4rem 2.5rem 2rem;}
   .footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
   .footer-brand .footer-name{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.15rem;color:white;display:block;margin-bottom:.4rem;}
@@ -341,7 +343,6 @@
     .hamburger{display:flex;}
     .hero{grid-template-columns:1fr;padding:6rem 1.4rem 3rem;gap:2.5rem;}
     .hero-illustration{order:-1;}
-    .what-grid{grid-template-columns:1fr;}
     .why-inner{grid-template-columns:1fr;gap:2.5rem;}
     .why-visual{order:-1;}
     .proj-grid{grid-template-columns:1fr;}
@@ -355,7 +356,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="mainNav">
   <a class="nav-logo" href="#">
     <img src="images/logo.png" alt="CIK Lab Logo" />
@@ -366,10 +366,16 @@
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="#what">What We Do</a></li>
-    <li><a href="#why">Purpose</a></li>
-    <li><a href="#learning">Learning</a></li>
-    <li><a href="#projects">Praxis &amp; Resources</a></li>
+    <li class="nav-dropdown">
+      <a href="#what" class="nav-dropdown-trigger">About <span class="nav-arrow">&#9662;</span></a>
+      <div class="nav-dropdown-menu">
+        <a href="#what">What We Do</a>
+        <a href="#why">Purpose</a>
+        <a href="#learning">Learning</a>
+      </div>
+    </li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="praxis.html">Praxis &amp; Resources</a></li>
     <li><a href="spring-school.html">Spring School</a></li>
     <li><a href="blog.html">Blog</a></li>
   </ul>
@@ -377,35 +383,13 @@
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- HERO -->
 <div class="hero-wrap">
-  <!-- Ambient warp+weft weave in background -->
-  <div class="hero-weave-wrap">
-    <svg class="warp" width="320" height="380" viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20"  y="0" width="10" height="380" rx="5" fill="#EE4A3E"/>
-      <rect x="70"  y="0" width="10" height="380" rx="5" fill="#01AA93"/>
-      <rect x="120" y="0" width="10" height="380" rx="5" fill="#FCB040"/>
-      <rect x="170" y="0" width="10" height="380" rx="5" fill="#2E3192"/>
-      <rect x="220" y="0" width="10" height="380" rx="5" fill="#0076BE"/>
-      <rect x="270" y="0" width="10" height="380" rx="5" fill="#EE4A3E"/>
-      <rect x="310" y="0" width="10" height="380" rx="5" fill="#FCB040"/>
-    </svg>
-    <svg class="weft" style="position:absolute;top:0;left:0" width="320" height="380" viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="30"  width="320" height="10" rx="5" fill="#FCB040"/>
-      <rect x="0" y="80"  width="320" height="10" rx="5" fill="#2AD1B5"/>
-      <rect x="0" y="130" width="320" height="10" rx="5" fill="#EE4A3E"/>
-      <rect x="0" y="180" width="320" height="10" rx="5" fill="#5A61B7"/>
-      <rect x="0" y="230" width="320" height="10" rx="5" fill="#FCB040"/>
-      <rect x="0" y="280" width="320" height="10" rx="5" fill="#01AA93"/>
-      <rect x="0" y="330" width="320" height="10" rx="5" fill="#FC6965"/>
-    </svg>
-  </div>
   <div class="hero">
     <div class="hero-text">
       <div class="hero-eyebrow">Research &amp; Innovation Lab</div>
-      <h1>The Co-creation Lab for <em>Inclusive Knowledge Production Research & Innovation Lab</em></h1>
+      <h1>The Co-creation Lab for <em>Inclusive Knowledge Production</em></h1>
       <p class="hero-sub">Bringing academia and society into more meaningful collaboration for social justice</p>
-      <p class="hero-about">The Co-Creation Lab for Inclusive Knowledge Production Research & Innovation Lab, based within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, is a space for critical, reciprocal, and ethical collaboration between academia and social actors. Together, we cultivate knowledges and practices for a more just society, while unsettling more traditional forms of academia.</p>
+      <p class="hero-about">The Co-Creation Lab for Inclusive Knowledge Production, based within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, is a space for critical, reciprocal, and ethical collaboration between academia and social actors. Together, we cultivate knowledges and practices for a more just society, while unsettling more traditional forms of academia.</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#what">Explore our work</a>
         <a class="btn-ghost" href="#why">Our purpose</a>
@@ -417,10 +401,8 @@
   </div>
 </div>
 
-<!-- Wave: white → teal -->
 <div style="line-height:0;display:block;background:#01AA93;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
 
-<!-- WHAT WE DO -->
 <section class="what-bg" id="what">
   <div class="container">
     <div class="fade-in">
@@ -429,35 +411,74 @@
       <h2 class="section-title">What we do</h2>
       <p class="section-intro">We depart from the belief that it is not possible to challenge imbalanced power structures, redesign policy, or deliver impactful research without a strong and ethical connection to the lives and contexts of those experiencing injustice.</p>
     </div>
-    <div class="what-grid fade-in" style="transition-delay:.15s">
-      <div class="what-card">
-        <svg class="what-icon" viewBox="0 0 56 56"><path d="M14,32 Q14,22 24,20 L32,20 Q36,20 38,24 L42,24 Q46,24 46,28 Q46,32 42,32 L38,32"/><path d="M14,32 L10,32 Q8,32 8,34 L8,42 Q8,44 10,44 L36,44 Q42,44 46,40 L50,36"/><path d="M28,20 L28,14 Q28,10 32,10 L36,10 Q40,10 40,14 L40,20"/><circle cx="22" cy="12" r="4"/></svg>
-        <h3>Co-create knowledges across boundaries</h3>
-        <p>We bring together communities, researchers, and practitioners — activists, artists, and advocates — to develop knowledges collaboratively, valuing lived experience alongside academic and professional perspectives and leading to transformative actions.</p>
+    <div class="what-accordion fade-in" style="transition-delay:.15s">
+
+      <div class="what-item open">
+        <div class="what-item-header" onclick="toggleWhat(this)">
+          <div class="what-item-left">
+            <div class="what-item-icon">
+              <svg viewBox="0 0 56 56"><path d="M14,32 Q14,22 24,20 L32,20 Q36,20 38,24 L42,24 Q46,24 46,28 Q46,32 42,32 L38,32"/><path d="M14,32 L10,32 Q8,32 8,34 L8,42 Q8,44 10,44 L36,44 Q42,44 46,40 L50,36"/><path d="M28,20 L28,14 Q28,10 32,10 L36,10 Q40,10 40,14 L40,20"/><circle cx="22" cy="12" r="4"/></svg>
+            </div>
+            <span class="what-item-title">Co-create knowledges across boundaries</span>
+          </div>
+          <div class="what-item-toggle">+</div>
+        </div>
+        <div class="what-item-body">
+          <p>We bring together communities, researchers, and practitioners — activists, artists, and advocates — to develop knowledges collaboratively, valuing lived experience alongside academic and professional perspectives and leading to transformative actions.</p>
+        </div>
       </div>
-      <div class="what-card">
-        <svg class="what-icon" viewBox="0 0 56 56"><circle cx="28" cy="28" r="18"/><path d="M28,10 L28,14 M28,42 L28,46 M10,28 L14,28 M42,28 L46,28"/><path d="M22,22 L20,36 L34,30 L36,16 Z"/><circle cx="28" cy="28" r="2.5" fill="#2AD1B5" stroke="none"/></svg>
-        <h3>Rethink what knowledge is and how it is produced</h3>
-        <p>We explore participatory and creative approaches that challenge traditional academic models and open up more inclusive ways of knowing and learning, always aware of the power dynamics at play.</p>
+
+      <div class="what-item">
+        <div class="what-item-header" onclick="toggleWhat(this)">
+          <div class="what-item-left">
+            <div class="what-item-icon">
+              <svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="18"/><path d="M28,10 L28,14 M28,42 L28,46 M10,28 L14,28 M42,28 L46,28"/><path d="M22,22 L20,36 L34,30 L36,16 Z"/><circle cx="28" cy="28" r="2.5" fill="#2AD1B5" stroke="none"/></svg>
+            </div>
+            <span class="what-item-title">Rethink what knowledge is and how it is produced</span>
+          </div>
+          <div class="what-item-toggle">+</div>
+        </div>
+        <div class="what-item-body">
+          <p>We explore participatory and creative approaches that challenge traditional academic models and open up more inclusive ways of knowing and learning, always aware of the power dynamics at play.</p>
+        </div>
       </div>
-      <div class="what-card">
-        <svg class="what-icon" viewBox="0 0 56 56"><path d="M8,36 L8,28 Q8,18 18,18 L38,18 Q48,18 48,28 L48,36"/><path d="M8,36 L48,36"/><path d="M18,18 L18,36 M28,14 L28,36 M38,18 L38,36"/><path d="M4,36 L52,36"/><circle cx="8" cy="36" r="2.5"/><circle cx="48" cy="36" r="2.5"/></svg>
-        <h3>Build connections for collective action</h3>
-        <p>We create spaces for dialogue and exchange that support long-term collaboration between communities, institutions, and social actors working towards justice across local, regional, and global contexts.</p>
+
+      <div class="what-item">
+        <div class="what-item-header" onclick="toggleWhat(this)">
+          <div class="what-item-left">
+            <div class="what-item-icon">
+              <svg viewBox="0 0 56 56"><path d="M8,36 L8,28 Q8,18 18,18 L38,18 Q48,18 48,28 L48,36"/><path d="M8,36 L48,36"/><path d="M18,18 L18,36 M28,14 L28,36 M38,18 L38,36"/><path d="M4,36 L52,36"/><circle cx="8" cy="36" r="2.5"/><circle cx="48" cy="36" r="2.5"/></svg>
+            </div>
+            <span class="what-item-title">Build connections for collective action</span>
+          </div>
+          <div class="what-item-toggle">+</div>
+        </div>
+        <div class="what-item-body">
+          <p>We create spaces for dialogue and exchange that support long-term collaboration between communities, institutions, and social actors working towards justice across local, regional, and global contexts.</p>
+        </div>
       </div>
-      <div class="what-card">
-        <svg class="what-icon" viewBox="0 0 56 56"><circle cx="12" cy="28" r="5"/><circle cx="44" cy="28" r="5"/><circle cx="28" cy="10" r="5"/><circle cx="28" cy="46" r="5"/><path d="M17,28 L39,28 M28,15 L28,41 M15,22 L41,34 M15,34 L41,22"/></svg>
-        <h3>Weaving local, regional, and global movements for justice</h3>
-        <p>Based in Amsterdam, the Co-creation Lab works with both local and international communities, actively seeking to form alliances and build solidarity across diverse movements for social and environmental justice.</p>
+
+      <div class="what-item">
+        <div class="what-item-header" onclick="toggleWhat(this)">
+          <div class="what-item-left">
+            <div class="what-item-icon">
+              <svg viewBox="0 0 56 56"><circle cx="12" cy="28" r="5"/><circle cx="44" cy="28" r="5"/><circle cx="28" cy="10" r="5"/><circle cx="28" cy="46" r="5"/><path d="M17,28 L39,28 M28,15 L28,41 M15,22 L41,34 M15,34 L41,22"/></svg>
+            </div>
+            <span class="what-item-title">Weave local, regional, and global movements for justice</span>
+          </div>
+          <div class="what-item-toggle">+</div>
+        </div>
+        <div class="what-item-body">
+          <p>Based in Amsterdam, the Co-creation Lab works with both local and international communities, actively seeking to form alliances and build solidarity across diverse movements for social and environmental justice.</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- Wave: teal → navy -->
 <div style="line-height:0;display:block;background:#2E3192;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,50 C180,10 360,70 540,40 C720,10 900,70 1080,40 C1260,10 1380,60 1440,45 L1440,0 Z" fill="#01AA93" stroke="none"/></svg></div>
 
-<!-- PURPOSE / WHY -->
 <section id="why">
   <div class="container">
     <div class="why-inner">
@@ -469,7 +490,6 @@
           <p>We challenge structural inequalities by recognising the expertise, initiatives, and lived experiences of diverse actors. Co-creation means bringing together those who are committed to collectively imagining and building more just societies and environments.</p>
           <p>We believe that a more just society cannot be achieved without a strong and ethical connection to the lives of those experiencing injustice. For this reason, we centre historically marginalised voices and lived experiences as a starting point for collective reflection and action.</p>
           <p>We do this by facilitating events within and beyond academia, supporting non-traditional research practices, building meaningful alliances, and mobilising resources and expertise in support of social and environmental justice.</p>
-          <!-- ACTOR TAGS — matching reference screenshot exactly -->
           <div class="actor-tags">
             <span class="actor-tag"><span class="tag-dot"></span>Artists</span>
             <span class="actor-tag"><span class="tag-dot"></span>Activists</span>
@@ -491,10 +511,8 @@
   </div>
 </section>
 
-<!-- Wave: navy → amber -->
 <div style="line-height:0;display:block;background:#FCB040;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,35 C200,75 400,5 600,45 C800,80 1000,10 1200,50 C1320,70 1400,30 1440,38 L1440,0 Z" fill="#2E3192" stroke="none"/></svg></div>
 
-<!-- LEARNING -->
 <section id="learning">
   <div class="container">
     <div class="learning-inner">
@@ -516,63 +534,8 @@
   </div>
 </section>
 
-<!-- Wave: amber → red-dark -->
-<div style="line-height:0;display:block;background:#C12925;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,30 C240,70 480,10 720,50 C960,80 1200,20 1440,55 L1440,0 Z" fill="#FCB040" stroke="none"/></svg></div>
+<div style="line-height:0;display:block;background:#FFFFFF;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,45 C180,75 360,15 540,55 C720,80 900,20 1080,55 C1260,80 1380,30 1440,48 L1440,0 Z" fill="#FCB040" stroke="none"/></svg></div>
 
-<!-- PRAXIS & RESOURCES -->
-<section class="projects-bg" id="projects">
-  <div class="container">
-    <div class="fade-in">
-      <div class="thread-accent ta-red"><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="section-label">Praxis &amp; Resources</div>
-      <h2 class="section-title">Research in action</h2>
-      <p class="section-intro">Concrete partnerships and inquiries where co-creation happens. Filter by theme to find what resonates with you.</p>
-    </div>
-    <div class="proj-filter-bar fade-in" style="transition-delay:.1s">
-      <button class="proj-filter active" data-filter="all"><span class="filter-dot"></span>All projects</button>
-      <button class="proj-filter" data-filter="migration"><span class="filter-dot"></span>Forced Migration</button>
-      <button class="proj-filter" data-filter="youth"><span class="filter-dot"></span>Youth Beyond Binaries</button>
-      <button class="proj-filter" data-filter="economy"><span class="filter-dot"></span>Economic Insecurities</button>
-      <button class="proj-filter" data-filter="storytelling"><span class="filter-dot"></span>Storytelling &amp; Identity</button>
-      <button class="proj-filter" data-filter="violence"><span class="filter-dot"></span>Resisting Violence</button>
-    </div>
-    <div class="proj-grid fade-in" id="projGrid" style="transition-delay:.15s">
-      <div class="proj-card" data-theme="migration" data-title="Engaged Scholarship: Narratives of Change" data-desc="A comparative research project investigating co-operation between academy and society across South Africa, the US, and the Netherlands." data-partners="Comparative institutions in South Africa, US, and the Netherlands" data-researchers="Halleh Ghorashi, Elena Ponzoni, Phoebe Kisubi Mbasalaki, Maria Rast, Miriam Ocadiz, Fabian Holle, Alexandra Greene, Sajad Salmanpour" data-methods="Qualitative research methodology, comparative analysis, participatory sites, narrative inquiry" data-status="Ongoing" data-year="Ongoing"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Forced Migration</div><h3>Engaged Scholarship: Narratives of Change</h3><p>A comparative project investigating how engaged scholarship can contribute to the societal inclusion of refugees across South Africa, the US, and the Netherlands.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Comparative / 3 continents</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="migration" data-title="The House of Stories (Het Verhalenhuis)" data-desc="A creative collaboration between Story Academy and Refugee Academy, providing a platform for people with refugee backgrounds to share their unheard stories on stage." data-partners="Story Academy, Refugee Academy, Theatre Spui (The Hague)" data-researchers="Elena Ponzoni, Halleh Ghorashi, Fabian Holle, Miriam Ocadiz" data-methods="Storytelling workshops, podcast production, performance, reflective research, dialogue" data-link="https://rosestories.nl/podcast-verhalenhuis/" data-status="Ongoing" data-year="Ongoing"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Forced Migration</div><h3>The House of Stories <em style="font-style:italic;font-size:.9em;">(Het Verhalenhuis)</em></h3><p>A creative collaboration giving people with refugee backgrounds professional guidance to share their unheard stories on stage — transformed into podcasts and live performances.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Story Academy &times; Refugee Academy</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="migration" data-title="2incING: Promoting Inclusive Policy through Collaboration" data-desc="An EU AMIF-funded project fostering exchange and cooperation between policymakers and refugee/migrant-led organisations across Croatia, Malta, Belgium, Greece, and the Netherlands." data-partners="Centre for Peace Studies (Croatia), Aditus Foundation (Malta), ECRE (Belgium), Greek Forum of Refugees, SYVNL, Refugee Academy (VU Amsterdam)" data-researchers="Elena Ponzoni" data-methods="Masterclasses, participatory workshops, advocacy academy, shadow reports, policy dialogues" data-status="Ongoing" data-year="Ongoing · EU AMIF funded"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Forced Migration</div><h3>2incING Project</h3><p>Bridging policymakers and refugee/migrant-led organisations across four EU countries to create policies genuinely grounded in community realities.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">EU AMIF funded &middot; 5 countries</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="storytelling" data-title="Common Ground Dialogues" data-desc="A Creative Europe-funded project addressing deeply dividing issues through storytelling as artistic practice." data-partners="Space Explorers, European Commission Creative Europe programme" data-researchers="Timo Korstenbroek, Lise Woensdregt" data-methods="Storytelling circles, arts-based research, participatory narrative, co-created fiction" data-link="https://cgd.spaceexplorers.nl/" data-status="Ongoing" data-year="2023–2025 · Creative Europe"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Storytelling &amp; Identity</div><h3>Common Ground Dialogues</h3><p>Bringing together people across political and social divides through Storytelling Circles — using fiction and play to address polarising issues with empathy.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">2023–2025 &middot; Creative Europe</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="violence" data-title="LIMBO: Queer Refugee Stories through Creative Practices" data-desc="A creative research collaboration between queer refugee community organisers/artists and Refugee Academy." data-partners="Makers Unite, ILGA Europe (funder), Framer Framed (previous)" data-researchers="Fabian Holle (PhD researcher & initiator)" data-methods="Creative workshops, community art, narrative inquiry, engaged scholarship, safer spaces facilitation" data-status="Ongoing" data-year="Sep 2024–Jun 2025 · ILGA Europe"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Resisting Violence</div><h3>LIMBO</h3><p>A workshop series centring queer refugee stories through creative practices, co-creating knowledge about resilience and engaged scholarship.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Sep 2024–Jun 2025 &middot; ILGA Europe</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="youth" data-title="Leadership and Resilience: Co-Creation with Undocumented Youth" data-desc="A co-creative research group of undocumented youth, VU researchers, activists, and social workers exploring how to create inclusive educational environments." data-partners="ASKV, Stichting Leergeld Amsterdam, De Haagse Hogeschool, Framer Framed" data-researchers="dr. K Maeve Powlick, Evelyn Vlasman, Gabriel Briar (VU Amsterdam); Ruben Boers (De Haagse Hogeschool)" data-methods="Arts-based research, co-creative research group, participatory workshops for educators" data-status="Ongoing" data-year="Ongoing · NWA funded"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Youth Beyond Binaries</div><h3>Leadership &amp; Resilience: Co-Creation with Undocumented Youth</h3><p>Undocumented youth and VU researchers working together to create more inclusive educational environments.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">NWA Route Resilience</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="violence" data-title="Boundaries in Art-Based Research about Refugee Experiences" data-desc="A small, refugee-led project making a first step in collectively articulating the complexity of participating in art-based projects." data-partners="Refugee community networks" data-researchers="Idris Alhassan, Husniya Kedr" data-methods="Participatory workshops, collective knowledge-making, video-lecture production" data-status="Ongoing" data-year="Ongoing · Refugee-led"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Resisting Violence</div><h3>Boundaries in Art-Based Research</h3><p>A refugee-led project creating space to collectively articulate conditions for meaningful co-creation in art and research.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Refugee-led</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="economy" data-title="Economic Pathways for Financially Vulnerable Queer Men in Nairobi" data-desc="Using Community-Led Research and Action (CLRA), this project explores how queer men in Nairobi can create pathways to financial independence." data-partners="Queer community organisations in Nairobi, Kenya" data-researchers="dr. Lise Woensdregt" data-methods="Community-led research and action (CLRA), collaborative anthropology, community-shaped dissemination" data-status="Ongoing" data-year="Jun 2024–Aug 2025 · Wenner-Gren"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Economic Insecurities</div><h3>Economic Pathways for Queer Men in Nairobi</h3><p>Community-led research exploring financial resilience and queer entrepreneurship in Nairobi's hustle economies.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Jun 2024–Aug 2025 &middot; Wenner-Gren</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="youth" data-title="Community-Led Research & Action: Trans Healthcare in Den Haag" data-desc="Using Community-Led Research and Action (CLRA), this project maps the barriers and opportunities transgender youth experience in accessing adequate care in The Hague." data-partners="Municipality of The Hague, healthcare professionals and networks in Den Haag" data-researchers="VU Amsterdam researchers (CIK Lab)" data-methods="Community-led research and action (CLRA), qualitative interviews, professional evaluation" data-status="Ongoing" data-year="Ongoing · Municipality of The Hague"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Youth Beyond Binaries</div><h3>Trans Healthcare in Den Haag</h3><p>Mapping barriers transgender youth face in accessing care in The Hague, integrating youth and professional perspectives.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Municipality of The Hague</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="violence" data-title="Magazine for Global Reparations by Aralez" data-desc="A magazine fostering community initiatives and conversation on reparations and decolonization, produced by Aralez." data-partners="Aralez (pan-decolonial network, Amsterdam)" data-researchers="Aralez community; CIK Lab" data-methods="Community publishing, manifesto co-creation, academic-community bridge, conference series" data-status="Ongoing" data-year="Target: March 2025"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Resisting Violence</div><h3>Magazine for Global Reparations</h3><p>A community magazine by Aralez presenting a manifesto for reparations, connecting decolonisation activism with academic reflection.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Aralez &times; CIK Lab</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="violence" data-title="Exhibition of a Photo-Voice Study by Wounded Storytellers" data-desc="A Participatory Action Research project with 32 gang members who acquired spinal cord injuries through gang-related violence in Cape Town, South Africa." data-partners="Community organisations and stakeholders in Cape Town, South Africa" data-researchers="Helenard Louw (PhD researcher)" data-methods="Participatory action research, photovoice, co-curated exhibition, community dissemination" data-status="new" data-year="Exhibition 2025 · Cape Town"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Resisting Violence</div><h3>Exhibition: Wounded Storytellers</h3><p>A photo-voice study with 32 gang-violence survivors in Cape Town, co-curating an exhibition about identity transformation and community healing.</p><div class="proj-meta"><span class="proj-status new">New</span><span class="proj-year">Exhibition 2025 &middot; Cape Town</span><span class="proj-arrow">&#8599;</span></div></div></div>
-      <div class="proj-card" data-theme="economy" data-title="In Search of an In-Between Space: Kenniscentrum Ongelijkheid" data-desc="A project investigating whether and how co-creation based on epistemic plurality can strengthen democratic relationships and generate creative solutions to inequality in Amsterdam." data-partners="E-Co/Samen Vooruit, Vrijwilligersacademie Amsterdam, UvA, Hogeschool van Amsterdam, Municipality of Amsterdam" data-researchers="Halleh Ghorashi, Elena Ponzoni, dr. Lise Woensdregt" data-methods="Action research, co-creative sessions, epistemic plurality, democratic collaboration learning trajectory" data-status="new" data-year="Started Sep 2024 · Amsterdam"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Economic Insecurities</div><h3>In Search of an In-Between Space</h3><p>Co-creative action research building new 'chains of trust' between Amsterdam residents, frontline workers, and policymakers.</p><div class="proj-meta"><span class="proj-status new">New</span><span class="proj-year">Sep 2024 &middot; Amsterdam</span><span class="proj-arrow">&#8599;</span></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECT MODAL -->
-<div class="proj-modal-overlay" id="projModal" role="dialog" aria-modal="true">
-  <div class="proj-modal" id="projModalInner">
-    <div class="proj-modal-bar" id="projModalBar"></div>
-    <button class="proj-modal-close" id="projModalClose" aria-label="Close">&#10005;</button>
-    <div class="proj-modal-inner">
-      <div class="proj-modal-badge" id="projModalBadge"></div>
-      <h2 id="projModalTitle"></h2>
-      <div class="proj-modal-meta" id="projModalMeta"></div>
-      <p class="proj-modal-desc" id="projModalDesc"></p>
-      <div class="proj-modal-details" id="projModalDetails"></div>
-      <div class="proj-modal-actions" id="projModalActions"></div>
-    </div>
-  </div>
-</div>
-
-<!-- Wave: red → white -->
-<div style="line-height:0;display:block;background:#FFFFFF;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,45 C180,75 360,15 540,55 C720,80 900,20 1080,55 C1260,80 1380,30 1440,48 L1440,0 Z" fill="#C12925" stroke="none"/></svg></div>
-
-<!-- SPRING SCHOOL & BLOG TEASER -->
 <section style="background:#FFFFFF;padding:5rem 2.5rem;" id="spring">
   <div style="max-width:1180px;margin:0 auto;">
     <div class="fade-in" style="margin-bottom:3rem;">
@@ -581,7 +544,6 @@
       <h2 class="section-title" style="color:var(--dark);">More to explore</h2>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="fade-in">
-
       <a href="spring-school.html" style="text-decoration:none;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .25s,box-shadow .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(0,118,190,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="background:var(--blue);padding:3rem 2.5rem 2.5rem;flex:1;position:relative;overflow:hidden;">
           <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
@@ -599,7 +561,6 @@
           <span style="font-size:1.1rem;color:var(--blue);">&#8599;</span>
         </div>
       </a>
-
       <a href="blog.html" style="text-decoration:none;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .25s,box-shadow .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(193,41,37,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="background:var(--red-dark);padding:3rem 2.5rem 2.5rem;flex:1;position:relative;overflow:hidden;">
           <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
@@ -622,86 +583,341 @@
           <span style="font-size:1.1rem;color:var(--red);">&#8599;</span>
         </div>
       </a>
-
     </div>
   </div>
 </section>
 
-<!-- Wave: white → teal-dark -->
 <div style="line-height:0;display:block;background:#02846E;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,38 C200,78 400,8 600,48 C800,80 1000,15 1200,50 C1340,72 1410,28 1440,42 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
 
-<!-- TEAM -->
+
+
 <section class="team-bg" id="team">
   <div class="container">
     <div class="fade-in">
       <div class="thread-accent ta-teal-dark"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="section-label">The Team</div>
       <h2 class="section-title">The people behind the work</h2>
-      <p class="section-intro">A growing collective of researchers, lecturers, PhD candidates, and collaborators at Vrije Universiteit Amsterdam. Click a group to expand, and any name to read more.</p>
+      <p class="section-intro">A growing collective of researchers, lecturers, PhD candidates, and collaborators based within the Faculty of Social Sciences at Vrije Universiteit Amsterdam.</p>
     </div>
-    <div class="team-groups fade-in" style="transition-delay:.1s">
 
+    <div class="team-accordion fade-in" style="transition-delay:.1s">
+
+      <!-- Directors -->
       <div class="team-group open">
         <div class="team-group-header" onclick="toggleGroup(this)">
-          <span class="team-group-title">Core Co-creators</span>
-          <div style="display:flex;align-items:center;gap:.8rem;"><span class="team-group-count">23 members</span><div class="team-group-toggle">+</div></div>
+          <div class="team-group-left">
+            <span class="team-group-dot" style="background:var(--teal-light);"></span>
+            <span class="team-group-title">Directors</span>
+            <span class="team-group-count">2 members</span>
+          </div>
+          <div class="team-group-toggle">+</div>
         </div>
         <div class="team-group-body">
-          <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">EP</div><div class="team-person-main"><strong>dr. Elena Ponzoni</strong><span>Assistant Professor, Director</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Director of the Co-Creation for Inclusive Knowledges Lab. <a href="mailto:e.ponzoni@vu.nl" style="color:var(--teal-light);">e.ponzoni@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">LW</div><div class="team-person-main"><strong>dr. Lise Woensdregt</strong><span>Assistant Professor, Co-Director</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Co-Director of the Co-Creation for Inclusive Knowledges Lab. <a href="mailto:l.woensdregt@vu.nl" style="color:var(--teal-light);">l.woensdregt@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">HG</div><div class="team-person-main"><strong>Halleh Ghorashi</strong><span>Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Pioneer of engaged scholarship at VU Amsterdam.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">EK</div><div class="team-person-main"><strong>dr. Elif Keskiner</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:e.keskiner@vu.nl" style="color:var(--teal-light);">e.keskiner@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">PS</div><div class="team-person-main"><strong>dr. Peer Smets</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:p.g.s.m.smets@vu.nl" style="color:var(--teal-light);">p.g.s.m.smets@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">SK</div><div class="team-person-main"><strong>prof. dr. Saskia Keuzenkamp</strong><span>Endowed Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:s.keuzenkamp@vu.nl" style="color:var(--teal-light);">s.keuzenkamp@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">RL</div><div class="team-person-main"><strong>dr. Robert Larruina</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:r.l.larruina@vu.nl" style="color:var(--teal-light);">r.l.larruina@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">AW</div><div class="team-person-main"><strong>dr. Arjen de Wit</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:a.de.wit@vu.nl" style="color:var(--teal-light);">a.de.wit@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">SB</div><div class="team-person-main"><strong>dr. Stef Bouwhuis</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:s.bouwhuis@vu.nl" style="color:var(--teal-light);">s.bouwhuis@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">FS</div><div class="team-person-main"><strong>Fiona Shan</strong><span>Research Associate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:h.y.shan@vu.nl" style="color:var(--teal-light);">h.y.shan@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">TK</div><div class="team-person-main"><strong>Timo Korstenbroek</strong><span>PhD Candidate, Coordinator Co-Creation Lab</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:t.m.korstenbroek@vu.nl" style="color:var(--teal-light);">t.m.korstenbroek@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">MP</div><div class="team-person-main"><strong>dr. Maeve Powlick</strong><span>Lecturer</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:k.m.powlick@vu.nl" style="color:var(--teal-light);">k.m.powlick@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">JR</div><div class="team-person-main"><strong>dr. Julia Rone</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:j.e.rone@vu.nl" style="color:var(--teal-light);">j.e.rone@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">SH</div><div class="team-person-main"><strong>Saba Hamzah</strong><span>Researcher</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:s.a.hamzah@vu.nl" style="color:var(--teal-light);">s.a.hamzah@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">LW</div><div class="team-person-main"><strong>Louise Wolff</strong><span>Lecturer</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:l.s.m.wolff@vu.nl" style="color:var(--teal-light);">l.s.m.wolff@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">DG</div><div class="team-person-main"><strong>Daniel Gómez Uribe</strong><span>Collaborator</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">MS</div><div class="team-person-main"><strong>Melisa Soto Lafontaine</strong><span>Lecturer</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:m.a.sotolafontaine@vu.nl" style="color:var(--teal-light);">m.a.sotolafontaine@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">LK</div><div class="team-person-main"><strong>dr. Laura Keesman</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:l.d.keesman@vu.nl" style="color:var(--teal-light);">l.d.keesman@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">MH</div><div class="team-person-main"><strong>dr. Mariska van der Horst</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:m.f.j.vanderhorst@vu.nl" style="color:var(--teal-light);">m.f.j.vanderhorst@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">ST</div><div class="team-person-main"><strong>dr. Saartje Tack</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:s.e.j.saartje.tack@vu.nl" style="color:var(--teal-light);">s.e.j.saartje.tack@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">ÖT</div><div class="team-person-main"><strong>dr. Özlem Terzi</strong><span>Coordinator Political Science, Honours &amp; Internships</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:o.terzi@vu.nl" style="color:var(--teal-light);">o.terzi@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">SK</div><div class="team-person-main"><strong>dr. Silvia Klokgieters</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:s.s.klokgieters2@vu.nl" style="color:var(--teal-light);">s.s.klokgieters2@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">MM</div><div class="team-person-main"><strong>dr. Maaike Matelski</strong><span>Assistant Professor</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:m.matelski@vu.nl" style="color:var(--teal-light);">m.matelski@vu.nl</a></div></div>
+          <div class="team-grid">
+            <div class="team-card director">
+              <div class="team-avatar">EP</div>
+              <div class="team-card-info">
+                <div class="team-card-badge">Director</div>
+                <div class="team-card-name">dr. Elena Ponzoni</div>
+                <div class="team-card-role">Assistant Professor, Director Co-Creation for Inclusive Knowledges Lab</div>
+                <a class="team-card-email" href="mailto:e.ponzoni@vu.nl">e.ponzoni@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card director">
+              <div class="team-avatar">LW</div>
+              <div class="team-card-info">
+                <div class="team-card-badge">Co-Director</div>
+                <div class="team-card-name">dr. Lise Woensdregt</div>
+                <div class="team-card-role">Assistant Professor, Co-Director Co-Creation for Inclusive Knowledges Lab</div>
+                <a class="team-card-email" href="mailto:l.woensdregt@vu.nl">l.woensdregt@vu.nl</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- Professors & Senior Researchers -->
       <div class="team-group">
         <div class="team-group-header" onclick="toggleGroup(this)">
-          <span class="team-group-title">PhD Candidates</span>
-          <div style="display:flex;align-items:center;gap:.8rem;"><span class="team-group-count">7 members</span><div class="team-group-toggle">+</div></div>
+          <div class="team-group-left">
+            <span class="team-group-dot" style="background:var(--blue-light);"></span>
+            <span class="team-group-title">Professors &amp; Senior Researchers</span>
+            <span class="team-group-count">12 members</span>
+          </div>
+          <div class="team-group-toggle">+</div>
         </div>
         <div class="team-group-body">
-          <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">YY</div><div class="team-person-main"><strong>Younes Younes</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:y.younes@vu.nl" style="color:var(--teal-light);">y.younes@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">TK</div><div class="team-person-main"><strong>Timo Korstenbroek</strong><span>PhD Candidate, Coordinator Co-Creation Lab</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:t.m.korstenbroek@vu.nl" style="color:var(--teal-light);">t.m.korstenbroek@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">FH</div><div class="team-person-main"><strong>Fabian Holle</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:f.y.holle@vu.nl" style="color:var(--teal-light);">f.y.holle@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">HL</div><div class="team-person-main"><strong>Helenard Louw</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:h.k.m.louw@vu.nl" style="color:var(--teal-light);">h.k.m.louw@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">LB</div><div class="team-person-main"><strong>Laurine Blonk</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:j.l.blonk@vu.nl" style="color:var(--teal-light);">j.l.blonk@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">MO</div><div class="team-person-main"><strong>Mimi Ocadiz Arriaga</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:m.a.ocadizarriaga@vu.nl" style="color:var(--teal-light);">m.a.ocadizarriaga@vu.nl</a></div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials">AG</div><div class="team-person-main"><strong>Alexandra Greene</strong><span>PhD Candidate</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio"><a href="mailto:a.m.a.greene@vu.nl" style="color:var(--teal-light);">a.m.a.greene@vu.nl</a></div></div>
+          <div class="team-grid">
+            <div class="team-card">
+              <div class="team-avatar">HG</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Halleh Ghorashi</div>
+                <div class="team-card-role">Professor</div>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">SK</div>
+              <div class="team-card-info">
+                <div class="team-card-name">prof. dr. Saskia Keuzenkamp</div>
+                <div class="team-card-role">Endowed Professor</div>
+                <a class="team-card-email" href="mailto:s.keuzenkamp@vu.nl">s.keuzenkamp@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">EK</div>
+              <div class="team-card-info">
+                <div class="team-card-name">dr. Elif Keskiner</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:e.keskiner@vu.nl">e.keskiner@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">PS</div>
+              <div class="team-card-info">
+                <div class="team-card-name">dr. Peer Smets</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:p.g.s.m.smets@vu.nl">p.g.s.m.smets@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">RL</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Dr. Robert Larruina</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:r.l.larruina@vu.nl">r.l.larruina@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">AW</div>
+              <div class="team-card-info">
+                <div class="team-card-name">dr. Arjen de Wit</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:a.de.wit@vu.nl">a.de.wit@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">SB</div>
+              <div class="team-card-info">
+                <div class="team-card-name">dr. Stef Bouwhuis</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:s.bouwhuis@vu.nl">s.bouwhuis@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">JR</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Dr. Julia Rone</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:j.e.rone@vu.nl">j.e.rone@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">LK</div>
+              <div class="team-card-info">
+                <div class="team-card-name">dr. Laura Keesman</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:l.d.keesman@vu.nl">l.d.keesman@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">MH</div>
+              <div class="team-card-info">
+                <div class="team-card-name">dr. Mariska van der Horst</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:m.f.j.vanderhorst@vu.nl">m.f.j.vanderhorst@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">ST</div>
+              <div class="team-card-info">
+                <div class="team-card-name">dr. Saartje Tack</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:s.e.j.saartje.tack@vu.nl">s.e.j.saartje.tack@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">SK</div>
+              <div class="team-card-info">
+                <div class="team-card-name">dr. Silvia Klokgieters</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:s.s.klokgieters2@vu.nl">s.s.klokgieters2@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">MM</div>
+              <div class="team-card-info">
+                <div class="team-card-name">dr. Maaike Matelski</div>
+                <div class="team-card-role">Assistant Professor</div>
+                <a class="team-card-email" href="mailto:m.matelski@vu.nl">m.matelski@vu.nl</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- Lecturers & Researchers -->
       <div class="team-group">
         <div class="team-group-header" onclick="toggleGroup(this)">
-          <span class="team-group-title">Our Collaborators</span>
-          <div style="display:flex;align-items:center;gap:.8rem;"><span class="team-group-count">2 organisations</span><div class="team-group-toggle">+</div></div>
+          <div class="team-group-left">
+            <span class="team-group-dot" style="background:var(--amber);"></span>
+            <span class="team-group-title">Lecturers &amp; Researchers</span>
+            <span class="team-group-count">7 members</span>
+          </div>
+          <div class="team-group-toggle">+</div>
         </div>
         <div class="team-group-body">
-          <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="font-size:.65rem;font-weight:700;">MA</div><div class="team-person-main"><strong>Meetellen Amsterdam</strong><span>Research agency, participatory research</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Meetellen Amsterdam is a research agency specialising in utilising experiential knowledge to amplify the voices of people in vulnerable positions. With 10 staff members, they conduct research across the social domain — unemployment, mental and physical health, homelessness, debt, loneliness — always focusing on the client's voice.</div></div>
-            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="font-size:.65rem;font-weight:700;">DS</div><div class="team-person-main"><strong>De Spiegelonderzoek</strong><span>Social enterprise, community-based research</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Founded by Younes Younes (VU Amsterdam, CIK Lab), De Spiegelonderzoek is a Netherlands-based platform focused on empowering refugees and marginalised communities through innovative research and capacity building.</div></div>
+          <div class="team-grid">
+            <div class="team-card">
+              <div class="team-avatar">MP</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Dr. Maeve Powlick</div>
+                <div class="team-card-role">Lecturer</div>
+                <a class="team-card-email" href="mailto:k.m.powlick@vu.nl">k.m.powlick@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">SH</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Saba Hamzah</div>
+                <div class="team-card-role">Researcher</div>
+                <a class="team-card-email" href="mailto:s.a.hamzah@vu.nl">s.a.hamzah@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">LW</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Louise Wolff</div>
+                <div class="team-card-role">Lecturer</div>
+                <a class="team-card-email" href="mailto:l.s.m.wolff@vu.nl">l.s.m.wolff@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">MS</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Melisa Soto Lafontaine</div>
+                <div class="team-card-role">Lecturer</div>
+                <a class="team-card-email" href="mailto:m.a.sotolafontaine@vu.nl">m.a.sotolafontaine@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">ÖT</div>
+              <div class="team-card-info">
+                <div class="team-card-name">dr. Özlem Terzi</div>
+                <div class="team-card-role">Coordinator Political Science Courses, Honours &amp; Internships</div>
+                <a class="team-card-email" href="mailto:o.terzi@vu.nl">o.terzi@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">FS</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Fiona Shan</div>
+                <div class="team-card-role">Research Associate</div>
+                <a class="team-card-email" href="mailto:h.y.shan@vu.nl">h.y.shan@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">DG</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Daniel Gómez Uribe</div>
+                <div class="team-card-role">Collaborator</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PhD Candidates -->
+      <div class="team-group">
+        <div class="team-group-header" onclick="toggleGroup(this)">
+          <div class="team-group-left">
+            <span class="team-group-dot" style="background:var(--red-light);"></span>
+            <span class="team-group-title">PhD Candidates</span>
+            <span class="team-group-count">7 members</span>
+          </div>
+          <div class="team-group-toggle">+</div>
+        </div>
+        <div class="team-group-body">
+          <div class="team-grid">
+            <div class="team-card">
+              <div class="team-avatar">TK</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Timo Korstenbroek</div>
+                <div class="team-card-role">PhD Candidate, Coordinator Co-Creation Lab</div>
+                <a class="team-card-email" href="mailto:t.m.korstenbroek@vu.nl">t.m.korstenbroek@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">YY</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Younes Younes</div>
+                <div class="team-card-role">PhD Candidate</div>
+                <a class="team-card-email" href="mailto:y.younes@vu.nl">y.younes@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">FH</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Fabian Holle</div>
+                <div class="team-card-role">PhD Candidate</div>
+                <a class="team-card-email" href="mailto:f.y.holle@vu.nl">f.y.holle@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">HL</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Helenard Louw</div>
+                <div class="team-card-role">PhD Candidate</div>
+                <a class="team-card-email" href="mailto:h.k.m.louw@vu.nl">h.k.m.louw@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">LB</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Laurine Blonk</div>
+                <div class="team-card-role">PhD Candidate</div>
+                <a class="team-card-email" href="mailto:j.l.blonk@vu.nl">j.l.blonk@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">MO</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Mimi Ocadiz Arriaga</div>
+                <div class="team-card-role">PhD Candidate</div>
+                <a class="team-card-email" href="mailto:m.a.ocadizarriaga@vu.nl">m.a.ocadizarriaga@vu.nl</a>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar">AG</div>
+              <div class="team-card-info">
+                <div class="team-card-name">Alexandra Greene</div>
+                <div class="team-card-role">PhD Candidate</div>
+                <a class="team-card-email" href="mailto:a.m.a.greene@vu.nl">a.m.a.greene@vu.nl</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Collaborating Organisations -->
+      <div class="team-group">
+        <div class="team-group-header" onclick="toggleGroup(this)">
+          <div class="team-group-left">
+            <span class="team-group-dot" style="background:var(--amber-light);"></span>
+            <span class="team-group-title">Collaborating Organisations</span>
+            <span class="team-group-count">2 organisations</span>
+          </div>
+          <div class="team-group-toggle">+</div>
+        </div>
+        <div class="team-group-body">
+          <div class="collab-grid">
+            <div class="collab-card">
+              <div class="collab-card-name">Meetellen Amsterdam</div>
+              <div class="collab-card-desc">A research agency specialising in utilising experiential knowledge to amplify the voices of people in vulnerable positions. With 10 staff members, they conduct research across the social domain — unemployment, mental and physical health, homelessness, debt, loneliness — always focusing on the client's voice and participatory methods.</div>
+            </div>
+            <div class="collab-card">
+              <div class="collab-card-name">De Spiegelonderzoek</div>
+              <div class="collab-card-desc">Founded by Younes Younes (VU Amsterdam, CIK Lab), De Spiegelonderzoek is a Netherlands-based platform and social enterprise focused on empowering refugees and marginalised communities through innovative research and capacity building, with a commitment to producing research that informs and empowers.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -710,10 +926,8 @@
   </div>
 </section>
 
-<!-- Wave: teal-dark → navy-dark -->
 <div style="line-height:0;display:block;background:#1B216B;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C200,10 400,70 600,40 C800,10 1000,70 1200,40 C1360,18 1420,55 1440,48 L1440,0 Z" fill="#02846E" stroke="none"/></svg></div>
 
-<!-- FOOTER -->
 <footer id="contact">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -764,13 +978,11 @@
 <script>
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   setTimeout(() => document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')), 800);
-
   document.getElementById('hamburger').addEventListener('click', function() {
     const links = document.querySelector('.nav-links');
     if (links) {
@@ -778,53 +990,14 @@
       else { links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:white;padding:1rem 2rem;border-bottom:1px solid #E0DDD8;gap:1rem;z-index:99;'; }
     }
   });
-
-  const themeColors = {
-    migration:    { color:'#2AA1DD',light:'rgba(42,161,221,0.15)',label:'Forced Migration' },
-    youth:        { color:'#2AD1B5',light:'rgba(42,209,181,0.15)',label:'Youth Beyond Binaries' },
-    economy:      { color:'#FCB040',light:'rgba(252,176,64,0.15)', label:'Economic Insecurities' },
-    storytelling: { color:'#FCC47A',light:'rgba(252,196,122,0.15)',label:'Storytelling & Identity' },
-    violence:     { color:'#FC6965',light:'rgba(252,105,101,0.15)',label:'Silenced Memories & Resisting Violence' },
-  };
-  document.querySelectorAll('.proj-filter').forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.proj-filter').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      const filter = this.dataset.filter;
-      document.querySelectorAll('.proj-card').forEach(card => {
-        if (filter === 'all' || card.dataset.theme === filter) {
-          card.classList.remove('hidden');
-          card.style.opacity='0'; card.style.transform='translateY(10px)';
-          requestAnimationFrame(() => { card.style.transition='opacity .3s ease,transform .3s ease'; card.style.opacity='1'; card.style.transform='translateY(0)'; });
-        } else { card.classList.add('hidden'); }
-      });
-    });
-  });
-
-  const overlay=document.getElementById('projModal'),modalBar=document.getElementById('projModalBar'),modalBadge=document.getElementById('projModalBadge'),modalTitle=document.getElementById('projModalTitle'),modalMeta=document.getElementById('projModalMeta'),modalDesc=document.getElementById('projModalDesc'),modalDets=document.getElementById('projModalDetails'),modalActs=document.getElementById('projModalActions');
-  function statusHTML(s){const cls=s==='Ongoing'?'ongoing':s==='Completed'?'completed':'new';return'<span class="proj-status '+cls+'">'+s+'</span>';}
-  document.querySelectorAll('.proj-card').forEach(card=>{
-    card.addEventListener('click',()=>{
-      const theme=card.dataset.theme,tc=themeColors[theme]||{color:'#FCB040',light:'rgba(252,176,64,0.15)',label:''};
-      modalBar.style.background=tc.color;
-      modalBadge.textContent=tc.label;
-      modalBadge.style.cssText='color:'+tc.color+';background:'+tc.light+';border:1px solid '+tc.color+'55;';
-      modalTitle.textContent=card.dataset.title;
-      modalDesc.textContent=card.dataset.desc;
-      modalMeta.innerHTML=statusHTML(card.dataset.status)+'<span class="proj-year-modal">'+card.dataset.year+'</span>';
-      modalDets.innerHTML='<div class="proj-modal-detail-row"><span class="proj-modal-detail-label">Researchers</span><span class="proj-modal-detail-value">'+card.dataset.researchers+'</span></div><div class="proj-modal-detail-row"><span class="proj-modal-detail-label">Partners</span><span class="proj-modal-detail-value">'+card.dataset.partners+'</span></div><div class="proj-modal-detail-row"><span class="proj-modal-detail-label">Methods</span><span class="proj-modal-detail-value">'+card.dataset.methods+'</span></div>';
-      const link=card.dataset.link,btnColor=['#FCB040','#FCC47A'].includes(tc.color)?'#1A1A1A':'white';
-      modalActs.innerHTML=(link?'<a href="'+link+'" target="_blank" rel="noopener" class="proj-modal-btn primary" style="background:'+tc.color+';border-color:'+tc.color+';color:'+btnColor+'">Visit project site &#8599;</a>':'<a href="#contact" class="proj-modal-btn primary" style="background:'+tc.color+';border-color:'+tc.color+';color:'+btnColor+'" onclick="closeModal()">Get in touch &rarr;</a>')+'<a href="#contact" class="proj-modal-btn ghost" onclick="closeModal()">Contact the lab</a>';
-      overlay.classList.add('open');document.body.style.overflow='hidden';
-    });
-  });
-  function closeModal(){overlay.classList.remove('open');document.body.style.overflow='';}
-  document.getElementById('projModalClose').addEventListener('click',closeModal);
-  overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-
-  function toggleGroup(header){header.closest('.team-group').classList.toggle('open');}
-  function togglePerson(person){person.classList.toggle('expanded');}
+  function toggleGroup(header){
+    const group = header.closest('.team-group');
+    group.classList.toggle('open');
+  }
+  function toggleWhat(header){
+    const item = header.closest('.what-item');
+    item.classList.toggle('open');
+  }
 </script>
 </body>
 </html>
