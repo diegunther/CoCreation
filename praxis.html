@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praxis & Resources, Co-creation for Inclusive Knowledges Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,800;1,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--dark:#1A1A1A;--mid:#555555;--light:#F8F7F5;--line:#E0DDD8;--white:#FFFFFF;--red-light:#FC6965;--red:#EE4A3E;--red-dark:#C12925;--teal-light:#2AD1B5;--teal:#01AA93;--teal-dark:#02846E;--navy-light:#5A61B7;--navy:#2E3192;--navy-dark:#1B216B;--blue-light:#2AA1DD;--blue:#0076BE;--blue-dark:#025F8E;--amber-light:#FCC47A;--amber:#FCB040;--amber-dark:#D38824;--t1:#EE4A3E;--t2:#01AA93;--t3:#2E3192;--t4:#0076BE;--t5:#FCB040;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;font-weight:400;background:var(--white);color:var(--dark);font-size:16px;line-height:1.65;overflow-x:hidden;}
+
+  .thread-accent{display:flex;align-items:center;gap:3px;margin-bottom:.55rem;}
+  .thread-accent span{display:block;height:3px;border-radius:2px;}
+  .ta-navy span:nth-child(1){background:#5A61B7;width:16px}.ta-navy span:nth-child(2){background:#FC6965;width:22px}.ta-navy span:nth-child(3){background:#2AD1B5;width:9px}.ta-navy span:nth-child(4){background:#FCB040;width:14px}.ta-navy span:nth-child(5){background:#2AA1DD;width:7px}
+  .ta-teal span:nth-child(1){background:#2AD1B5;width:20px}.ta-teal span:nth-child(2){background:#FCB040;width:7px}.ta-teal span:nth-child(3){background:#EE4A3E;width:15px}.ta-teal span:nth-child(4){background:#2AA1DD;width:9px}.ta-teal span:nth-child(5){background:#FCC47A;width:18px}
+  .ta-amber span:nth-child(1){background:#D38824;width:12px}.ta-amber span:nth-child(2){background:#EE4A3E;width:20px}.ta-amber span:nth-child(3){background:#01AA93;width:7px}.ta-amber span:nth-child(4){background:#2E3192;width:16px}.ta-amber span:nth-child(5){background:#FCB040;width:10px}
+  .nav-weave{display:flex;gap:2px;margin-top:3px;}
+  .nav-weave span{height:2px;border-radius:1px;}
+  .nav-weave span:nth-child(1){background:#EE4A3E;width:12px}.nav-weave span:nth-child(2){background:#01AA93;width:7px}.nav-weave span:nth-child(3){background:#2E3192;width:16px}.nav-weave span:nth-child(4){background:#0076BE;width:6px}.nav-weave span:nth-child(5){background:#FCB040;width:10px}
+  .footer-weave{display:flex;gap:3px;margin-bottom:1.2rem;}
+  .footer-weave span{height:2px;border-radius:1px;opacity:.6;}
+  .footer-weave span:nth-child(1){background:#EE4A3E;width:28px}.footer-weave span:nth-child(2){background:#01AA93;width:14px}.footer-weave span:nth-child(3){background:#2E3192;width:20px}.footer-weave span:nth-child(4){background:#0076BE;width:10px}.footer-weave span:nth-child(5){background:#FCB040;width:24px}.footer-weave span:nth-child(6){background:#2AD1B5;width:8px}.footer-weave span:nth-child(7){background:#FC6965;width:18px}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);transition:box-shadow .3s;}
+  nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.07);}
+  .nav-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--dark);}
+  .nav-logo img{height:44px;width:44px;object-fit:contain;flex-shrink:0;}
+  .nav-logo-text{display:flex;flex-direction:column;line-height:1.2;}
+  .nav-logo-name{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:.88rem;}
+  .nav-logo-sub{font-size:.72rem;color:var(--mid);font-weight:300;letter-spacing:.04em;}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{font-size:.88rem;color:var(--mid);text-decoration:none;font-weight:400;transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--red);}
+  .nav-dropdown{position:relative;}
+  .nav-dropdown-trigger{display:flex;align-items:center;gap:.3rem;cursor:pointer;}
+  .nav-arrow{font-size:.6rem;transition:transform .2s;display:inline-block;}
+  .nav-dropdown:hover .nav-arrow{transform:rotate(180deg);}
+  .nav-dropdown-menu{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);background:white;border:1px solid var(--line);border-radius:12px;padding:.5rem;min-width:170px;box-shadow:0 8px 30px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
+  .nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown-menu a{display:block;font-size:.84rem;color:var(--mid);padding:.5rem .9rem;border-radius:8px;transition:background .15s,color .15s;font-weight:400;}
+  .nav-dropdown-menu a:hover{background:var(--light);color:var(--red);}
+  .nav-cta{font-size:.85rem;font-weight:500;background:var(--red);color:white;border:none;padding:.55rem 1.3rem;border-radius:100px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(238,74,62,.35);}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .hamburger span{width:22px;height:1.5px;background:var(--dark);transition:.3s;}
+
+  /* HERO */
+  .page-hero{background:var(--navy);padding:9rem 2.5rem 6rem;position:relative;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(90,97,183,0.3) 0%,transparent 65%);pointer-events:none;}
+  .page-hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;}
+  .page-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-light);margin-bottom:1.5rem;}
+  .page-hero h1{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.15;color:white;margin-bottom:1.2rem;}
+  .page-hero h1 em{font-style:italic;color:var(--navy-light);}
+  .page-hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.82;max-width:660px;}
+  .hero-text-anim{animation:fadeUp .8s ease both;}
+
+  /* INTRO BAND */
+  .intro-band{background:var(--light);padding:3.5rem 2.5rem;}
+  .intro-inner{max-width:1180px;margin:0 auto;}
+  .intro-inner p{font-size:1rem;color:var(--mid);font-weight:300;line-height:1.85;max-width:820px;}
+
+  /* METHODOLOGY SECTIONS — alternating backgrounds */
+  .method-section{padding:5rem 2.5rem;}
+  .method-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start;}
+  .method-sidebar{position:sticky;top:7rem;}
+  .section-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;margin-bottom:.9rem;}
+  h2.section-title{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.22;letter-spacing:-.01em;margin-bottom:1.2rem;}
+  .method-body{display:flex;flex-direction:column;gap:1.2rem;}
+  .method-body p{font-size:.97rem;font-weight:300;line-height:1.82;}
+  .method-body h3{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.15rem;line-height:1.3;margin-top:.4rem;margin-bottom:.2rem;}
+
+  /* Principle list (PAR) */
+  .principle-list{display:flex;flex-direction:column;gap:1.1rem;margin-top:.5rem;}
+  .principle-item{border-left:3px solid;padding-left:1.1rem;}
+  .principle-item strong{display:block;font-size:.88rem;font-weight:500;margin-bottom:.25rem;}
+  .principle-item p{font-size:.88rem;font-weight:300;line-height:1.65;}
+
+  /* Linked projects pill row */
+  .linked-projects{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem;}
+  .linked-proj{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:500;padding:.3rem .85rem;border-radius:100px;text-decoration:none;border:1.5px solid;transition:opacity .2s;}
+  .linked-proj:hover{opacity:.75;}
+
+  /* Co-creators strip */
+  .cocreators-strip{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem;}
+  .cocreator-tag{font-size:.72rem;color:var(--mid);background:var(--light);border:1px solid var(--line);padding:.2rem .7rem;border-radius:100px;}
+
+  /* Section backgrounds */
+  .bg-white{background:var(--white);}
+  .bg-light{background:var(--light);}
+  .bg-navy{background:var(--navy);}
+  .bg-teal{background:var(--teal);}
+  .bg-amber{background:var(--amber);}
+  .bg-navy .section-label,.bg-teal .section-label{color:var(--teal-light);}
+  .bg-navy h2.section-title,.bg-teal h2.section-title{color:white;}
+  .bg-navy .method-body p,.bg-teal .method-body p{color:rgba(255,255,255,0.76);}
+  .bg-navy .method-body h3,.bg-teal .method-body h3{color:white;}
+  .bg-amber .section-label{color:var(--amber-dark);}
+
+  footer{background:var(--navy-dark);color:rgba(255,255,255,0.5);padding:4rem 2.5rem 2rem;}
+  .footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+  .footer-brand .footer-name{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.15rem;color:white;display:block;margin-bottom:.4rem;}
+  .footer-brand p{font-size:.85rem;line-height:1.65;max-width:280px;}
+  .footer-col h5{color:white;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.1rem;font-weight:500;}
+  .footer-col a{display:block;color:rgba(255,255,255,0.45);text-decoration:none;font-size:.86rem;margin-bottom:.55rem;transition:color .2s;}
+  .footer-col a:hover{color:var(--teal-light);}
+  .footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;flex-wrap:wrap;gap:.5rem;}
+  .footer-bottom a{color:var(--teal-light);text-decoration:none;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  .fade-in{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+
+  @media(max-width:1024px){.method-inner{grid-template-columns:1fr;gap:2rem;}.method-sidebar{position:static;}.footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}}
+  @media(max-width:768px){nav{padding:1rem 1.4rem;}.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}.page-hero{padding:7rem 1.4rem 4rem;}.method-section{padding:4rem 1.4rem;}.intro-band{padding:2.5rem 1.4rem;}.footer-inner{grid-template-columns:1fr;gap:2rem;}}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html">
+    <img src="images/logo.png" alt="CIK Lab Logo" />
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Co-creation for Inclusive<br>Knowledges Lab</span>
+      <span class="nav-logo-sub">Amsterdam</span>
+      <div class="nav-weave"><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <a href="index.html#what" class="nav-dropdown-trigger">About <span class="nav-arrow">&#9662;</span></a>
+      <div class="nav-dropdown-menu">
+        <a href="index.html#what">What We Do</a>
+        <a href="index.html#why">Purpose</a>
+        <a href="index.html#learning">Learning</a>
+      </div>
+    </li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="praxis.html" class="active">Praxis &amp; Resources</a></li>
+    <li><a href="spring-school.html">Spring School</a></li>
+    <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Get in Touch</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-text-anim">
+      <div class="page-eyebrow">Methodologies &amp; Approaches</div>
+      <h1>Praxis &amp; <em>Resources</em></h1>
+      <p class="page-hero-desc">At the Co-Creation Lab, we understand knowing and (un)doing as inseparable pathways for transformation. We believe that knowledge goes beyond producing through research — it is also about nourishing relationships, creativity, experimentation, reflection, and action.</p>
+    </div>
+  </div>
+</div>
+
+<div style="line-height:0;display:block;background:var(--light);overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#2E3192" stroke="none"/></svg></div>
+
+<div class="intro-band">
+  <div class="intro-inner fade-in">
+    <p>This space brings together diverse approaches that help us reimagine how knowledge can be cultivated, shared, and embodied. Drawing from academic, artistic, activist, and community-based traditions, we explore approaches that foster ethical collaboration, reciprocal learning, and collective action.</p>
+    <p style="margin-top:1rem;">Rather than offering fixed tools or universal solutions, we see methodologies as living practices that evolve through encounters with people, places, and struggles. Whether through storytelling, food practices, participatory action research, arts-based methods, community-led inquiry, or quantitative approaches, our aim is to nurture forms of knowledge production that are inclusive, reflexive, and responsive to the complexities of social life.</p>
+  </div>
+</div>
+
+<div style="line-height:0;display:block;background:var(--navy);overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,50 C180,10 360,70 540,40 C720,10 900,70 1080,40 C1260,10 1380,60 1440,45 L1440,0 Z" fill="#F8F7F5" stroke="none"/></svg></div>
+
+<!-- ENGAGED SCHOLARSHIP -->
+<section class="method-section bg-navy">
+  <div class="method-inner">
+    <div class="method-sidebar fade-in">
+      <div class="thread-accent ta-navy"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="section-label" style="color:var(--navy-light);">Methodology 01</div>
+      <h2 class="section-title">Engaged Scholarship</h2>
+      <div class="linked-projects" style="margin-top:1.5rem;">
+        <a class="linked-proj" href="projects.html" style="color:var(--teal-light);border-color:rgba(42,209,181,0.4);background:rgba(42,209,181,0.1);">&#8599; Engaged Scholarship: Narratives of Change</a>
+      </div>
+    </div>
+    <div class="method-body fade-in" style="transition-delay:.1s">
+      <p>Engaged scholarship refers to transformative and critical forms of academic work having the ambition and the capacity to stimulate reflection that enables more inclusive practices in society and academia. We have specifically explored, described, and developed this methodology in one project that was at the cradle of the Co-Creation for Inclusive Knowledges Lab: the NWO project Engaged Scholarship Narratives of Change, led by prof. Halleh Ghorashi.</p>
+      <p>This project aimed at a more comprehensive and transformative understanding of how engaged scholarship can contribute to the societal inclusion of refugees. Its underlying assumption is that the social sciences have an important role in enlarging societal and academic imaginations by connecting local, historical, and analytical knowledge to enable an actual inclusion of disadvantaged groups.</p>
+      <p>On the website of the Engaged Scholarship, Narratives of Change project you can find more information on engaged scholarship methodologies and related notions and literature, as well as examples of the contribution of engaged scholarship in stimulating and stipulating the conditions and narratives of change — in particular towards inclusion of refugees in the light of competing societal and academic demands and structures.</p>
+      <div class="cocreators-strip">
+        <span class="cocreator-tag" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);">Halleh Ghorashi</span>
+        <span class="cocreator-tag" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);">Elena Ponzoni</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="line-height:0;display:block;background:var(--white);overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,35 C200,75 400,5 600,45 C800,80 1000,10 1200,50 C1320,70 1400,30 1440,38 L1440,0 Z" fill="#2E3192" stroke="none"/></svg></div>
+
+<!-- ARTS-BASED METHODS -->
+<section class="method-section bg-white">
+  <div class="method-inner">
+    <div class="method-sidebar fade-in">
+      <div class="thread-accent ta-teal"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="section-label" style="color:var(--teal);">Methodology 02</div>
+      <h2 class="section-title" style="color:var(--dark);">Arts-based Methods</h2>
+      <div class="linked-projects" style="margin-top:1.5rem;">
+        <a class="linked-proj" href="projects.html" style="color:var(--teal);border-color:rgba(1,170,147,0.4);background:rgba(1,170,147,0.08);">&#8599; Common Ground Dialogues</a>
+        <a class="linked-proj" href="projects.html" style="color:var(--teal);border-color:rgba(1,170,147,0.4);background:rgba(1,170,147,0.08);">&#8599; LIMBO</a>
+        <a class="linked-proj" href="projects.html" style="color:var(--teal);border-color:rgba(1,170,147,0.4);background:rgba(1,170,147,0.08);">&#8599; Youth Leadership &amp; Resilience</a>
+        <a class="linked-proj" href="projects.html" style="color:var(--teal);border-color:rgba(1,170,147,0.4);background:rgba(1,170,147,0.08);">&#8599; Boundaries in Art-Based Research</a>
+      </div>
+    </div>
+    <div class="method-body fade-in" style="transition-delay:.1s">
+      <p>Arts-informed or arts-based approaches involve the interconnection of artistic practices and social research in different ways, through which knowledge is co-created. As outlined by Fabian Holle, Maria Rast and Halleh Ghorashi in their research, this holds that participants become involved as creative knowledge co-producers, which potentially enables critical reflection and the unsettlement of existing power (im-)balances.</p>
+      <p>Such an approach particularly values the situated knowledge based on lived experiences of participants, while simultaneously privileging self-determination, and the shifting of power toward participants who are taken seriously as partners in the process of both artistic creation as well as knowledge production.</p>
+      <p>The output of arts-based projects also carries a potential to be communicated to wider communities outside the walls of academia. But more importantly, by allowing for more sensorial, visual, emotional or simply more creative ways of working, artistic practices are tools for imagining new worlds or new horizons beyond the limits posed by (everyday) language — hereby opening up new pathways for social change.</p>
+      <div class="cocreators-strip">
+        <span class="cocreator-tag">Fabian Holle</span>
+        <span class="cocreator-tag">Alexandra Greene</span>
+        <span class="cocreator-tag">Timo Korstenbroek</span>
+        <span class="cocreator-tag">Maeve Powlick</span>
+        <span class="cocreator-tag">Maria Rast</span>
+        <span class="cocreator-tag">Halleh Ghorashi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="line-height:0;display:block;background:var(--teal);overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,30 C240,70 480,10 720,50 C960,80 1200,20 1440,55 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
+
+<!-- PAR -->
+<section class="method-section bg-teal">
+  <div class="method-inner">
+    <div class="method-sidebar fade-in">
+      <div class="thread-accent ta-teal"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="section-label" style="color:var(--teal-light);">Methodology 03</div>
+      <h2 class="section-title">Participatory Action Research</h2>
+      <div class="linked-projects" style="margin-top:1.5rem;">
+        <a class="linked-proj" href="projects.html" style="color:var(--teal-light);border-color:rgba(42,209,181,0.4);background:rgba(42,209,181,0.1);">&#8599; Wounded Storytellers</a>
+        <a class="linked-proj" href="projects.html" style="color:var(--teal-light);border-color:rgba(42,209,181,0.4);background:rgba(42,209,181,0.1);">&#8599; LIMBO</a>
+      </div>
+      <div class="cocreators-strip" style="margin-top:1.5rem;">
+        <span class="cocreator-tag" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);">Fabian Holle</span>
+        <span class="cocreator-tag" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);">Alexandra Greene</span>
+        <span class="cocreator-tag" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);">Lise Woensdregt</span>
+      </div>
+    </div>
+    <div class="method-body fade-in" style="transition-delay:.1s">
+      <p>Participatory Action Research (PAR) is an inclusive and collaborative approach to research that prioritises the active involvement of community members throughout the research process. PAR aims to democratise knowledge production by integrating the insights, experiences, and expertise of those who are typically marginalised or excluded from conventional research paradigms.</p>
+      <p>Cornish et al. (2023) describe four key principles:</p>
+      <div class="principle-list">
+        <div class="principle-item" style="border-color:var(--teal-light);">
+          <strong style="color:white;">Authority of direct experience</strong>
+          <p>PAR values the expertise generated through experience, claiming that those who have been marginalised or harmed by current social relations have deep experiential knowledge of those systems and deserve to own and lead initiatives to change them.</p>
+        </div>
+        <div class="principle-item" style="border-color:var(--teal-light);">
+          <strong style="color:white;">Knowledge in action</strong>
+          <p>Following the tradition of action research, it is through learning from the experience of making changes that PAR generates new knowledge.</p>
+        </div>
+        <div class="principle-item" style="border-color:var(--teal-light);">
+          <strong style="color:white;">Research as a transformative process</strong>
+          <p>For PAR, the research process is as important as the outcomes; projects aim to create empowering relationships and environments within the research process itself.</p>
+        </div>
+        <div class="principle-item" style="border-color:var(--teal-light);">
+          <strong style="color:white;">Collaboration and dialogue</strong>
+          <p>PAR's power comes from harnessing the diverse sets of expertise and capacities of its collaborators through critical dialogues.</p>
+        </div>
+      </div>
+      <h3 style="color:white;margin-top:1.2rem;">Key design considerations</h3>
+      <p><strong style="color:white;font-weight:500;">PAR cycles</strong> — PAR does not follow a highly proceduralized or linear set of steps. Instead, in a cyclical and open-ended process, teams work together to define their social problem, design a suitable action, observe and gather information, and then analyse and reflect, in order to learn and inform the next iteration of the research-action cycle.</p>
+      <p><strong style="color:white;font-weight:500;">Building relationships</strong> — Relationships first, research second is a key principle for PAR project design. Individual PAR projects are often nested in long-term collaborations. Trustworthy relationships depend on scholars being aware, open, and honest about their own interests and perspectives.</p>
+    </div>
+  </div>
+</section>
+
+<div style="line-height:0;display:block;background:var(--light);overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,38 C200,78 400,8 600,48 C800,80 1000,15 1200,50 C1340,72 1410,28 1440,42 L1440,0 Z" fill="#01AA93" stroke="none"/></svg></div>
+
+<!-- CLRA -->
+<section class="method-section bg-light">
+  <div class="method-inner">
+    <div class="method-sidebar fade-in">
+      <div class="thread-accent ta-amber"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="section-label" style="color:var(--amber-dark);">Methodology 04</div>
+      <h2 class="section-title" style="color:var(--dark);">Community-Led Research &amp; Action</h2>
+      <div class="linked-projects" style="margin-top:1.5rem;">
+        <a class="linked-proj" href="projects.html" style="color:var(--amber-dark);border-color:rgba(211,136,36,0.4);background:rgba(211,136,36,0.08);">&#8599; Queer Men in Nairobi</a>
+        <a class="linked-proj" href="projects.html" style="color:var(--amber-dark);border-color:rgba(211,136,36,0.4);background:rgba(211,136,36,0.08);">&#8599; Trans Healthcare Den Haag</a>
+      </div>
+      <div class="cocreators-strip" style="margin-top:1.5rem;">
+        <span class="cocreator-tag">Lise Woensdregt</span>
+      </div>
+    </div>
+    <div class="method-body fade-in" style="transition-delay:.1s">
+      <p>Community-Led Research and Action (CLRA) is a transformative research method. In this approach, individuals who can provide in-depth insights through their own lived experiences conduct action research themselves. The aim is to address a specific problem that directly affects them. 'Community' refers to a group of people who share a common experience, which becomes the subject of the research.</p>
+      <p>This method is based on the belief that people with lived experiences best understand their own needs and challenges and should therefore be actively involved in designing and conducting research as well as the subsequent actions. The CLRA method also encourages broader participation of these people as they themselves are the researchers — formulating their own goals, collecting data, conducting analyses, drawing conclusions, and making recommendations for relevant stakeholders, all under the guidance of trained researchers.</p>
+      <p>CLRA builds on other collaborative research forms such as photovoice, arts-based approaches, and participatory action research (PAR) but stands out in its unique characteristic. Unlike many PAR initiatives where the research subject is predetermined either by the grant call or the researcher, CLRA allows for equal involvement of each actor from the outset.</p>
+    </div>
+  </div>
+</section>
+
+<div style="line-height:0;display:block;background:var(--amber);overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,35 C200,75 400,5 600,45 C800,80 1000,10 1200,50 C1320,70 1400,30 1440,38 L1440,0 Z" fill="#F8F7F5" stroke="none"/></svg></div>
+
+<!-- FOOD PRACTICES -->
+<section class="method-section bg-amber">
+  <div class="method-inner">
+    <div class="method-sidebar fade-in">
+      <div class="thread-accent ta-amber"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="section-label" style="color:var(--amber-dark);">Methodology 05</div>
+      <h2 class="section-title" style="color:var(--dark);">Food Practices &amp; Pedagogies of Craving</h2>
+      <div class="linked-projects" style="margin-top:1.5rem;">
+        <a class="linked-proj" href="projects.html" style="color:var(--amber-dark);border-color:rgba(211,136,36,0.5);background:rgba(211,136,36,0.12);">&#8599; Engaged Scholarship: Narratives of Change</a>
+        <a class="linked-proj" href="https://engagedscholarshipnarrativesofchange.org/contributions/news/183-e-book-release-loboko-ya-mama-african-homemade-recipes-in-times-of-pandemic" target="_blank" rel="noopener" style="color:var(--amber-dark);border-color:rgba(211,136,36,0.5);background:rgba(211,136,36,0.12);">&#8599; Food for Change e-book</a>
+      </div>
+      <div class="cocreators-strip" style="margin-top:1.5rem;">
+        <span class="cocreator-tag">Miriam Ocadiz</span>
+      </div>
+    </div>
+    <div class="method-body fade-in" style="transition-delay:.1s">
+      <p>Food is far more than sustenance. It is a way of remembering, caring, resisting, creating community, and making sense of the world. At the Co-Creation for Inclusive Knowledges Lab, we approach food practices as powerful sites of knowledge production that connect bodies, emotions, memories, identities, and social relations.</p>
+      <p>Food practices encompass the many ways people engage with food: gathering ingredients, cooking, sharing meals, cultivating gardens, exchanging recipes, and preserving culinary traditions. These everyday acts carry histories of migration, displacement, belonging, and survival. They also reveal how people navigate inequality while creating (often unexpected) moments and spaces of pleasure, creativity, care, and connection.</p>
+      <p>Drawing inspiration from feminist, decolonial, and participatory traditions, food can be seen as both an analytical lens and a methodological tool for collaborative research. Miriam Ocadiz proposes the <strong>Pedagogies of Craving</strong> — an approach where cooking and eating in community enables storytelling, sensory ethnography, and intimate reflections. Here, food practices invite participants to engage with knowledge through the body rather than through words alone.</p>
+      <p>These approaches create opportunities for people from different backgrounds to meet, exchange experiences, and collectively reflect on questions of migration, gender, sexuality, home, religion, and memory. Food practices are particularly valuable for working with communities whose experiences are often overlooked or difficult to express through conventional research methods. By centring embodied knowledge and everyday expertise, they help challenge hierarchical forms of knowledge production and open pathways for more reciprocal, inclusive, and transformative forms of research.</p>
+    </div>
+  </div>
+</section>
+
+<div style="line-height:0;display:block;background:var(--white);overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,30 C240,70 480,10 720,50 C960,80 1200,20 1440,55 L1440,0 Z" fill="#FCB040" stroke="none"/></svg></div>
+
+<!-- QUANTITATIVE -->
+<section class="method-section bg-white">
+  <div class="method-inner">
+    <div class="method-sidebar fade-in">
+      <div class="thread-accent ta-teal"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="section-label" style="color:var(--blue);">Methodology 06</div>
+      <h2 class="section-title" style="color:var(--dark);">Quantitative Methods</h2>
+      <div class="linked-projects" style="margin-top:1.5rem;">
+        <a class="linked-proj" href="projects.html" style="color:var(--blue);border-color:rgba(0,118,190,0.4);background:rgba(0,118,190,0.07);">&#8599; Participatief Overlegpanel</a>
+      </div>
+      <div class="cocreators-strip" style="margin-top:1.5rem;">
+        <span class="cocreator-tag">Arjen de Wit</span>
+      </div>
+    </div>
+    <div class="method-body fade-in" style="transition-delay:.1s">
+      <p>Co-creation is often associated with qualitative, participatory, and arts-based approaches. However, at the Co-Creation for Inclusive Knowledges Lab, we believe that collaboration, participation, and shared ownership of knowledge can enrich all forms of research, including quantitative inquiry.</p>
+      <p>Quantitative methods offer powerful tools for understanding patterns, inequalities, and social transformations at larger scales. When approached through a co-creative lens, they can also create opportunities for communities, practitioners, policymakers, and researchers to collaboratively shape research questions, data collection strategies, interpretation processes, and the application of findings.</p>
+      <p>Arjen de Wit argues that by bringing together quantitative researchers interested in participation, inclusion, and social impact, we seek to explore what co-creation can mean within survey research, longitudinal studies, network analysis, evaluation research, computational methods, and other quantitative approaches. Together, we aim to develop innovative methodologies that combine analytical rigour with meaningful engagement, ensuring that data not only measures social realities but also contributes to transforming them.</p>
+      <p>Through dialogue, experimentation, and collaboration, we continue to expand the possibilities of co-creative research across methodological traditions.</p>
+    </div>
+  </div>
+</section>
+
+<div style="line-height:0;display:block;background:#1B216B;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C200,10 400,70 600,40 C800,10 1000,70 1200,40 C1360,18 1420,55 1440,48 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-weave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <span class="footer-name">Co-creation for Inclusive Knowledges Lab</span>
+      <p>A research lab within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, committed to building knowledge that includes, centres, and serves all communities.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <a href="index.html#what">What We Do</a>
+      <a href="index.html#why">Purpose</a>
+      <a href="projects.html">Projects</a>
+      <a href="praxis.html">Praxis &amp; Resources</a>
+      <a href="spring-school.html">Spring School</a>
+      <a href="blog.html">Blog</a>
+    </div>
+    <div class="footer-col">
+      <h5>Methodologies</h5>
+      <a href="#">Engaged Scholarship</a>
+      <a href="#">Arts-Based Methods</a>
+      <a href="#">Participatory Action Research</a>
+      <a href="#">Community-Led Research</a>
+      <a href="#">Food Practices</a>
+      <a href="#">Quantitative Methods</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="#">lab@vu.nl</a>
+      <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a>
+      <a href="#">De Boelelaan 1105</a>
+      <a href="#">1081 HV Amsterdam</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2026 Co-creation for Inclusive Knowledges Lab, <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a></span>
+    <span>Designed with care for accessibility and inclusion</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  setTimeout(() => document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')), 700);
+  document.getElementById('hamburger').addEventListener('click', function() {
+    const links = document.querySelector('.nav-links');
+    if (links) {
+      if (links.style.display === 'flex') links.style.display = 'none';
+      else links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:white;padding:1rem 2rem;border-bottom:1px solid #E0DDD8;gap:1rem;z-index:99;';
+    }
+  });
+</script>
+</body>
+</html>
