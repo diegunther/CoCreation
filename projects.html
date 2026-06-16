@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects, Co-creation for Inclusive Knowledges Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,800;1,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--dark:#1A1A1A;--mid:#555555;--light:#F8F7F5;--line:#E0DDD8;--white:#FFFFFF;--red-light:#FC6965;--red:#EE4A3E;--red-dark:#C12925;--teal-light:#2AD1B5;--teal:#01AA93;--teal-dark:#02846E;--navy-light:#5A61B7;--navy:#2E3192;--navy-dark:#1B216B;--blue-light:#2AA1DD;--blue:#0076BE;--blue-dark:#025F8E;--amber-light:#FCC47A;--amber:#FCB040;--amber-dark:#D38824;--t1:#EE4A3E;--t2:#01AA93;--t3:#2E3192;--t4:#0076BE;--t5:#FCB040;--c-migration:#2AA1DD;--c-migration-light:rgba(42,161,221,0.14);--c-youth:#2AD1B5;--c-youth-light:rgba(42,209,181,0.14);--c-economy:#FCB040;--c-economy-light:rgba(252,176,64,0.14);--c-storytelling:#FCC47A;--c-storytelling-light:rgba(252,196,122,0.14);--c-violence:#FC6965;--c-violence-light:rgba(252,105,101,0.14);--c-climate:#01AA93;--c-climate-light:rgba(1,170,147,0.14);}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;font-weight:400;background:var(--white);color:var(--dark);font-size:16px;line-height:1.65;overflow-x:hidden;}
+
+  .thread-accent{display:flex;align-items:center;gap:3px;margin-bottom:.55rem;}
+  .thread-accent span{display:block;height:3px;border-radius:2px;}
+  .ta-red span:nth-child(1){background:#FC6965;width:18px}.ta-red span:nth-child(2){background:#FCB040;width:9px}.ta-red span:nth-child(3){background:#2AD1B5;width:14px}.ta-red span:nth-child(4){background:#FCC47A;width:22px}.ta-red span:nth-child(5){background:#5A61B7;width:7px}
+  .nav-weave{display:flex;gap:2px;margin-top:3px;}
+  .nav-weave span{height:2px;border-radius:1px;}
+  .nav-weave span:nth-child(1){background:#EE4A3E;width:12px}.nav-weave span:nth-child(2){background:#01AA93;width:7px}.nav-weave span:nth-child(3){background:#2E3192;width:16px}.nav-weave span:nth-child(4){background:#0076BE;width:6px}.nav-weave span:nth-child(5){background:#FCB040;width:10px}
+  .footer-weave{display:flex;gap:3px;margin-bottom:1.2rem;}
+  .footer-weave span{height:2px;border-radius:1px;opacity:.6;}
+  .footer-weave span:nth-child(1){background:#EE4A3E;width:28px}.footer-weave span:nth-child(2){background:#01AA93;width:14px}.footer-weave span:nth-child(3){background:#2E3192;width:20px}.footer-weave span:nth-child(4){background:#0076BE;width:10px}.footer-weave span:nth-child(5){background:#FCB040;width:24px}.footer-weave span:nth-child(6){background:#2AD1B5;width:8px}.footer-weave span:nth-child(7){background:#FC6965;width:18px}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);transition:box-shadow .3s;}
+  nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.07);}
+  .nav-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--dark);}
+  .nav-logo img{height:44px;width:44px;object-fit:contain;flex-shrink:0;}
+  .nav-logo-text{display:flex;flex-direction:column;line-height:1.2;}
+  .nav-logo-name{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:.88rem;}
+  .nav-logo-sub{font-size:.72rem;color:var(--mid);font-weight:300;letter-spacing:.04em;}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{font-size:.88rem;color:var(--mid);text-decoration:none;font-weight:400;transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--red);}
+  .nav-dropdown{position:relative;}
+  .nav-dropdown-trigger{display:flex;align-items:center;gap:.3rem;cursor:pointer;}
+  .nav-arrow{font-size:.6rem;transition:transform .2s;display:inline-block;}
+  .nav-dropdown:hover .nav-arrow{transform:rotate(180deg);}
+  .nav-dropdown-menu{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);background:white;border:1px solid var(--line);border-radius:12px;padding:.5rem;min-width:170px;box-shadow:0 8px 30px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
+  .nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown-menu a{display:block;font-size:.84rem;color:var(--mid);padding:.5rem .9rem;border-radius:8px;transition:background .15s,color .15s;font-weight:400;}
+  .nav-dropdown-menu a:hover{background:var(--light);color:var(--red);}
+  .nav-cta{font-size:.85rem;font-weight:500;background:var(--red);color:white;border:none;padding:.55rem 1.3rem;border-radius:100px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(238,74,62,.35);}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .hamburger span{width:22px;height:1.5px;background:var(--dark);transition:.3s;}
+
+  /* HERO */
+  .page-hero{background:var(--red-dark);padding:9rem 2.5rem 6rem;position:relative;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(252,105,101,0.25) 0%,transparent 65%);pointer-events:none;}
+  .page-hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;}
+  .page-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--red-light);margin-bottom:1.5rem;}
+  .page-hero h1{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.15;color:white;margin-bottom:1.2rem;}
+  .page-hero h1 em{font-style:italic;color:var(--red-light);}
+  .page-hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.8;max-width:620px;}
+  .hero-text-anim{animation:fadeUp .8s ease both;}
+
+  /* FILTER BAR */
+  .filter-bar-wrap{background:var(--white);padding:1.5rem 2.5rem;border-bottom:1px solid var(--line);position:sticky;top:67px;z-index:50;}
+  .filter-bar{max-width:1180px;margin:0 auto;display:flex;gap:.55rem;flex-wrap:wrap;align-items:center;}
+  .filter-label{font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin-right:.4rem;flex-shrink:0;}
+  .theme-filter{padding:.4rem 1rem;border-radius:100px;border:1.5px solid var(--line);background:white;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:.4rem;color:var(--mid);}
+  .theme-filter .fdot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+  .theme-filter:hover{border-color:var(--red);color:var(--red);}
+  .theme-filter.active{color:white;}
+  .theme-filter[data-theme="all"].active{background:var(--dark);border-color:var(--dark);}
+  .theme-filter[data-theme="migration"].active{background:var(--c-migration);border-color:var(--c-migration);}
+  .theme-filter[data-theme="youth"].active{background:var(--c-youth);border-color:var(--c-youth);}
+  .theme-filter[data-theme="economy"].active{background:var(--c-economy);border-color:var(--c-economy);color:var(--dark);}
+  .theme-filter[data-theme="storytelling"].active{background:var(--c-storytelling);border-color:var(--c-storytelling);color:var(--dark);}
+  .theme-filter[data-theme="violence"].active{background:var(--c-violence);border-color:var(--c-violence);}
+  .theme-filter[data-theme="climate"].active{background:var(--c-climate);border-color:var(--c-climate);}
+
+  /* PROJECTS SECTION */
+  .projects-section{padding:4rem 2.5rem 6rem;background:var(--white);}
+  .projects-container{max-width:1180px;margin:0 auto;}
+
+  /* Theme group */
+  .proj-group{margin-bottom:3.5rem;}
+  .proj-group.hidden{display:none;}
+  .proj-group-header{display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem;padding-bottom:.9rem;border-bottom:2px solid;}
+  .proj-group-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+  .proj-group-title{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.3rem;letter-spacing:-.01em;}
+  .proj-group-count{font-size:.75rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--mid);margin-left:auto;}
+
+  /* Project cards */
+  .proj-list{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+  .proj-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:white;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;position:relative;cursor:pointer;}
+  .proj-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,0.12);}
+  .proj-card:hover .proj-arrow{opacity:1;transform:translate(0,0);}
+  .proj-card-bar{height:4px;flex-shrink:0;}
+  .proj-card-body{padding:1.6rem 1.6rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;flex:1;}
+  .proj-title{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.08rem;letter-spacing:-.01em;line-height:1.3;color:var(--dark);}
+  .proj-desc{font-size:.85rem;color:var(--mid);font-weight:300;line-height:1.65;flex:1;}
+  .proj-footer{display:flex;align-items:center;justify-content:space-between;margin-top:.6rem;padding-top:.8rem;border-top:1px solid var(--line);}
+  .proj-creators{font-size:.72rem;color:#aaa;font-weight:300;}
+  .proj-arrow{font-size:.85rem;color:var(--mid);opacity:0;transform:translate(-4px,4px);transition:opacity .2s,transform .2s;}
+
+  /* MODAL */
+  .proj-modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(10,10,20,0.7);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+  .proj-modal-overlay.open{opacity:1;pointer-events:all;}
+  .proj-modal{background:#0E0E1A;border-radius:20px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;transform:translateY(20px) scale(.97);transition:transform .28s ease;box-shadow:0 30px 80px rgba(0,0,0,0.5);position:relative;border:1px solid rgba(255,255,255,0.08);}
+  .proj-modal-overlay.open .proj-modal{transform:translateY(0) scale(1);}
+  .proj-modal-bar{height:5px;border-radius:20px 20px 0 0;}
+  .proj-modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:rgba(255,255,255,0.6);transition:background .2s,color .2s;}
+  .proj-modal-close:hover{background:white;color:var(--dark);}
+  .proj-modal-inner{padding:2rem 2rem 2.2rem;}
+  .proj-modal-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.69rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px;margin-bottom:.9rem;}
+  .proj-modal h2{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.65rem;letter-spacing:-.01em;line-height:1.22;margin-bottom:1rem;color:white;}
+  .proj-modal-body{font-size:.9rem;color:rgba(255,255,255,0.68);font-weight:300;line-height:1.8;margin-bottom:1.4rem;}
+  .proj-modal-body p{margin-bottom:.8rem;}
+  .proj-modal-body p:last-child{margin-bottom:0;}
+  .proj-modal-meta{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.3rem;display:flex;flex-direction:column;gap:.8rem;}
+  .proj-modal-row{display:flex;gap:.8rem;}
+  .proj-modal-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,0.35);min-width:120px;padding-top:.05rem;flex-shrink:0;}
+  .proj-modal-value{font-size:.86rem;color:rgba(255,255,255,0.72);font-weight:300;line-height:1.6;}
+  .proj-modal-actions{margin-top:1.6rem;display:flex;gap:.8rem;flex-wrap:wrap;}
+  .proj-modal-btn{padding:.6rem 1.35rem;border-radius:100px;font-size:.84rem;font-weight:500;cursor:pointer;text-decoration:none;border:1.5px solid;display:inline-block;transition:transform .18s;font-family:'Inter',sans-serif;}
+  .proj-modal-btn:hover{transform:translateY(-1px);}
+  .proj-modal-btn.ghost{background:transparent;color:rgba(255,255,255,0.55);border-color:rgba(255,255,255,0.2);}
+  .proj-modal-btn.ghost:hover{color:white;border-color:white;}
+
+  footer{background:var(--navy-dark);color:rgba(255,255,255,0.5);padding:4rem 2.5rem 2rem;}
+  .footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+  .footer-brand .footer-name{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.15rem;color:white;display:block;margin-bottom:.4rem;}
+  .footer-brand p{font-size:.85rem;line-height:1.65;max-width:280px;}
+  .footer-col h5{color:white;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.1rem;font-weight:500;}
+  .footer-col a{display:block;color:rgba(255,255,255,0.45);text-decoration:none;font-size:.86rem;margin-bottom:.55rem;transition:color .2s;}
+  .footer-col a:hover{color:var(--teal-light);}
+  .footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;flex-wrap:wrap;gap:.5rem;}
+  .footer-bottom a{color:var(--teal-light);text-decoration:none;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  .fade-in{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+
+  @media(max-width:768px){nav{padding:1rem 1.4rem;}.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}.page-hero{padding:7rem 1.4rem 4rem;}.projects-section{padding:3rem 1.4rem 5rem;}.filter-bar-wrap{padding:1.2rem 1.4rem;}.proj-list{grid-template-columns:1fr;}.footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}}
+  @media(max-width:480px){.footer-inner{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html">
+    <img src="images/logo.png" alt="CIK Lab Logo" />
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Co-creation for Inclusive<br>Knowledges Lab</span>
+      <span class="nav-logo-sub">Amsterdam</span>
+      <div class="nav-weave"><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <a href="index.html#what" class="nav-dropdown-trigger">About <span class="nav-arrow">&#9662;</span></a>
+      <div class="nav-dropdown-menu">
+        <a href="index.html#what">What We Do</a>
+        <a href="index.html#why">Purpose</a>
+        <a href="index.html#learning">Learning</a>
+      </div>
+    </li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="praxis.html">Praxis &amp; Resources</a></li>
+    <li><a href="spring-school.html">Spring School</a></li>
+    <li><a href="blog.html">Blog</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Get in Touch</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-text-anim">
+      <div class="page-eyebrow">Research in Action</div>
+      <h1>Our <em>Projects</em></h1>
+      <p class="page-hero-desc">Concrete partnerships and inquiries where co-creation happens across communities, institutions, and continents. Each project is a living site of collaboration — shaped by the people and contexts it works with.</p>
+    </div>
+  </div>
+</div>
+
+<div style="line-height:0;display:block;background:#FFFFFF;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#C12925" stroke="none"/></svg></div>
+
+<div class="filter-bar-wrap">
+  <div class="filter-bar">
+    <span class="filter-label">Theme</span>
+    <button class="theme-filter active" data-theme="all"><span class="fdot" style="background:var(--dark);"></span>All</button>
+    <button class="theme-filter" data-theme="migration"><span class="fdot" style="background:var(--c-migration);"></span>Forced Migration</button>
+    <button class="theme-filter" data-theme="youth"><span class="fdot" style="background:var(--c-youth);"></span>Youth Beyond Binaries</button>
+    <button class="theme-filter" data-theme="economy"><span class="fdot" style="background:var(--c-economy);"></span>Economic Insecurities</button>
+    <button class="theme-filter" data-theme="storytelling"><span class="fdot" style="background:var(--c-storytelling);"></span>Storytelling &amp; Identity</button>
+    <button class="theme-filter" data-theme="violence"><span class="fdot" style="background:var(--c-violence);"></span>Resisting Violence</button>
+    <button class="theme-filter" data-theme="climate"><span class="fdot" style="background:var(--c-climate);"></span>Climate &amp; Democracy</button>
+  </div>
+</div>
+
+<section class="projects-section">
+  <div class="projects-container">
+
+    <!-- FORCED MIGRATION -->
+    <div class="proj-group fade-in" data-group="migration">
+      <div class="proj-group-header" style="border-color:var(--c-migration);">
+        <span class="proj-group-dot" style="background:var(--c-migration);"></span>
+        <span class="proj-group-title" style="color:var(--c-migration);">Forced Migration</span>
+        <span class="proj-group-count">5 projects</span>
+      </div>
+      <div class="proj-list">
+
+        <div class="proj-card"
+          data-title="Engaged Scholarship: Narratives of Change"
+          data-theme="migration"
+          data-color="#2AA1DD"
+          data-creators="Halleh Ghorashi, Elena Ponzoni, Phoebe Kisubi Mbasalaki, Maria Rast, Miriam Ocadiz, Fabian Holle, Alexandra Greene, Sajad Salmanpour"
+          data-body="This comparative project investigates the co-operation between academy and society — labelled engaged scholarship — across three continents (South Africa, the US, and the Netherlands). Engaged scholarship refers to transformative and critical forms of academic work having the ambition and capacity to stimulate reflection that enables more inclusive practices in society and academia.||The project aims at a more comprehensive and transformative understanding of how engaged scholarship can contribute to the societal inclusion of refugees. Its underlying assumption is that the social sciences have an important role in enlarging societal and academic imaginations by connecting local, historical, and analytical knowledge to enable an actual inclusion of disadvantaged groups.||The project has three main objectives: collecting country-based data documenting narratives of refugees and engaged academics; gaining a deeper understanding of the views on engaged scholarship within academia and society in each country; and exploring historical and contextual differences through comparative analysis focused on enabling reflection on national blind spots regarding societal change.">
+          <div class="proj-card-bar" style="background:var(--c-migration);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Engaged Scholarship: Narratives of Change</div>
+            <div class="proj-desc">A comparative project investigating how engaged scholarship can contribute to the societal inclusion of refugees across South Africa, the US, and the Netherlands — examining power, inclusion, and the role of academics as allies.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Ghorashi, Ponzoni, Ocadiz et al.</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="The House of Stories (Het Verhalenhuis)"
+          data-theme="migration"
+          data-color="#2AA1DD"
+          data-link="https://rosestories.nl/podcast-verhalenhuis/"
+          data-creators="Elena Ponzoni, Halleh Ghorashi, Fabian Holle"
+          data-body="Het Verhalenhuis is a creative collaboration between Story Academy and Refugee Academy. Its main goal is to provide a platform for people with refugee backgrounds to receive professional guidance and share their unheard stories on stage, while also offering potential pathways for participants to explore opportunities within the arts sector.||Story Academy leads the direction and production of Het Verhalenhuis, supported by reflective research under the guidance of Refugee Academy. The reflection process involves gathering insights and experiences from both participants and facilitators through dialogue.||The project unfolds in twelve phases, each consisting of six storytelling workshops tailored for those who have experienced forced migration. Stories created during these workshops are transformed into podcasts, and a performance was staged at Theater Spui in The Hague on 29 April 2023.">
+          <div class="proj-card-bar" style="background:var(--c-migration);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">The House of Stories <em style="font-style:italic;font-size:.92em;">(Het Verhalenhuis)</em></div>
+            <div class="proj-desc">A creative collaboration giving people with refugee backgrounds professional guidance to share their unheard stories on stage — transformed into podcasts and live performances at Theater Spui in The Hague.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Ponzoni, Ghorashi, Holle</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="2incING: Promoting Inclusive Policy through Collaboration"
+          data-theme="migration"
+          data-color="#2AA1DD"
+          data-creators="Elena Ponzoni"
+          data-body="Creating effective and inclusive policies for the reception, integration, and participation of migrants and refugees is an ongoing challenge. At the heart of this challenge lies the need to incorporate the knowledge and perspectives of refugee and migrant communities, fostering exchange and cooperation between policymakers and refugee and migrant-led organisations.||The project focuses on establishing meaningful collaborations between policymakers and refugee-led organisations across Croatia, Malta, Belgium, Greece, and the Netherlands. It includes a masterclass for policymakers based on insights from professionals with refugee backgrounds, as well as workshops, advocacy academies, shadow reports, and policy dialogues.||Supported by the EU Asylum, Migration and Integration Fund (AMIF), with partners including the Centre for Peace Studies (Croatia), Aditus Foundation (Malta), ECRE (Belgium), Greek Forum of Refugees, and SYVNL.">
+          <div class="proj-card-bar" style="background:var(--c-migration);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">2incING Project</div>
+            <div class="proj-desc">Bridging policymakers and refugee/migrant-led organisations across five EU countries to create policies genuinely grounded in community realities. Supported by EU AMIF.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Elena Ponzoni</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="Library of In-between Stories (Bibliotheek van Tussenverhalen)"
+          data-theme="migration"
+          data-color="#2AA1DD"
+          data-creators="Elena Ponzoni"
+          data-body="Many young people grow up between different life worlds — between ethnic cultures, between school and street life, or between the LGBTQIA+ community and social contexts where queerness is not accepted or not the norm.||This project brings together young people, researchers, and youth professionals to better understand the experience of 'in-betweenness' and its position and importance in society. Together we create a digital library of narratives articulating experiences of in-betweenness.||The project involves a participative qualitative study of young people's experiences and the co-creation of a masterclass taught by young people to youth professionals. It is a collaboration between the VU, Hogeschool van Amsterdam, Hogeschool InHolland, Stichting Sitara, Criminal Minded, and Sociaal Cement.">
+          <div class="proj-card-bar" style="background:var(--c-migration);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Library of In-between Stories</div>
+            <div class="proj-desc">Young people, researchers, and youth professionals creating a digital library of narratives about growing up between different life worlds — cultural, social, and identity-based.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Elena Ponzoni</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="Boundaries in Art-Based Research about Refugee Experiences"
+          data-theme="migration"
+          data-color="#2AA1DD"
+          data-creators="Idris Alhassan, Husniya Kedr"
+          data-body="In recent years, art projects and art-based research have delved into the lives of people with a forced migration experience, aiming to create powerful counter-narratives. However, from within networks of people with refugee backgrounds, critical perspectives have emerged about participation in such projects — concerns about the exposure of intimate or traumatic experiences, and a sense of emptiness when sharing vulnerable stories does not lead to concrete change.||This small, refugee-led project takes a first step in collectively articulating the complexity of participating in art-based projects or research. It will spur reflection on the conditions for co-creative art-based work from the perspective of participants.||Idris Alhassan and Husniya Kedr will organise two workshops with people with refugee backgrounds who have experience in art-based projects, and describe outcomes in collaboration with participants in a video-lecture and short text.">
+          <div class="proj-card-bar" style="background:var(--c-migration);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Boundaries in Art-Based Research</div>
+            <div class="proj-desc">A refugee-led project creating space to collectively articulate the complexity and conditions for meaningful co-creation in art-based projects and research — centring the perspectives of participants.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Idris Alhassan, Husniya Kedr</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- YOUTH BEYOND BINARIES -->
+    <div class="proj-group fade-in" data-group="youth" style="transition-delay:.05s">
+      <div class="proj-group-header" style="border-color:var(--c-youth);">
+        <span class="proj-group-dot" style="background:var(--c-youth);"></span>
+        <span class="proj-group-title" style="color:var(--c-youth);">Youth Beyond Binaries</span>
+        <span class="proj-group-count">2 projects</span>
+      </div>
+      <div class="proj-list">
+
+        <div class="proj-card"
+          data-title="Leadership and Resilience: Co-Creation with Undocumented Youth"
+          data-theme="youth"
+          data-color="#2AD1B5"
+          data-creators="Maeve Powlick, Evelyn Vlasman, Gabriel Briar, Ruben Boers"
+          data-body="A group of undocumented youth and students are working together with VU researchers, activists, and social workers to better understand how to create inclusive educational environments.||Following a successful arts-based research project with Framer Framed in 2023, a co-creative research group was formed to explore key topics of importance to undocumented youth: mental well-being (especially for youth attending university), transitions from higher education to work, and inclusiveness in institutions of higher education.||Data collected through the project is being used, in partnership with ASKV and Stichting Leergeld Amsterdam, to create workshops for educators in secondary schools and higher education institutions. The project is funded through an NWA small projects grant as part of the Route Resilience programme.">
+          <div class="proj-card-bar" style="background:var(--c-youth);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Leadership &amp; Resilience: Co-Creation with Undocumented Youth</div>
+            <div class="proj-desc">Undocumented youth and VU researchers working together to understand and improve inclusive educational environments, creating workshops for educators across secondary and higher education.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Powlick, Vlasman, Briar, Boers</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="Community-Led Research and Action: Trans Healthcare in Den Haag"
+          data-theme="youth"
+          data-color="#2AD1B5"
+          data-creators="Lise Woensdregt"
+          data-body="The Municipality of The Hague recognises the importance of inclusive care and support for transgender youth. These young people face unique challenges in their development, self-acceptance, and social acceptance, particularly regarding gender diversity and the possible process of gender-affirming medical interventions.||Using Community-Led Research and Action (CLRA), this research maps the barriers and opportunities that transgender youth experience in their search for adequate care and support from their own perspective.||The project also investigates the challenges and opportunities that professionals encounter in their work with transgender youth, including their knowledge levels, availability of specific training on gender diversity, and institutional support or obstacles that affect their ability to provide effective, inclusive, and empathetic care.">
+          <div class="proj-card-bar" style="background:var(--c-youth);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Trans Healthcare in Den Haag</div>
+            <div class="proj-desc">Mapping barriers transgender youth face in accessing adequate care in The Hague — integrating both youth perspectives and professional experiences through community-led research.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Lise Woensdregt</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ECONOMIC INSECURITIES -->
+    <div class="proj-group fade-in" data-group="economy" style="transition-delay:.1s">
+      <div class="proj-group-header" style="border-color:var(--c-economy);">
+        <span class="proj-group-dot" style="background:var(--c-economy);"></span>
+        <span class="proj-group-title" style="color:var(--amber-dark);">Economic Insecurities</span>
+        <span class="proj-group-count">3 projects</span>
+      </div>
+      <div class="proj-list">
+
+        <div class="proj-card"
+          data-title="Economic Pathways for Financially Vulnerable Queer Men in Nairobi"
+          data-theme="economy"
+          data-color="#FCB040"
+          data-creators="dr. Lise Woensdregt"
+          data-body="This research addresses the challenge of achieving economic stability for financially vulnerable queer men engaged in sex work within Nairobi's risk-prone 'hustle economies.' Using Community-Led Research and Action (CLRA), an innovative and co-creative anthropological method, it explores how queer men can create pathways to financial independence and stability, particularly through queer entrepreneurship.||The project makes an innovative contribution to existing 'hustling' scholarship, exploring its meanings within the Kenyan queer context and its intersections with navigating precarious situations while envisioning social and economic futures.||The research outcomes will extend beyond traditional academic publications, presenting findings in disciplinary and non-disciplinary formats including comics, podcasts, videos, and written chapters. Funded by the Wenner-Gren Foundation Engaged Research Grant (June 2024–August 2025).">
+          <div class="proj-card-bar" style="background:var(--c-economy);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Economic Pathways for Queer Men in Nairobi</div>
+            <div class="proj-desc">Community-led research exploring financial resilience and queer entrepreneurship in Nairobi's hustle economies. Funded by the Wenner-Gren Foundation, June 2024–August 2025.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Lise Woensdregt</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="In Search of an In-Between Space — Kenniscentrum Ongelijkheid"
+          data-theme="economy"
+          data-color="#FCB040"
+          data-creators="Halleh Ghorashi, Elena Ponzoni, dr. Lise Woensdregt"
+          data-body="This project investigates whether and how co-creation based on epistemic plurality can strengthen democratic relationships that contribute to new, creative solutions to the many problems around inequality in Amsterdam.||In a number of co-creative sessions, intermediaries such as active residents, key figures, neighbourhood workers, civil servants, and researchers are brought together to collaboratively work on a concrete case. Through action research we analyse whether and how these intermediaries succeed in establishing new 'chains of trust' between different involved parties.||The project aims to develop a city-wide learning trajectory on multi-voiced collaboration in in-between spaces. Partners include E-Co/Samen Vooruit, Vrijwilligersacademie Amsterdam, University of Amsterdam, Hogeschool van Amsterdam, and the Municipality of Amsterdam.">
+          <div class="proj-card-bar" style="background:var(--c-economy);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">In Search of an In-Between Space</div>
+            <div class="proj-desc">Co-creative action research building new 'chains of trust' between Amsterdam residents, frontline workers, and policymakers to address persistent inequalities in the city.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Ghorashi, Ponzoni, Woensdregt</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="Participatief Overlegpanel over Sociale Bijstand"
+          data-theme="economy"
+          data-color="#FCB040"
+          data-creators="Boudewijn Goos, Arjen de Wit"
+          data-body="To strengthen research on the Dutch social assistance system, Boudewijn Goos and Arjen de Wit are establishing a stakeholder group or 'think tank' to jointly create knowledge for current or future research on social assistance.||This group will consist of other researchers, policymakers, representatives of social assistance recipients, and the recipients themselves. The aim is to enrich the value of scientific research by jointly determining how research questions are formulated, studies are designed, results are interpreted, and findings are applied to inform policy and practice.||In the belief that knowledge only exists where it is used, the think tank serves as a place where everyone leaves with new ideas applicable to daily life — contributing both to new perspectives for research and to facilitating dialogue between people with diverse perspectives.">
+          <div class="proj-card-bar" style="background:var(--c-economy);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Participatief Overlegpanel over Sociale Bijstand</div>
+            <div class="proj-desc">A stakeholder think tank co-creating knowledge on the Dutch social assistance system — bringing together researchers, policymakers, and benefit recipients to enrich and ground research in lived reality.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Boudewijn Goos, Arjen de Wit</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STORYTELLING & IDENTITY -->
+    <div class="proj-group fade-in" data-group="storytelling" style="transition-delay:.1s">
+      <div class="proj-group-header" style="border-color:var(--c-storytelling);">
+        <span class="proj-group-dot" style="background:var(--c-storytelling);"></span>
+        <span class="proj-group-title" style="color:var(--amber-dark);">Storytelling &amp; Identity</span>
+        <span class="proj-group-count">2 projects</span>
+      </div>
+      <div class="proj-list">
+
+        <div class="proj-card"
+          data-title="Common Ground Dialogues"
+          data-theme="storytelling"
+          data-color="#FCC47A"
+          data-link="https://cgd.spaceexplorers.nl/"
+          data-creators="Timo Korstenbroek, Lise Woensdregt"
+          data-body="The Common Ground Dialogues (CGD) project addresses deeply dividing issues in our societies through storytelling as an artistic practice. During ten participatory events called Storytelling Circles, the CGD methodology is researched and refined.||The project starts from the assumption that these circles have a depolarising effect by bringing together participants from different socio-economic and political backgrounds to address highly polarising issues through playful and artistic ways that can provoke empathy.||CGD is a collaboration between researchers on diversity and polarisation and artists, storytellers, and theatre makers. During the workshops, participants share stories linked to their personal experiences and identities while also creating a fictional story together. The project is funded by the European Commission's Creative Europe programme (2023–2025).">
+          <div class="proj-card-bar" style="background:var(--c-storytelling);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Common Ground Dialogues</div>
+            <div class="proj-desc">Bringing together people across political and social divides through Storytelling Circles — using fiction and play to address polarising issues with empathy. Creative Europe funded, 2023–2025.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Korstenbroek, Woensdregt</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="Crafting the Past through Memory Workshops in Colombia"
+          data-theme="storytelling"
+          data-color="#FCC47A"
+          data-creators="Dr. Daniel Gómez Uribe"
+          data-body="Evoking memories of a violent past can be a difficult and even traumatic process. The passage of time and the fragility of memory might lead to forgetting, changing, or equivocating about past events.||This project proposes memory workshops as an alternative for the co-production of data and local knowledge using creative and participatory research methods. Focusing on rural communities in Colombia, it employs creative tools such as memory web creation, collective drawing of timelines, and exploration of emotional biographies.||These activities enable communities to reflect on both the lived and spoken dimensions of their experiences, revisiting the practices and emotions tied to wartime and the construction of peace.">
+          <div class="proj-card-bar" style="background:var(--c-storytelling);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Crafting the Past through Memory Workshops in Colombia</div>
+            <div class="proj-desc">Memory workshops as a co-creative research method with rural Colombian communities — using timelines, memory webs, and emotional biographies to revisit wartime experience and peace-building.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Daniel Gómez Uribe</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RESISTING VIOLENCE -->
+    <div class="proj-group fade-in" data-group="violence" style="transition-delay:.1s">
+      <div class="proj-group-header" style="border-color:var(--c-violence);">
+        <span class="proj-group-dot" style="background:var(--c-violence);"></span>
+        <span class="proj-group-title" style="color:var(--red);">Resisting Violence</span>
+        <span class="proj-group-count">3 projects</span>
+      </div>
+      <div class="proj-list">
+
+        <div class="proj-card"
+          data-title="LIMBO: Queer Refugee Stories through Creative Practices"
+          data-theme="violence"
+          data-color="#FC6965"
+          data-creators="Fabian Holle, Thomars Shamuyarira, Rochita Loenen-Ruiz, Alaaddin Ammar"
+          data-body="LIMBO is a creative research collaboration between queer refugee community organisers/artists and Refugee Academy. LIMBO is a workshop series centring queer refugee stories through creative practices. The period September 2024 until June 2025 is funded by ILGA Europe.||Together, we aim to co-create meaningful knowledge on the challenges and resilience of queer refugees and the role of engaged scholarship. We are researching how engaged scholarship can be mutually beneficial in terms of knowledge and resources for those involved — the queer refugee community, (art and/or academic) institutions, community organisers, and artists.||The workshops are facilitated by Rochita Loenen-Ruiz (creative writer, artist), Lana Jelenjev (community care), and others. Workshops are free for LGBTQIA+ people with refugee experience. From September 2024, hosted by Makers Unite.">
+          <div class="proj-card-bar" style="background:var(--c-violence);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">LIMBO</div>
+            <div class="proj-desc">A workshop series centring queer refugee stories through creative practices, co-creating knowledge about resilience and the role of engaged scholarship. Funded by ILGA Europe, Sep 2024–Jun 2025.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Holle, Shamuyarira, Loenen-Ruiz, Ammar</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="Magazine for Global Reparations by Aralez"
+          data-theme="violence"
+          data-color="#FC6965"
+          data-creators="Elena Ponzoni"
+          data-body="The magazine aims to foster community initiatives and conversation on reparations and decolonisation. Today we see increasing conversations on decolonisation because of the work of grassroots activists pushing for institutional changes, which resulted in formal apologies from several Dutch institutions for the history of slavery. However, the subject of reparations remains ignored in mainstream conversation.||The magazine presents a manifesto for reparations that came as a result of two yearly conferences, aiming to become a conversation starter on global reparations. It also showcases five years of Aralez's work within community-driven projects related to decolonisation and reparations.||The central question: how can academia be in service of communities working on decolonisation and reparations? Aralez is a pan-decolonial network and grassroots organisation based in Amsterdam.">
+          <div class="proj-card-bar" style="background:var(--c-violence);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Magazine for Global Reparations by Aralez</div>
+            <div class="proj-desc">A community magazine connecting decolonisation activism with academic reflection — presenting a manifesto for reparations and showcasing five years of Aralez's community-driven work.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Elena Ponzoni</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="Exhibition: Wounded Storytellers — Photo-Voice Study"
+          data-theme="violence"
+          data-color="#FC6965"
+          data-creators="Helenard Louw"
+          data-body="As part of a PhD research project using Participatory Action Research methodology, this project explores ways of addressing interpersonal violence among 32 gang members (co-researchers/co-curators) who violently acquired a spinal cord injury through gang-related activities in Cape Town, South Africa.||The co-researchers created a collection of photo-stories depicting the causes and consequences of gang-related violence. The photo-stories illustrate significant identity reconfiguration and transformation post-injury, and propose ways of mobilising against interpersonal violence in their communities.||The exhibition (Cape Town, 2025) will be co-curated with co-researchers, Helenard Louw, and a professional curator. It aims to create social awareness on violence and form stronger relations between organisations and stakeholders on anti-violence work, and is rooted in community engagement, empowerment, agency, and anti-violence justice.">
+          <div class="proj-card-bar" style="background:var(--c-violence);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Exhibition: Wounded Storytellers</div>
+            <div class="proj-desc">A co-curated photo-voice exhibition with 32 gang-violence survivors in Cape Town — exploring identity transformation, resilience, and anti-violence mobilisation in marginalised communities.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Helenard Louw</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CLIMATE & DEMOCRACY -->
+    <div class="proj-group fade-in" data-group="climate" style="transition-delay:.12s">
+      <div class="proj-group-header" style="border-color:var(--c-climate);">
+        <span class="proj-group-dot" style="background:var(--c-climate);"></span>
+        <span class="proj-group-title" style="color:var(--teal-dark);">Climate &amp; Democracy</span>
+        <span class="proj-group-count">2 projects</span>
+      </div>
+      <div class="proj-list">
+
+        <div class="proj-card"
+          data-title="Between North and South: Perspectives on Climate Mobility"
+          data-theme="climate"
+          data-color="#01AA93"
+          data-creators="Dr. Robert Larruina"
+          data-body="In recent years, debates concerning climate change-induced human displacement have shifted from viewing it as a linear process to recognising the complex and shifting power relations that shape these two factors. Climate mobilities are concerned with social relations and dynamics that produce and distribute power among those affected by climate change.||This project proposes an exploratory partnership between different stakeholders. Robert Larruina will meet with critical scholars from the Global South and North with experience in development studies, disaster studies, environmental governance, and inclusion — to build a network with engaged scholars and connect with communities directly affected by climate mobilities.||The partnership will also involve preparing a research grant application addressing power dynamics at the intersection of climate change, community resilience, climate (im)mobility, and the space for co-creation practices.">
+          <div class="proj-card-bar" style="background:var(--c-climate);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Between North and South: Perspectives on Climate Mobility</div>
+            <div class="proj-desc">Building an engaged scholarship network around climate-induced displacement — connecting scholars from the Global South and North with communities directly affected by climate mobilities.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Robert Larruina</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj-card"
+          data-title="Our Cloud: Bringing Together Data Centre Activists and NGOs"
+          data-theme="climate"
+          data-color="#01AA93"
+          data-creators="Dr. Julia Rone"
+          data-body="In light of the pervasive digitalisation of work and leisure and the geopolitical race over developing AI language models, companies such as Microsoft Azure and Meta have doubled their data centre capacity in 2024. This boom has provoked strong local resistance in the Netherlands, Chile, Ireland, Luxembourg, and Spain.||Local activism against data centres has been driven by concerns about significant energy and water demands (environmental concerns) and the complete lack of democratic participation in decision-making (democratic concerns). Such activism has been strong at the local level but has so far not elaborated alternative visions of digital infrastructure.||This project brings together local activists and NGOs working on digital rights and public digital infrastructures, connecting grassroots resistance with legislative expertise to build a more comprehensive and democratic vision for digital futures.">
+          <div class="proj-card-bar" style="background:var(--c-climate);"></div>
+          <div class="proj-card-body">
+            <div class="proj-title">Our Cloud: Data Centre Activists &amp; NGOs</div>
+            <div class="proj-desc">Connecting grassroots data centre activists with digital rights NGOs to build democratic alternatives to corporate monopolies over digital infrastructure — from local resistance to collective vision.</div>
+            <div class="proj-footer">
+              <span class="proj-creators">Julia Rone</span>
+              <span class="proj-arrow">&#8599;</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECT MODAL -->
+<div class="proj-modal-overlay" id="projModal" role="dialog" aria-modal="true">
+  <div class="proj-modal">
+    <div class="proj-modal-bar" id="projModalBar"></div>
+    <button class="proj-modal-close" id="projModalClose" aria-label="Close">&#10005;</button>
+    <div class="proj-modal-inner">
+      <div class="proj-modal-badge" id="projModalBadge"></div>
+      <h2 id="projModalTitle"></h2>
+      <div class="proj-modal-body" id="projModalBody"></div>
+      <div class="proj-modal-meta" id="projModalMeta"></div>
+      <div class="proj-modal-actions" id="projModalActions"></div>
+    </div>
+  </div>
+</div>
+
+<div style="line-height:0;display:block;background:#1B216B;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,50 C180,10 360,70 540,40 C720,10 900,70 1080,40 C1260,10 1380,60 1440,45 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-weave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <span class="footer-name">Co-creation for Inclusive Knowledges Lab</span>
+      <p>A research lab within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, committed to building knowledge that includes, centres, and serves all communities.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <a href="index.html#what">What We Do</a>
+      <a href="index.html#why">Purpose</a>
+      <a href="projects.html">Projects</a>
+      <a href="praxis.html">Praxis &amp; Resources</a>
+      <a href="spring-school.html">Spring School</a>
+      <a href="blog.html">Blog</a>
+    </div>
+    <div class="footer-col">
+      <h5>Themes</h5>
+      <a href="#">Forced Migration</a>
+      <a href="#">Youth Beyond Binaries</a>
+      <a href="#">Economic Insecurities</a>
+      <a href="#">Storytelling &amp; Identity</a>
+      <a href="#">Resisting Violence</a>
+      <a href="#">Climate &amp; Democracy</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="#">lab@vu.nl</a>
+      <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a>
+      <a href="#">De Boelelaan 1105</a>
+      <a href="#">1081 HV Amsterdam</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2026 Co-creation for Inclusive Knowledges Lab, <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a></span>
+    <span>Designed with care for accessibility and inclusion</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  setTimeout(() => document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')), 700);
+
+  document.getElementById('hamburger').addEventListener('click', function() {
+    const links = document.querySelector('.nav-links');
+    if (links) {
+      if (links.style.display === 'flex') links.style.display = 'none';
+      else links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:white;padding:1rem 2rem;border-bottom:1px solid #E0DDD8;gap:1rem;z-index:99;';
+    }
+  });
+
+  // Theme filter
+  const themeLabels = { migration:'Forced Migration', youth:'Youth Beyond Binaries', economy:'Economic Insecurities', storytelling:'Storytelling & Identity', violence:'Resisting Violence', climate:'Climate & Democracy' };
+  document.querySelectorAll('.theme-filter').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.theme-filter').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const t = this.dataset.theme;
+      document.querySelectorAll('.proj-group').forEach(g => {
+        g.classList.toggle('hidden', t !== 'all' && g.dataset.group !== t);
+      });
+    });
+  });
+
+  // Modal
+  const overlay = document.getElementById('projModal');
+  const modalBar = document.getElementById('projModalBar');
+  const modalBadge = document.getElementById('projModalBadge');
+  const modalTitle = document.getElementById('projModalTitle');
+  const modalBody = document.getElementById('projModalBody');
+  const modalMeta = document.getElementById('projModalMeta');
+  const modalActions = document.getElementById('projModalActions');
+
+  document.querySelectorAll('.proj-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const color = card.dataset.color || '#EE4A3E';
+      const theme = card.dataset.theme;
+      const label = themeLabels[theme] || '';
+      const btnColor = ['#FCB040','#FCC47A'].includes(color) ? '#1A1A1A' : 'white';
+      modalBar.style.background = color;
+      modalBadge.textContent = label;
+      modalBadge.style.cssText = `color:${color};background:${color}22;border:1px solid ${color}55;`;
+      modalTitle.textContent = card.dataset.title;
+      const paras = (card.dataset.body || '').split('||').map(p => `<p>${p.trim()}</p>`).join('');
+      modalBody.innerHTML = paras;
+      modalMeta.innerHTML = `<div class="proj-modal-row"><span class="proj-modal-label">Co-creators</span><span class="proj-modal-value">${card.dataset.creators || '—'}</span></div>`;
+      const link = card.dataset.link;
+      modalActions.innerHTML = (link ? `<a href="${link}" target="_blank" rel="noopener" class="proj-modal-btn" style="background:${color};border-color:${color};color:${btnColor};">Visit project &#8599;</a>` : `<a href="index.html#contact" class="proj-modal-btn" style="background:${color};border-color:${color};color:${btnColor};" onclick="closeModal()">Get in touch &rarr;</a>`) + '<button class="proj-modal-btn ghost" onclick="closeModal()">Close</button>';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+  document.getElementById('projModalClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
