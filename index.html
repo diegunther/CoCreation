@@ -9,403 +9,348 @@
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,800;1,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --orange: #EE4A3E;
-    --orange-light: rgba(252,105,101,0.15);
-    --dark: #1A1A1A;
-    --mid: #555555;
-    --light: #F8F7F5;
-    --line: #E0DDD8;
-    --white: #FFFFFF;
-    --red-light: #FC6965;  --red:    #EE4A3E;  --red-dark:   #C12925;
-    --teal-light:#2AD1B5;  --teal:   #01AA93;  --teal-dark:  #02846E;
-    --navy-light:#5A61B7;  --navy:   #2E3192;  --navy-dark:  #1B216B;
-    --blue-light:#2AA1DD;  --blue:   #0076BE;  --blue-dark:  #025F8E;
-    --amber-light:#FCC47A; --amber:  #FCB040;  --amber-dark: #D38824;
-    --serif: 'Alegreya', Georgia, serif;
-    --sans: 'Inter', sans-serif;
+    --dark:#1A1A1A; --mid:#555555; --light:#F8F7F5; --line:#E0DDD8; --white:#FFFFFF;
+    --red-light:#FC6965;  --red:#EE4A3E;    --red-dark:#C12925;
+    --teal-light:#2AD1B5; --teal:#01AA93;   --teal-dark:#02846E;
+    --navy-light:#5A61B7; --navy:#2E3192;   --navy-dark:#1B216B;
+    --blue-light:#2AA1DD; --blue:#0076BE;   --blue-dark:#025F8E;
+    --amber-light:#FCC47A;--amber:#FCB040;  --amber-dark:#D38824;
+    /* Brand threads */
+    --t1:#EE4A3E; --t2:#01AA93; --t3:#2E3192; --t4:#0076BE; --t5:#FCB040;
+    --serif:'Alegreya',Georgia,serif;
+    --sans:'Inter',sans-serif;
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    background: var(--white);
-    color: var(--dark);
-    font-size: 16px;
-    line-height: 1.65;
-    overflow-x: hidden;
-  }
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem 2.5rem;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-    transition: box-shadow .3s;
-  }
-  nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
-  .nav-logo {
-    display: flex; flex-direction: row; align-items: center; gap: .65rem;
-    text-decoration: none; color: var(--dark);
-  }
-  .nav-logo img { height: 44px; width: 44px; object-fit: contain; flex-shrink: 0; }
-  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
-  .nav-logo-name { font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: .88rem; line-height: 1.2; }
-  .nav-logo-sub { font-family: 'Inter', sans-serif; font-size: .72rem; color: var(--mid); font-weight: 300; letter-spacing: .04em; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: .88rem; color: var(--mid); text-decoration: none;
-    font-weight: 400; letter-spacing: .02em; transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--red); }
-  .nav-cta {
-    font-size: .85rem; font-weight: 500;
-    background: var(--red); color: white;
-    border: none; padding: .55rem 1.3rem;
-    border-radius: 100px; cursor: pointer;
-    text-decoration: none;
-    transition: transform .2s, box-shadow .2s;
-  }
-  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(238,74,62,.35); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-  .hamburger span { width: 22px; height: 1.5px; background: var(--dark); transition: .3s; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;font-weight:400;background:var(--white);color:var(--dark);font-size:16px;line-height:1.65;overflow-x:hidden;}
 
-  /* HERO */
-  .hero-wrap { background: var(--white); }
-  .hero {
-    min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 7rem 2.5rem 4rem;
-    gap: 3rem;
-    max-width: 1280px; margin: 0 auto;
-  }
-  .hero-text { animation: fadeUp .8s ease both; }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: .6rem;
-    font-size: .78rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--red); margin-bottom: 1.5rem;
-  }
-  .hero-eyebrow::before { display: none; }
-  .hero h1 {
-    font-family: 'Alegreya', Georgia, serif;
-    font-weight: 800;
-    font-size: clamp(2.2rem, 4vw, 3.4rem);
-    line-height: 1.18; letter-spacing: -.01em; color: var(--dark); margin-bottom: 1.4rem;
-  }
-  .hero h1 em { font-style: italic; color: var(--red); }
-  .hero-sub {
-    font-family: 'Inter', sans-serif; font-weight: 300;
-    font-size: 1.05rem; color: var(--mid); max-width: 460px;
-    margin-bottom: 1.6rem; line-height: 1.75;
-  }
-  .hero-about {
-    font-family: 'Inter', sans-serif; font-weight: 300;
-    font-size: .9rem; color: var(--mid); max-width: 460px;
-    margin-bottom: 2.4rem; line-height: 1.8;
-    border-left: 2px solid rgba(252,105,101,0.4);
-    padding-left: 1.1rem;
-  }
-  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--red); color: white;
-    padding: .85rem 2rem; border-radius: 100px;
-    font-size: .92rem; font-weight: 500;
-    text-decoration: none; border: none; cursor: pointer;
-    transition: transform .2s, box-shadow .2s; display: inline-block;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(238,74,62,.35); }
-  .btn-ghost {
-    color: var(--dark); font-size: .92rem; font-weight: 400;
-    text-decoration: none; display: inline-flex; align-items: center; gap: .5rem;
-    transition: gap .2s, color .2s;
-  }
-  .btn-ghost:hover { gap: .8rem; color: var(--red); }
-  .btn-ghost::after { content: '→'; }
-  .hero-illustration { animation: fadeUp .8s .2s ease both; display: flex; justify-content: center; align-items: center; }
-  .hero-illustration img { width: 100%; max-width: 560px; height: 420px; object-fit: cover; border-radius: 20px; }
+  /* ═══════════════════════════════════════════════════════════
+     WEAVE IDENTITY SYSTEM
+  ═══════════════════════════════════════════════════════════ */
 
-  /* SECTIONS */
-  section { padding: 5rem 2.5rem; }
-  .container { max-width: 1180px; margin: 0 auto; }
-  .section-label {
-    font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
-    font-weight: 500; margin-bottom: .9rem;
-    display: flex; align-items: center; gap: .6rem;
-  }
-  .section-label::before { display: none; }
-  h2.section-title {
-    font-family: 'Alegreya', Georgia, serif;
-    font-weight: 800;
-    font-size: clamp(1.9rem, 3.5vw, 2.9rem);
-    line-height: 1.22; letter-spacing: -.01em; margin-bottom: 1.2rem;
-  }
-  .section-intro { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 300; max-width: 560px; line-height: 1.75; }
+  /* 1. THREAD ACCENT — 5 bars, varying widths, before section labels */
+  .thread-accent { display:flex; align-items:center; gap:3px; margin-bottom:.55rem; }
+  .thread-accent span { display:block; height:3px; border-radius:2px; }
 
-  /* WHAT WE DO — TEAL */
-  .what-bg { background: var(--teal); color: white; }
-  .what-bg .section-label { color: var(--teal-light); }
-  .what-bg .section-label::before { background: var(--teal-light); }
-  .what-bg h2.section-title { color: white; }
-  .what-bg .section-intro { color: rgba(255,255,255,0.82); }
-  .what-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 2px; margin-top: 3.5rem;
-    border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; overflow: hidden;
-  }
-  /* 4 cards: first 2 on row 1, last 2 on row 2 — last 2 span equally */
-  .what-card {
-    background: rgba(255,255,255,0.08);
-    padding: 2.4rem 2rem;
-    transition: background .25s;
-    position: relative; overflow: hidden;
-  }
-  .what-card::after {
-    content: ''; position: absolute; bottom: 0; left: 0;
-    width: 0; height: 3px; background: var(--teal-light);
-    transition: width .35s ease;
-  }
-  .what-card:hover::after { width: 100%; }
-  .what-card:hover { background: rgba(255,255,255,0.15); }
-  .what-icon {
-    width: 56px; height: 56px; margin-bottom: 1.5rem;
-    stroke: var(--teal-light); fill: none; stroke-width: 1.4;
-    stroke-linecap: round; stroke-linejoin: round;
-  }
-  .what-card h3 {
-    font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: 1.25rem;
-    margin-bottom: .7rem; letter-spacing: -.01em; color: white;
-  }
-  .what-card p { font-size: .92rem; color: rgba(255,255,255,0.78); line-height: 1.7; font-weight: 300; }
+  /* White/hero section */
+  .ta-white span:nth-child(1){background:#EE4A3E;width:18px}
+  .ta-white span:nth-child(2){background:#01AA93;width:8px}
+  .ta-white span:nth-child(3){background:#2E3192;width:14px}
+  .ta-white span:nth-child(4){background:#0076BE;width:22px}
+  .ta-white span:nth-child(5){background:#FCB040;width:10px}
 
-  /* WHY — NAVY */
-  #why { background: var(--navy); color: white; }
-  #why .section-label { color: var(--navy-light); }
-  #why .section-label::before { background: var(--navy-light); }
-  #why h2.section-title { color: white; }
-  #why .section-intro { color: rgba(255,255,255,0.80); }
-  .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .why-weave {
-    margin-top: 2.5rem;
-  }
-  .why-weave p {
-    font-size: .95rem; color: rgba(255,255,255,.75); font-weight: 300; line-height: 1.75; margin-bottom: 1.5rem;
-  }
-  .why-actors {
-    display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem;
-  }
-  .why-actor-tag {
-    font-size: .78rem; font-weight: 500; letter-spacing: .04em;
-    padding: .35rem .9rem; border-radius: 100px;
-    border: 1.5px solid rgba(90,97,183,0.6);
-    background: rgba(90,97,183,0.15); color: rgba(255,255,255,0.85);
-    transition: all .2s;
-  }
-  .why-actor-tag:hover { background: rgba(90,97,183,0.35); border-color: var(--navy-light); color: white; }
-  .why-visual { display: flex; justify-content: center; }
-  .why-visual img { width: 100%; max-width: 440px; height: 380px; object-fit: cover; border-radius: 16px; }
+  /* Teal section */
+  .ta-teal  span:nth-child(1){background:#2AD1B5;width:20px}
+  .ta-teal  span:nth-child(2){background:#FCB040;width:7px}
+  .ta-teal  span:nth-child(3){background:#EE4A3E;width:15px}
+  .ta-teal  span:nth-child(4){background:#2AA1DD;width:9px}
+  .ta-teal  span:nth-child(5){background:#FCC47A;width:18px}
 
-  /* LEARNING — AMBER */
-  #learning { background: var(--amber); color: var(--dark); }
-  #learning .section-label { color: var(--amber-dark); }
-  #learning .section-label::before { background: var(--amber-dark); }
-  #learning h2.section-title { color: var(--dark); }
-  #learning .section-intro { color: rgba(0,0,0,0.65); }
-  .learning-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .learning-visual img { width: 100%; max-width: 500px; height: 420px; object-fit: cover; border-radius: 16px; }
-  .learning-items { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
-  .learning-item { display: flex; gap: 1rem; align-items: flex-start; }
-  .learning-num { font-family: 'Alegreya', Georgia, serif; font-size: 1.6rem; color: var(--amber-dark); line-height: 1; min-width: 32px; margin-top: .1rem; }
-  .learning-item h4 { font-size: .97rem; font-weight: 500; margin-bottom: .3rem; color: var(--dark); }
-  .learning-item p { font-size: .87rem; color: rgba(0,0,0,0.60); font-weight: 300; line-height: 1.65; }
+  /* Navy section */
+  .ta-navy  span:nth-child(1){background:#5A61B7;width:16px}
+  .ta-navy  span:nth-child(2){background:#FC6965;width:22px}
+  .ta-navy  span:nth-child(3){background:#2AD1B5;width:9px}
+  .ta-navy  span:nth-child(4){background:#FCB040;width:14px}
+  .ta-navy  span:nth-child(5){background:#2AA1DD;width:7px}
 
-  /* PRAXIS & RESOURCES — RED */
-  .projects-bg { background: var(--red-dark); color: white; }
-  .projects-bg .section-label { color: var(--red-light); }
-  .projects-bg .section-label::before { background: var(--red-light); }
-  .projects-bg h2.section-title { color: white; }
-  .projects-bg .section-intro { color: rgba(255,255,255,0.82); }
-  :root {
-    --c-migration:    #2AA1DD; --c-migration-light: rgba(42,161,221,0.15); --c-migration-mid: rgba(42,161,221,0.35);
-    --c-youth:        #2AD1B5; --c-youth-light:     rgba(42,209,181,0.15); --c-youth-mid:     rgba(42,209,181,0.35);
-    --c-economy:      #FCB040; --c-economy-light:   rgba(252,176,64,0.15); --c-economy-mid:   rgba(252,176,64,0.35);
-    --c-storytelling: #FCC47A; --c-storytelling-light:rgba(252,196,122,0.15);--c-storytelling-mid:rgba(252,196,122,0.35);
-    --c-violence:     #FC6965; --c-violence-light:  rgba(252,105,101,0.15); --c-violence-mid:  rgba(252,105,101,0.35);
+  /* Amber section */
+  .ta-amber span:nth-child(1){background:#D38824;width:12px}
+  .ta-amber span:nth-child(2){background:#EE4A3E;width:20px}
+  .ta-amber span:nth-child(3){background:#01AA93;width:7px}
+  .ta-amber span:nth-child(4){background:#2E3192;width:16px}
+  .ta-amber span:nth-child(5){background:#FCB040;width:10px}
+
+  /* Red/dark-red section */
+  .ta-red   span:nth-child(1){background:#FC6965;width:14px}
+  .ta-red   span:nth-child(2){background:#FCB040;width:9px}
+  .ta-red   span:nth-child(3){background:#2AD1B5;width:20px}
+  .ta-red   span:nth-child(4){background:#FCC47A;width:7px}
+  .ta-red   span:nth-child(5){background:#5A61B7;width:16px}
+
+  /* Teal-dark section */
+  .ta-teal-dark span:nth-child(1){background:#2AD1B5;width:10px}
+  .ta-teal-dark span:nth-child(2){background:#FCB040;width:18px}
+  .ta-teal-dark span:nth-child(3){background:#FC6965;width:6px}
+  .ta-teal-dark span:nth-child(4){background:#2AA1DD;width:14px}
+  .ta-teal-dark span:nth-child(5){background:#FCC47A;width:20px}
+
+  /* 2. NAV WEAVE */
+  .nav-weave { display:flex; gap:2px; margin-top:3px; }
+  .nav-weave span { height:2px; border-radius:1px; }
+  .nav-weave span:nth-child(1){background:#EE4A3E;width:12px}
+  .nav-weave span:nth-child(2){background:#01AA93;width:7px}
+  .nav-weave span:nth-child(3){background:#2E3192;width:16px}
+  .nav-weave span:nth-child(4){background:#0076BE;width:6px}
+  .nav-weave span:nth-child(5){background:#FCB040;width:10px}
+
+  /* 3. WOVEN DIVIDERS */
+  .woven-divider { display:block; width:100%; overflow:hidden; line-height:0; }
+
+  /* 4. ACTOR TAGS — matches reference: curved left-bracket ( + coloured dot + label */
+  .actor-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.2rem; }
+  .actor-tag {
+    display: inline-flex; align-items: center; gap: .4rem;
+    font-size: .78rem; font-weight: 500; letter-spacing: .02em;
+    padding: .32rem .85rem .32rem .5rem;
+    border-radius: 100px;
+    border: 1.5px solid rgba(90,97,183,0.45);
+    background: rgba(90,97,183,0.12);
+    color: rgba(255,255,255,0.88);
+    transition: background .2s, border-color .2s;
+    cursor: default;
   }
-  .proj-filter-bar { display: flex; flex-wrap: wrap; gap: .6rem; margin: 2.5rem 0 2rem; }
-  .proj-filter {
-    padding: .48rem 1.15rem; border-radius: 100px;
-    border: 1.5px solid rgba(255,255,255,0.25);
-    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8);
-    font-size: .82rem; font-weight: 500; cursor: pointer;
-    transition: all .22s; font-family: 'Inter', sans-serif;
-    display: inline-flex; align-items: center; gap: .45rem;
+  .actor-tag::before {
+    /* The curved ( bracket — SVG data URI, white-ish stroke */
+    content: '';
+    display: block; flex-shrink: 0; width: 12px; height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'%3E%3Cpath d='M9 1 Q3 7 9 13' stroke='rgba(255,255,255,0.45)' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: contain; background-repeat: no-repeat;
   }
-  .proj-filter .filter-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: 0; transform: scale(0); transition: all .2s; }
-  .proj-filter.active .filter-dot, .proj-filter:hover .filter-dot { opacity: 1; transform: scale(1); }
-  .proj-filter[data-filter="all"]:hover, .proj-filter[data-filter="all"].active { background: white; border-color: white; color: var(--red-dark); }
-  .proj-filter[data-filter="migration"]:hover,  .proj-filter[data-filter="migration"].active  { background: var(--c-migration-light); border-color: var(--c-migration); color: var(--c-migration); }
-  .proj-filter[data-filter="youth"]:hover,       .proj-filter[data-filter="youth"].active       { background: var(--c-youth-light);     border-color: var(--c-youth);     color: var(--c-youth);     }
-  .proj-filter[data-filter="economy"]:hover,     .proj-filter[data-filter="economy"].active     { background: var(--c-economy-light);   border-color: var(--c-economy);   color: var(--c-economy);   }
-  .proj-filter[data-filter="storytelling"]:hover,.proj-filter[data-filter="storytelling"].active{ background: var(--c-storytelling-light);border-color:var(--c-storytelling);color:var(--c-storytelling);}
-  .proj-filter[data-filter="violence"]:hover,    .proj-filter[data-filter="violence"].active    { background: var(--c-violence-light);  border-color: var(--c-violence);  color: var(--c-violence);  }
-  .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .proj-card {
-    border: 1px solid #E0DDD8; border-radius: 14px;
-    padding: 0; background: white;
-    transition: transform .25s, box-shadow .25s;
-    display: flex; flex-direction: column;
-    position: relative; overflow: hidden; cursor: pointer;
+  .actor-tag:hover { background: rgba(90,97,183,0.28); border-color: rgba(90,97,183,0.8); }
+  .tag-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  /* Cycle through 5 brand thread colours */
+  .actor-tag:nth-child(5n+1) .tag-dot { background: var(--t1); }
+  .actor-tag:nth-child(5n+2) .tag-dot { background: var(--t2); }
+  .actor-tag:nth-child(5n+3) .tag-dot { background: var(--t3); }
+  .actor-tag:nth-child(5n+4) .tag-dot { background: var(--t4); }
+  .actor-tag:nth-child(5n+5) .tag-dot { background: var(--t5); }
+
+  /* 5. FOOTER WEAVE */
+  .footer-weave { display:flex; gap:3px; margin-bottom:1.2rem; }
+  .footer-weave span { height:2px; border-radius:1px; opacity:.6; }
+  .footer-weave span:nth-child(1){background:#EE4A3E;width:28px}
+  .footer-weave span:nth-child(2){background:#01AA93;width:14px}
+  .footer-weave span:nth-child(3){background:#2E3192;width:20px}
+  .footer-weave span:nth-child(4){background:#0076BE;width:10px}
+  .footer-weave span:nth-child(5){background:#FCB040;width:24px}
+  .footer-weave span:nth-child(6){background:#2AD1B5;width:8px}
+  .footer-weave span:nth-child(7){background:#FC6965;width:18px}
+
+  /* 6. ANIMATED HERO WEAVE */
+  @keyframes warp-drift{0%,100%{transform:translateX(0)}50%{transform:translateX(9px)}}
+  @keyframes weft-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  .hero-weave-wrap{position:absolute;top:0;right:0;pointer-events:none;overflow:hidden;width:320px;height:380px;opacity:.04;}
+  .warp{animation:warp-drift 22s ease-in-out infinite;}
+  .weft{animation:weft-drift 15s ease-in-out infinite;}
+  @media(prefers-reduced-motion:reduce){.warp,.weft{animation:none;}}
+
+  /* ═══════════════════════════════════════════════════════════
+     NAV
+  ═══════════════════════════════════════════════════════════ */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);transition:box-shadow .3s;}
+  nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.07);}
+  .nav-logo{display:flex;flex-direction:row;align-items:center;gap:.65rem;text-decoration:none;color:var(--dark);}
+  .nav-logo img{height:44px;width:44px;object-fit:contain;flex-shrink:0;}
+  .nav-logo-text{display:flex;flex-direction:column;line-height:1.2;}
+  .nav-logo-name{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:.88rem;line-height:1.2;}
+  .nav-logo-sub{font-family:'Inter',sans-serif;font-size:.72rem;color:var(--mid);font-weight:300;letter-spacing:.04em;}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{font-size:.88rem;color:var(--mid);text-decoration:none;font-weight:400;letter-spacing:.02em;transition:color .2s;}
+  .nav-links a:hover{color:var(--red);}
+  .nav-cta{font-size:.85rem;font-weight:500;background:var(--red);color:white;border:none;padding:.55rem 1.3rem;border-radius:100px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(238,74,62,.35);}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .hamburger span{width:22px;height:1.5px;background:var(--dark);transition:.3s;}
+
+  /* ═══ HERO ═══════════════════════════════════════════════ */
+  .hero-wrap{background:var(--white);position:relative;overflow:hidden;}
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 2.5rem 4rem;gap:3rem;max-width:1280px;margin:0 auto;}
+  .hero-text{animation:fadeUp .8s ease both;position:relative;z-index:1;}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem;}
+  .hero h1{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.18;letter-spacing:-.01em;color:var(--dark);margin-bottom:1.4rem;}
+  .hero h1 em{font-style:italic;color:var(--red);}
+  .hero-sub{font-weight:300;font-size:1.05rem;color:var(--mid);max-width:460px;margin-bottom:1.6rem;line-height:1.75;}
+  .hero-about{font-weight:300;font-size:.9rem;color:var(--mid);max-width:460px;margin-bottom:2.4rem;line-height:1.8;border-left:2px solid rgba(252,105,101,0.4);padding-left:1.1rem;}
+  .hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;}
+  .btn-primary{background:var(--red);color:white;padding:.85rem 2rem;border-radius:100px;font-size:.92rem;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;display:inline-block;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(238,74,62,.35);}
+  .btn-ghost{color:var(--dark);font-size:.92rem;font-weight:400;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:gap .2s,color .2s;}
+  .btn-ghost:hover{gap:.8rem;color:var(--red);}
+  .btn-ghost::after{content:'→';}
+  .hero-illustration{animation:fadeUp .8s .2s ease both;display:flex;justify-content:center;align-items:center;}
+  .hero-illustration img{width:100%;max-width:560px;height:420px;object-fit:cover;border-radius:20px;}
+
+  /* ═══ SECTIONS ════════════════════════════════════════════ */
+  section{padding:5rem 2.5rem;}
+  .container{max-width:1180px;margin:0 auto;}
+  .section-label{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;margin-bottom:.9rem;}
+  h2.section-title{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(1.9rem,3.5vw,2.9rem);line-height:1.22;letter-spacing:-.01em;margin-bottom:1.2rem;}
+  .section-intro{font-size:1.05rem;font-weight:300;max-width:560px;line-height:1.75;}
+
+  /* WHAT — teal */
+  .what-bg{background:var(--teal);color:white;}
+  .what-bg .section-label{color:var(--teal-light);}
+  .what-bg h2.section-title{color:white;}
+  .what-bg .section-intro{color:rgba(255,255,255,0.82);}
+  .what-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:3.5rem;border:1px solid rgba(255,255,255,0.15);border-radius:16px;overflow:hidden;}
+  .what-card{background:rgba(255,255,255,0.08);padding:2.4rem 2rem;transition:background .25s;position:relative;overflow:hidden;}
+  .what-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--teal-light);transition:width .35s ease;}
+  .what-card:hover::after{width:100%;}
+  .what-card:hover{background:rgba(255,255,255,0.15);}
+  .what-icon{width:56px;height:56px;margin-bottom:1.5rem;stroke:var(--teal-light);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+  .what-card h3{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.25rem;margin-bottom:.7rem;letter-spacing:-.01em;color:white;}
+  .what-card p{font-size:.92rem;color:rgba(255,255,255,0.78);line-height:1.7;font-weight:300;}
+
+  /* WHY — navy */
+  #why{background:var(--navy);color:white;}
+  #why .section-label{color:var(--navy-light);}
+  #why h2.section-title{color:white;}
+  #why .section-intro{color:rgba(255,255,255,0.80);}
+  .why-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .why-weave{margin-top:2.5rem;}
+  .why-weave p{font-size:.95rem;color:rgba(255,255,255,.75);font-weight:300;line-height:1.75;margin-bottom:1.5rem;}
+  .why-visual{display:flex;justify-content:center;}
+  .why-visual img{width:100%;max-width:440px;height:380px;object-fit:cover;border-radius:16px;}
+
+  /* LEARNING — amber */
+  #learning{background:var(--amber);color:var(--dark);}
+  #learning .section-label{color:var(--amber-dark);}
+  #learning h2.section-title{color:var(--dark);}
+  #learning .section-intro{color:rgba(0,0,0,0.65);}
+  .learning-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .learning-visual img{width:100%;max-width:500px;height:420px;object-fit:cover;border-radius:16px;}
+  .learning-items{margin-top:2rem;display:flex;flex-direction:column;gap:1.5rem;}
+  .learning-item{display:flex;gap:1rem;align-items:flex-start;}
+  .learning-num{font-family:'Alegreya',Georgia,serif;font-size:1.6rem;color:var(--amber-dark);line-height:1;min-width:32px;margin-top:.1rem;}
+  .learning-item h4{font-size:.97rem;font-weight:500;margin-bottom:.3rem;color:var(--dark);}
+  .learning-item p{font-size:.87rem;color:rgba(0,0,0,0.60);font-weight:300;line-height:1.65;}
+
+  /* PRAXIS — red */
+  .projects-bg{background:var(--red-dark);color:white;}
+  .projects-bg .section-label{color:var(--red-light);}
+  .projects-bg h2.section-title{color:white;}
+  .projects-bg .section-intro{color:rgba(255,255,255,0.82);}
+  :root{
+    --c-migration:#2AA1DD;--c-migration-light:rgba(42,161,221,0.15);--c-migration-mid:rgba(42,161,221,0.35);
+    --c-youth:#2AD1B5;--c-youth-light:rgba(42,209,181,0.15);--c-youth-mid:rgba(42,209,181,0.35);
+    --c-economy:#FCB040;--c-economy-light:rgba(252,176,64,0.15);--c-economy-mid:rgba(252,176,64,0.35);
+    --c-storytelling:#FCC47A;--c-storytelling-light:rgba(252,196,122,0.15);--c-storytelling-mid:rgba(252,196,122,0.35);
+    --c-violence:#FC6965;--c-violence-light:rgba(252,105,101,0.15);--c-violence-mid:rgba(252,105,101,0.35);
   }
-  .proj-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,0.18); }
-  .proj-card:hover .proj-arrow { opacity: 1; transform: translate(0,0); }
-  .proj-card.hidden { display: none; }
-  .proj-card-bar { height: 4px; width: 100%; flex-shrink: 0; }
-  .proj-card[data-theme="migration"]    .proj-card-bar { background: var(--c-migration); }
-  .proj-card[data-theme="youth"]        .proj-card-bar { background: var(--c-youth); }
-  .proj-card[data-theme="economy"]      .proj-card-bar { background: var(--c-economy); }
-  .proj-card[data-theme="storytelling"] .proj-card-bar { background: var(--c-storytelling); }
-  .proj-card[data-theme="violence"]     .proj-card-bar { background: var(--c-violence); }
-  .proj-card-body { padding: 1.6rem 1.6rem 1.4rem; display: flex; flex-direction: column; gap: .55rem; flex: 1; }
-  .proj-theme-badge {
-    display: inline-flex; align-items: center; gap: .45rem;
-    font-size: .69rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-    padding: .22rem .7rem; border-radius: 100px; width: fit-content; margin-bottom: .1rem;
-  }
-  .proj-card[data-theme="migration"]    .proj-theme-badge { color: var(--c-migration);    background: var(--c-migration-light);    border: 1px solid var(--c-migration-mid); }
-  .proj-card[data-theme="youth"]        .proj-theme-badge { color: var(--c-youth);        background: var(--c-youth-light);        border: 1px solid var(--c-youth-mid); }
-  .proj-card[data-theme="economy"]      .proj-theme-badge { color: var(--c-economy);      background: var(--c-economy-light);      border: 1px solid var(--c-economy-mid); }
-  .proj-card[data-theme="storytelling"] .proj-theme-badge { color: var(--c-storytelling); background: var(--c-storytelling-light); border: 1px solid var(--c-storytelling-mid); }
-  .proj-card[data-theme="violence"]     .proj-theme-badge { color: var(--c-violence);     background: var(--c-violence-light);     border: 1px solid var(--c-violence-mid); }
-  .proj-card h3 { font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: 1.08rem; letter-spacing: -.01em; line-height: 1.3; color: var(--dark); }
-  .proj-card p  { font-size: .85rem; color: var(--mid); font-weight: 300; line-height: 1.65; flex: 1; }
-  .proj-meta { display: flex; align-items: center; justify-content: space-between; margin-top: .5rem; padding-top: .8rem; border-top: 1px solid var(--line); }
-  .proj-status { font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: .22rem .7rem; border-radius: 100px; }
-  .proj-status.ongoing   { background: #DCFCE7; color: #15803D; }
-  .proj-status.completed { background: #F1F5F9; color: #64748B; }
-  .proj-status.new       { background: #FEF9C3; color: #A16207; }
-  .proj-year { font-size: .77rem; color: #aaa; }
-  .proj-arrow { font-size: .85rem; color: var(--mid); opacity: 0; transform: translate(-4px, 4px); transition: opacity .2s, transform .2s; flex-shrink: 0; }
+  .proj-filter-bar{display:flex;flex-wrap:wrap;gap:.6rem;margin:2.5rem 0 2rem;}
+  .proj-filter{padding:.48rem 1.15rem;border-radius:100px;border:1.5px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.8);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .22s;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:.45rem;}
+  .proj-filter .filter-dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:0;transform:scale(0);transition:all .2s;}
+  .proj-filter.active .filter-dot,.proj-filter:hover .filter-dot{opacity:1;transform:scale(1);}
+  .proj-filter[data-filter="all"]:hover,.proj-filter[data-filter="all"].active{background:white;border-color:white;color:var(--red-dark);}
+  .proj-filter[data-filter="migration"]:hover,.proj-filter[data-filter="migration"].active{background:var(--c-migration-light);border-color:var(--c-migration);color:var(--c-migration);}
+  .proj-filter[data-filter="youth"]:hover,.proj-filter[data-filter="youth"].active{background:var(--c-youth-light);border-color:var(--c-youth);color:var(--c-youth);}
+  .proj-filter[data-filter="economy"]:hover,.proj-filter[data-filter="economy"].active{background:var(--c-economy-light);border-color:var(--c-economy);color:var(--c-economy);}
+  .proj-filter[data-filter="storytelling"]:hover,.proj-filter[data-filter="storytelling"].active{background:var(--c-storytelling-light);border-color:var(--c-storytelling);color:var(--c-storytelling);}
+  .proj-filter[data-filter="violence"]:hover,.proj-filter[data-filter="violence"].active{background:var(--c-violence-light);border-color:var(--c-violence);color:var(--c-violence);}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+  .proj-card{border:1px solid #E0DDD8;border-radius:14px;padding:0;background:white;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;position:relative;overflow:hidden;cursor:pointer;}
+  .proj-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,0.18);}
+  .proj-card:hover .proj-arrow{opacity:1;transform:translate(0,0);}
+  .proj-card.hidden{display:none;}
+  .proj-card-bar{height:4px;width:100%;flex-shrink:0;}
+  .proj-card[data-theme="migration"] .proj-card-bar{background:var(--c-migration);}
+  .proj-card[data-theme="youth"] .proj-card-bar{background:var(--c-youth);}
+  .proj-card[data-theme="economy"] .proj-card-bar{background:var(--c-economy);}
+  .proj-card[data-theme="storytelling"] .proj-card-bar{background:var(--c-storytelling);}
+  .proj-card[data-theme="violence"] .proj-card-bar{background:var(--c-violence);}
+  .proj-card-body{padding:1.6rem 1.6rem 1.4rem;display:flex;flex-direction:column;gap:.55rem;flex:1;}
+  .proj-theme-badge{display:inline-flex;align-items:center;gap:.45rem;font-size:.69rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px;width:fit-content;margin-bottom:.1rem;}
+  .proj-card[data-theme="migration"] .proj-theme-badge{color:var(--c-migration);background:var(--c-migration-light);border:1px solid var(--c-migration-mid);}
+  .proj-card[data-theme="youth"] .proj-theme-badge{color:var(--c-youth);background:var(--c-youth-light);border:1px solid var(--c-youth-mid);}
+  .proj-card[data-theme="economy"] .proj-theme-badge{color:var(--c-economy);background:var(--c-economy-light);border:1px solid var(--c-economy-mid);}
+  .proj-card[data-theme="storytelling"] .proj-theme-badge{color:var(--c-storytelling);background:var(--c-storytelling-light);border:1px solid var(--c-storytelling-mid);}
+  .proj-card[data-theme="violence"] .proj-theme-badge{color:var(--c-violence);background:var(--c-violence-light);border:1px solid var(--c-violence-mid);}
+  .proj-card h3{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.08rem;letter-spacing:-.01em;line-height:1.3;color:var(--dark);}
+  .proj-card p{font-size:.85rem;color:var(--mid);font-weight:300;line-height:1.65;flex:1;}
+  .proj-meta{display:flex;align-items:center;justify-content:space-between;margin-top:.5rem;padding-top:.8rem;border-top:1px solid var(--line);}
+  .proj-status{font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px;}
+  .proj-status.ongoing{background:#DCFCE7;color:#15803D;}
+  .proj-status.completed{background:#F1F5F9;color:#64748B;}
+  .proj-status.new{background:#FEF9C3;color:#A16207;}
+  .proj-year{font-size:.77rem;color:#aaa;}
+  .proj-arrow{font-size:.85rem;color:var(--mid);opacity:0;transform:translate(-4px,4px);transition:opacity .2s,transform .2s;flex-shrink:0;}
 
   /* MODAL */
-  .proj-modal-overlay {
-    position: fixed; inset: 0; z-index: 200;
-    background: rgba(20,20,20,0.65); backdrop-filter: blur(4px);
-    display: flex; align-items: center; justify-content: center; padding: 1.5rem;
-    opacity: 0; pointer-events: none; transition: opacity .25s;
-  }
-  .proj-modal-overlay.open { opacity: 1; pointer-events: all; }
-  .proj-modal {
-    background: #0E0E1A; border-radius: 20px;
-    max-width: 580px; width: 100%; max-height: 85vh; overflow-y: auto;
-    transform: translateY(20px) scale(.97); transition: transform .28s ease;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5); position: relative;
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-  .proj-modal-overlay.open .proj-modal { transform: translateY(0) scale(1); }
-  .proj-modal-bar { height: 5px; border-radius: 20px 20px 0 0; }
-  .proj-modal-inner { padding: 2rem 2rem 2.2rem; }
-  .proj-modal-close {
-    position: absolute; top: 1rem; right: 1rem;
-    width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem; color: rgba(255,255,255,0.6); transition: background .2s, color .2s;
-  }
-  .proj-modal-close:hover { background: white; color: var(--dark); }
-  .proj-modal-badge { display: inline-flex; align-items: center; gap: .4rem; font-size: .69rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: .22rem .7rem; border-radius: 100px; margin-bottom: 1rem; }
-  .proj-modal h2 { font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: 1.7rem; letter-spacing: -.01em; line-height: 1.22; margin-bottom: .9rem; color: white; }
-  .proj-modal-desc { font-family: 'Inter', sans-serif; font-size: .95rem; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.75; margin-bottom: 1.5rem; }
-  .proj-modal-meta { display: flex; gap: .7rem; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center; }
-  .proj-modal-details { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.4rem; display: flex; flex-direction: column; gap: 1rem; }
-  .proj-modal-detail-row { display: flex; gap: .8rem; }
-  .proj-modal-detail-label { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,0.4); min-width: 110px; padding-top: .05rem; flex-shrink: 0; }
-  .proj-modal-detail-value { font-size: .88rem; color: rgba(255,255,255,0.75); font-weight: 300; line-height: 1.6; }
-  .proj-modal-actions { margin-top: 1.8rem; display: flex; gap: .8rem; flex-wrap: wrap; }
-  .proj-modal-btn { padding: .65rem 1.4rem; border-radius: 100px; font-size: .85rem; font-weight: 500; cursor: pointer; text-decoration: none; border: 1.5px solid; display: inline-block; transition: transform .18s, box-shadow .18s; font-family: 'Inter', sans-serif; }
-  .proj-modal-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,0.3); }
-  .proj-modal-btn.primary { color: var(--dark); }
-  .proj-modal-btn.ghost { background: transparent; color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); }
-  .proj-modal-btn.ghost:hover { color: white; border-color: white; }
-  .proj-year-modal { font-size: .84rem; color: rgba(255,255,255,0.45); }
+  .proj-modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(20,20,20,0.65);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+  .proj-modal-overlay.open{opacity:1;pointer-events:all;}
+  .proj-modal{background:#0E0E1A;border-radius:20px;max-width:580px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.97);transition:transform .28s ease;box-shadow:0 30px 80px rgba(0,0,0,0.5);position:relative;border:1px solid rgba(255,255,255,0.08);}
+  .proj-modal-overlay.open .proj-modal{transform:translateY(0) scale(1);}
+  .proj-modal-bar{height:5px;border-radius:20px 20px 0 0;}
+  .proj-modal-inner{padding:2rem 2rem 2.2rem;}
+  .proj-modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:rgba(255,255,255,0.6);transition:background .2s,color .2s;}
+  .proj-modal-close:hover{background:white;color:var(--dark);}
+  .proj-modal-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.69rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px;margin-bottom:1rem;}
+  .proj-modal h2{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.7rem;letter-spacing:-.01em;line-height:1.22;margin-bottom:.9rem;color:white;}
+  .proj-modal-desc{font-size:.95rem;color:rgba(255,255,255,0.7);font-weight:300;line-height:1.75;margin-bottom:1.5rem;}
+  .proj-modal-meta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center;}
+  .proj-modal-details{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.4rem;display:flex;flex-direction:column;gap:1rem;}
+  .proj-modal-detail-row{display:flex;gap:.8rem;}
+  .proj-modal-detail-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,0.4);min-width:110px;padding-top:.05rem;flex-shrink:0;}
+  .proj-modal-detail-value{font-size:.88rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.6;}
+  .proj-modal-actions{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap;}
+  .proj-modal-btn{padding:.65rem 1.4rem;border-radius:100px;font-size:.85rem;font-weight:500;cursor:pointer;text-decoration:none;border:1.5px solid;display:inline-block;transition:transform .18s,box-shadow .18s;font-family:'Inter',sans-serif;}
+  .proj-modal-btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,0.3);}
+  .proj-modal-btn.primary{color:var(--dark);}
+  .proj-modal-btn.ghost{background:transparent;color:rgba(255,255,255,0.6);border-color:rgba(255,255,255,0.2);}
+  .proj-modal-btn.ghost:hover{color:white;border-color:white;}
+  .proj-year-modal{font-size:.84rem;color:rgba(255,255,255,0.45);}
 
   /* TEAM */
-  .team-bg { background: var(--teal-dark); color: white; }
-  .team-bg .section-label { color: var(--teal-light); }
-  .team-bg .section-label::before { background: var(--teal-light); }
-  .team-bg h2.section-title { color: white; }
-  .team-bg .section-intro { color: rgba(255,255,255,0.78); }
-  .team-groups { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
-  .team-group { border-top: 1px solid rgba(255,255,255,0.15); }
-  .team-group:last-child { border-bottom: 1px solid rgba(255,255,255,0.15); }
-  .team-group-header { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 0; cursor: pointer; user-select: none; }
-  .team-group-title { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-light); font-weight: 500; display: flex; align-items: center; gap: .7rem; }
-  .team-group-title::before { display: none; }
-  .team-group-count { font-family: 'Alegreya', Georgia, serif; font-size: .88rem; color: rgba(255,255,255,0.5); font-weight: 400; font-style: italic; }
-  .team-group-toggle { width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; font-size: .85rem; color: rgba(255,255,255,0.6); transition: all .2s; flex-shrink: 0; }
-  .team-group.open .team-group-toggle { background: var(--teal-light); color: var(--teal-dark); border-color: var(--teal-light); transform: rotate(45deg); }
-  .team-group-body { display: none; padding-bottom: 1.2rem; }
-  .team-group.open .team-group-body { display: block; }
-  .team-list { display: flex; flex-direction: column; gap: 0; }
-  .team-person { display: flex; align-items: center; gap: 1.2rem; padding: .75rem 0; border-top: 1px solid rgba(255,255,255,0.08); cursor: pointer; transition: background .15s; flex-wrap: wrap; }
-  .team-person:first-child { border-top: none; }
-  .team-initials { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); overflow: hidden; flex-shrink: 0; font-family: 'Alegreya', Georgia, serif; font-size: .85rem; color: var(--teal-light); display: flex; align-items: center; justify-content: center; }
-  .team-person-main { flex: 1; min-width: 0; }
-  .team-person-main strong { font-size: .93rem; font-weight: 500; display: block; color: white; }
-  .team-person-main span { font-size: .78rem; color: rgba(255,255,255,0.55); font-weight: 300; }
-  .team-person-bio { font-size: .8rem; color: rgba(255,255,255,0.6); font-weight: 300; max-width: 340px; line-height: 1.55; display: none; flex-basis: 100%; padding: .4rem 0 .2rem 48px; }
-  .team-person.expanded .team-person-bio { display: block; }
-  .team-person-expand { font-size: .7rem; color: rgba(255,255,255,0.3); flex-shrink: 0; transition: color .2s, transform .2s; }
-  .team-person.expanded .team-person-expand { color: var(--teal-light); transform: rotate(180deg); }
-  .team-person:hover .team-person-expand { color: var(--teal-light); }
-  .team-person-row { display: flex; align-items: center; gap: 1.2rem; width: 100%; }
-
-  /* BLOG */
-  .blog-bg { background: var(--white); }
+  .team-bg{background:var(--teal-dark);color:white;}
+  .team-bg .section-label{color:var(--teal-light);}
+  .team-bg h2.section-title{color:white;}
+  .team-bg .section-intro{color:rgba(255,255,255,0.78);}
+  .team-groups{margin-top:3rem;display:flex;flex-direction:column;gap:0;}
+  .team-group{border-top:1px solid rgba(255,255,255,0.15);}
+  .team-group:last-child{border-bottom:1px solid rgba(255,255,255,0.15);}
+  .team-group-header{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;cursor:pointer;user-select:none;}
+  .team-group-title{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-light);font-weight:500;}
+  .team-group-count{font-family:'Alegreya',Georgia,serif;font-size:.88rem;color:rgba(255,255,255,0.5);font-weight:400;font-style:italic;}
+  .team-group-toggle{width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:rgba(255,255,255,0.6);transition:all .2s;flex-shrink:0;}
+  .team-group.open .team-group-toggle{background:var(--teal-light);color:var(--teal-dark);border-color:var(--teal-light);transform:rotate(45deg);}
+  .team-group-body{display:none;padding-bottom:1.2rem;}
+  .team-group.open .team-group-body{display:block;}
+  .team-list{display:flex;flex-direction:column;gap:0;}
+  .team-person{display:flex;align-items:center;gap:1.2rem;padding:.75rem 0;border-top:1px solid rgba(255,255,255,0.08);cursor:pointer;transition:background .15s;flex-wrap:wrap;}
+  .team-person:first-child{border-top:none;}
+  .team-initials{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);overflow:hidden;flex-shrink:0;font-family:'Alegreya',Georgia,serif;font-size:.85rem;color:var(--teal-light);display:flex;align-items:center;justify-content:center;}
+  .team-person-main{flex:1;min-width:0;}
+  .team-person-main strong{font-size:.93rem;font-weight:500;display:block;color:white;}
+  .team-person-main span{font-size:.78rem;color:rgba(255,255,255,0.55);font-weight:300;}
+  .team-person-bio{font-size:.8rem;color:rgba(255,255,255,0.6);font-weight:300;max-width:340px;line-height:1.55;display:none;flex-basis:100%;padding:.4rem 0 .2rem 48px;}
+  .team-person.expanded .team-person-bio{display:block;}
+  .team-person-expand{font-size:.7rem;color:rgba(255,255,255,0.3);flex-shrink:0;transition:color .2s,transform .2s;}
+  .team-person.expanded .team-person-expand{color:var(--teal-light);transform:rotate(180deg);}
+  .team-person:hover .team-person-expand{color:var(--teal-light);}
+  .team-person-row{display:flex;align-items:center;gap:1.2rem;width:100%;}
 
   /* FOOTER */
-  footer { background: var(--navy-dark); color: rgba(255,255,255,0.5); padding: 4rem 2.5rem 2rem; }
-  .footer-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-  .footer-brand .footer-name { font-family: 'Alegreya', Georgia, serif; font-weight: 800; font-size: 1.15rem; color: white; display: block; margin-bottom: .4rem; }
-  .footer-brand p { font-size: .85rem; line-height: 1.65; max-width: 280px; }
-  .footer-col h5 { color: white; font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1.1rem; font-weight: 500; }
-  .footer-col a { display: block; color: rgba(255,255,255,0.45); text-decoration: none; font-size: .86rem; margin-bottom: .55rem; transition: color .2s; }
-  .footer-col a:hover { color: var(--teal-light); }
-  .footer-bottom { max-width: 1180px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: .8rem; flex-wrap: wrap; gap: .5rem; }
-  .footer-bottom a { color: var(--teal-light); text-decoration: none; }
+  footer{background:var(--navy-dark);color:rgba(255,255,255,0.5);padding:4rem 2.5rem 2rem;}
+  .footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+  .footer-brand .footer-name{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.15rem;color:white;display:block;margin-bottom:.4rem;}
+  .footer-brand p{font-size:.85rem;line-height:1.65;max-width:280px;}
+  .footer-col h5{color:white;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.1rem;font-weight:500;}
+  .footer-col a{display:block;color:rgba(255,255,255,0.45);text-decoration:none;font-size:.86rem;margin-bottom:.55rem;transition:color .2s;}
+  .footer-col a:hover{color:var(--teal-light);}
+  .footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;flex-wrap:wrap;gap:.5rem;}
+  .footer-bottom a{color:var(--teal-light);text-decoration:none;}
 
-  /* ANIMATIONS */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes drawLine { to { stroke-dashoffset: 0; } }
-  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  .fade-in{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
 
-  /* RESPONSIVE */
-  @media (max-width: 1024px) {
-    .proj-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .spring-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  @media(max-width:1024px){.proj-grid{grid-template-columns:repeat(2,1fr);}.footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}}
+  @media(max-width:768px){
+    nav{padding:1rem 1.4rem;}
+    .nav-links,.nav-cta{display:none;}
+    .hamburger{display:flex;}
+    .hero{grid-template-columns:1fr;padding:6rem 1.4rem 3rem;gap:2.5rem;}
+    .hero-illustration{order:-1;}
+    .what-grid{grid-template-columns:1fr;}
+    .why-inner{grid-template-columns:1fr;gap:2.5rem;}
+    .why-visual{order:-1;}
+    .proj-grid{grid-template-columns:1fr;}
+    .learning-inner{grid-template-columns:1fr;gap:2.5rem;}
+    .footer-inner{grid-template-columns:1fr;gap:2rem;}
+    section{padding:4rem 1.4rem;}
+    .nav-logo-name{font-size:.78rem;}
   }
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.4rem; }
-    .nav-links, .nav-cta { display: none; }
-    .hamburger { display: flex; }
-    .hero { grid-template-columns: 1fr; padding: 6rem 1.4rem 3rem; gap: 2.5rem; }
-    .hero-illustration { order: -1; }
-    .what-grid { grid-template-columns: 1fr; }
-    .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .why-visual { order: -1; }
-    .proj-grid { grid-template-columns: 1fr; }
-    .learning-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-    section { padding: 4rem 1.4rem; }
-    .nav-logo-name { font-size: .78rem; }
-  }
-  @media (max-width: 480px) {
-    .hero h1 { font-size: 2.1rem; }
-    .nav-logo img { height: 36px; width: 36px; }
-  }
+  @media(max-width:480px){.hero h1{font-size:2.1rem;}.nav-logo img{height:36px;width:36px;}}
 </style>
 </head>
 <body>
@@ -413,10 +358,11 @@
 <!-- NAV -->
 <nav id="mainNav">
   <a class="nav-logo" href="#">
-    <img src="images/logo.png" alt="CIK Lab Logo" style="height:44px;width:44px;object-fit:contain;flex-shrink:0;" />
+    <img src="images/logo.png" alt="CIK Lab Logo" />
     <div class="nav-logo-text">
       <span class="nav-logo-name">Co-creation for Inclusive<br>Knowledges Lab</span>
       <span class="nav-logo-sub">Amsterdam</span>
+      <div class="nav-weave"><span></span><span></span><span></span><span></span><span></span></div>
     </div>
   </a>
   <ul class="nav-links">
@@ -428,13 +374,32 @@
     <li><a href="blog.html">Blog</a></li>
   </ul>
   <a class="nav-cta" href="#contact">Get in Touch</a>
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
 <div class="hero-wrap">
+  <!-- Ambient warp+weft weave in background -->
+  <div class="hero-weave-wrap">
+    <svg class="warp" width="320" height="380" viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20"  y="0" width="10" height="380" rx="5" fill="#EE4A3E"/>
+      <rect x="70"  y="0" width="10" height="380" rx="5" fill="#01AA93"/>
+      <rect x="120" y="0" width="10" height="380" rx="5" fill="#FCB040"/>
+      <rect x="170" y="0" width="10" height="380" rx="5" fill="#2E3192"/>
+      <rect x="220" y="0" width="10" height="380" rx="5" fill="#0076BE"/>
+      <rect x="270" y="0" width="10" height="380" rx="5" fill="#EE4A3E"/>
+      <rect x="310" y="0" width="10" height="380" rx="5" fill="#FCB040"/>
+    </svg>
+    <svg class="weft" style="position:absolute;top:0;left:0" width="320" height="380" viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="30"  width="320" height="10" rx="5" fill="#FCB040"/>
+      <rect x="0" y="80"  width="320" height="10" rx="5" fill="#2AD1B5"/>
+      <rect x="0" y="130" width="320" height="10" rx="5" fill="#EE4A3E"/>
+      <rect x="0" y="180" width="320" height="10" rx="5" fill="#5A61B7"/>
+      <rect x="0" y="230" width="320" height="10" rx="5" fill="#FCB040"/>
+      <rect x="0" y="280" width="320" height="10" rx="5" fill="#01AA93"/>
+      <rect x="0" y="330" width="320" height="10" rx="5" fill="#FC6965"/>
+    </svg>
+  </div>
   <div class="hero">
     <div class="hero-text">
       <div class="hero-eyebrow">Research &amp; Innovation Lab</div>
@@ -452,57 +417,36 @@
   </div>
 </div>
 
+<!-- Wave: white → teal -->
 <div style="line-height:0;display:block;background:#01AA93;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
 
-<!-- WHAT WE DO — TEAL -->
+<!-- WHAT WE DO -->
 <section class="what-bg" id="what">
   <div class="container">
     <div class="fade-in">
+      <div class="thread-accent ta-teal"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="section-label">Our Approach</div>
       <h2 class="section-title">What we do</h2>
       <p class="section-intro">We depart from the belief that it is not possible to challenge imbalanced power structures, redesign policy, or deliver impactful research without a strong and ethical connection to the lives and contexts of those experiencing injustice.</p>
     </div>
     <div class="what-grid fade-in" style="transition-delay:.15s">
       <div class="what-card">
-        <svg class="what-icon" viewBox="0 0 56 56">
-          <path d="M14,32 Q14,22 24,20 L32,20 Q36,20 38,24 L42,24 Q46,24 46,28 Q46,32 42,32 L38,32"/>
-          <path d="M14,32 L10,32 Q8,32 8,34 L8,42 Q8,44 10,44 L36,44 Q42,44 46,40 L50,36"/>
-          <path d="M28,20 L28,14 Q28,10 32,10 L36,10 Q40,10 40,14 L40,20"/>
-          <circle cx="22" cy="12" r="4"/>
-        </svg>
+        <svg class="what-icon" viewBox="0 0 56 56"><path d="M14,32 Q14,22 24,20 L32,20 Q36,20 38,24 L42,24 Q46,24 46,28 Q46,32 42,32 L38,32"/><path d="M14,32 L10,32 Q8,32 8,34 L8,42 Q8,44 10,44 L36,44 Q42,44 46,40 L50,36"/><path d="M28,20 L28,14 Q28,10 32,10 L36,10 Q40,10 40,14 L40,20"/><circle cx="22" cy="12" r="4"/></svg>
         <h3>Co-create knowledges across boundaries</h3>
         <p>We bring together communities, researchers, and practitioners — activists, artists, and advocates — to develop knowledges collaboratively, valuing lived experience alongside academic and professional perspectives and leading to transformative actions.</p>
       </div>
       <div class="what-card">
-        <svg class="what-icon" viewBox="0 0 56 56">
-          <circle cx="28" cy="28" r="18"/>
-          <path d="M28,10 L28,14 M28,42 L28,46 M10,28 L14,28 M42,28 L46,28"/>
-          <path d="M22,22 L20,36 L34,30 L36,16 Z"/>
-          <circle cx="28" cy="28" r="2.5" fill="#2AD1B5" stroke="none"/>
-        </svg>
+        <svg class="what-icon" viewBox="0 0 56 56"><circle cx="28" cy="28" r="18"/><path d="M28,10 L28,14 M28,42 L28,46 M10,28 L14,28 M42,28 L46,28"/><path d="M22,22 L20,36 L34,30 L36,16 Z"/><circle cx="28" cy="28" r="2.5" fill="#2AD1B5" stroke="none"/></svg>
         <h3>Rethink what knowledge is and how it is produced</h3>
         <p>We explore participatory and creative approaches that challenge traditional academic models and open up more inclusive ways of knowing and learning, always aware of the power dynamics at play.</p>
       </div>
       <div class="what-card">
-        <svg class="what-icon" viewBox="0 0 56 56">
-          <path d="M8,36 L8,28 Q8,18 18,18 L38,18 Q48,18 48,28 L48,36"/>
-          <path d="M8,36 L48,36"/>
-          <path d="M18,18 L18,36 M28,14 L28,36 M38,18 L38,36"/>
-          <path d="M4,36 L52,36"/>
-          <circle cx="8" cy="36" r="2.5"/>
-          <circle cx="48" cy="36" r="2.5"/>
-        </svg>
+        <svg class="what-icon" viewBox="0 0 56 56"><path d="M8,36 L8,28 Q8,18 18,18 L38,18 Q48,18 48,28 L48,36"/><path d="M8,36 L48,36"/><path d="M18,18 L18,36 M28,14 L28,36 M38,18 L38,36"/><path d="M4,36 L52,36"/><circle cx="8" cy="36" r="2.5"/><circle cx="48" cy="36" r="2.5"/></svg>
         <h3>Build connections for collective action</h3>
         <p>We create spaces for dialogue and exchange that support long-term collaboration between communities, institutions, and social actors working towards justice across local, regional, and global contexts.</p>
       </div>
       <div class="what-card">
-        <svg class="what-icon" viewBox="0 0 56 56">
-          <circle cx="12" cy="28" r="5"/>
-          <circle cx="44" cy="28" r="5"/>
-          <circle cx="28" cy="10" r="5"/>
-          <circle cx="28" cy="46" r="5"/>
-          <path d="M17,28 L39,28 M28,15 L28,41 M15,22 L41,34 M15,34 L41,22"/>
-        </svg>
+        <svg class="what-icon" viewBox="0 0 56 56"><circle cx="12" cy="28" r="5"/><circle cx="44" cy="28" r="5"/><circle cx="28" cy="10" r="5"/><circle cx="28" cy="46" r="5"/><path d="M17,28 L39,28 M28,15 L28,41 M15,22 L41,34 M15,34 L41,22"/></svg>
         <h3>Weaving local, regional, and global movements for justice</h3>
         <p>Based in Amsterdam, the Co-creation Lab works with both local and international communities, actively seeking to form alliances and build solidarity across diverse movements for social and environmental justice.</p>
       </div>
@@ -510,30 +454,33 @@
   </div>
 </section>
 
+<!-- Wave: teal → navy -->
 <div style="line-height:0;display:block;background:#2E3192;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,50 C180,10 360,70 540,40 C720,10 900,70 1080,40 C1260,10 1380,60 1440,45 L1440,0 Z" fill="#01AA93" stroke="none"/></svg></div>
 
-<!-- PURPOSE — NAVY -->
+<!-- PURPOSE / WHY -->
 <section id="why">
   <div class="container">
     <div class="why-inner">
       <div class="why-text fade-in">
+        <div class="thread-accent ta-navy"><span></span><span></span><span></span><span></span><span></span></div>
         <div class="section-label">Purpose</div>
         <h2 class="section-title">Weaving worldviews, bridging efforts, nurturing collaborations</h2>
         <div class="why-weave">
           <p>We challenge structural inequalities by recognising the expertise, initiatives, and lived experiences of diverse actors. Co-creation means bringing together those who are committed to collectively imagining and building more just societies and environments.</p>
           <p>We believe that a more just society cannot be achieved without a strong and ethical connection to the lives of those experiencing injustice. For this reason, we centre historically marginalised voices and lived experiences as a starting point for collective reflection and action.</p>
           <p>We do this by facilitating events within and beyond academia, supporting non-traditional research practices, building meaningful alliances, and mobilising resources and expertise in support of social and environmental justice.</p>
-          <div class="why-actors">
-            <span class="why-actor-tag">Artists</span>
-            <span class="why-actor-tag">Activists</span>
-            <span class="why-actor-tag">Academics</span>
-            <span class="why-actor-tag">Community members</span>
-            <span class="why-actor-tag">Policymakers</span>
-            <span class="why-actor-tag">Advocates</span>
-            <span class="why-actor-tag">Practitioners</span>
-            <span class="why-actor-tag">Social workers</span>
-            <span class="why-actor-tag">Educators</span>
-            <span class="why-actor-tag">Researchers</span>
+          <!-- ACTOR TAGS — matching reference screenshot exactly -->
+          <div class="actor-tags">
+            <span class="actor-tag"><span class="tag-dot"></span>Artists</span>
+            <span class="actor-tag"><span class="tag-dot"></span>Activists</span>
+            <span class="actor-tag"><span class="tag-dot"></span>Academics</span>
+            <span class="actor-tag"><span class="tag-dot"></span>Community members</span>
+            <span class="actor-tag"><span class="tag-dot"></span>Policymakers</span>
+            <span class="actor-tag"><span class="tag-dot"></span>Advocates</span>
+            <span class="actor-tag"><span class="tag-dot"></span>Practitioners</span>
+            <span class="actor-tag"><span class="tag-dot"></span>Social workers</span>
+            <span class="actor-tag"><span class="tag-dot"></span>Educators</span>
+            <span class="actor-tag"><span class="tag-dot"></span>Researchers</span>
           </div>
         </div>
       </div>
@@ -544,9 +491,10 @@
   </div>
 </section>
 
+<!-- Wave: navy → amber -->
 <div style="line-height:0;display:block;background:#FCB040;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,35 C200,75 400,5 600,45 C800,80 1000,10 1200,50 C1320,70 1400,30 1440,38 L1440,0 Z" fill="#2E3192" stroke="none"/></svg></div>
 
-<!-- LEARNING — AMBER -->
+<!-- LEARNING -->
 <section id="learning">
   <div class="container">
     <div class="learning-inner">
@@ -554,6 +502,7 @@
         <img src="images/learning.jpg" alt="Participatory learning workshop" />
       </div>
       <div class="learning-text fade-in" style="transition-delay:.2s">
+        <div class="thread-accent ta-amber"><span></span><span></span><span></span><span></span><span></span></div>
         <div class="section-label">Learning &amp; Teaching</div>
         <h2 class="section-title">Participatory learning in practice</h2>
         <p class="section-intro" style="color:rgba(0,0,0,0.65);">We design learning experiences where everyone is both teacher and student — because knowledge flows in all directions.</p>
@@ -567,12 +516,14 @@
   </div>
 </section>
 
+<!-- Wave: amber → red-dark -->
 <div style="line-height:0;display:block;background:#C12925;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,30 C240,70 480,10 720,50 C960,80 1200,20 1440,55 L1440,0 Z" fill="#FCB040" stroke="none"/></svg></div>
 
-<!-- PRAXIS & RESOURCES — RED -->
+<!-- PRAXIS & RESOURCES -->
 <section class="projects-bg" id="projects">
   <div class="container">
     <div class="fade-in">
+      <div class="thread-accent ta-red"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="section-label">Praxis &amp; Resources</div>
       <h2 class="section-title">Research in action</h2>
       <p class="section-intro">Concrete partnerships and inquiries where co-creation happens. Filter by theme to find what resonates with you.</p>
@@ -586,114 +537,18 @@
       <button class="proj-filter" data-filter="violence"><span class="filter-dot"></span>Resisting Violence</button>
     </div>
     <div class="proj-grid fade-in" id="projGrid" style="transition-delay:.15s">
-      <div class="proj-card" data-theme="migration" data-title="Engaged Scholarship: Narratives of Change" data-desc="A comparative research project investigating co-operation between academy and society across South Africa, the US, and the Netherlands. The project collects narratives from both refugees and engaged academics on academic engagement's contribution and challenges." data-partners="Comparative institutions in South Africa, US, and the Netherlands" data-researchers="Halleh Ghorashi, Elena Ponzoni, Phoebe Kisubi Mbasalaki, Maria Rast, Miriam Ocadiz, Fabian Holle, Alexandra Greene, Sajad Salmanpour" data-methods="Qualitative research methodology, comparative analysis, participatory sites, narrative inquiry" data-status="Ongoing" data-year="Ongoing">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Forced Migration</div>
-          <h3>Engaged Scholarship: Narratives of Change</h3>
-          <p>A comparative project investigating how engaged scholarship can contribute to the societal inclusion of refugees across South Africa, the US, and the Netherlands.</p>
-          <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Comparative / 3 continents</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="migration" data-title="The House of Stories (Het Verhalenhuis)" data-desc="A creative collaboration between Story Academy and Refugee Academy, providing a platform for people with refugee backgrounds to receive professional guidance and share their unheard stories on stage." data-partners="Story Academy, Refugee Academy, Theatre Spui (The Hague)" data-researchers="Elena Ponzoni, Halleh Ghorashi, Fabian Holle, Miriam Ocadiz" data-methods="Storytelling workshops, podcast production, performance, reflective research, dialogue" data-link="https://rosestories.nl/podcast-verhalenhuis/" data-status="Ongoing" data-year="Ongoing">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Forced Migration</div>
-          <h3>The House of Stories <em style="font-style:italic;font-size:.9em;">(Het Verhalenhuis)</em></h3>
-          <p>A creative collaboration giving people with refugee backgrounds professional guidance to share their unheard stories on stage — transformed into podcasts and live performances.</p>
-          <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Story Academy &times; Refugee Academy</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="migration" data-title="2incING: Promoting Inclusive Policy through Collaboration" data-desc="An EU AMIF-funded project fostering exchange and cooperation between policymakers and refugee/migrant-led organisations across Croatia, Malta, Belgium, Greece, and the Netherlands." data-partners="Centre for Peace Studies (Croatia), Aditus Foundation (Malta), ECRE (Belgium), Greek Forum of Refugees, SYVNL, Refugee Academy (VU Amsterdam)" data-researchers="Elena Ponzoni" data-methods="Masterclasses, participatory workshops, advocacy academy, shadow reports, policy dialogues" data-status="Ongoing" data-year="Ongoing · EU AMIF funded">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Forced Migration</div>
-          <h3>2incING Project</h3>
-          <p>Bridging policymakers and refugee/migrant-led organisations across four EU countries to create policies genuinely grounded in community realities.</p>
-          <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">EU AMIF funded &middot; 5 countries</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="storytelling" data-title="Common Ground Dialogues" data-desc="A Creative Europe-funded project addressing deeply dividing issues through storytelling as artistic practice. During ten Storytelling Circles across 2023–2024, the CGD methodology is researched and refined." data-partners="Space Explorers, European Commission Creative Europe programme" data-researchers="Timo Korstenbroek, Lise Woensdregt" data-methods="Storytelling circles, arts-based research, participatory narrative, co-created fiction" data-link="https://cgd.spaceexplorers.nl/" data-status="Ongoing" data-year="2023–2025 · Creative Europe">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Storytelling &amp; Identity</div>
-          <h3>Common Ground Dialogues</h3>
-          <p>Bringing together people across political and social divides through Storytelling Circles — using fiction and play to address polarising issues with empathy.</p>
-          <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">2023–2025 &middot; Creative Europe</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="violence" data-title="LIMBO: Queer Refugee Stories through Creative Practices" data-desc="A creative research collaboration between queer refugee community organisers/artists and Refugee Academy. LIMBO is a workshop series centring queer refugee stories through creative practices." data-partners="Makers Unite, ILGA Europe (funder), Framer Framed (previous)" data-researchers="Fabian Holle (PhD researcher & initiator)" data-methods="Creative workshops, community art, narrative inquiry, engaged scholarship, safer spaces facilitation" data-status="Ongoing" data-year="Sep 2024–Jun 2025 · ILGA Europe">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Resisting Violence</div>
-          <h3>LIMBO</h3>
-          <p>A workshop series centring queer refugee stories through creative practices, co-creating knowledge about resilience and engaged scholarship.</p>
-          <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Sep 2024–Jun 2025 &middot; ILGA Europe</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="youth" data-title="Leadership and Resilience: Co-Creation with Undocumented Youth" data-desc="A co-creative research group of undocumented youth, VU researchers, activists, and social workers exploring how to create inclusive educational environments." data-partners="ASKV, Stichting Leergeld Amsterdam, De Haagse Hogeschool, Framer Framed" data-researchers="dr. K Maeve Powlick, Evelyn Vlasman, Gabriel Briar (VU Amsterdam); Ruben Boers (De Haagse Hogeschool)" data-methods="Arts-based research, co-creative research group, participatory workshops for educators" data-status="Ongoing" data-year="Ongoing · NWA funded">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Youth Beyond Binaries</div>
-          <h3>Leadership &amp; Resilience: Co-Creation with Undocumented Youth</h3>
-          <p>Undocumented youth and VU researchers working together to create more inclusive educational environments.</p>
-          <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">NWA Route Resilience</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="violence" data-title="Boundaries in Art-Based Research about Refugee Experiences" data-desc="A small, refugee-led project making a first step in collectively articulating the complexity of participating in art-based projects for people with refugee backgrounds." data-partners="Refugee community networks" data-researchers="Idris Alhassan, Husniya Kedr" data-methods="Participatory workshops, collective knowledge-making, video-lecture production" data-status="Ongoing" data-year="Ongoing · Refugee-led">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Resisting Violence</div>
-          <h3>Boundaries in Art-Based Research</h3>
-          <p>A refugee-led project creating space to collectively articulate conditions for meaningful co-creation in art and research.</p>
-          <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Refugee-led</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="economy" data-title="Economic Pathways for Financially Vulnerable Queer Men in Nairobi" data-desc="Using Community-Led Research and Action (CLRA), this project explores how queer men in Nairobi can create pathways to financial independence within 'hustle economies'." data-partners="Queer community organisations in Nairobi, Kenya" data-researchers="dr. Lise Woensdregt" data-methods="Community-led research and action (CLRA), collaborative anthropology, community-shaped dissemination" data-status="Ongoing" data-year="Jun 2024–Aug 2025 · Wenner-Gren">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Economic Insecurities</div>
-          <h3>Economic Pathways for Queer Men in Nairobi</h3>
-          <p>Community-led research exploring financial resilience and queer entrepreneurship in Nairobi's hustle economies.</p>
-          <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Jun 2024–Aug 2025 &middot; Wenner-Gren</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="youth" data-title="Community-Led Research & Action: Trans Healthcare in Den Haag" data-desc="Using Community-Led Research and Action (CLRA), this project maps the barriers and opportunities transgender youth experience in accessing adequate care and support in The Hague." data-partners="Municipality of The Hague, healthcare professionals and networks in Den Haag" data-researchers="VU Amsterdam researchers (CIK Lab)" data-methods="Community-led research and action (CLRA), qualitative interviews, professional evaluation" data-status="Ongoing" data-year="Ongoing · Municipality of The Hague">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Youth Beyond Binaries</div>
-          <h3>Trans Healthcare in Den Haag</h3>
-          <p>Mapping barriers transgender youth face in accessing care in The Hague, integrating youth and professional perspectives.</p>
-          <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Municipality of The Hague</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="violence" data-title="Magazine for Global Reparations by Aralez" data-desc="A magazine fostering community initiatives and conversation on reparations and decolonization, produced by Aralez — a pan-decolonial network & grassroots organisation in Amsterdam." data-partners="Aralez (pan-decolonial network, Amsterdam)" data-researchers="Aralez community; CIK Lab" data-methods="Community publishing, manifesto co-creation, academic-community bridge, conference series" data-status="Ongoing" data-year="Target: March 2025">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Resisting Violence</div>
-          <h3>Magazine for Global Reparations</h3>
-          <p>A community magazine by Aralez presenting a manifesto for reparations, connecting decolonisation activism with academic reflection.</p>
-          <div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Aralez &times; CIK Lab</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="violence" data-title="Exhibition of a Photo-Voice Study by Wounded Storytellers" data-desc="A Participatory Action Research project with 32 gang members who acquired spinal cord injuries through gang-related violence in Cape Town, South Africa. Co-researchers created photo-stories depicting the causes and consequences of violence." data-partners="Community organisations and stakeholders in Cape Town, South Africa" data-researchers="Helenard Louw (PhD researcher)" data-methods="Participatory action research, photovoice, co-curated exhibition, community dissemination" data-status="new" data-year="Exhibition 2025 · Cape Town">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Resisting Violence</div>
-          <h3>Exhibition: Wounded Storytellers</h3>
-          <p>A photo-voice study with 32 gang-violence survivors in Cape Town, co-curating an exhibition about identity transformation and community healing.</p>
-          <div class="proj-meta"><span class="proj-status new">New</span><span class="proj-year">Exhibition 2025 &middot; Cape Town</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
-      <div class="proj-card" data-theme="economy" data-title="In Search of an In-Between Space: Kenniscentrum Ongelijkheid" data-desc="A project investigating whether and how co-creation based on epistemic plurality can strengthen democratic relationships and generate creative solutions to inequality in Amsterdam." data-partners="E-Co/Samen Vooruit, Vrijwilligersacademie Amsterdam, UvA, Hogeschool van Amsterdam, Municipality of Amsterdam" data-researchers="Halleh Ghorashi, Elena Ponzoni, dr. Lise Woensdregt" data-methods="Action research, co-creative sessions, epistemic plurality, democratic collaboration learning trajectory" data-status="new" data-year="Started Sep 2024 · Amsterdam">
-        <div class="proj-card-bar"></div>
-        <div class="proj-card-body">
-          <div class="proj-theme-badge">Economic Insecurities</div>
-          <h3>In Search of an In-Between Space</h3>
-          <p>Co-creative action research building new 'chains of trust' between Amsterdam residents, frontline workers, and policymakers.</p>
-          <div class="proj-meta"><span class="proj-status new">New</span><span class="proj-year">Sep 2024 &middot; Amsterdam</span><span class="proj-arrow">&#8599;</span></div>
-        </div>
-      </div>
+      <div class="proj-card" data-theme="migration" data-title="Engaged Scholarship: Narratives of Change" data-desc="A comparative research project investigating co-operation between academy and society across South Africa, the US, and the Netherlands." data-partners="Comparative institutions in South Africa, US, and the Netherlands" data-researchers="Halleh Ghorashi, Elena Ponzoni, Phoebe Kisubi Mbasalaki, Maria Rast, Miriam Ocadiz, Fabian Holle, Alexandra Greene, Sajad Salmanpour" data-methods="Qualitative research methodology, comparative analysis, participatory sites, narrative inquiry" data-status="Ongoing" data-year="Ongoing"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Forced Migration</div><h3>Engaged Scholarship: Narratives of Change</h3><p>A comparative project investigating how engaged scholarship can contribute to the societal inclusion of refugees across South Africa, the US, and the Netherlands.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Comparative / 3 continents</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="migration" data-title="The House of Stories (Het Verhalenhuis)" data-desc="A creative collaboration between Story Academy and Refugee Academy, providing a platform for people with refugee backgrounds to share their unheard stories on stage." data-partners="Story Academy, Refugee Academy, Theatre Spui (The Hague)" data-researchers="Elena Ponzoni, Halleh Ghorashi, Fabian Holle, Miriam Ocadiz" data-methods="Storytelling workshops, podcast production, performance, reflective research, dialogue" data-link="https://rosestories.nl/podcast-verhalenhuis/" data-status="Ongoing" data-year="Ongoing"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Forced Migration</div><h3>The House of Stories <em style="font-style:italic;font-size:.9em;">(Het Verhalenhuis)</em></h3><p>A creative collaboration giving people with refugee backgrounds professional guidance to share their unheard stories on stage — transformed into podcasts and live performances.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Story Academy &times; Refugee Academy</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="migration" data-title="2incING: Promoting Inclusive Policy through Collaboration" data-desc="An EU AMIF-funded project fostering exchange and cooperation between policymakers and refugee/migrant-led organisations across Croatia, Malta, Belgium, Greece, and the Netherlands." data-partners="Centre for Peace Studies (Croatia), Aditus Foundation (Malta), ECRE (Belgium), Greek Forum of Refugees, SYVNL, Refugee Academy (VU Amsterdam)" data-researchers="Elena Ponzoni" data-methods="Masterclasses, participatory workshops, advocacy academy, shadow reports, policy dialogues" data-status="Ongoing" data-year="Ongoing · EU AMIF funded"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Forced Migration</div><h3>2incING Project</h3><p>Bridging policymakers and refugee/migrant-led organisations across four EU countries to create policies genuinely grounded in community realities.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">EU AMIF funded &middot; 5 countries</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="storytelling" data-title="Common Ground Dialogues" data-desc="A Creative Europe-funded project addressing deeply dividing issues through storytelling as artistic practice." data-partners="Space Explorers, European Commission Creative Europe programme" data-researchers="Timo Korstenbroek, Lise Woensdregt" data-methods="Storytelling circles, arts-based research, participatory narrative, co-created fiction" data-link="https://cgd.spaceexplorers.nl/" data-status="Ongoing" data-year="2023–2025 · Creative Europe"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Storytelling &amp; Identity</div><h3>Common Ground Dialogues</h3><p>Bringing together people across political and social divides through Storytelling Circles — using fiction and play to address polarising issues with empathy.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">2023–2025 &middot; Creative Europe</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="violence" data-title="LIMBO: Queer Refugee Stories through Creative Practices" data-desc="A creative research collaboration between queer refugee community organisers/artists and Refugee Academy." data-partners="Makers Unite, ILGA Europe (funder), Framer Framed (previous)" data-researchers="Fabian Holle (PhD researcher & initiator)" data-methods="Creative workshops, community art, narrative inquiry, engaged scholarship, safer spaces facilitation" data-status="Ongoing" data-year="Sep 2024–Jun 2025 · ILGA Europe"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Resisting Violence</div><h3>LIMBO</h3><p>A workshop series centring queer refugee stories through creative practices, co-creating knowledge about resilience and engaged scholarship.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Sep 2024–Jun 2025 &middot; ILGA Europe</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="youth" data-title="Leadership and Resilience: Co-Creation with Undocumented Youth" data-desc="A co-creative research group of undocumented youth, VU researchers, activists, and social workers exploring how to create inclusive educational environments." data-partners="ASKV, Stichting Leergeld Amsterdam, De Haagse Hogeschool, Framer Framed" data-researchers="dr. K Maeve Powlick, Evelyn Vlasman, Gabriel Briar (VU Amsterdam); Ruben Boers (De Haagse Hogeschool)" data-methods="Arts-based research, co-creative research group, participatory workshops for educators" data-status="Ongoing" data-year="Ongoing · NWA funded"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Youth Beyond Binaries</div><h3>Leadership &amp; Resilience: Co-Creation with Undocumented Youth</h3><p>Undocumented youth and VU researchers working together to create more inclusive educational environments.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">NWA Route Resilience</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="violence" data-title="Boundaries in Art-Based Research about Refugee Experiences" data-desc="A small, refugee-led project making a first step in collectively articulating the complexity of participating in art-based projects." data-partners="Refugee community networks" data-researchers="Idris Alhassan, Husniya Kedr" data-methods="Participatory workshops, collective knowledge-making, video-lecture production" data-status="Ongoing" data-year="Ongoing · Refugee-led"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Resisting Violence</div><h3>Boundaries in Art-Based Research</h3><p>A refugee-led project creating space to collectively articulate conditions for meaningful co-creation in art and research.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Refugee-led</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="economy" data-title="Economic Pathways for Financially Vulnerable Queer Men in Nairobi" data-desc="Using Community-Led Research and Action (CLRA), this project explores how queer men in Nairobi can create pathways to financial independence." data-partners="Queer community organisations in Nairobi, Kenya" data-researchers="dr. Lise Woensdregt" data-methods="Community-led research and action (CLRA), collaborative anthropology, community-shaped dissemination" data-status="Ongoing" data-year="Jun 2024–Aug 2025 · Wenner-Gren"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Economic Insecurities</div><h3>Economic Pathways for Queer Men in Nairobi</h3><p>Community-led research exploring financial resilience and queer entrepreneurship in Nairobi's hustle economies.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Jun 2024–Aug 2025 &middot; Wenner-Gren</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="youth" data-title="Community-Led Research & Action: Trans Healthcare in Den Haag" data-desc="Using Community-Led Research and Action (CLRA), this project maps the barriers and opportunities transgender youth experience in accessing adequate care in The Hague." data-partners="Municipality of The Hague, healthcare professionals and networks in Den Haag" data-researchers="VU Amsterdam researchers (CIK Lab)" data-methods="Community-led research and action (CLRA), qualitative interviews, professional evaluation" data-status="Ongoing" data-year="Ongoing · Municipality of The Hague"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Youth Beyond Binaries</div><h3>Trans Healthcare in Den Haag</h3><p>Mapping barriers transgender youth face in accessing care in The Hague, integrating youth and professional perspectives.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Municipality of The Hague</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="violence" data-title="Magazine for Global Reparations by Aralez" data-desc="A magazine fostering community initiatives and conversation on reparations and decolonization, produced by Aralez." data-partners="Aralez (pan-decolonial network, Amsterdam)" data-researchers="Aralez community; CIK Lab" data-methods="Community publishing, manifesto co-creation, academic-community bridge, conference series" data-status="Ongoing" data-year="Target: March 2025"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Resisting Violence</div><h3>Magazine for Global Reparations</h3><p>A community magazine by Aralez presenting a manifesto for reparations, connecting decolonisation activism with academic reflection.</p><div class="proj-meta"><span class="proj-status ongoing">Ongoing</span><span class="proj-year">Aralez &times; CIK Lab</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="violence" data-title="Exhibition of a Photo-Voice Study by Wounded Storytellers" data-desc="A Participatory Action Research project with 32 gang members who acquired spinal cord injuries through gang-related violence in Cape Town, South Africa." data-partners="Community organisations and stakeholders in Cape Town, South Africa" data-researchers="Helenard Louw (PhD researcher)" data-methods="Participatory action research, photovoice, co-curated exhibition, community dissemination" data-status="new" data-year="Exhibition 2025 · Cape Town"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Resisting Violence</div><h3>Exhibition: Wounded Storytellers</h3><p>A photo-voice study with 32 gang-violence survivors in Cape Town, co-curating an exhibition about identity transformation and community healing.</p><div class="proj-meta"><span class="proj-status new">New</span><span class="proj-year">Exhibition 2025 &middot; Cape Town</span><span class="proj-arrow">&#8599;</span></div></div></div>
+      <div class="proj-card" data-theme="economy" data-title="In Search of an In-Between Space: Kenniscentrum Ongelijkheid" data-desc="A project investigating whether and how co-creation based on epistemic plurality can strengthen democratic relationships and generate creative solutions to inequality in Amsterdam." data-partners="E-Co/Samen Vooruit, Vrijwilligersacademie Amsterdam, UvA, Hogeschool van Amsterdam, Municipality of Amsterdam" data-researchers="Halleh Ghorashi, Elena Ponzoni, dr. Lise Woensdregt" data-methods="Action research, co-creative sessions, epistemic plurality, democratic collaboration learning trajectory" data-status="new" data-year="Started Sep 2024 · Amsterdam"><div class="proj-card-bar"></div><div class="proj-card-body"><div class="proj-theme-badge">Economic Insecurities</div><h3>In Search of an In-Between Space</h3><p>Co-creative action research building new 'chains of trust' between Amsterdam residents, frontline workers, and policymakers.</p><div class="proj-meta"><span class="proj-status new">New</span><span class="proj-year">Sep 2024 &middot; Amsterdam</span><span class="proj-arrow">&#8599;</span></div></div></div>
     </div>
   </div>
 </section>
@@ -714,26 +569,26 @@
   </div>
 </div>
 
+<!-- Wave: red → white -->
 <div style="line-height:0;display:block;background:#FFFFFF;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,45 C180,75 360,15 540,55 C720,80 900,20 1080,55 C1260,80 1380,30 1440,48 L1440,0 Z" fill="#C12925" stroke="none"/></svg></div>
 
-<!-- SPRING SCHOOL & BLOG — TEASER PAIR -->
+<!-- SPRING SCHOOL & BLOG TEASER -->
 <section style="background:#FFFFFF;padding:5rem 2.5rem;" id="spring">
   <div style="max-width:1180px;margin:0 auto;">
     <div class="fade-in" style="margin-bottom:3rem;">
-      <div style="display:inline-flex;align-items:center;gap:.6rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--mid);margin-bottom:.9rem;">Also from the Lab</div>
+      <div class="thread-accent ta-white"><span></span><span></span><span></span><span></span><span></span></div>
+      <div style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--mid);margin-bottom:.9rem;">Also from the Lab</div>
       <h2 class="section-title" style="color:var(--dark);">More to explore</h2>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="fade-in" style="transition-delay:.1s">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="fade-in">
 
-      <!-- Spring School teaser -->
       <a href="spring-school.html" style="text-decoration:none;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .25s,box-shadow .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(0,118,190,0.14)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="background:var(--blue);padding:3rem 2.5rem 2.5rem;flex:1;position:relative;overflow:hidden;">
           <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.06);"></div>
-          <div style="position:absolute;bottom:-20px;left:60px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.04);"></div>
           <div style="font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);margin-bottom:1.2rem;">Annual Programme</div>
           <h3 style="font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.8rem;line-height:1.2;color:white;margin-bottom:1rem;">Spring School on Co-Creative Methodologies</h3>
           <p style="font-size:.92rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.72;margin-bottom:1.8rem;">A space where academia meets activism, art, and community-led initiatives. Four immersive days each year — workshops, dialogues, and delicious meals.</p>
-          <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem;">
+          <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
             <span style="font-size:.75rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-weight:400;">2025 Edition</span>
             <span style="font-size:.75rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-weight:400;">2026 Edition</span>
             <span style="font-size:.75rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-weight:400;">Open to all</span>
@@ -745,15 +600,12 @@
         </div>
       </a>
 
-      <!-- Blog teaser -->
       <a href="blog.html" style="text-decoration:none;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .25s,box-shadow .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(193,41,37,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="background:var(--red-dark);padding:3rem 2.5rem 2.5rem;flex:1;position:relative;overflow:hidden;">
           <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
-          <div style="position:absolute;bottom:-20px;left:60px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.03);"></div>
           <div style="font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red-light);margin-bottom:1.2rem;">From the Lab</div>
           <h3 style="font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.8rem;line-height:1.2;color:white;margin-bottom:1rem;">Thoughts &amp; Reflections</h3>
           <p style="font-size:.92rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.72;margin-bottom:1.8rem;">Writing from our researchers and community partners — on methods, findings, and what it means to do knowledge differently.</p>
-          <!-- Mini post previews -->
           <div style="display:flex;flex-direction:column;gap:.7rem;">
             <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:.9rem 1.1rem;">
               <div style="font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-light);margin-bottom:.3rem;">Methodology · May 2025</div>
@@ -775,19 +627,20 @@
   </div>
 </section>
 
+<!-- Wave: white → teal-dark -->
 <div style="line-height:0;display:block;background:#02846E;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,38 C200,78 400,8 600,48 C800,80 1000,15 1200,50 C1340,72 1410,28 1440,42 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
 
 <!-- TEAM -->
 <section class="team-bg" id="team">
   <div class="container">
     <div class="fade-in">
+      <div class="thread-accent ta-teal-dark"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="section-label">The Team</div>
       <h2 class="section-title">The people behind the work</h2>
       <p class="section-intro">A growing collective of researchers, lecturers, PhD candidates, and collaborators at Vrije Universiteit Amsterdam. Click a group to expand, and any name to read more.</p>
     </div>
     <div class="team-groups fade-in" style="transition-delay:.1s">
 
-      <!-- CORE CO-CREATORS -->
       <div class="team-group open">
         <div class="team-group-header" onclick="toggleGroup(this)">
           <span class="team-group-title">Core Co-creators</span>
@@ -822,7 +675,6 @@
         </div>
       </div>
 
-      <!-- PHD CANDIDATES -->
       <div class="team-group">
         <div class="team-group-header" onclick="toggleGroup(this)">
           <span class="team-group-title">PhD Candidates</span>
@@ -841,7 +693,6 @@
         </div>
       </div>
 
-      <!-- COLLABORATORS -->
       <div class="team-group">
         <div class="team-group-header" onclick="toggleGroup(this)">
           <span class="team-group-title">Our Collaborators</span>
@@ -849,22 +700,8 @@
         </div>
         <div class="team-group-body">
           <div class="team-list">
-            <div class="team-person" onclick="togglePerson(this)">
-              <div class="team-person-row">
-                <div class="team-initials" style="font-size:.65rem;font-weight:700;letter-spacing:-.02em;">MA</div>
-                <div class="team-person-main"><strong>Meetellen Amsterdam</strong><span>Research agency, participatory research</span></div>
-                <span class="team-person-expand">&#9662;</span>
-              </div>
-              <div class="team-person-bio">Meetellen Amsterdam is a research agency specialising in utilising experiential knowledge to amplify the voices of people in vulnerable positions. With 10 staff members, they conduct research across the social domain — unemployment, mental and physical health, homelessness, debt, loneliness — always focusing on the client's voice. They involve the people affected in the design and content of research, and collaborate with other researchers to adopt the same participatory approach.</div>
-            </div>
-            <div class="team-person" onclick="togglePerson(this)">
-              <div class="team-person-row">
-                <div class="team-initials" style="font-size:.65rem;font-weight:700;letter-spacing:-.02em;">DS</div>
-                <div class="team-person-main"><strong>De Spiegelonderzoek</strong><span>Social enterprise, community-based research</span></div>
-                <span class="team-person-expand">&#9662;</span>
-              </div>
-              <div class="team-person-bio">Founded by Younes Younes (VU Amsterdam, CIK Lab), De Spiegelonderzoek is a Netherlands-based platform and social enterprise focused on empowering refugees and marginalised communities through innovative research and capacity building. Their work spans community-based research, training refugees as skilled interviewers and data collectors, culturally sensitive fieldwork, and turning data into actionable insights for NGOs, government bodies, and academic institutions.</div>
-            </div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="font-size:.65rem;font-weight:700;">MA</div><div class="team-person-main"><strong>Meetellen Amsterdam</strong><span>Research agency, participatory research</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Meetellen Amsterdam is a research agency specialising in utilising experiential knowledge to amplify the voices of people in vulnerable positions. With 10 staff members, they conduct research across the social domain — unemployment, mental and physical health, homelessness, debt, loneliness — always focusing on the client's voice.</div></div>
+            <div class="team-person" onclick="togglePerson(this)"><div class="team-person-row"><div class="team-initials" style="font-size:.65rem;font-weight:700;">DS</div><div class="team-person-main"><strong>De Spiegelonderzoek</strong><span>Social enterprise, community-based research</span></div><span class="team-person-expand">&#9662;</span></div><div class="team-person-bio">Founded by Younes Younes (VU Amsterdam, CIK Lab), De Spiegelonderzoek is a Netherlands-based platform focused on empowering refugees and marginalised communities through innovative research and capacity building.</div></div>
           </div>
         </div>
       </div>
@@ -873,20 +710,22 @@
   </div>
 </section>
 
+<!-- Wave: teal-dark → navy-dark -->
 <div style="line-height:0;display:block;background:#1B216B;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C200,10 400,70 600,40 C800,10 1000,70 1200,40 C1360,18 1420,55 1440,48 L1440,0 Z" fill="#02846E" stroke="none"/></svg></div>
 
 <!-- FOOTER -->
 <footer id="contact">
   <div class="footer-inner">
     <div class="footer-brand">
+      <div class="footer-weave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
       <span class="footer-name">Co-creation for Inclusive Knowledges Lab</span>
       <p>A research lab within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, committed to building knowledge that includes, centres, and serves all communities.</p>
-      <div style="margin-top:1.5rem; display:flex; gap:.8rem;">
-        <a href="#" style="color:rgba(255,255,255,0.45); font-size:.82rem; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#2AD1B5'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Twitter</a>
+      <div style="margin-top:1.5rem;display:flex;gap:.8rem;">
+        <a href="#" style="color:rgba(255,255,255,0.45);font-size:.82rem;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#2AD1B5'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Twitter</a>
         <span style="color:#333">&middot;</span>
-        <a href="#" style="color:rgba(255,255,255,0.45); font-size:.82rem; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#2AD1B5'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">LinkedIn</a>
+        <a href="#" style="color:rgba(255,255,255,0.45);font-size:.82rem;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#2AD1B5'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">LinkedIn</a>
         <span style="color:#333">&middot;</span>
-        <a href="#" style="color:rgba(255,255,255,0.45); font-size:.82rem; text-decoration:none; transition:color .2s;" onmouseover="this.style.color='#2AD1B5'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">ResearchGate</a>
+        <a href="#" style="color:rgba(255,255,255,0.45);font-size:.82rem;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#2AD1B5'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">ResearchGate</a>
       </div>
     </div>
     <div class="footer-col">
@@ -926,14 +765,12 @@
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
 
-  // Fade-in observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   setTimeout(() => document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')), 800);
 
-  // Hamburger
   document.getElementById('hamburger').addEventListener('click', function() {
     const links = document.querySelector('.nav-links');
     if (links) {
@@ -942,13 +779,12 @@
     }
   });
 
-  // Project filter
   const themeColors = {
-    migration:    { color: '#2AA1DD', light: 'rgba(42,161,221,0.15)', label: 'Forced Migration' },
-    youth:        { color: '#2AD1B5', light: 'rgba(42,209,181,0.15)', label: 'Youth Beyond Binaries' },
-    economy:      { color: '#FCB040', light: 'rgba(252,176,64,0.15)',  label: 'Economic Insecurities' },
-    storytelling: { color: '#FCC47A', light: 'rgba(252,196,122,0.15)',label: 'Storytelling & Identity' },
-    violence:     { color: '#FC6965', light: 'rgba(252,105,101,0.15)',label: 'Silenced Memories & Resisting Violence' },
+    migration:    { color:'#2AA1DD',light:'rgba(42,161,221,0.15)',label:'Forced Migration' },
+    youth:        { color:'#2AD1B5',light:'rgba(42,209,181,0.15)',label:'Youth Beyond Binaries' },
+    economy:      { color:'#FCB040',light:'rgba(252,176,64,0.15)', label:'Economic Insecurities' },
+    storytelling: { color:'#FCC47A',light:'rgba(252,196,122,0.15)',label:'Storytelling & Identity' },
+    violence:     { color:'#FC6965',light:'rgba(252,105,101,0.15)',label:'Silenced Memories & Resisting Violence' },
   };
   document.querySelectorAll('.proj-filter').forEach(btn => {
     btn.addEventListener('click', function() {
@@ -958,61 +794,37 @@
       document.querySelectorAll('.proj-card').forEach(card => {
         if (filter === 'all' || card.dataset.theme === filter) {
           card.classList.remove('hidden');
-          card.style.opacity = '0'; card.style.transform = 'translateY(10px)';
-          requestAnimationFrame(() => {
-            card.style.transition = 'opacity .3s ease, transform .3s ease';
-            card.style.opacity = '1'; card.style.transform = 'translateY(0)';
-          });
+          card.style.opacity='0'; card.style.transform='translateY(10px)';
+          requestAnimationFrame(() => { card.style.transition='opacity .3s ease,transform .3s ease'; card.style.opacity='1'; card.style.transform='translateY(0)'; });
         } else { card.classList.add('hidden'); }
       });
     });
   });
 
-  // Project modal
-  const overlay    = document.getElementById('projModal');
-  const modalBar   = document.getElementById('projModalBar');
-  const modalBadge = document.getElementById('projModalBadge');
-  const modalTitle = document.getElementById('projModalTitle');
-  const modalMeta  = document.getElementById('projModalMeta');
-  const modalDesc  = document.getElementById('projModalDesc');
-  const modalDets  = document.getElementById('projModalDetails');
-  const modalActs  = document.getElementById('projModalActions');
-  function statusHTML(s) {
-    const cls = s === 'Ongoing' ? 'ongoing' : s === 'Completed' ? 'completed' : 'new';
-    return '<span class="proj-status ' + cls + '">' + s + '</span>';
-  }
-  document.querySelectorAll('.proj-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const theme = card.dataset.theme;
-      const tc = themeColors[theme] || { color: '#FCB040', light: 'rgba(252,176,64,0.15)', label: '' };
-      modalBar.style.background = tc.color;
-      modalBadge.textContent = tc.label;
-      modalBadge.style.cssText = 'color:' + tc.color + ';background:' + tc.light + ';border:1px solid ' + tc.color + '55;';
-      modalTitle.textContent = card.dataset.title;
-      modalDesc.textContent  = card.dataset.desc;
-      modalMeta.innerHTML = statusHTML(card.dataset.status) + '<span class="proj-year-modal">' + card.dataset.year + '</span>';
-      modalDets.innerHTML =
-        '<div class="proj-modal-detail-row"><span class="proj-modal-detail-label">Researchers</span><span class="proj-modal-detail-value">' + card.dataset.researchers + '</span></div>' +
-        '<div class="proj-modal-detail-row"><span class="proj-modal-detail-label">Partners</span><span class="proj-modal-detail-value">' + card.dataset.partners + '</span></div>' +
-        '<div class="proj-modal-detail-row"><span class="proj-modal-detail-label">Methods</span><span class="proj-modal-detail-value">' + card.dataset.methods + '</span></div>';
-      const link = card.dataset.link;
-      const btnColor = ['#FCB040','#FCC47A'].includes(tc.color) ? '#1A1A1A' : 'white';
-      modalActs.innerHTML =
-        (link ? '<a href="' + link + '" target="_blank" rel="noopener" class="proj-modal-btn primary" style="background:' + tc.color + ';border-color:' + tc.color + ';color:' + btnColor + '">Visit project site &#8599;</a>' :
-                '<a href="#contact" class="proj-modal-btn primary" style="background:' + tc.color + ';border-color:' + tc.color + ';color:' + btnColor + '" onclick="closeModal()">Get in touch &rarr;</a>') +
-        '<a href="#contact" class="proj-modal-btn ghost" onclick="closeModal()">Contact the lab</a>';
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
+  const overlay=document.getElementById('projModal'),modalBar=document.getElementById('projModalBar'),modalBadge=document.getElementById('projModalBadge'),modalTitle=document.getElementById('projModalTitle'),modalMeta=document.getElementById('projModalMeta'),modalDesc=document.getElementById('projModalDesc'),modalDets=document.getElementById('projModalDetails'),modalActs=document.getElementById('projModalActions');
+  function statusHTML(s){const cls=s==='Ongoing'?'ongoing':s==='Completed'?'completed':'new';return'<span class="proj-status '+cls+'">'+s+'</span>';}
+  document.querySelectorAll('.proj-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      const theme=card.dataset.theme,tc=themeColors[theme]||{color:'#FCB040',light:'rgba(252,176,64,0.15)',label:''};
+      modalBar.style.background=tc.color;
+      modalBadge.textContent=tc.label;
+      modalBadge.style.cssText='color:'+tc.color+';background:'+tc.light+';border:1px solid '+tc.color+'55;';
+      modalTitle.textContent=card.dataset.title;
+      modalDesc.textContent=card.dataset.desc;
+      modalMeta.innerHTML=statusHTML(card.dataset.status)+'<span class="proj-year-modal">'+card.dataset.year+'</span>';
+      modalDets.innerHTML='<div class="proj-modal-detail-row"><span class="proj-modal-detail-label">Researchers</span><span class="proj-modal-detail-value">'+card.dataset.researchers+'</span></div><div class="proj-modal-detail-row"><span class="proj-modal-detail-label">Partners</span><span class="proj-modal-detail-value">'+card.dataset.partners+'</span></div><div class="proj-modal-detail-row"><span class="proj-modal-detail-label">Methods</span><span class="proj-modal-detail-value">'+card.dataset.methods+'</span></div>';
+      const link=card.dataset.link,btnColor=['#FCB040','#FCC47A'].includes(tc.color)?'#1A1A1A':'white';
+      modalActs.innerHTML=(link?'<a href="'+link+'" target="_blank" rel="noopener" class="proj-modal-btn primary" style="background:'+tc.color+';border-color:'+tc.color+';color:'+btnColor+'">Visit project site &#8599;</a>':'<a href="#contact" class="proj-modal-btn primary" style="background:'+tc.color+';border-color:'+tc.color+';color:'+btnColor+'" onclick="closeModal()">Get in touch &rarr;</a>')+'<a href="#contact" class="proj-modal-btn ghost" onclick="closeModal()">Contact the lab</a>';
+      overlay.classList.add('open');document.body.style.overflow='hidden';
     });
   });
-  function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
-  document.getElementById('projModalClose').addEventListener('click', closeModal);
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  function closeModal(){overlay.classList.remove('open');document.body.style.overflow='';}
+  document.getElementById('projModalClose').addEventListener('click',closeModal);
+  overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-  // Team accordions
-  function toggleGroup(header) { header.closest('.team-group').classList.toggle('open'); }
-  function togglePerson(person) { person.classList.toggle('expanded'); }
+  function toggleGroup(header){header.closest('.team-group').classList.toggle('open');}
+  function togglePerson(person){person.classList.toggle('expanded');}
 </script>
 </body>
 </html>
