@@ -52,13 +52,6 @@
   .footer-weave span:nth-child(6){background:#2AD1B5;width:8px}
   .footer-weave span:nth-child(7){background:#FC6965;width:18px}
 
-  /* Animated hero weave */
-  @keyframes warp-drift{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
-  @keyframes weft-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-  .hero-weave-layer{position:absolute;top:0;right:0;pointer-events:none;overflow:hidden;width:280px;height:240px;opacity:.06;}
-  .warp{animation:warp-drift 22s ease-in-out infinite;}
-  .weft{animation:weft-drift 16s ease-in-out infinite;}
-  @media(prefers-reduced-motion:reduce){.warp,.weft{animation:none;}}
   /* ═══════════════════════════════════════════════════════════ */
 
   nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);transition:box-shadow .3s;}
@@ -71,28 +64,37 @@
   .nav-links{display:flex;gap:2rem;list-style:none;}
   .nav-links a{font-size:.88rem;color:var(--mid);text-decoration:none;font-weight:400;transition:color .2s;}
   .nav-links a:hover,.nav-links a.active{color:var(--red);}
+  .nav-dropdown{position:relative;}
+  .nav-dropdown-trigger{display:flex;align-items:center;gap:.3rem;cursor:pointer;}
+  .nav-arrow{font-size:.6rem;transition:transform .2s;display:inline-block;}
+  .nav-dropdown:hover .nav-arrow{transform:rotate(180deg);}
+  .nav-dropdown-menu{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);background:white;border:1px solid var(--line);border-radius:12px;padding:.5rem;min-width:170px;box-shadow:0 8px 30px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
+  .nav-dropdown-menu::before{content:'';position:absolute;top:-.8rem;left:0;right:0;height:.8rem;}
+  .nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown-menu a{display:block;font-size:.84rem;color:var(--mid);padding:.5rem .9rem;border-radius:8px;transition:background .15s,color .15s;font-weight:400;}
+  .nav-dropdown-menu a:hover{background:var(--light);color:var(--red);}
   .nav-cta{font-size:.85rem;font-weight:500;background:var(--red);color:white;border:none;padding:.55rem 1.3rem;border-radius:100px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;}
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(238,74,62,.35);}
   .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
   .hamburger span{width:22px;height:1.5px;background:var(--dark);transition:.3s;}
 
-  .page-hero{background:var(--red-dark);padding:9rem 2.5rem 6rem;position:relative;overflow:hidden;}
-  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(252,105,101,0.3) 0%,transparent 65%);pointer-events:none;}
+  .page-hero{background:var(--navy);padding:9rem 2.5rem 6rem;position:relative;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(90,97,183,0.35) 0%,transparent 65%);-webkit-mask-image:linear-gradient(to bottom,black 0%,black calc(100% - 110px),transparent 100%);mask-image:linear-gradient(to bottom,black 0%,black calc(100% - 110px),transparent 100%);pointer-events:none;}
   .page-hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;}
-  .page-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--red-light);margin-bottom:1.5rem;}
+  .page-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-light);margin-bottom:1.5rem;}
   .page-hero h1{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.15;color:white;margin-bottom:1.2rem;max-width:700px;}
-  .page-hero h1 em{font-style:italic;color:var(--red-light);}
+  .page-hero h1 em{font-style:italic;color:var(--navy-light);}
   .page-hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.8;max-width:560px;}
   .hero-text-anim{animation:fadeUp .8s ease both;}
 
-  .filter-bar-wrap{background:var(--white);padding:1.5rem 2.5rem;border-bottom:1px solid var(--line);}
+  .filter-bar-wrap{background:var(--white);padding:1.5rem 2.5rem;}
   .filter-bar{max-width:1180px;margin:0 auto;display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;}
   .filter-label{font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin-right:.5rem;}
   .cat-filter{padding:.42rem 1.1rem;border-radius:100px;border:1.5px solid var(--line);background:white;color:var(--mid);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;}
-  .cat-filter:hover{border-color:var(--red);color:var(--red);}
-  .cat-filter.active{background:var(--red);border-color:var(--red);color:white;}
+  .cat-filter:hover{border-color:var(--navy);color:var(--navy);}
+  .cat-filter.active{background:var(--navy);border-color:var(--navy);color:white;}
 
-  .blog-section{padding:4rem 2.5rem 6rem;background:var(--white);}
+  .blog-section{padding:4rem 2.5rem 6rem;background:var(--white);margin-top:-1px;}
   .blog-container{max-width:1180px;margin:0 auto;}
   .blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
   .post-card{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;cursor:pointer;}
@@ -109,14 +111,14 @@
   .post-author{display:flex;align-items:center;gap:.7rem;}
   .post-author-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Alegreya',serif;font-size:.82rem;font-weight:800;flex-shrink:0;border:1px solid;}
   .post-author-name{font-size:.82rem;color:var(--mid);font-weight:400;}
-  .post-read-more{font-size:.85rem;color:var(--red);font-weight:500;white-space:nowrap;}
+  .post-read-more{font-size:.85rem;color:var(--navy);font-weight:500;white-space:nowrap;}
   .post-card.featured{grid-column:span 2;}
   .post-card.featured .post-card-body{padding:2.4rem;}
   .post-card.featured h3{font-size:1.7rem;}
   .empty-state{grid-column:span 2;text-align:center;padding:4rem 2rem;color:var(--mid);font-size:.95rem;}
   .load-more-wrap{text-align:center;margin-top:3rem;}
   .btn-load-more{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;font-weight:500;color:var(--dark);text-decoration:none;border:1.5px solid var(--line);padding:.7rem 1.8rem;border-radius:100px;transition:all .2s;cursor:pointer;background:white;font-family:'Inter',sans-serif;}
-  .btn-load-more:hover{border-color:var(--red);color:var(--red);}
+  .btn-load-more:hover{border-color:var(--navy);color:var(--navy);}
 
   /* Section labels in the blog listing area */
   .blog-section-header{margin-bottom:2.5rem;}
@@ -162,37 +164,25 @@
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#what">What We Do</a></li>
-    <li><a href="index.html#why">Purpose</a></li>
-    <li><a href="index.html#learning">Learning</a></li>
-    <li><a href="index.html#projects">Praxis &amp; Resources</a></li>
+    <li class="nav-dropdown">
+      <a href="index.html#what" class="nav-dropdown-trigger">About <span class="nav-arrow">&#9662;</span></a>
+      <div class="nav-dropdown-menu">
+        <a href="index.html#what">What We Do</a>
+        <a href="index.html#why">Purpose</a>
+        <a href="index.html#learning">Learning</a>
+      </div>
+    </li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="praxis.html">Praxis &amp; Resources</a></li>
     <li><a href="spring-school.html">Spring School</a></li>
     <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="news-events.html">News &amp; Events</a></li>
   </ul>
   <a class="nav-cta" href="index.html#contact">Get in Touch</a>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
 <div class="page-hero">
-  <div class="hero-weave-layer">
-    <svg class="warp" width="280" height="240" viewBox="0 0 280 240" xmlns="http://www.w3.org/2000/svg">
-      <rect x="18"  y="0" width="9" height="240" rx="4" fill="#FCC47A"/>
-      <rect x="58"  y="0" width="9" height="240" rx="4" fill="#2AD1B5"/>
-      <rect x="98"  y="0" width="9" height="240" rx="4" fill="#FC6965"/>
-      <rect x="138" y="0" width="9" height="240" rx="4" fill="#FCB040"/>
-      <rect x="178" y="0" width="9" height="240" rx="4" fill="#5A61B7"/>
-      <rect x="218" y="0" width="9" height="240" rx="4" fill="#2AA1DD"/>
-      <rect x="258" y="0" width="9" height="240" rx="4" fill="#FC6965"/>
-    </svg>
-    <svg class="weft" style="position:absolute;top:0;left:0" width="280" height="240" viewBox="0 0 280 240" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="18"  width="280" height="9" rx="4" fill="#FC6965"/>
-      <rect x="0" y="52"  width="280" height="9" rx="4" fill="#FCB040"/>
-      <rect x="0" y="86"  width="280" height="9" rx="4" fill="#2AD1B5"/>
-      <rect x="0" y="120" width="280" height="9" rx="4" fill="#FCC47A"/>
-      <rect x="0" y="154" width="280" height="9" rx="4" fill="#5A61B7"/>
-      <rect x="0" y="188" width="280" height="9" rx="4" fill="#FC6965"/>
-    </svg>
-  </div>
   <div class="page-hero-inner">
     <div class="hero-text-anim">
       <div class="page-eyebrow">From the Lab</div>
@@ -203,7 +193,7 @@
 </div>
 
 <!-- DIVIDER: red → white -->
-<div style="line-height:0;display:block;background:#FFFFFF;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#C12925" stroke="none"/></svg></div>
+<div style="line-height:0;display:block;background:#FFFFFF;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#2E3192" stroke="none"/></svg></div>
 
 <div class="filter-bar-wrap">
   <div class="filter-bar">
@@ -363,6 +353,7 @@
       <a href="index.html#projects">Praxis &amp; Resources</a>
       <a href="spring-school.html">Spring School</a>
       <a href="blog.html">Blog</a>
+      <a href="news-events.html">News &amp; Events</a>
       <a href="index.html#team">Team</a>
     </div>
     <div class="footer-col">
