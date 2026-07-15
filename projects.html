@@ -38,6 +38,7 @@
   .nav-arrow{font-size:.6rem;transition:transform .2s;display:inline-block;}
   .nav-dropdown:hover .nav-arrow{transform:rotate(180deg);}
   .nav-dropdown-menu{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);background:white;border:1px solid var(--line);border-radius:12px;padding:.5rem;min-width:170px;box-shadow:0 8px 30px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
+  .nav-dropdown-menu::before{content:'';position:absolute;top:-.8rem;left:0;right:0;height:.8rem;}
   .nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
   .nav-dropdown-menu a{display:block;font-size:.84rem;color:var(--mid);padding:.5rem .9rem;border-radius:8px;transition:background .15s,color .15s;font-weight:400;}
   .nav-dropdown-menu a:hover{background:var(--light);color:var(--red);}
@@ -47,22 +48,22 @@
   .hamburger span{width:22px;height:1.5px;background:var(--dark);transition:.3s;}
 
   /* HERO */
-  .page-hero{background:var(--red-dark);padding:9rem 2.5rem 6rem;position:relative;overflow:hidden;}
-  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(252,105,101,0.25) 0%,transparent 65%);pointer-events:none;}
+  .page-hero{background:var(--navy);padding:9rem 2.5rem 6rem;position:relative;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(90,97,183,0.35) 0%,transparent 65%);-webkit-mask-image:linear-gradient(to bottom,black 0%,black calc(100% - 110px),transparent 100%);mask-image:linear-gradient(to bottom,black 0%,black calc(100% - 110px),transparent 100%);pointer-events:none;}
   .page-hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;}
-  .page-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--red-light);margin-bottom:1.5rem;}
+  .page-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-light);margin-bottom:1.5rem;}
   .page-hero h1{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.15;color:white;margin-bottom:1.2rem;}
-  .page-hero h1 em{font-style:italic;color:var(--red-light);}
+  .page-hero h1 em{font-style:italic;color:var(--navy-light);}
   .page-hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.8;max-width:620px;}
   .hero-text-anim{animation:fadeUp .8s ease both;}
 
   /* FILTER BAR */
-  .filter-bar-wrap{background:var(--white);padding:1.5rem 2.5rem;border-bottom:1px solid var(--line);position:sticky;top:67px;z-index:50;}
+  .filter-bar-wrap{background:var(--white);padding:1.5rem 2.5rem;position:sticky;top:67px;z-index:50;}
   .filter-bar{max-width:1180px;margin:0 auto;display:flex;gap:.55rem;flex-wrap:wrap;align-items:center;}
   .filter-label{font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin-right:.4rem;flex-shrink:0;}
   .theme-filter{padding:.4rem 1rem;border-radius:100px;border:1.5px solid var(--line);background:white;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:.4rem;color:var(--mid);}
   .theme-filter .fdot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
-  .theme-filter:hover{border-color:var(--red);color:var(--red);}
+  .theme-filter:hover{border-color:var(--navy);color:var(--navy);}
   .theme-filter.active{color:white;}
   .theme-filter[data-theme="all"].active{background:var(--dark);border-color:var(--dark);}
   .theme-filter[data-theme="migration"].active{background:var(--c-migration);border-color:var(--c-migration);}
@@ -73,7 +74,7 @@
   .theme-filter[data-theme="climate"].active{background:var(--c-climate);border-color:var(--c-climate);}
 
   /* PROJECTS SECTION */
-  .projects-section{padding:4rem 2.5rem 6rem;background:var(--white);}
+  .projects-section{padding:4rem 2.5rem 6rem;background:var(--white);margin-top:-1px;}
   .projects-container{max-width:1180px;margin:0 auto;}
 
   /* Theme group */
@@ -90,6 +91,8 @@
   .proj-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,0.12);}
   .proj-card:hover .proj-arrow{opacity:1;transform:translate(0,0);}
   .proj-card-bar{height:4px;flex-shrink:0;}
+  .proj-card-image{width:100%;aspect-ratio:16/10;overflow:hidden;background:var(--light);flex-shrink:0;}
+  .proj-card-image img{width:100%;height:100%;object-fit:cover;display:block;}
   .proj-card-body{padding:1.6rem 1.6rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;flex:1;}
   .proj-title{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.08rem;letter-spacing:-.01em;line-height:1.3;color:var(--dark);}
   .proj-desc{font-size:.85rem;color:var(--mid);font-weight:300;line-height:1.65;flex:1;}
@@ -98,28 +101,31 @@
   .proj-arrow{font-size:.85rem;color:var(--mid);opacity:0;transform:translate(-4px,4px);transition:opacity .2s,transform .2s;}
 
   /* MODAL */
-  .proj-modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(10,10,20,0.7);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+  .proj-modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
   .proj-modal-overlay.open{opacity:1;pointer-events:all;}
-  .proj-modal{background:#0E0E1A;border-radius:20px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;transform:translateY(20px) scale(.97);transition:transform .28s ease;box-shadow:0 30px 80px rgba(0,0,0,0.5);position:relative;border:1px solid rgba(255,255,255,0.08);}
+  .proj-modal{background:var(--white);border-radius:20px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;transform:translateY(20px) scale(.97);transition:transform .28s ease;box-shadow:0 30px 80px rgba(0,0,0,0.5);position:relative;border:1px solid var(--line);}
   .proj-modal-overlay.open .proj-modal{transform:translateY(0) scale(1);}
   .proj-modal-bar{height:5px;border-radius:20px 20px 0 0;}
-  .proj-modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:rgba(255,255,255,0.6);transition:background .2s,color .2s;}
-  .proj-modal-close:hover{background:white;color:var(--dark);}
+  .proj-modal-image{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--light);}
+  .proj-modal-image img{width:100%;height:100%;object-fit:cover;display:block;}
+  .proj-modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.12);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--mid);transition:background .2s,color .2s;}
+  .proj-modal-close:hover{background:var(--dark);color:white;}
   .proj-modal-inner{padding:2rem 2rem 2.2rem;}
   .proj-modal-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.69rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px;margin-bottom:.9rem;}
-  .proj-modal h2{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.65rem;letter-spacing:-.01em;line-height:1.22;margin-bottom:1rem;color:white;}
-  .proj-modal-body{font-size:.9rem;color:rgba(255,255,255,0.68);font-weight:300;line-height:1.8;margin-bottom:1.4rem;}
+  .proj-modal h2{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.65rem;letter-spacing:-.01em;line-height:1.22;margin-bottom:1rem;color:var(--dark);}
+  .proj-modal-body{font-size:.9rem;color:var(--mid);font-weight:300;line-height:1.8;margin-bottom:1.4rem;}
   .proj-modal-body p{margin-bottom:.8rem;}
   .proj-modal-body p:last-child{margin-bottom:0;}
-  .proj-modal-meta{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.3rem;display:flex;flex-direction:column;gap:.8rem;}
+  .proj-modal-meta{border-top:1px solid var(--line);padding-top:1.3rem;display:flex;flex-direction:column;gap:.8rem;}
   .proj-modal-row{display:flex;gap:.8rem;}
-  .proj-modal-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,0.35);min-width:120px;padding-top:.05rem;flex-shrink:0;}
-  .proj-modal-value{font-size:.86rem;color:rgba(255,255,255,0.72);font-weight:300;line-height:1.6;}
+  .proj-modal-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.4);min-width:120px;padding-top:.05rem;flex-shrink:0;}
+  .proj-modal-value{font-size:.86rem;color:var(--mid);font-weight:300;line-height:1.6;}
   .proj-modal-actions{margin-top:1.6rem;display:flex;gap:.8rem;flex-wrap:wrap;}
   .proj-modal-btn{padding:.6rem 1.35rem;border-radius:100px;font-size:.84rem;font-weight:500;cursor:pointer;text-decoration:none;border:1.5px solid;display:inline-block;transition:transform .18s;font-family:'Inter',sans-serif;}
   .proj-modal-btn:hover{transform:translateY(-1px);}
-  .proj-modal-btn.ghost{background:transparent;color:rgba(255,255,255,0.55);border-color:rgba(255,255,255,0.2);}
-  .proj-modal-btn.ghost:hover{color:white;border-color:white;}
+  .proj-modal-btn.ghost{background:transparent;color:var(--mid);border-color:rgba(0,0,0,0.2);}
+  .proj-modal-btn.ghost:hover{color:var(--dark);border-color:var(--dark);}
+
 
   footer{background:var(--navy-dark);color:rgba(255,255,255,0.5);padding:4rem 2.5rem 2rem;}
   .footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
@@ -163,6 +169,7 @@
     <li><a href="praxis.html">Praxis &amp; Resources</a></li>
     <li><a href="spring-school.html">Spring School</a></li>
     <li><a href="blog.html">Blog</a></li>
+    <li><a href="news-events.html">News &amp; Events</a></li>
   </ul>
   <a class="nav-cta" href="index.html#contact">Get in Touch</a>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -178,13 +185,13 @@
   </div>
 </div>
 
-<div style="line-height:0;display:block;background:#FFFFFF;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#C12925" stroke="none"/></svg></div>
+<div style="line-height:0;display:block;background:#FFFFFF;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#2E3192" stroke="none"/></svg></div>
 
 <div class="filter-bar-wrap">
   <div class="filter-bar">
     <span class="filter-label">Theme</span>
     <button class="theme-filter active" data-theme="all"><span class="fdot" style="background:var(--dark);"></span>All</button>
-    <button class="theme-filter" data-theme="migration"><span class="fdot" style="background:var(--c-migration);"></span>Forced Migration</button>
+    <button class="theme-filter" data-theme="migration"><span class="fdot" style="background:var(--c-migration);"></span>Forced Migration: Refugee Camp</button>
     <button class="theme-filter" data-theme="youth"><span class="fdot" style="background:var(--c-youth);"></span>Youth Beyond Binaries</button>
     <button class="theme-filter" data-theme="economy"><span class="fdot" style="background:var(--c-economy);"></span>Economic Insecurities</button>
     <button class="theme-filter" data-theme="storytelling"><span class="fdot" style="background:var(--c-storytelling);"></span>Storytelling &amp; Identity</button>
@@ -200,7 +207,7 @@
     <div class="proj-group fade-in" data-group="migration">
       <div class="proj-group-header" style="border-color:var(--c-migration);">
         <span class="proj-group-dot" style="background:var(--c-migration);"></span>
-        <span class="proj-group-title" style="color:var(--c-migration);">Forced Migration</span>
+        <span class="proj-group-title" style="color:var(--c-migration);">Forced Migration: Refugee Camp</span>
         <span class="proj-group-count">5 projects</span>
       </div>
       <div class="proj-list">
@@ -228,11 +235,11 @@
           data-color="#2AA1DD"
           data-link="https://rosestories.nl/podcast-verhalenhuis/"
           data-creators="Elena Ponzoni, Halleh Ghorashi, Fabian Holle"
-          data-body="Het Verhalenhuis is a creative collaboration between Story Academy and Refugee Academy. Its main goal is to provide a platform for people with refugee backgrounds to receive professional guidance and share their unheard stories on stage, while also offering potential pathways for participants to explore opportunities within the arts sector.||Story Academy leads the direction and production of Het Verhalenhuis, supported by reflective research under the guidance of Refugee Academy. The reflection process involves gathering insights and experiences from both participants and facilitators through dialogue.||The project unfolds in twelve phases, each consisting of six storytelling workshops tailored for those who have experienced forced migration. Stories created during these workshops are transformed into podcasts, and a performance was staged at Theater Spui in The Hague on 29 April 2023.">
+          data-body="Het Verhalenhuis is een creatieve samenwerking tussen Story Academy en Refugee Academy. Het heeft als voornaamste doel een platform te bieden aan mensen met een vluchtelingenachtergrond om professionele begeleiding te ontvangen en hun ongehoorde verhalen op het podium te delen, terwijl het ook potentiële paden biedt voor deelnemers om kansen binnen de kunstsector te verkennen. Dit onderzoek is onderdeel van het Co-Creation for Inclusive Knowledges Lab en het Refugee Academy Theme.||Story Academy leidt de richting en productie van Het Verhalenhuis, dat wordt ondersteund door reflectief onderzoek onder leiding van Refugee Academy. Het reflectieproces omvat het verzamelen van inzichten en ervaringen van zowel deelnemers als begeleiders door middel van dialoog, met als doel een diep begrip te krijgen van de waardevolle lessen van het project, inclusief de processen en impact ervan.||Het project ontvouwt zich in twaalf fasen, elk bestaande uit zes workshops over verhalen vertellen die op maat zijn gemaakt voor degenen die gedwongen migratie hebben ervaren. De verhalen die deelnemers tijdens deze workshops creëren, worden omgezet in podcasts, en er is ook een voorstelling gemaakt: op 29 april 2023 deelden deelnemers uit verschillende fasen van het project hun verhalen met een breder publiek in Theater Spui in Den Haag.">
           <div class="proj-card-bar" style="background:var(--c-migration);"></div>
           <div class="proj-card-body">
             <div class="proj-title">The House of Stories <em style="font-style:italic;font-size:.92em;">(Het Verhalenhuis)</em></div>
-            <div class="proj-desc">A creative collaboration giving people with refugee backgrounds professional guidance to share their unheard stories on stage — transformed into podcasts and live performances at Theater Spui in The Hague.</div>
+            <div class="proj-desc">Een creatieve samenwerking die mensen met een vluchtelingenachtergrond professionele begeleiding biedt om hun ongehoorde verhalen op het podium te delen — omgezet in podcasts en een voorstelling in Theater Spui, Den Haag.</div>
             <div class="proj-footer">
               <span class="proj-creators">Ponzoni, Ghorashi, Holle</span>
               <span class="proj-arrow">&#8599;</span>
@@ -321,15 +328,15 @@
         </div>
 
         <div class="proj-card"
-          data-title="Community-Led Research and Action: Trans Healthcare in Den Haag"
+          data-title="Community-Led Research and Action (CLRA) en Transzorg in Den Haag"
           data-theme="youth"
           data-color="#2AD1B5"
           data-creators="Lise Woensdregt"
-          data-body="The Municipality of The Hague recognises the importance of inclusive care and support for transgender youth. These young people face unique challenges in their development, self-acceptance, and social acceptance, particularly regarding gender diversity and the possible process of gender-affirming medical interventions.||Using Community-Led Research and Action (CLRA), this research maps the barriers and opportunities that transgender youth experience in their search for adequate care and support from their own perspective.||The project also investigates the challenges and opportunities that professionals encounter in their work with transgender youth, including their knowledge levels, availability of specific training on gender diversity, and institutional support or obstacles that affect their ability to provide effective, inclusive, and empathetic care.">
+          data-body="De Gemeente Den Haag onderschrijft het belang van inclusieve zorg en ondersteuning voor transgender jongeren. Deze jongeren worden geconfronteerd met unieke uitdagingen in hun ontwikkeling, zelfacceptatie en sociale acceptatie, vooral als het gaat om kwesties rondom genderdiversiteit en het mogelijke proces van genderbevestigende medische interventies. Dit onderzoek is onderdeel van het Co-Creation for Inclusive Knowledges Lab.||Toegang tot en de kwaliteit van de nodige zorg en ondersteuning spelen een cruciale rol in hun welzijn. Door methodologisch gebruik te maken van Community-led Research and Action (CLRA) streeft dit onderzoek ernaar de barrières en kansen in kaart te brengen die transgender jongeren ervaren in hun zoektocht naar adequate zorg en ondersteuning, vanuit hun eigen perspectief.||Tegelijkertijd erkent dit project de essentiële rol die (medisch) hulpverleners en andere ondersteuners spelen in het leven van transgender jongeren. Daarom onderzoeken we ook de uitdagingen en kansen die professionals tegenkomen in hun werk met transgender jongeren, waaronder hun kennisniveau, de beschikbaarheid van specifieke training over genderdiversiteit, en institutionele ondersteuning of obstakels die hun vermogen beïnvloeden om effectieve, inclusieve en empathische zorg te bieden.">
           <div class="proj-card-bar" style="background:var(--c-youth);"></div>
           <div class="proj-card-body">
-            <div class="proj-title">Trans Healthcare in Den Haag</div>
-            <div class="proj-desc">Mapping barriers transgender youth face in accessing adequate care in The Hague — integrating both youth perspectives and professional experiences through community-led research.</div>
+            <div class="proj-title">Community-Led Research and Action (CLRA) en Transzorg in Den Haag</div>
+            <div class="proj-desc">Community-led onderzoek naar de barrières die transgender jongeren ervaren bij het vinden van passende zorg in Den Haag — vanuit het perspectief van zowel de jongeren zelf als de zorgprofessionals.</div>
             <div class="proj-footer">
               <span class="proj-creators">Lise Woensdregt</span>
               <span class="proj-arrow">&#8599;</span>
@@ -367,15 +374,15 @@
         </div>
 
         <div class="proj-card"
-          data-title="In Search of an In-Between Space — Kenniscentrum Ongelijkheid"
+          data-title="Op zoek naar een Tussenruimte — Kenniscentrum Ongelijkheid"
           data-theme="economy"
           data-color="#FCB040"
           data-creators="Halleh Ghorashi, Elena Ponzoni, dr. Lise Woensdregt"
-          data-body="This project investigates whether and how co-creation based on epistemic plurality can strengthen democratic relationships that contribute to new, creative solutions to the many problems around inequality in Amsterdam.||In a number of co-creative sessions, intermediaries such as active residents, key figures, neighbourhood workers, civil servants, and researchers are brought together to collaboratively work on a concrete case. Through action research we analyse whether and how these intermediaries succeed in establishing new 'chains of trust' between different involved parties.||The project aims to develop a city-wide learning trajectory on multi-voiced collaboration in in-between spaces. Partners include E-Co/Samen Vooruit, Vrijwilligersacademie Amsterdam, University of Amsterdam, Hogeschool van Amsterdam, and the Municipality of Amsterdam.">
+          data-body="We onderzoeken in dit project of en hoe co-creatie op basis van epistemische meerstemmigheid kan zorgen voor een versterking van democratische verhoudingen die bijdragen aan nieuwe, creatieve oplossingen voor de vele problemen rondom ongelijkheid in Amsterdam.||In een aantal co-creatieve sessies brengen we tussenpersonen zoals actieve bewoners, sleutelfiguren, buurtmedewerkers, ambtenaren en onderzoekers bijeen die samen zullen werken aan een concrete case. Door middel van actieonderzoek analyseren we of en hoe het deze tussenpersonen lukt om in democratische samenwerkingspraktijken nieuwe 'ketens van vertrouwen' tot stand te brengen tussen verschillende betrokken partijen die tot op heden veel afstand en wantrouwen ervaren, maar wel nodig zijn om hardnekkige problemen in de stad op te lossen, zoals armoede, kansenongelijkheid in het onderwijs en de energietransitie.||Op basis van deze analyses ontwikkelen we een stadsbreed toepasbaar leertraject over meerstemmige samenwerking in tussenruimtes, waarmee zowel actieve bewoners als frontlinie professionals en ambtenaren/beleidsmakers die als tussenpersonen fungeren hun democratisch handelen en vakmanschap kunnen versterken. In dit project werken we samen met E-Co/Samen Vooruit, Vrijwilligersacademie Amsterdam, Onderzoeksbureau Amsterdam Meetellen, University of Amsterdam, Hogeschool van Amsterdam en Gemeente Amsterdam.">
           <div class="proj-card-bar" style="background:var(--c-economy);"></div>
           <div class="proj-card-body">
-            <div class="proj-title">In Search of an In-Between Space</div>
-            <div class="proj-desc">Co-creative action research building new 'chains of trust' between Amsterdam residents, frontline workers, and policymakers to address persistent inequalities in the city.</div>
+            <div class="proj-title">Op zoek naar een Tussenruimte</div>
+            <div class="proj-desc">Co-creatief actieonderzoek dat nieuwe 'ketens van vertrouwen' opbouwt tussen bewoners, buurtwerkers en beleidsmakers om hardnekkige ongelijkheid in Amsterdam aan te pakken.</div>
             <div class="proj-footer">
               <span class="proj-creators">Ghorashi, Ponzoni, Woensdregt</span>
               <span class="proj-arrow">&#8599;</span>
@@ -388,11 +395,11 @@
           data-theme="economy"
           data-color="#FCB040"
           data-creators="Boudewijn Goos, Arjen de Wit"
-          data-body="To strengthen research on the Dutch social assistance system, Boudewijn Goos and Arjen de Wit are establishing a stakeholder group or 'think tank' to jointly create knowledge for current or future research on social assistance.||This group will consist of other researchers, policymakers, representatives of social assistance recipients, and the recipients themselves. The aim is to enrich the value of scientific research by jointly determining how research questions are formulated, studies are designed, results are interpreted, and findings are applied to inform policy and practice.||In the belief that knowledge only exists where it is used, the think tank serves as a place where everyone leaves with new ideas applicable to daily life — contributing both to new perspectives for research and to facilitating dialogue between people with diverse perspectives.">
+          data-body="Om ons onderzoek naar het Nederlandse bijstandssysteem te versterken, richten Boudewijn Goos en Arjen de Wit een belanghebbendengroep of 'denktank' op om gezamenlijk kennis te creëren voor huidig of toekomstig onderzoek met betrekking tot sociale bijstand.||Deze groep bestaat uit andere onderzoekers, beleidsmakers, vertegenwoordigers van bijstandsontvangers, en de bijstandsontvangers zelf. Verschillende onderzoeksideeën of bevindingen — van henzelf en van andere onderzoekers — worden ongeveer twee keer per jaar in een plenaire sessie besproken. Het doel is de waarde van wetenschappelijk onderzoek te verrijken door gezamenlijk te bepalen hoe onderzoeksvragen worden geformuleerd, studies worden opgezet, resultaten worden geïnterpreteerd en bevindingen worden toegepast om beleid en praktijk te informeren.||In de veronderstelling dat kennis alleen bestaat waar het wordt gebruikt, dient de denktank als een plek waar iedereen vertrekt met nieuwe ideeën die toepasbaar zijn in het dagelijks leven. Zo draagt dit project niet alleen bij aan nieuwe perspectieven voor onderzoek, maar heeft het ook intrinsieke waarde door het faciliteren van een dialoog tussen mensen met uiteenlopende perspectieven.">
           <div class="proj-card-bar" style="background:var(--c-economy);"></div>
           <div class="proj-card-body">
             <div class="proj-title">Participatief Overlegpanel over Sociale Bijstand</div>
-            <div class="proj-desc">A stakeholder think tank co-creating knowledge on the Dutch social assistance system — bringing together researchers, policymakers, and benefit recipients to enrich and ground research in lived reality.</div>
+            <div class="proj-desc">Een denktank van onderzoekers, beleidsmakers en bijstandsontvangers die gezamenlijk kennis creëren over het Nederlandse bijstandssysteem — om onderzoek te verrijken en dichter bij de dagelijkse praktijk te brengen.</div>
             <div class="proj-footer">
               <span class="proj-creators">Boudewijn Goos, Arjen de Wit</span>
               <span class="proj-arrow">&#8599;</span>
@@ -566,6 +573,9 @@
 <div class="proj-modal-overlay" id="projModal" role="dialog" aria-modal="true">
   <div class="proj-modal">
     <div class="proj-modal-bar" id="projModalBar"></div>
+    <div class="proj-modal-image" id="projModalImageWrap" style="display:none;">
+      <img id="projModalImage" src="" alt="">
+    </div>
     <button class="proj-modal-close" id="projModalClose" aria-label="Close">&#10005;</button>
     <div class="proj-modal-inner">
       <div class="proj-modal-badge" id="projModalBadge"></div>
@@ -594,10 +604,11 @@
       <a href="praxis.html">Praxis &amp; Resources</a>
       <a href="spring-school.html">Spring School</a>
       <a href="blog.html">Blog</a>
+      <a href="news-events.html">News &amp; Events</a>
     </div>
     <div class="footer-col">
       <h5>Themes</h5>
-      <a href="#">Forced Migration</a>
+      <a href="#">Forced Migration: Refugee Camp</a>
       <a href="#">Youth Beyond Binaries</a>
       <a href="#">Economic Insecurities</a>
       <a href="#">Storytelling &amp; Identity</a>
@@ -635,8 +646,19 @@
     }
   });
 
+  // Optional project images — only rendered for cards that have a data-image set.
+  // To add a picture to a project, just add data-image="images/projects/your-file.jpg" to its .proj-card.
+  document.querySelectorAll('.proj-card').forEach(card => {
+    if (card.dataset.image) {
+      const wrap = document.createElement('div');
+      wrap.className = 'proj-card-image';
+      wrap.innerHTML = `<img src="${card.dataset.image}" alt="${card.dataset.title || ''}" loading="lazy">`;
+      card.querySelector('.proj-card-bar').insertAdjacentElement('afterend', wrap);
+    }
+  });
+
   // Theme filter
-  const themeLabels = { migration:'Forced Migration', youth:'Youth Beyond Binaries', economy:'Economic Insecurities', storytelling:'Storytelling & Identity', violence:'Resisting Violence', climate:'Climate & Democracy' };
+  const themeLabels = { migration:'Forced Migration: Refugee Camp', youth:'Youth Beyond Binaries', economy:'Economic Insecurities', storytelling:'Storytelling & Identity', violence:'Resisting Violence', climate:'Climate & Democracy' };
   document.querySelectorAll('.theme-filter').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.theme-filter').forEach(b => b.classList.remove('active'));
@@ -651,6 +673,8 @@
   // Modal
   const overlay = document.getElementById('projModal');
   const modalBar = document.getElementById('projModalBar');
+  const modalImageWrap = document.getElementById('projModalImageWrap');
+  const modalImage = document.getElementById('projModalImage');
   const modalBadge = document.getElementById('projModalBadge');
   const modalTitle = document.getElementById('projModalTitle');
   const modalBody = document.getElementById('projModalBody');
@@ -664,6 +688,14 @@
       const label = themeLabels[theme] || '';
       const btnColor = ['#FCB040','#FCC47A'].includes(color) ? '#1A1A1A' : 'white';
       modalBar.style.background = color;
+      if (card.dataset.image) {
+        modalImage.src = card.dataset.image;
+        modalImage.alt = card.dataset.title || '';
+        modalImageWrap.style.display = 'block';
+      } else {
+        modalImage.src = '';
+        modalImageWrap.style.display = 'none';
+      }
       modalBadge.textContent = label;
       modalBadge.style.cssText = `color:${color};background:${color}22;border:1px solid ${color}55;`;
       modalTitle.textContent = card.dataset.title;
