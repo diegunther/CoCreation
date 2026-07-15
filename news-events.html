@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News &amp; Events, Co-creation for Inclusive Knowledges Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,800;1,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:#1A1A1A; --mid:#555555; --light:#F8F7F5; --line:#E0DDD8; --white:#FFFFFF;
+    --red-light:#FC6965;  --red:#EE4A3E;    --red-dark:#C12925;
+    --teal-light:#2AD1B5; --teal:#01AA93;   --teal-dark:#02846E;
+    --navy-light:#5A61B7; --navy:#2E3192;   --navy-dark:#1B216B;
+    --blue-light:#2AA1DD; --blue:#0076BE;   --blue-dark:#025F8E;
+    --amber-light:#FCC47A;--amber:#FCB040;  --amber-dark:#D38824;
+    --t1:#EE4A3E; --t2:#01AA93; --t3:#2E3192; --t4:#0076BE; --t5:#FCB040;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;font-weight:400;background:var(--white);color:var(--dark);font-size:16px;line-height:1.65;overflow-x:hidden;}
+
+  /* ═══ WEAVE IDENTITY ═══════════════════════════════════════ */
+  .thread-accent{display:flex;align-items:center;gap:3px;margin-bottom:.55rem;}
+  .thread-accent span{display:block;height:3px;border-radius:2px;}
+  .ta-red   span:nth-child(1){background:#FC6965;width:18px}
+  .ta-red   span:nth-child(2){background:#FCB040;width:9px}
+  .ta-red   span:nth-child(3){background:#2AD1B5;width:14px}
+  .ta-red   span:nth-child(4){background:#FCC47A;width:22px}
+  .ta-red   span:nth-child(5){background:#5A61B7;width:7px}
+  .ta-light span:nth-child(1){background:#EE4A3E;width:14px}
+  .ta-light span:nth-child(2){background:#01AA93;width:20px}
+  .ta-light span:nth-child(3){background:#2E3192;width:8px}
+  .ta-light span:nth-child(4){background:#0076BE;width:16px}
+  .ta-light span:nth-child(5){background:#FCB040;width:11px}
+
+  .nav-weave{display:flex;gap:2px;margin-top:3px;}
+  .nav-weave span{height:2px;border-radius:1px;}
+  .nav-weave span:nth-child(1){background:#EE4A3E;width:12px}
+  .nav-weave span:nth-child(2){background:#01AA93;width:7px}
+  .nav-weave span:nth-child(3){background:#2E3192;width:16px}
+  .nav-weave span:nth-child(4){background:#0076BE;width:6px}
+  .nav-weave span:nth-child(5){background:#FCB040;width:10px}
+  .footer-weave{display:flex;gap:3px;margin-bottom:1.2rem;}
+  .footer-weave span{height:2px;border-radius:1px;opacity:.6;}
+  .footer-weave span:nth-child(1){background:#EE4A3E;width:28px}
+  .footer-weave span:nth-child(2){background:#01AA93;width:14px}
+  .footer-weave span:nth-child(3){background:#2E3192;width:20px}
+  .footer-weave span:nth-child(4){background:#0076BE;width:10px}
+  .footer-weave span:nth-child(5){background:#FCB040;width:24px}
+  .footer-weave span:nth-child(6){background:#2AD1B5;width:8px}
+  .footer-weave span:nth-child(7){background:#FC6965;width:18px}
+
+  /* ═══════════════════════════════════════════════════════════ */
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.5rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);transition:box-shadow .3s;}
+  nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.07);}
+  .nav-logo{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--dark);}
+  .nav-logo img{height:44px;width:44px;object-fit:contain;flex-shrink:0;}
+  .nav-logo-text{display:flex;flex-direction:column;line-height:1.2;}
+  .nav-logo-name{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:.88rem;}
+  .nav-logo-sub{font-size:.72rem;color:var(--mid);font-weight:300;letter-spacing:.04em;}
+  .nav-links{display:flex;gap:1.7rem;list-style:none;}
+  .nav-links a{font-size:.88rem;color:var(--mid);text-decoration:none;font-weight:400;transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--red);}
+  .nav-dropdown{position:relative;}
+  .nav-dropdown-trigger{display:flex;align-items:center;gap:.3rem;cursor:pointer;}
+  .nav-arrow{font-size:.6rem;transition:transform .2s;display:inline-block;}
+  .nav-dropdown:hover .nav-arrow{transform:rotate(180deg);}
+  .nav-dropdown-menu{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);background:white;border:1px solid var(--line);border-radius:12px;padding:.5rem;min-width:170px;box-shadow:0 8px 30px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
+  .nav-dropdown-menu::before{content:'';position:absolute;top:-.8rem;left:0;right:0;height:.8rem;}
+  .nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown-menu a{display:block;font-size:.84rem;color:var(--mid);padding:.5rem .9rem;border-radius:8px;transition:background .15s,color .15s;font-weight:400;}
+  .nav-dropdown-menu a:hover{background:var(--light);color:var(--red);}
+  .nav-cta{font-size:.85rem;font-weight:500;background:var(--red);color:white;border:none;padding:.55rem 1.3rem;border-radius:100px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(238,74,62,.35);}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .hamburger span{width:22px;height:1.5px;background:var(--dark);transition:.3s;}
+
+  /* HERO */
+  .page-hero{background:var(--red-dark);padding:9rem 2.5rem 6rem;position:relative;overflow:hidden;}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(252,105,101,0.32) 0%,transparent 65%);-webkit-mask-image:linear-gradient(to bottom,black 0%,black calc(100% - 110px),transparent 100%);mask-image:linear-gradient(to bottom,black 0%,black calc(100% - 110px),transparent 100%);pointer-events:none;}
+  .page-hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;}
+  .page-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--red-light);margin-bottom:1.5rem;}
+  .page-hero h1{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.15;color:white;margin-bottom:1.2rem;max-width:700px;}
+  .page-hero h1 em{font-style:italic;color:var(--red-light);}
+  .page-hero-desc{font-size:1.05rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.8;max-width:600px;}
+  .hero-text-anim{animation:fadeUp .8s ease both;}
+
+  /* FILTER BAR */
+  .filter-bar-wrap{background:var(--white);padding:1.5rem 2.5rem;}
+  .filter-bar{max-width:1180px;margin:0 auto;display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;}
+  .filter-label{font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin-right:.5rem;}
+  .cat-filter{padding:.42rem 1.1rem;border-radius:100px;border:1.5px solid var(--line);background:white;color:var(--mid);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;display:inline-flex;align-items:center;gap:.45rem;}
+  .cat-filter .fdot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+  .cat-filter:hover{border-color:var(--red);color:var(--red);}
+  .cat-filter.active{background:var(--red);border-color:var(--red);color:white;}
+
+  /* GRID + CARDS */
+  .news-section{padding:4rem 2.5rem 6rem;background:var(--white);margin-top:-1px;}
+  .news-container{max-width:1180px;margin:0 auto;}
+  .news-section-header{margin-bottom:2.5rem;}
+  .section-label{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;margin-bottom:.9rem;color:var(--mid);}
+  .news-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
+  .news-card{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;cursor:pointer;}
+  .news-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,0.1);}
+  .news-card.hidden{display:none;}
+  .news-card-bar{height:6px;width:100%;flex-shrink:0;}
+  .news-card-body{padding:2rem;display:flex;flex-direction:column;gap:1rem;flex:1;}
+  .news-meta{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;}
+  .news-tag{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px;border:1px solid;}
+  .news-date{font-size:.78rem;color:#aaa;}
+  .news-card h3{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.35rem;line-height:1.25;letter-spacing:-.01em;color:var(--dark);}
+  .news-card p{font-size:.9rem;color:var(--mid);font-weight:300;line-height:1.72;flex:1;}
+  .news-footer{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--line);margin-top:.5rem;}
+  .news-who{display:flex;align-items:center;gap:.7rem;}
+  .news-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Alegreya',serif;font-size:.82rem;font-weight:800;flex-shrink:0;border:1px solid;}
+  .news-who-name{font-size:.82rem;color:var(--mid);font-weight:400;}
+  .news-read-more{font-size:.85rem;color:var(--red);font-weight:500;white-space:nowrap;}
+
+  /* Featured event card */
+  .news-card.featured{grid-column:span 2;}
+  .news-card.featured .news-card-body{padding:2.4rem;}
+  .news-card.featured h3{font-size:1.8rem;}
+  .event-agenda{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:.3rem 0 .2rem;}
+  .agenda-day{border-radius:12px;padding:.9rem .8rem;background:var(--light);border:1px solid var(--line);transition:transform .2s,box-shadow .2s;}
+  .agenda-day:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.08);}
+  .agenda-day-num{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.35rem;}
+  .agenda-day-date{font-size:.68rem;color:var(--mid);margin-bottom:.5rem;}
+  .agenda-day-title{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:.98rem;color:var(--dark);}
+
+  /* MODAL — white card, matching the Projects modal pattern */
+  .news-modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+  .news-modal-overlay.open{opacity:1;pointer-events:all;}
+  .news-modal{background:var(--white);border-radius:20px;max-width:660px;width:100%;max-height:88vh;overflow-y:auto;transform:translateY(20px) scale(.97);transition:transform .28s ease;box-shadow:0 30px 80px rgba(0,0,0,0.5);position:relative;border:1px solid var(--line);}
+  .news-modal-overlay.open .news-modal{transform:translateY(0) scale(1);}
+  .news-modal-bar{height:5px;border-radius:20px 20px 0 0;}
+  .news-modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.12);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--mid);transition:background .2s,color .2s;}
+  .news-modal-close:hover{background:var(--dark);color:white;}
+  .news-modal-inner{padding:2.2rem 2.2rem 2.4rem;}
+  .news-modal-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.69rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .7rem;border-radius:100px;margin-bottom:.9rem;}
+  .news-modal h2{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.55rem;letter-spacing:-.01em;line-height:1.25;margin-bottom:1rem;color:var(--dark);}
+  .news-modal-body{font-size:.92rem;color:var(--mid);font-weight:300;line-height:1.8;margin-bottom:1.2rem;}
+  .news-modal-body p{margin-bottom:.9rem;}
+  .news-modal-body p:last-child{margin-bottom:0;}
+  .news-modal-agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-bottom:1.2rem;}
+  .news-modal-agenda .agenda-day-title{font-size:.9rem;}
+  .news-modal-actions{margin-top:.4rem;display:flex;gap:.8rem;flex-wrap:wrap;}
+  .news-modal-btn{padding:.6rem 1.35rem;border-radius:100px;font-size:.84rem;font-weight:500;cursor:pointer;text-decoration:none;border:1.5px solid;display:inline-block;transition:transform .18s;font-family:'Inter',sans-serif;}
+  .news-modal-btn:hover{transform:translateY(-1px);}
+  .news-modal-btn.ghost{background:transparent;color:var(--mid);border-color:rgba(0,0,0,0.2);}
+  .news-modal-btn.ghost:hover{color:var(--dark);border-color:var(--dark);}
+
+  /* Section labels in the footer area */
+  footer{background:var(--navy-dark);color:rgba(255,255,255,0.5);padding:4rem 2.5rem 2rem;}
+  .footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+  .footer-brand .footer-name{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.15rem;color:white;display:block;margin-bottom:.4rem;}
+  .footer-brand p{font-size:.85rem;line-height:1.65;max-width:280px;}
+  .footer-col h5{color:white;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.1rem;font-weight:500;}
+  .footer-col a{display:block;color:rgba(255,255,255,0.45);text-decoration:none;font-size:.86rem;margin-bottom:.55rem;transition:color .2s;}
+  .footer-col a:hover{color:var(--teal-light);}
+  .footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.8rem;flex-wrap:wrap;gap:.5rem;}
+  .footer-bottom a{color:var(--teal-light);text-decoration:none;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  .fade-in{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+
+  @media(max-width:900px){
+    .event-agenda{grid-template-columns:repeat(2,1fr);}
+    .news-modal-agenda{grid-template-columns:1fr;}
+  }
+  @media(max-width:768px){
+    nav{padding:1rem 1.4rem;}
+    .nav-links,.nav-cta{display:none;}
+    .hamburger{display:flex;}
+    .page-hero{padding:7rem 1.4rem 4rem;}
+    .news-section{padding:3rem 1.4rem 5rem;}
+    .filter-bar-wrap{padding:1.2rem 1.4rem;}
+    .news-grid{grid-template-columns:1fr;}
+    .news-card.featured{grid-column:span 1;}
+    .footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}
+  }
+  @media(max-width:480px){.footer-inner{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html">
+    <img src="images/logo.png" alt="CIK Lab Logo" />
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Co-creation for Inclusive<br>Knowledges Lab</span>
+      <span class="nav-logo-sub">Amsterdam</span>
+      <div class="nav-weave"><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-dropdown">
+      <a href="index.html#what" class="nav-dropdown-trigger">About <span class="nav-arrow">&#9662;</span></a>
+      <div class="nav-dropdown-menu">
+        <a href="index.html#what">What We Do</a>
+        <a href="index.html#why">Purpose</a>
+        <a href="index.html#learning">Learning</a>
+      </div>
+    </li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="praxis.html">Praxis &amp; Resources</a></li>
+    <li><a href="spring-school.html">Spring School</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="news-events.html" class="active">News &amp; Events</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Get in Touch</a>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-text-anim">
+      <div class="page-eyebrow">What's Happening</div>
+      <h1>News &amp; <em>Events</em></h1>
+      <p class="page-hero-desc">The moments, milestones, and gatherings that make up life at the Lab — from community events we're proud to support, to the wins of the people who make this work happen.</p>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER: red → white -->
+<div style="line-height:0;display:block;background:#FFFFFF;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,0 Z" fill="#C12925" stroke="none"/></svg></div>
+
+<div class="filter-bar-wrap">
+  <div class="filter-bar">
+    <span class="filter-label">Filter</span>
+    <button class="cat-filter active" data-cat="all">Everything</button>
+    <button class="cat-filter" data-cat="events"><span class="fdot" style="background:var(--amber);"></span>Events</button>
+    <button class="cat-filter" data-cat="news"><span class="fdot" style="background:var(--teal);"></span>News</button>
+  </div>
+</div>
+
+<section class="news-section">
+  <div class="news-container">
+    <div class="news-section-header fade-in">
+      <div class="thread-accent ta-light"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="section-label">Upcoming events &amp; recent wins from the Lab</div>
+    </div>
+
+    <div class="news-grid" id="newsGrid">
+
+      <!-- FEATURED EVENT -->
+      <article class="news-card featured fade-in" data-cat="events"
+        data-tag="Event" data-tagcolor="#D38824"
+        data-title="Join the 2026 Refugee Welcome Week in the Netherlands!"
+        data-date="8&ndash;12 June 2026"
+        data-who="Co-Creation for Inclusive Knowledges Lab"
+        data-avatar="RW"
+        data-link="https://lnkd.in/eMGjsd4w"
+        data-linklabel="Programme &amp; Tickets"
+        data-agenda='[["Day 1","8 June","Truth"],["Day 2","9 June","Belonging"],["Day 3","11 June","Action"],["Day 4","12 June","Toward a Radical Future"]]'
+        data-body="Refugee Week is almost here, bringing together refugee communities, grassroots organisations, artists, researchers, advocates, and local residents for four days of dialogue, creativity, reflection, and collective action.||This year's programme invites participants to engage with some of the most pressing questions surrounding migration, belonging, solidarity, and social justice through community-led events, artistic interventions, workshops, and public conversations.||The first week of the programme is fully refugee-led, creating space for refugees to share their knowledge, experiences, creativity, and visions for change. The programme also includes contributions from community organisations, artists, and practitioners working across Amsterdam and beyond.||Members of the Co-Creation for Inclusive Knowledges Lab are delighted to contribute to the opening event and support this important initiative. Last year's opening event was fully booked, so we encourage interested participants to register early &mdash; and to help spread the word through your networks, colleagues, students, friends, and communities.">
+        <div class="news-card-bar" style="background:var(--amber);"></div>
+        <div class="news-card-body">
+          <div class="news-meta">
+            <span class="news-tag" style="color:var(--amber-dark);background:rgba(252,176,64,0.12);border-color:rgba(252,176,64,0.3);">✨ Event</span>
+            <span class="news-date">8&ndash;12 June 2026</span>
+          </div>
+          <h3>Join the 2026 Refugee Welcome Week in the Netherlands!</h3>
+          <p>Four days of dialogue, creativity, reflection, and collective action — bringing together refugee communities, grassroots organisations, artists, and researchers. The Lab is proud to support this year's opening event.</p>
+          <div class="event-agenda">
+            <div class="agenda-day"><div class="agenda-day-num" style="color:var(--red);">Day 1</div><div class="agenda-day-date">8 June</div><div class="agenda-day-title">Truth</div></div>
+            <div class="agenda-day"><div class="agenda-day-num" style="color:var(--teal-dark);">Day 2</div><div class="agenda-day-date">9 June</div><div class="agenda-day-title">Belonging</div></div>
+            <div class="agenda-day"><div class="agenda-day-num" style="color:var(--blue);">Day 3</div><div class="agenda-day-date">11 June</div><div class="agenda-day-title">Action</div></div>
+            <div class="agenda-day"><div class="agenda-day-num" style="color:var(--amber-dark);">Day 4</div><div class="agenda-day-date">12 June</div><div class="agenda-day-title">Toward a Radical Future</div></div>
+          </div>
+          <div class="news-footer">
+            <div class="news-who">
+              <div class="news-avatar" style="background:rgba(252,176,64,0.15);border-color:rgba(252,176,64,0.3);color:var(--amber-dark);">RW</div>
+              <span class="news-who-name">Refugee Welcome Week</span>
+            </div>
+            <span class="news-read-more">See full programme &rarr;</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- NEWS: Louise Wolff -->
+      <article class="news-card fade-in" data-cat="news"
+        data-tag="News" data-tagcolor="#01AA93"
+        data-title="Louise Wolff Presents First Findings on Solidarity within Queer Communities"
+        data-date="Dag van de Sociologie, Antwerp"
+        data-who="Louise Wolff"
+        data-avatar="LW"
+        data-body="How do queer communities foster belonging, and who gets recognised within them? These questions were central to &ldquo;You do(n't) recognize queers&rdquo;, a presentation delivered by Co-Creation Lab member Louise Wolff at the Dag van de Sociologie in Antwerp. The presentation shared the first findings from an ongoing research project that explores how solidarity within queer communities can be strengthened.||While queer communities can provide vital spaces of support, connection, and identity affirmation, many queer individuals also experience exclusion, marginalisation, and pressures to conform to dominant expectations of what queerness should look like. The project asks critical questions about representation, belonging, and recognition within queer spaces.||The preliminary findings suggest that feelings of &ldquo;not being queer enough&rdquo; are closely connected to changing norms and expectations surrounding queer identities. The research also highlights how certain identities and experiences remain underrepresented, both within queer communities and within academic knowledge production.||The project is conducted by a research team consisting of four Sociology bachelor's students, including Mathijs van Saase and Linda van Saase, together with lecturer and PhD candidate Louise Wolff. Supported by the Co-Creation for Inclusive Knowledges Lab, the project uses a Community-Led Research and Action approach, working alongside queer student organisations and community members to strengthen solidarity from within.||In the coming months, the team will continue developing the project and translating its findings into both academic insights and practical actions aimed at fostering more inclusive and supportive queer communities.">
+        <div class="news-card-bar" style="background:var(--teal);"></div>
+        <div class="news-card-body">
+          <div class="news-meta">
+            <span class="news-tag" style="color:var(--teal);background:rgba(1,170,147,0.12);border-color:rgba(1,170,147,0.3);">News</span>
+            <span class="news-date">Dag van de Sociologie</span>
+          </div>
+          <h3>Louise Wolff presents first findings on solidarity within queer communities</h3>
+          <p>Who gets recognised within queer communities, and who doesn't? Lab member Louise Wolff shared first findings from her ongoing research at the Dag van de Sociologie in Antwerp.</p>
+          <div class="news-footer">
+            <div class="news-who">
+              <div class="news-avatar" style="background:rgba(1,170,147,0.15);border-color:rgba(1,170,147,0.3);color:var(--teal);">LW</div>
+              <span class="news-who-name">Louise Wolff</span>
+            </div>
+            <span class="news-read-more">Read more &rarr;</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- NEWS: Abongile Sonkosi -->
+      <article class="news-card fade-in" data-cat="news"
+        data-tag="News" data-tagcolor="#0076BE"
+        data-title="Abongile Sonkosi Defends PhD on the Experiences of Black Female PhD Candidates in South Africa and the Netherlands"
+        data-date="6 May 2026"
+        data-who="Abongile Sonkosi"
+        data-avatar="AS"
+        data-link="https://lnkd.in/eDDnr3qT"
+        data-linklabel="Read the Dissertation"
+        data-body="On 6 May, Co-Creation Lab colleague Abongile Sonkosi successfully defended her PhD dissertation, Majority versus Minority: Experiences of Black Female PhD Candidates in South Africa and the Netherlands.||Abongile's research explores the experiences of Black female doctoral candidates across two distinct academic contexts, contributing important insights into questions of marginalisation, belonging, representation, and decolonising practices within higher education. Her work offers a critical perspective on how race, gender, and institutional structures shape academic trajectories and experiences.||The defence brought together colleagues, friends, and supporters to celebrate this important academic milestone and to engage with the themes at the heart of Abongile's research. The dissertation makes a valuable contribution to ongoing conversations about equity, inclusion, and transformation within academia.||The Co-Creation for Inclusive Knowledges Lab warmly congratulates Dr. Abongile Sonkosi on this remarkable achievement and wishes her every success in the next stage of her academic and professional journey. &#127881;">
+        <div class="news-card-bar" style="background:var(--blue);"></div>
+        <div class="news-card-body">
+          <div class="news-meta">
+            <span class="news-tag" style="color:var(--blue);background:rgba(0,118,190,0.10);border-color:rgba(0,118,190,0.28);">News</span>
+            <span class="news-date">6 May 2026</span>
+          </div>
+          <h3>Dr. Abongile Sonkosi defends her PhD &#127891;</h3>
+          <p>Congratulations to Abongile Sonkosi, who successfully defended her dissertation on the experiences of Black female PhD candidates in South Africa and the Netherlands.</p>
+          <div class="news-footer">
+            <div class="news-who">
+              <div class="news-avatar" style="background:rgba(0,118,190,0.1);border-color:rgba(0,118,190,0.28);color:var(--blue);">AS</div>
+              <span class="news-who-name">Abongile Sonkosi</span>
+            </div>
+            <span class="news-read-more">Read more &rarr;</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEWS/EVENT MODAL -->
+<div class="news-modal-overlay" id="newsModal" role="dialog" aria-modal="true">
+  <div class="news-modal">
+    <div class="news-modal-bar" id="newsModalBar"></div>
+    <button class="news-modal-close" id="newsModalClose" aria-label="Close">&#10005;</button>
+    <div class="news-modal-inner">
+      <div class="news-modal-badge" id="newsModalBadge"></div>
+      <h2 id="newsModalTitle"></h2>
+      <div class="news-modal-agenda" id="newsModalAgenda" style="display:none;"></div>
+      <div class="news-modal-body" id="newsModalBody"></div>
+      <div class="news-modal-actions" id="newsModalActions"></div>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER: white → footer -->
+<div style="line-height:0;display:block;background:#1B216B;overflow:hidden;"><svg width="100%" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;"><path d="M0,0 L0,50 C180,10 360,70 540,40 C720,10 900,70 1080,40 C1260,10 1380,60 1440,45 L1440,0 Z" fill="#FFFFFF" stroke="none"/></svg></div>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-weave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <span class="footer-name">Co-creation for Inclusive Knowledges Lab</span>
+      <p>A research lab within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, committed to building knowledge that includes, centres, and serves all communities.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <a href="index.html#what">What We Do</a>
+      <a href="index.html#why">Purpose</a>
+      <a href="index.html#learning">Learning</a>
+      <a href="index.html#projects">Praxis &amp; Resources</a>
+      <a href="spring-school.html">Spring School</a>
+      <a href="blog.html">Blog</a>
+      <a href="news-events.html">News &amp; Events</a>
+      <a href="index.html#team">Team</a>
+    </div>
+    <div class="footer-col">
+      <h5>Filter</h5>
+      <a href="#">Events</a>
+      <a href="#">News</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="#">lab@vu.nl</a>
+      <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a>
+      <a href="#">De Boelelaan 1105</a>
+      <a href="#">1081 HV Amsterdam</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&#169; 2026 Co-creation for Inclusive Knowledges Lab, <a href="https://vu.nl" target="_blank">Vrije Universiteit Amsterdam</a></span>
+    <span>Designed with care for accessibility and inclusion</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  setTimeout(() => document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible')), 600);
+
+  document.getElementById('hamburger').addEventListener('click', function() {
+    const links = document.querySelector('.nav-links');
+    if (links) {
+      if (links.style.display === 'flex') { links.style.display = 'none'; }
+      else { links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:white;padding:1rem 2rem;border-bottom:1px solid #E0DDD8;gap:1rem;z-index:99;'; }
+    }
+  });
+
+  // Filter
+  document.querySelectorAll('.cat-filter').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.cat-filter').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const cat = this.dataset.cat;
+      document.querySelectorAll('.news-card').forEach(card => {
+        const show = cat === 'all' || card.dataset.cat === cat;
+        if (show) {
+          card.classList.remove('hidden');
+          card.style.opacity = '0'; card.style.transform = 'translateY(10px)';
+          requestAnimationFrame(() => {
+            card.style.transition = 'opacity .3s ease, transform .3s ease';
+            card.style.opacity = '1'; card.style.transform = 'translateY(0)';
+          });
+        } else { card.classList.add('hidden'); }
+      });
+      document.querySelectorAll('.news-card.featured').forEach(card => {
+        card.style.gridColumn = (cat === 'all' && !card.classList.contains('hidden')) ? 'span 2' : '';
+      });
+    });
+  });
+
+  // Modal
+  const overlay = document.getElementById('newsModal');
+  const modalBar = document.getElementById('newsModalBar');
+  const modalBadge = document.getElementById('newsModalBadge');
+  const modalTitle = document.getElementById('newsModalTitle');
+  const modalAgenda = document.getElementById('newsModalAgenda');
+  const modalBody = document.getElementById('newsModalBody');
+  const modalActions = document.getElementById('newsModalActions');
+
+  document.querySelectorAll('.news-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const color = card.dataset.tagcolor || '#EE4A3E';
+      modalBar.style.background = color;
+      modalBadge.textContent = card.dataset.tag || '';
+      modalBadge.style.cssText = `color:${color};background:${color}22;border:1px solid ${color}55;`;
+      modalTitle.textContent = card.dataset.title;
+
+      if (card.dataset.agenda) {
+        const days = JSON.parse(card.dataset.agenda);
+        const dayColors = ['var(--red)','var(--teal-dark)','var(--blue)','var(--amber-dark)'];
+        modalAgenda.innerHTML = days.map((d, i) => `<div class="agenda-day"><div class="agenda-day-num" style="color:${dayColors[i % 4]};">${d[0]}</div><div class="agenda-day-date">${d[1]}</div><div class="agenda-day-title">${d[2]}</div></div>`).join('');
+        modalAgenda.style.display = 'grid';
+      } else {
+        modalAgenda.innerHTML = '';
+        modalAgenda.style.display = 'none';
+      }
+
+      const paras = (card.dataset.body || '').split('||').map(p => `<p>${p.trim()}</p>`).join('');
+      modalBody.innerHTML = paras;
+
+      const link = card.dataset.link;
+      const linkLabel = card.dataset.linklabel || 'Learn more';
+      modalActions.innerHTML = (link ? `<a href="${link}" target="_blank" rel="noopener" class="news-modal-btn" style="background:${color};border-color:${color};color:white;">${linkLabel} &#8599;</a>` : '') + '<button class="news-modal-btn ghost" onclick="closeModal()">Close</button>';
+
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+  document.getElementById('newsModalClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
