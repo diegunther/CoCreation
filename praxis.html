@@ -40,6 +40,7 @@
   .nav-arrow{font-size:.6rem;transition:transform .2s;display:inline-block;}
   .nav-dropdown:hover .nav-arrow{transform:rotate(180deg);}
   .nav-dropdown-menu{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);background:white;border:1px solid var(--line);border-radius:12px;padding:.5rem;min-width:170px;box-shadow:0 8px 30px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
+  .nav-dropdown-menu::before{content:'';position:absolute;top:-.8rem;left:0;right:0;height:.8rem;}
   .nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
   .nav-dropdown-menu a{display:block;font-size:.84rem;color:var(--mid);padding:.5rem .9rem;border-radius:8px;transition:background .15s,color .15s;font-weight:400;}
   .nav-dropdown-menu a:hover{background:var(--light);color:var(--red);}
@@ -50,7 +51,7 @@
 
   /* HERO */
   .page-hero{background:var(--navy);padding:9rem 2.5rem 6rem;position:relative;overflow:hidden;}
-  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(90,97,183,0.3) 0%,transparent 65%);pointer-events:none;}
+  .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(90,97,183,0.3) 0%,transparent 65%);-webkit-mask-image:linear-gradient(to bottom,black 0%,black calc(100% - 110px),transparent 100%);mask-image:linear-gradient(to bottom,black 0%,black calc(100% - 110px),transparent 100%);pointer-events:none;}
   .page-hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;}
   .page-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy-light);margin-bottom:1.5rem;}
   .page-hero h1{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.15;color:white;margin-bottom:1.2rem;}
@@ -142,6 +143,7 @@
     <li><a href="praxis.html" class="active">Praxis &amp; Resources</a></li>
     <li><a href="spring-school.html">Spring School</a></li>
     <li><a href="blog.html">Blog</a></li>
+    <li><a href="news-events.html">News &amp; Events</a></li>
   </ul>
   <a class="nav-cta" href="index.html#contact">Get in Touch</a>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -363,6 +365,7 @@
       <a href="praxis.html">Praxis &amp; Resources</a>
       <a href="spring-school.html">Spring School</a>
       <a href="blog.html">Blog</a>
+      <a href="news-events.html">News &amp; Events</a>
     </div>
     <div class="footer-col">
       <h5>Methodologies</h5>
