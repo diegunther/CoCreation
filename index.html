@@ -112,6 +112,7 @@
   .nav-arrow{font-size:.6rem;transition:transform .2s;display:inline-block;}
   .nav-dropdown:hover .nav-arrow{transform:rotate(180deg);}
   .nav-dropdown-menu{position:absolute;top:calc(100% + .8rem);left:50%;transform:translateX(-50%);background:white;border:1px solid var(--line);border-radius:12px;padding:.5rem;min-width:170px;box-shadow:0 8px 30px rgba(0,0,0,0.1);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(-6px);}
+  .nav-dropdown-menu::before{content:'';position:absolute;top:-.8rem;left:0;right:0;height:.8rem;}
   .nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);}
   .nav-dropdown-menu a{display:block;font-size:.84rem;color:var(--mid);padding:.5rem .9rem;border-radius:8px;transition:background .15s,color .15s;font-weight:400;}
   .nav-dropdown-menu a:hover{background:var(--light);color:var(--red);}
@@ -123,6 +124,7 @@
   .hero-wrap{background:var(--white);position:relative;overflow:hidden;}
   .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 2.5rem 4rem;gap:3rem;max-width:1280px;margin:0 auto;}
   .hero-text{animation:fadeUp .8s ease both;position:relative;z-index:1;}
+  .hero-text .section-label{color:var(--red);}
   .hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem;}
   .hero h1{font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.18;letter-spacing:-.01em;color:var(--dark);margin-bottom:1.4rem;}
   .hero h1 em{font-style:italic;color:var(--red);}
@@ -170,11 +172,25 @@
   #why .section-label{color:var(--navy-light);}
   #why h2.section-title{color:white;}
   #why .section-intro{color:rgba(255,255,255,0.80);}
-  .why-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .why-inner{display:grid;grid-template-columns:0.85fr 1.15fr;gap:3rem;align-items:center;}
   .why-weave{margin-top:2.5rem;}
   .why-weave p{font-size:.95rem;color:rgba(255,255,255,.75);font-weight:300;line-height:1.75;margin-bottom:1.5rem;}
   .why-visual{display:flex;justify-content:center;}
   .why-visual img{width:100%;max-width:440px;height:380px;object-fit:cover;border-radius:16px;}
+
+  /* ORBIT LAYOUT — logo centered, actor tags positioned around it */
+  .why-orbit{position:relative;width:100%;max-width:640px;aspect-ratio:8/5;margin:0 auto;}
+  .why-logo-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:38%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;}
+  .why-logo-frame img{width:100%;height:100%;object-fit:contain;}
+  .orbit-tag{position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:.45rem;font-size:.78rem;font-weight:500;letter-spacing:.02em;padding:.5rem 1rem .5rem .8rem;border-radius:100px;border:1.5px solid rgba(90,97,183,0.45);background:rgba(90,97,183,0.16);color:rgba(255,255,255,0.9);white-space:nowrap;transition:background .2s,border-color .2s,transform .2s;cursor:default;}
+  .orbit-tag:hover{background:rgba(90,97,183,0.32);border-color:rgba(90,97,183,0.85);transform:translate(-50%,-50%) scale(1.05);}
+  .orbit-tag .tag-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+  .orbit-tag:nth-of-type(5n+1) .tag-dot{background:var(--t1);}
+  .orbit-tag:nth-of-type(5n+2) .tag-dot{background:var(--t2);}
+  .orbit-tag:nth-of-type(5n+3) .tag-dot{background:var(--t3);}
+  .orbit-tag:nth-of-type(5n+4) .tag-dot{background:var(--t4);}
+  .orbit-tag:nth-of-type(5n+5) .tag-dot{background:var(--t5);}
+  .why-tags-mobile{display:none;}
 
   #learning{background:var(--amber);color:var(--dark);}
   #learning .section-label{color:var(--amber-dark);}
@@ -345,6 +361,9 @@
     .hero-illustration{order:-1;}
     .why-inner{grid-template-columns:1fr;gap:2.5rem;}
     .why-visual{order:-1;}
+    .why-orbit{max-width:340px;}
+    .orbit-tag{display:none;}
+    .why-tags-mobile{display:flex;}
     .proj-grid{grid-template-columns:1fr;}
     .learning-inner{grid-template-columns:1fr;gap:2.5rem;}
     .footer-inner{grid-template-columns:1fr;gap:2rem;}
@@ -378,6 +397,7 @@
     <li><a href="praxis.html">Praxis &amp; Resources</a></li>
     <li><a href="spring-school.html">Spring School</a></li>
     <li><a href="blog.html">Blog</a></li>
+    <li><a href="news-events.html">News &amp; Events</a></li>
   </ul>
   <a class="nav-cta" href="#contact">Get in Touch</a>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -386,10 +406,11 @@
 <div class="hero-wrap">
   <div class="hero">
     <div class="hero-text">
-      <div class="hero-eyebrow">Research &amp; Innovation Lab</div>
-      <h1>The Co-creation Lab for <em>Inclusive Knowledge Production Research & Innovation Lab</em></h1>
+      <div class="thread-accent ta-white"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="section-label">Welcome to</div>
+      <h1>The Co-creation Lab for <em>Inclusive Knowledge Lab</em></h1>
       <p class="hero-sub">Bringing academia and society into more meaningful collaboration for social justice</p>
-      <p class="hero-about">The Co-Creation Lab for Inclusive Knowledge Production Research & Innovation Lab, based within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, is a space for critical, reciprocal, and ethical collaboration between academia and social actors. Together, we cultivate knowledges and practices for a more just society, while unsettling more traditional forms of academia.</p>
+      <p class="hero-about">The Co-creation Lab for Inclusive Knowledge Lab, based within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, is a space for critical, reciprocal, and ethical collaboration between academia and social actors. Together, we cultivate knowledges and practices for a more just society, while unsettling more traditional forms of academia.</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#what">Explore our work</a>
         <a class="btn-ghost" href="#why">Our purpose</a>
@@ -490,7 +511,7 @@
           <p>We challenge structural inequalities by recognising the expertise, initiatives, and lived experiences of diverse actors. Co-creation means bringing together those who are committed to collectively imagining and building more just societies and environments.</p>
           <p>We believe that a more just society cannot be achieved without a strong and ethical connection to the lives of those experiencing injustice. For this reason, we centre historically marginalised voices and lived experiences as a starting point for collective reflection and action.</p>
           <p>We do this by facilitating events within and beyond academia, supporting non-traditional research practices, building meaningful alliances, and mobilising resources and expertise in support of social and environmental justice.</p>
-          <div class="actor-tags">
+          <div class="actor-tags why-tags-mobile">
             <span class="actor-tag"><span class="tag-dot"></span>Artists</span>
             <span class="actor-tag"><span class="tag-dot"></span>Activists</span>
             <span class="actor-tag"><span class="tag-dot"></span>Academics</span>
@@ -505,7 +526,21 @@
         </div>
       </div>
       <div class="why-visual fade-in" style="transition-delay:.2s">
-        <img src="images/why.jpg" alt="Community knowledge sharing" />
+        <div class="why-orbit">
+          <div class="why-logo-frame">
+            <img src="images/logo.png" alt="Co-creation for Inclusive Knowledges Lab logo" />
+          </div>
+          <span class="orbit-tag" style="left:14%;top:26%;"><span class="tag-dot"></span>Academics</span>
+          <span class="orbit-tag" style="left:31%;top:8%;"><span class="tag-dot"></span>Activists</span>
+          <span class="orbit-tag" style="left:53%;top:4%;"><span class="tag-dot"></span>Artists</span>
+          <span class="orbit-tag" style="left:80%;top:18%;"><span class="tag-dot"></span>Community members</span>
+          <span class="orbit-tag" style="left:87%;top:44%;"><span class="tag-dot"></span>Social workers</span>
+          <span class="orbit-tag" style="left:9%;top:58%;"><span class="tag-dot"></span>Researchers</span>
+          <span class="orbit-tag" style="left:83%;top:68%;"><span class="tag-dot"></span>Practitioners</span>
+          <span class="orbit-tag" style="left:21%;top:90%;"><span class="tag-dot"></span>Educators</span>
+          <span class="orbit-tag" style="left:71%;top:87%;"><span class="tag-dot"></span>Advocates</span>
+          <span class="orbit-tag" style="left:45%;top:99%;"><span class="tag-dot"></span>Policymakers</span>
+        </div>
       </div>
     </div>
   </div>
@@ -551,8 +586,8 @@
           <h3 style="font-family:'Alegreya',Georgia,serif;font-weight:800;font-size:1.8rem;line-height:1.2;color:white;margin-bottom:1rem;">Spring School on Co-Creative Methodologies</h3>
           <p style="font-size:.92rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.72;margin-bottom:1.8rem;">A space where academia meets activism, art, and community-led initiatives. Four immersive days each year — workshops, dialogues, and delicious meals.</p>
           <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
-            <span style="font-size:.75rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-weight:400;">2025 Edition</span>
             <span style="font-size:.75rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-weight:400;">2026 Edition</span>
+            <span style="font-size:.75rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-weight:400;">2025 Edition</span>
             <span style="font-size:.75rem;padding:.28rem .8rem;border-radius:100px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-weight:400;">Open to all</span>
           </div>
         </div>
@@ -597,18 +632,18 @@
       <div class="thread-accent ta-teal-dark"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="section-label">The Team</div>
       <h2 class="section-title">The people behind the work</h2>
-      <p class="section-intro">A growing collective of researchers, lecturers, PhD candidates, and collaborators based within the Faculty of Social Sciences at Vrije Universiteit Amsterdam.</p>
+      <p class="section-intro">A growing community of co-creators — researchers, lecturers, PhD candidates, and collaborators — working together within the Faculty of Social Sciences at Vrije Universiteit Amsterdam, alongside our partner organisations.</p>
     </div>
 
     <div class="team-accordion fade-in" style="transition-delay:.1s">
 
-      <!-- Directors -->
+      <!-- Co-Creators -->
       <div class="team-group open">
         <div class="team-group-header" onclick="toggleGroup(this)">
           <div class="team-group-left">
             <span class="team-group-dot" style="background:var(--teal-light);"></span>
-            <span class="team-group-title">Directors</span>
-            <span class="team-group-count">2 members</span>
+            <span class="team-group-title">Co-Creators</span>
+            <span class="team-group-count">29 members</span>
           </div>
           <div class="team-group-toggle">+</div>
         </div>
@@ -632,22 +667,6 @@
                 <a class="team-card-email" href="mailto:l.woensdregt@vu.nl">l.woensdregt@vu.nl</a>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Professors & Senior Researchers -->
-      <div class="team-group">
-        <div class="team-group-header" onclick="toggleGroup(this)">
-          <div class="team-group-left">
-            <span class="team-group-dot" style="background:var(--blue-light);"></span>
-            <span class="team-group-title">Professors &amp; Senior Researchers</span>
-            <span class="team-group-count">12 members</span>
-          </div>
-          <div class="team-group-toggle">+</div>
-        </div>
-        <div class="team-group-body">
-          <div class="team-grid">
             <div class="team-card">
               <div class="team-avatar">HG</div>
               <div class="team-card-info">
@@ -751,22 +770,6 @@
                 <a class="team-card-email" href="mailto:m.matelski@vu.nl">m.matelski@vu.nl</a>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lecturers & Researchers -->
-      <div class="team-group">
-        <div class="team-group-header" onclick="toggleGroup(this)">
-          <div class="team-group-left">
-            <span class="team-group-dot" style="background:var(--amber);"></span>
-            <span class="team-group-title">Lecturers &amp; Researchers</span>
-            <span class="team-group-count">7 members</span>
-          </div>
-          <div class="team-group-toggle">+</div>
-        </div>
-        <div class="team-group-body">
-          <div class="team-grid">
             <div class="team-card">
               <div class="team-avatar">MP</div>
               <div class="team-card-info">
@@ -822,22 +825,6 @@
                 <div class="team-card-role">Collaborator</div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PhD Candidates -->
-      <div class="team-group">
-        <div class="team-group-header" onclick="toggleGroup(this)">
-          <div class="team-group-left">
-            <span class="team-group-dot" style="background:var(--red-light);"></span>
-            <span class="team-group-title">PhD Candidates</span>
-            <span class="team-group-count">7 members</span>
-          </div>
-          <div class="team-group-toggle">+</div>
-        </div>
-        <div class="team-group-body">
-          <div class="team-grid">
             <div class="team-card">
               <div class="team-avatar">TK</div>
               <div class="team-card-info">
@@ -898,12 +885,12 @@
         </div>
       </div>
 
-      <!-- Collaborating Organisations -->
+      <!-- Partners -->
       <div class="team-group">
         <div class="team-group-header" onclick="toggleGroup(this)">
           <div class="team-group-left">
             <span class="team-group-dot" style="background:var(--amber-light);"></span>
-            <span class="team-group-title">Collaborating Organisations</span>
+            <span class="team-group-title">Partners</span>
             <span class="team-group-count">2 organisations</span>
           </div>
           <div class="team-group-toggle">+</div>
@@ -950,6 +937,7 @@
       <a href="#projects">Praxis &amp; Resources</a>
       <a href="spring-school.html">Spring School</a>
       <a href="blog.html">Blog</a>
+      <a href="news-events.html">News &amp; Events</a>
       <a href="#team">Team</a>
     </div>
     <div class="footer-col">
